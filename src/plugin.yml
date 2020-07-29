@@ -1,0 +1,11 @@
+main: me.Theguyhere.CompressedCobble.Main
+name: CompressedCobble
+version: 1.0
+author: Theguyhere
+api-version: 1.16
+
+commands:
+  ccmaterials:
+  cctools:
+  cccraft:
+  cchelp:
