@@ -35,6 +35,10 @@ public class Main extends JavaPlugin implements Listener {
 //		Resources
 		Bukkit.addRecipe(cobbleConversion());
 		Bukkit.addRecipe(netherrackConversion());
+		Bukkit.addRecipe(coalConversion());
+		Bukkit.addRecipe(redstoneConversion());
+		Bukkit.addRecipe(quartzConversion());
+		Bukkit.addRecipe(lapisConversion());
 		Bukkit.addRecipe(ironConversion());
 		Bukkit.addRecipe(goldConversion());
 		Bukkit.addRecipe(emeraldConversion());
@@ -203,11 +207,12 @@ public class Main extends JavaPlugin implements Listener {
 		
 		this.saveDefaultConfig();
 
+		this.getServer().getPluginManager().registerEvents(this, this);
 		this.getServer().getPluginManager().registerEvents(new ResourcesRecipeEvents(), this);
 		this.getServer().getPluginManager().registerEvents(new ToolsRecipeEvents(), this);
 		this.getServer().getPluginManager().registerEvents(new EnchantEvents(this), this);
 		this.getServer().getPluginManager().registerEvents(new MobSpawnEvents(this), this);
-		this.getServer().getPluginManager().registerEvents(this, this);
+		this.getServer().getPluginManager().registerEvents(new LevelRestrictEvents(), this);
 
 		this.getServer().getConsoleSender().sendMessage(ChatColor.GREEN + "Compressed Cobblestone has been loaded and enabled!");
 	}
@@ -311,6 +316,7 @@ public class Main extends JavaPlugin implements Listener {
 				}
 				player.getInventory().addItem(item);
 			}
+			player.giveExpLevels(50);
 			player.sendMessage(ChatColor.GOLD + "Materials given!");
 			return true;
 		}
@@ -377,7 +383,7 @@ public class Main extends JavaPlugin implements Listener {
 			for (int i : cobbleKeys) {
 				ItemStack item = player.getInventory().all(Material.COBBLESTONE).get(i);
 				value += item.getAmount();
-				player.getInventory().removeItem(item);
+				player.getInventory().clear(i);
 			}
 			
 			cobbleKeys = player.getInventory().all(Material.BASALT).keySet();
@@ -390,7 +396,7 @@ public class Main extends JavaPlugin implements Listener {
 				if (item.getItemMeta().hasLore())
 					if (item.getItemMeta().getLore().equals(lore)) {
 						value += 3 * item.getAmount();
-						player.getInventory().removeItem(item);
+						player.getInventory().clear(i);
 					}
 			}
 			
@@ -404,7 +410,7 @@ public class Main extends JavaPlugin implements Listener {
 				if (item.getItemMeta().hasLore())
 					if (item.getItemMeta().getLore().equals(lore)) {
 						value += 9 * item.getAmount();
-						player.getInventory().removeItem(item);
+						player.getInventory().clear(i);
 					}
 			}
 
@@ -418,7 +424,7 @@ public class Main extends JavaPlugin implements Listener {
 				if (item.getItemMeta().hasLore())
 					if (item.getItemMeta().getLore().equals(lore)) {
 						value += 27 * item.getAmount();
-						player.getInventory().removeItem(item);
+						player.getInventory().clear(i);
 					}
 			}
 
@@ -432,7 +438,7 @@ public class Main extends JavaPlugin implements Listener {
 				if (item.getItemMeta().hasLore())
 					if (item.getItemMeta().getLore().equals(lore)) {
 						value += 81 * item.getAmount();
-						player.getInventory().removeItem(item);
+						player.getInventory().clear(i);
 					}
 			}
 			
@@ -446,7 +452,7 @@ public class Main extends JavaPlugin implements Listener {
 				if (item.getItemMeta().hasLore())
 					if (item.getItemMeta().getLore().equals(lore)) {
 						value += 243 * item.getAmount();
-						player.getInventory().removeItem(item);
+						player.getInventory().clear(i);
 					}
 			}
 
@@ -460,7 +466,7 @@ public class Main extends JavaPlugin implements Listener {
 				if (item.getItemMeta().hasLore())
 					if (item.getItemMeta().getLore().equals(lore)) {
 						value += 729 * item.getAmount();
-						player.getInventory().removeItem(item);
+						player.getInventory().clear(i);
 					}
 			}
 
@@ -474,7 +480,7 @@ public class Main extends JavaPlugin implements Listener {
 				if (item.getItemMeta().hasLore())
 					if (item.getItemMeta().getLore().equals(lore)) {
 						value += 2187 * item.getAmount();
-						player.getInventory().removeItem(item);
+						player.getInventory().clear(i);
 					}
 			}
 
@@ -488,7 +494,7 @@ public class Main extends JavaPlugin implements Listener {
 				if (item.getItemMeta().hasLore())
 					if (item.getItemMeta().getLore().equals(lore)) {
 						value += 6561 * item.getAmount();
-						player.getInventory().removeItem(item);
+						player.getInventory().clear(i);
 					}
 			}
 
@@ -502,7 +508,7 @@ public class Main extends JavaPlugin implements Listener {
 				if (item.getItemMeta().hasLore())
 					if (item.getItemMeta().getLore().equals(lore)) {
 						value += 19683 * item.getAmount();
-						player.getInventory().removeItem(item);
+						player.getInventory().clear(i);
 					}
 			}
 
@@ -516,7 +522,7 @@ public class Main extends JavaPlugin implements Listener {
 				if (item.getItemMeta().hasLore())
 					if (item.getItemMeta().getLore().equals(lore)) {
 						value += 59049 * item.getAmount();
-						player.getInventory().removeItem(item);
+						player.getInventory().clear(i);
 					}
 			}
 			
@@ -750,6 +756,54 @@ public class Main extends JavaPlugin implements Listener {
 		recipe.shape("NN", "N ");
 		
 		recipe.setIngredient('N', Material.NETHERRACK);
+		
+		return recipe;
+	}
+	
+	public ShapelessRecipe coalConversion() {
+		ItemStack item = new Resources().c2p5();
+		
+		NamespacedKey key = new NamespacedKey(this, "c2p5_coal");
+		
+		ShapelessRecipe recipe = new ShapelessRecipe(key, item);
+		
+		recipe.addIngredient(9, Material.COAL_BLOCK);
+		
+		return recipe;
+	}
+	
+	public ShapelessRecipe redstoneConversion() {
+		ItemStack item = new Resources().c2p5();
+		
+		NamespacedKey key = new NamespacedKey(this, "c2p5_redstone");
+		
+		ShapelessRecipe recipe = new ShapelessRecipe(key, item);
+		
+		recipe.addIngredient(9, Material.REDSTONE_BLOCK);
+		
+		return recipe;
+	}
+	
+	public ShapelessRecipe quartzConversion() {
+		ItemStack item = new Resources().c2p5();
+		
+		NamespacedKey key = new NamespacedKey(this, "c2p5_quartz");
+		
+		ShapelessRecipe recipe = new ShapelessRecipe(key, item);
+		
+		recipe.addIngredient(9, Material.QUARTZ_BLOCK);
+		
+		return recipe;
+	}
+	
+	public ShapelessRecipe lapisConversion() {
+		ItemStack item = new Resources().c3();
+		
+		NamespacedKey key = new NamespacedKey(this, "c3_lapis");
+		
+		ShapelessRecipe recipe = new ShapelessRecipe(key, item);
+		
+		recipe.addIngredient(9, Material.LAPIS_BLOCK);
 		
 		return recipe;
 	}

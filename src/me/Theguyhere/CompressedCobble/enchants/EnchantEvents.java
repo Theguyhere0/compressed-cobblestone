@@ -551,7 +551,6 @@ public class EnchantEvents implements Listener {
 				Random r = new Random();
 				int position = 0;
 				ItemStack first = drops.iterator().next();
-				drops.remove(drops.iterator().next());
 				Collection<ItemStack> rest = new HashSet<>();
 				for (ItemStack i : drops) {
 					if (drops.iterator().hasNext()) {

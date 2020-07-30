@@ -190,7 +190,7 @@ public class Resources {
 		meta.setAuthor("Theguyhere");
 		
 		List<String> pages = new ArrayList<String>();
-		pages.add("This is a guide to the compressed cobblestone plugin. You can always summon this book by using " + ChatColor.GOLD +
+		pages.add("This is a " + ChatColor.BOLD + "guide" + ChatColor.RESET + " to the compressed cobblestone plugin. You can always summon this book by using " + ChatColor.GOLD +
 				"" + ChatColor.BOLD + "/cchelp.");
 		pages.add(ChatColor.BOLD + "Resources");
 		pages.add("As per the title, there are new resources in the plugin: compressed cobblestone."
@@ -204,7 +204,8 @@ public class Resources {
 				+ " Keep that in mind if you want to place them. All resources are also usable in their vanilla form.");
 		pages.add("You will find very quickly that normal resources like iron, gold, diamond, emerald, and netherite lose value with the new recipes and items."
 				+ " Luckily, there is a way to convert these resources to compressed cobblestone!");
-		pages.add("9 iron blocks = T6     9 gold blocks = T7     9 emerald blocks = T8 9 diamond blocks = T9  9 netherite blocks = T10");
+		pages.add("9 coal blocks = T5     9 redstone blocks = T5                         9 quartz blocks = T5   9 iron blocks = T6     9 lapis blocks = T6     "
+				+ "9 gold blocks = T7     9 emerald blocks = T8 9 diamond blocks = T9  9 netherite blocks = T10");
 		pages.add(ChatColor.BOLD + "Crafting & Items");
 		pages.add("CC offers new tools, weapons, and armor, all with their own crafting recipes! For the most part, just replace normal resources with compressed cobble."
 				+ " Crafting tools of tiers 6-8 need blaze rods instead of sticks, and end rods for tiers 9 & 10.");
@@ -219,8 +220,9 @@ public class Resources {
 				+ " This conversion doesn't happen with the /cccraft command.");
 		pages.add("One more note about craft. Because shields are incredibly important early game, they will take an iron block to make instead of an iron ingot."
 				+ " I mean, what are you going to do with all that iron you dont need?");
+		pages.add("One final note about items, " + ChatColor.BOLD + "your ability to use them depend on your experience level." + ChatColor.RESET +
+				" Every tier requires 5 levels, chainmail requires 5, iron anything requires 10, gold armor require 15, diamond anything require 20, and netherite anything require 30.");
 		pages.add(ChatColor.BOLD + "Enchants");
-		pages.add("A lot of custom enchants have been added. Most have names that are self explanatory but a few may need further explaining.");
 		pages.add("A lot of custom enchants have been added. Most have names that are self explanatory but a few may need further explaining.");
 		pages.add(ChatColor.BOLD + "Telepathy" + ChatColor.RESET + " - Items that normally drop from mining/killing will appear in player inventory, or at the player's feet if their inventory is full.");
 		pages.add(ChatColor.BOLD + "Stony, Petrifying, Rocky, Pebbly, Medusa" + ChatColor.RESET + " - A chance to get compressed cobble as a drop instead of normal drops."
@@ -236,7 +238,7 @@ public class Resources {
 		pages.add("Mobs behave normally, but mobs near the player will recieve CC gear depend on the highest tier CC item (not including cobblestone) in your inventory."
 				+ ChatColor.RED + " Basically, don't skip too far or the mobs will get very strong.");
 		pages.add("If there are multiple players, the highest tiered item out of all players in its check radius will be used to determine gear generation.");
-		pages.add(ChatColor.BOLD + "" + ChatColor.GRAY + "Enjoy!");
+		pages.add(ChatColor.DARK_GRAY + "" + ChatColor.BOLD + "Enjoy!");
 
 		meta.setPages(pages);
 		
