@@ -425,7 +425,7 @@ public class ResourcesRecipeEvents implements Listener {
 			if (e.getRecipe().getResult().getAmount() == 3 && e.getRecipe().getResult().hasItemMeta() && e.getRecipe().getResult().getItemMeta().getLore().equals(output)) {
 				List<String> lore = new ArrayList<String>();
 				lore.add(ChatColor.GRAY + "Contains 9^4.5 (19,683) Cobblestone");
-				output.add(ChatColor.DARK_RED + "" + ChatColor.ITALIC + "Warning! Item will lose value if placed.");
+				lore.add(ChatColor.DARK_RED + "" + ChatColor.ITALIC + "Warning! Item will lose value if placed.");
 				boolean found = false;
 				
 				for (ItemStack item: e.getInventory().getMatrix())
