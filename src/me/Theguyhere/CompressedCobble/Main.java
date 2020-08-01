@@ -316,7 +316,7 @@ public class Main extends JavaPlugin implements Listener {
 				}
 				player.getInventory().addItem(item);
 			}
-			player.giveExpLevels(50);
+			player.setLevel(50);
 			player.sendMessage(ChatColor.GOLD + "Materials given!");
 			return true;
 		}
@@ -342,7 +342,8 @@ public class Main extends JavaPlugin implements Listener {
 					world.dropItemNaturally(loc, tool);
 				}
 				player.getInventory().addItem(tool);
-			}		
+			}
+			player.setLevel(50);
 			player.sendMessage(ChatColor.GOLD + "Tools given!");
 			return true;
 		}

@@ -1034,7 +1034,7 @@ public class EnchantEvents implements Listener {
 					AttributeModifier boost = new AttributeModifier("boost", 2 * lvl, Operation.ADD_NUMBER);
 					if (mob.getAttribute(Attribute.GENERIC_MAX_HEALTH).getModifiers().isEmpty()) {
 						mob.getAttribute(Attribute.GENERIC_MAX_HEALTH).addModifier(boost);
-						mob.setHealth(20 + lvl * 2);
+						mob.setHealth(mob.getAttribute(Attribute.GENERIC_MAX_HEALTH).getValue());
 					}
 				}
 			}
@@ -1112,18 +1112,11 @@ public class EnchantEvents implements Listener {
 						equip.getHelmet().getItemMeta().getDisplayName().substring(0, 4).equals(equip.getLeggings().getItemMeta().getDisplayName().substring(0, 4)) &&
 						equip.getHelmet().getItemMeta().getDisplayName().substring(0, 4).equals(equip.getBoots().getItemMeta().getDisplayName().substring(0, 4))) {
 					AttributeModifier boost = new AttributeModifier("boost", 10, Operation.ADD_NUMBER);
-					if (!mob.getType().equals(EntityType.PIGLIN))
-						if (mob.getAttribute(Attribute.GENERIC_MAX_HEALTH).getModifiers().isEmpty()) {
-							mob.getAttribute(Attribute.GENERIC_MAX_HEALTH).addModifier(boost);
+					if (mob.getAttribute(Attribute.GENERIC_MAX_HEALTH).getModifiers().isEmpty()) {
+						mob.getAttribute(Attribute.GENERIC_MAX_HEALTH).addModifier(boost);
 //							System.out.print(mob);
-							mob.setHealth(30);
-						}
-					if (mob.getType().equals(EntityType.PIGLIN))
-						if (mob.getAttribute(Attribute.GENERIC_MAX_HEALTH).getModifiers().isEmpty()) {
-							mob.getAttribute(Attribute.GENERIC_MAX_HEALTH).addModifier(boost);
-//							System.out.print(mob);
-							mob.setHealth(26);
-						}
+						mob.setHealth(mob.getAttribute(Attribute.GENERIC_MAX_HEALTH).getValue());
+					}
 				}
 			}
 			return;

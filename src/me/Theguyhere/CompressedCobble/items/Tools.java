@@ -1498,13 +1498,13 @@ public class Tools {
 		meta.addEnchant(Enchantment.MENDING, 1, true);
 
 		List<String> lore = new ArrayList<String>();
-		lore.add("Quick Charge IV");
-		lore.add("Unbreaking IV");
-		lore.add("Piercing IV");
-		lore.add("Looting II");
-		lore.add("Powered I");
-		lore.add("Multishot");
-		lore.add("Mending");
+		lore.add(ChatColor.GRAY + "Quick Charge IV");
+		lore.add(ChatColor.GRAY + "Unbreaking IV");
+		lore.add(ChatColor.GRAY + "Piercing IV");
+		lore.add(ChatColor.GRAY + "Looting II");
+		lore.add(ChatColor.GRAY + "Powered I");
+		lore.add(ChatColor.GRAY + "Multishot");
+		lore.add(ChatColor.GRAY + "Mending");
 		lore.add("");
 		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "This weapon holds the strength of ");
 		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "4,374 Cobblestone");
@@ -1530,13 +1530,13 @@ public class Tools {
 		meta.addEnchant(Enchantment.MENDING, 1, true);
 
 		List<String> lore = new ArrayList<String>();
-		lore.add("Quick Charge V");
-		lore.add("Unbreaking V");
-		lore.add("Piercing V");
-		lore.add("Looting III");
-		lore.add("Powered II");
-		lore.add("Multishot");
-		lore.add("Mending");
+		lore.add(ChatColor.GRAY + "Quick Charge V");
+		lore.add(ChatColor.GRAY + "Unbreaking V");
+		lore.add(ChatColor.GRAY + "Piercing V");
+		lore.add(ChatColor.GRAY + "Looting III");
+		lore.add(ChatColor.GRAY + "Powered II");
+		lore.add(ChatColor.GRAY + "Multishot");
+		lore.add(ChatColor.GRAY + "Mending");
 		lore.add("");
 		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "This weapon holds the strength of ");
 		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "13,122 Cobblestone");

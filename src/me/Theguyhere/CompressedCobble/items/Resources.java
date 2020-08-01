@@ -234,6 +234,9 @@ public class Resources {
 		pages.add(ChatColor.BOLD + "Vulcan" + ChatColor.RESET + " - Permenant fire resistance.");
 		pages.add(ChatColor.BOLD + "Powered" + ChatColor.RESET + " - Basically power for crossbows because late game, they needed to be buffed to be useful.");
 		pages.add(ChatColor.BOLD + "Projectile" + ChatColor.RESET + " - Trident shoots super strong arrows with a cooldown between shots. Higher levels do more damage, but with a longer cooldown.");
+		pages.add("A known issue with the way enchants work is that " + ChatColor.BOLD + "many potion effects cannot be obtained normally and can only be obtained through wearing armor.");
+		pages.add("The following potion effects are affected: night vision, water breathing, haste, speed, luck, resistance, strength, hero of the village, "
+				+ "dolphin's grace, jump, and fire resistance.");
 		pages.add(ChatColor.BOLD + "Mobs");
 		pages.add("Mobs behave normally, but mobs near the player will recieve CC gear depend on the highest tier CC item (not including cobblestone) in your inventory."
 				+ ChatColor.RED + " Basically, don't skip too far or the mobs will get very strong.");

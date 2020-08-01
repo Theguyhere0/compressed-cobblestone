@@ -101,7 +101,7 @@ public class MobSpawnEvents implements Listener {
 			AttributeModifier boostA = new AttributeModifier("boostA", origA * .2 * result, Operation.ADD_NUMBER);
 			
 			basic.getAttribute(Attribute.GENERIC_MAX_HEALTH).addModifier(boostH);
-			basic.setHealth(origH + origH * .2 * result);
+			basic.setHealth(basic.getAttribute(Attribute.GENERIC_MAX_HEALTH).getValue());
 			basic.getAttribute(Attribute.GENERIC_ATTACK_DAMAGE).addModifier(boostA);
 		}
 				
