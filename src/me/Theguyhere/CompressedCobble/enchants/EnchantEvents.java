@@ -21,10 +21,9 @@ import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.AbstractArrow.PickupStatus;
 import org.bukkit.entity.Arrow;
 import org.bukkit.entity.EntityType;
+import org.bukkit.entity.Firework;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
-import org.bukkit.entity.Skeleton;
-import org.bukkit.entity.Stray;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
@@ -72,7 +71,8 @@ public class EnchantEvents implements Listener {
 				return;
 		}
 		if ((event.getBlock().getType().equals(Material.GOLD_ORE) || event.getBlock().getType().equals(Material.IRON_ORE) ||
-				event.getBlock().getType().equals(Material.NETHER_GOLD_ORE)) && event.getPlayer().getInventory().getItemInMainHand().getItemMeta().hasEnchant(CustomEnchants.FIERY))
+				event.getBlock().getType().equals(Material.NETHER_GOLD_ORE) || event.getBlock().getType().equals(Material.ANCIENT_DEBRIS)) &&
+				event.getPlayer().getInventory().getItemInMainHand().getItemMeta().hasEnchant(CustomEnchants.FIERY))
 			return;
 		if ((event.getBlock().getType().equals(Material.ACACIA_LOG) || event.getBlock().getType().equals(Material.BIRCH_LOG) || 
 				event.getBlock().getType().equals(Material.DARK_OAK_LOG) || event.getBlock().getType().equals(Material.JUNGLE_LOG) ||
@@ -250,7 +250,8 @@ public class EnchantEvents implements Listener {
 			return;
 		if (!event.getPlayer().getInventory().getItemInMainHand().hasItemMeta())
 			return;
-		if (!(event.getBlock().getType().equals(Material.GOLD_ORE) || event.getBlock().getType().equals(Material.IRON_ORE) || event.getBlock().getType().equals(Material.NETHER_GOLD_ORE)))
+		if (!(event.getBlock().getType().equals(Material.GOLD_ORE) || event.getBlock().getType().equals(Material.IRON_ORE) ||
+				event.getBlock().getType().equals(Material.NETHER_GOLD_ORE) || event.getBlock().getType().equals(Material.ANCIENT_DEBRIS)))
 			return;
 		if (event.getPlayer().getInventory().getItemInMainHand().getItemMeta().hasEnchant(CustomEnchants.FIERY)) {
 			if (event.getPlayer().getGameMode() == GameMode.CREATIVE || event.getPlayer().getGameMode() == GameMode.SPECTATOR)
@@ -275,6 +276,8 @@ public class EnchantEvents implements Listener {
 				result = new ItemStack(Material.IRON_INGOT, r);
 			if (event.getBlock().getType().equals(Material.NETHER_GOLD_ORE))
 				result = new ItemStack(Material.GOLD_INGOT, r);
+			if (event.getBlock().getType().equals(Material.ANCIENT_DEBRIS))
+				result = new ItemStack(Material.NETHERITE_SCRAP, r);
 			if (event.getPlayer().getInventory().getItemInMainHand().getItemMeta().hasEnchant(CustomEnchants.TELEPATHY)) {
 				if (player.getInventory().firstEmpty() == -1 && (player.getInventory().first(result.getType()) == -1 ||
 						(player.getInventory().all(new ItemStack(result.getType(), result.getMaxStackSize())).size() ==
@@ -1264,34 +1267,29 @@ public class EnchantEvents implements Listener {
 		}	
 		return;
 	}
-
+	
 	@EventHandler()
-	public void skellyBuff(ProjectileLaunchEvent e) {
-		if (!e.getEntityType().equals(EntityType.ARROW))
+	public void rocket(PlayerInteractEvent e) {
+		Player player = e.getPlayer();
+		if (!(player.getInventory().getItemInMainHand().getType().equals(Material.TRIDENT) && player.getInventory().getItemInMainHand().getItemMeta().hasLore()))
 			return;
-		if (!(e.getEntity().getShooter() instanceof Skeleton || e.getEntity().getShooter() instanceof Stray))
-			return;
-		LivingEntity skelly = (LivingEntity) e.getEntity().getShooter();
-		Arrow arrow = (Arrow) e.getEntity();
-		if (skelly.getEquipment().getBoots().getItemMeta().getDisplayName().substring(0, 4).equals("˜4T7")) {
-			arrow.setDamage(arrow.getDamage() + 2);
-			return;
-		}
-		if (skelly.getEquipment().getBoots().getItemMeta().getDisplayName().substring(0, 4).equals("˜cT8")) {
-			arrow.setDamage(arrow.getDamage() + 5);
-			arrow.setKnockbackStrength(arrow.getKnockbackStrength() + 1);
-			return;
-		}
-		if (skelly.getEquipment().getBoots().getItemMeta().getDisplayName().substring(0, 4).equals("˜c˜l")) {
-			arrow.setDamage(arrow.getDamage() + 8);
-			arrow.setKnockbackStrength(arrow.getKnockbackStrength() + 2);
-			return;
-		}
-		if (skelly.getEquipment().getBoots().getItemMeta().getDisplayName().substring(0, 4).equals("˜d˜l")) {
-			arrow.setDamage(arrow.getDamage() + 12);
-			arrow.setKnockbackStrength(arrow.getKnockbackStrength() + 3);
-			return;
-		}	
+		if (player.getInventory().getItemInMainHand().getItemMeta().hasEnchant(CustomEnchants.ROCKET))
+			if (e.getAction() == Action.RIGHT_CLICK_AIR || e.getAction() == Action.RIGHT_CLICK_BLOCK) {
+//				add cooldown
+				if (cooldowns.containsKey(player.getName())) {
+//					player is inside hashmap
+					if (cooldowns.get(player.getName()) > System.currentTimeMillis()) {
+//						they still have time left in the cooldown
+						double timeleft = (cooldowns.get(player.getName()) - System.currentTimeMillis()) / 1000;
+						player.sendMessage(ChatColor.RED + "Wait " + timeleft + " second(s) to launch!");
+						e.setCancelled(true);
+						return;
+					}
+				}
+				player.launchProjectile(Firework.class);
+				cooldowns.put(player.getName(), System.currentTimeMillis() + (1.5 * 1000));
+				e.setCancelled(true);
+			}
 		return;
 	}
 }

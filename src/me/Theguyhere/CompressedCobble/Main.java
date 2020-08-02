@@ -709,7 +709,7 @@ public class Main extends JavaPlugin implements Listener {
 						player.getInventory().addItem(i);
 					}
 				}
-				if (value < 3) {
+				if (value > 0 && value < 3) {
 					value -= 1;
 					ItemStack i = new ItemStack(Material.COBBLESTONE);
 					if (player.getInventory().firstEmpty() == -1 && player.getInventory().first(i.getType()) == -1) {

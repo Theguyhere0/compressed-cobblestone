@@ -1582,12 +1582,12 @@ public class Tools {
 		ItemMeta meta = item.getItemMeta();
 		
 		meta.setDisplayName(ChatColor.LIGHT_PURPLE + "" + ChatColor.BOLD + "T10 Terminal Stone Trident");
-		meta.addEnchant(Enchantment.RIPTIDE, 5, true);
 		meta.addEnchant(Enchantment.LOOT_BONUS_MOBS, 5, true);
 		meta.setUnbreakable(true);
 
 		List<String> lore = new ArrayList<String>();
 		lore.add(ChatColor.GRAY + "Projectile II");
+		lore.add(ChatColor.GRAY + "Rocket");
 		lore.add("");
 		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "This weapon holds the strength of ");
 		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "118,092 Cobblestone");
@@ -1595,6 +1595,7 @@ public class Tools {
 
 		item.setItemMeta(meta);
 		item.addUnsafeEnchantment(CustomEnchants.PROJECTILE, 2);
+		item.addUnsafeEnchantment(CustomEnchants.ROCKET, 1);
 		
 		return item;
 	}

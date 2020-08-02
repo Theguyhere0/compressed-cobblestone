@@ -14,14 +14,18 @@ import org.bukkit.Statistic;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.attribute.AttributeModifier;
 import org.bukkit.attribute.AttributeModifier.Operation;
+import org.bukkit.entity.Arrow;
 import org.bukkit.entity.Creeper;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Ghast;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
+import org.bukkit.entity.Skeleton;
+import org.bukkit.entity.Stray;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.CreatureSpawnEvent;
+import org.bukkit.event.entity.ProjectileLaunchEvent;
 import org.bukkit.event.player.PlayerStatisticIncrementEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.Plugin;
@@ -694,6 +698,36 @@ public class MobSpawnEvents implements Listener {
 		
 		locations.put(player.getName(), player.getLocation());
 		tiers.put(player.getName(), highestTier);
+		return;
+	}
+	
+	@EventHandler()
+	public void skellyBuff(ProjectileLaunchEvent e) {
+		if (!e.getEntityType().equals(EntityType.ARROW))
+			return;
+		if (!(e.getEntity().getShooter() instanceof Skeleton || e.getEntity().getShooter() instanceof Stray))
+			return;
+		LivingEntity skelly = (LivingEntity) e.getEntity().getShooter();
+		Arrow arrow = (Arrow) e.getEntity();
+		if (skelly.getEquipment().getBoots().getItemMeta().getDisplayName().substring(0, 4).equals("Åò4T7")) {
+			arrow.setDamage(arrow.getDamage() + 2);
+			return;
+		}
+		if (skelly.getEquipment().getBoots().getItemMeta().getDisplayName().substring(0, 4).equals("ÅòcT8")) {
+			arrow.setDamage(arrow.getDamage() + 5);
+			arrow.setKnockbackStrength(arrow.getKnockbackStrength() + 1);
+			return;
+		}
+		if (skelly.getEquipment().getBoots().getItemMeta().getDisplayName().substring(0, 4).equals("ÅòcÅòl")) {
+			arrow.setDamage(arrow.getDamage() + 8);
+			arrow.setKnockbackStrength(arrow.getKnockbackStrength() + 2);
+			return;
+		}
+		if (skelly.getEquipment().getBoots().getItemMeta().getDisplayName().substring(0, 4).equals("ÅòdÅòl")) {
+			arrow.setDamage(arrow.getDamage() + 12);
+			arrow.setKnockbackStrength(arrow.getKnockbackStrength() + 3);
+			return;
+		}	
 		return;
 	}
 }

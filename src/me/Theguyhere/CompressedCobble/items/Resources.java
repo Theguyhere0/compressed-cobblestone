@@ -233,7 +233,8 @@ public class Resources {
 		pages.add(ChatColor.BOLD + "Healthy" + ChatColor.RESET + " - Doubles normal max health.");
 		pages.add(ChatColor.BOLD + "Vulcan" + ChatColor.RESET + " - Permenant fire resistance.");
 		pages.add(ChatColor.BOLD + "Powered" + ChatColor.RESET + " - Basically power for crossbows because late game, they needed to be buffed to be useful.");
-		pages.add(ChatColor.BOLD + "Projectile" + ChatColor.RESET + " - Trident shoots super strong arrows with a cooldown between shots. Higher levels do more damage, but with a longer cooldown.");
+		pages.add(ChatColor.BOLD + "Projectile" + ChatColor.RESET + " - Trident shoots super strong arrows on left click with a cooldown between shots. Higher levels do more damage, but with a longer cooldown.");
+		pages.add(ChatColor.BOLD + "Rocket" + ChatColor.RESET + " - Trident launches fireworks on right click with a 1.5 second cooldown.");
 		pages.add("A known issue with the way enchants work is that " + ChatColor.BOLD + "many potion effects cannot be obtained normally and can only be obtained through wearing armor.");
 		pages.add("The following potion effects are affected: night vision, water breathing, haste, speed, luck, resistance, strength, hero of the village, "
 				+ "dolphin's grace, jump, and fire resistance.");

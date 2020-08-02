@@ -31,6 +31,7 @@ public class CustomEnchants {
 	public static final Enchantment VULCAN = new EnchantmentWrapper("vulcan", "Vulcan", 1);
 	public static final Enchantment PROJECTILE = new EnchantmentWrapper("projectile", "Projectile", 2);
 	public static final Enchantment POWERED = new EnchantmentWrapper("powered", "Powered", 2);
+	public static final Enchantment ROCKET = new EnchantmentWrapper("rocket", "Rocket", 1);
 
 	public static void register() {
 		boolean regTelepathy = Arrays.stream(Enchantment.values()).collect(Collectors.toList()).contains(CustomEnchants.TELEPATHY);
@@ -57,6 +58,7 @@ public class CustomEnchants {
 		boolean regVulcan = Arrays.stream(Enchantment.values()).collect(Collectors.toList()).contains(CustomEnchants.VULCAN);
 		boolean regProjectile = Arrays.stream(Enchantment.values()).collect(Collectors.toList()).contains(CustomEnchants.PROJECTILE);
 		boolean regPowered = Arrays.stream(Enchantment.values()).collect(Collectors.toList()).contains(CustomEnchants.POWERED);
+		boolean regRocket = Arrays.stream(Enchantment.values()).collect(Collectors.toList()).contains(CustomEnchants.ROCKET);
 
 		if (!regTelepathy)
 			registerEnchantment(TELEPATHY);
@@ -106,6 +108,8 @@ public class CustomEnchants {
 			registerEnchantment(PROJECTILE);
 		if (!regPowered)
 			registerEnchantment(POWERED);
+		if (!regRocket)
+			registerEnchantment(ROCKET);
 	}
 	
 	public static void registerEnchantment(Enchantment enchantment) {
