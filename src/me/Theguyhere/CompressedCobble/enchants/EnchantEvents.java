@@ -332,6 +332,8 @@ public class EnchantEvents implements Listener {
 						item = new Resources().c2();
 					if (i.equals("c2p5"))
 						item = new Resources().c2p5();
+					if (i.equals("c3"))
+						item = new Resources().c3();
 					items[position] = item;
 					position++;
 				}
@@ -574,6 +576,8 @@ public class EnchantEvents implements Listener {
 						item = new Resources().c2();
 					if (i.equals("c2p5"))
 						item = new Resources().c2p5();
+					if (i.equals("c3"))
+						item = new Resources().c3();
 					items[position] = item;
 					position++;
 				}
@@ -746,13 +750,10 @@ public class EnchantEvents implements Listener {
 		Player player = e.getPlayer();
 		if (player.getGameMode() == GameMode.CREATIVE || player.getGameMode() == GameMode.SPECTATOR)
 			return;
-		if (player.getInventory().getHelmet() == null) {
-			player.removePotionEffect(PotionEffectType.NIGHT_VISION);
+		if (player.getInventory().getHelmet() == null)
 			return;
-		}
 		if (player.getInventory().getHelmet().getItemMeta().hasEnchant(CustomEnchants.RADAR))
-			player.addPotionEffect(new PotionEffect(PotionEffectType.NIGHT_VISION, 1000000, 0));
-		else player.removePotionEffect(PotionEffectType.NIGHT_VISION);
+			player.addPotionEffect(new PotionEffect(PotionEffectType.NIGHT_VISION, 205, 0));
 	}
 	
 	@EventHandler()
@@ -762,13 +763,10 @@ public class EnchantEvents implements Listener {
 		Player player = e.getPlayer();
 		if (player.getGameMode() == GameMode.CREATIVE || player.getGameMode() == GameMode.SPECTATOR)
 			return;
-		if (player.getInventory().getHelmet() == null) {
-			player.removePotionEffect(PotionEffectType.WATER_BREATHING);
+		if (player.getInventory().getHelmet() == null)
 			return;
-		}
 		if (player.getInventory().getHelmet().getItemMeta().hasEnchant(CustomEnchants.WATER_BREATHING))
-			player.addPotionEffect(new PotionEffect(PotionEffectType.WATER_BREATHING, 1000000, 0));
-		else player.removePotionEffect(PotionEffectType.WATER_BREATHING);
+			player.addPotionEffect(new PotionEffect(PotionEffectType.WATER_BREATHING, 205, 0));
 	}
 	
 	@EventHandler()
@@ -778,15 +776,12 @@ public class EnchantEvents implements Listener {
 		Player player = e.getPlayer();
 		if (player.getGameMode() == GameMode.CREATIVE || player.getGameMode() == GameMode.SPECTATOR)
 			return;
-		if (player.getInventory().getChestplate() == null) {
-			player.removePotionEffect(PotionEffectType.FAST_DIGGING);
+		if (player.getInventory().getChestplate() == null)
 			return;
-		}
 		if (player.getInventory().getChestplate().getItemMeta().hasEnchant(CustomEnchants.HASTE)) {
 			int lvl = player.getInventory().getChestplate().getItemMeta().getEnchantLevel(CustomEnchants.HASTE) - 1;
-			player.addPotionEffect(new PotionEffect(PotionEffectType.FAST_DIGGING, 1000000, lvl));
+			player.addPotionEffect(new PotionEffect(PotionEffectType.FAST_DIGGING, 205, lvl));
 		}
-		else player.removePotionEffect(PotionEffectType.FAST_DIGGING);
 	}
 			
 	public int satCounter = 200;
@@ -819,17 +814,13 @@ public class EnchantEvents implements Listener {
 		Player player = e.getPlayer();
 		if (player.getGameMode() == GameMode.CREATIVE || player.getGameMode() == GameMode.SPECTATOR)
 			return;
-		if (player.getInventory().getBoots() == null) {
-			player.removePotionEffect(PotionEffectType.SPEED);
+		if (player.getInventory().getBoots() == null)
 			return;
-		}
 		if (player.getInventory().getBoots().getItemMeta().hasEnchant(CustomEnchants.SPEEDY)) {
 			int lvl = player.getInventory().getBoots().getItemMeta().getEnchantLevel(CustomEnchants.SPEEDY) - 1;
-			if (!(player.hasPotionEffect(PotionEffectType.SPEED)))
-				player.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, 1000000, lvl));
+			player.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, 205, lvl));
 			return;
 		}
-		else player.removePotionEffect(PotionEffectType.SPEED);
 	}
 	
 	@EventHandler()
@@ -878,22 +869,18 @@ public class EnchantEvents implements Listener {
 		if (player.getGameMode() == GameMode.CREATIVE || player.getGameMode() == GameMode.SPECTATOR)
 			return;
 		if (player.getInventory().getHelmet() == null || player.getInventory().getChestplate() == null ||
-				player.getInventory().getLeggings() == null || player.getInventory().getBoots() == null) {
-			player.removePotionEffect(PotionEffectType.LUCK);
+				player.getInventory().getLeggings() == null || player.getInventory().getBoots() == null)
 			return;
-		}
 		if (player.getInventory().getHelmet().getItemMeta().hasEnchant(CustomEnchants.LUCKY) && player.getInventory().getChestplate().getItemMeta().hasEnchant(CustomEnchants.LUCKY) &&
 				player.getInventory().getLeggings().getItemMeta().hasEnchant(CustomEnchants.LUCKY) && player.getInventory().getBoots().getItemMeta().hasEnchant(CustomEnchants.LUCKY)) {
 			int lvl = player.getInventory().getBoots().getItemMeta().getEnchantLevel(CustomEnchants.LUCKY) - 1;
 			if (player.getInventory().getHelmet().getItemMeta().getDisplayName().substring(0, 4).equals(player.getInventory().getChestplate().getItemMeta().getDisplayName().substring(0, 4)) &&
 					player.getInventory().getHelmet().getItemMeta().getDisplayName().substring(0, 4).equals(player.getInventory().getLeggings().getItemMeta().getDisplayName().substring(0, 4)) &&
-					player.getInventory().getHelmet().getItemMeta().getDisplayName().substring(0, 4).equals(player.getInventory().getBoots().getItemMeta().getDisplayName().substring(0, 4)))
-				if (!(player.hasPotionEffect(PotionEffectType.LUCK))) {
-					player.addPotionEffect(new PotionEffect(PotionEffectType.LUCK, 1000000, lvl));
-					return;
+					player.getInventory().getHelmet().getItemMeta().getDisplayName().substring(0, 4).equals(player.getInventory().getBoots().getItemMeta().getDisplayName().substring(0, 4))) {
+				player.addPotionEffect(new PotionEffect(PotionEffectType.LUCK, 205, lvl));
+				return;
 				}
 		}
-		else player.removePotionEffect(PotionEffectType.LUCK);
 	}
 	
 	@EventHandler()
@@ -904,22 +891,18 @@ public class EnchantEvents implements Listener {
 		if (player.getGameMode() == GameMode.CREATIVE || player.getGameMode() == GameMode.SPECTATOR)
 			return;
 		if (player.getInventory().getHelmet() == null || player.getInventory().getChestplate() == null ||
-				player.getInventory().getLeggings() == null || player.getInventory().getBoots() == null) {
-			player.removePotionEffect(PotionEffectType.DAMAGE_RESISTANCE);
+				player.getInventory().getLeggings() == null || player.getInventory().getBoots() == null)
 			return;
-		}
 		if (player.getInventory().getHelmet().getItemMeta().hasEnchant(CustomEnchants.RESISTANCE) && player.getInventory().getChestplate().getItemMeta().hasEnchant(CustomEnchants.RESISTANCE) &&
 				player.getInventory().getLeggings().getItemMeta().hasEnchant(CustomEnchants.RESISTANCE) && player.getInventory().getBoots().getItemMeta().hasEnchant(CustomEnchants.RESISTANCE)) {
 			int lvl = player.getInventory().getBoots().getItemMeta().getEnchantLevel(CustomEnchants.RESISTANCE) - 1;
 			if (player.getInventory().getHelmet().getItemMeta().getDisplayName().substring(0, 4).equals(player.getInventory().getChestplate().getItemMeta().getDisplayName().substring(0, 4)) &&
 					player.getInventory().getHelmet().getItemMeta().getDisplayName().substring(0, 4).equals(player.getInventory().getLeggings().getItemMeta().getDisplayName().substring(0, 4)) &&
-					player.getInventory().getHelmet().getItemMeta().getDisplayName().substring(0, 4).equals(player.getInventory().getBoots().getItemMeta().getDisplayName().substring(0, 4)))
-				if (!(player.hasPotionEffect(PotionEffectType.DAMAGE_RESISTANCE))) {
-					player.addPotionEffect(new PotionEffect(PotionEffectType.DAMAGE_RESISTANCE, 1000000, lvl));
+					player.getInventory().getHelmet().getItemMeta().getDisplayName().substring(0, 4).equals(player.getInventory().getBoots().getItemMeta().getDisplayName().substring(0, 4))) {
+					player.addPotionEffect(new PotionEffect(PotionEffectType.DAMAGE_RESISTANCE, 205, lvl));
 					return;
 				}
 		}
-		else player.removePotionEffect(PotionEffectType.DAMAGE_RESISTANCE);
 	}
 	
 	@EventHandler()
@@ -952,22 +935,18 @@ public class EnchantEvents implements Listener {
 		if (player.getGameMode() == GameMode.CREATIVE || player.getGameMode() == GameMode.SPECTATOR)
 			return;
 		if (player.getInventory().getHelmet() == null || player.getInventory().getChestplate() == null ||
-				player.getInventory().getLeggings() == null || player.getInventory().getBoots() == null) {
-			player.removePotionEffect(PotionEffectType.INCREASE_DAMAGE);
+				player.getInventory().getLeggings() == null || player.getInventory().getBoots() == null)
 			return;
-		}
 		if (player.getInventory().getHelmet().getItemMeta().hasEnchant(CustomEnchants.STRENGTH) && player.getInventory().getChestplate().getItemMeta().hasEnchant(CustomEnchants.STRENGTH) &&
 				player.getInventory().getLeggings().getItemMeta().hasEnchant(CustomEnchants.STRENGTH) && player.getInventory().getBoots().getItemMeta().hasEnchant(CustomEnchants.STRENGTH)) {
 			int lvl = player.getInventory().getBoots().getItemMeta().getEnchantLevel(CustomEnchants.STRENGTH) - 1;
 			if (player.getInventory().getHelmet().getItemMeta().getDisplayName().substring(0, 4).equals(player.getInventory().getChestplate().getItemMeta().getDisplayName().substring(0, 4)) &&
 					player.getInventory().getHelmet().getItemMeta().getDisplayName().substring(0, 4).equals(player.getInventory().getLeggings().getItemMeta().getDisplayName().substring(0, 4)) &&
-					player.getInventory().getHelmet().getItemMeta().getDisplayName().substring(0, 4).equals(player.getInventory().getBoots().getItemMeta().getDisplayName().substring(0, 4)))
-				if (!(player.hasPotionEffect(PotionEffectType.INCREASE_DAMAGE))) {
-					player.addPotionEffect(new PotionEffect(PotionEffectType.INCREASE_DAMAGE, 1000000, lvl));
+					player.getInventory().getHelmet().getItemMeta().getDisplayName().substring(0, 4).equals(player.getInventory().getBoots().getItemMeta().getDisplayName().substring(0, 4))) {
+					player.addPotionEffect(new PotionEffect(PotionEffectType.INCREASE_DAMAGE, 205, lvl));
 					return;
 				}
 		}
-		else player.removePotionEffect(PotionEffectType.INCREASE_DAMAGE);
 	}
 	
 	@EventHandler()
@@ -1053,22 +1032,18 @@ public class EnchantEvents implements Listener {
 		if (player.getGameMode() == GameMode.CREATIVE || player.getGameMode() == GameMode.SPECTATOR)
 			return;
 		if (player.getInventory().getHelmet() == null || player.getInventory().getChestplate() == null ||
-				player.getInventory().getLeggings() == null || player.getInventory().getBoots() == null) {
-			player.removePotionEffect(PotionEffectType.HERO_OF_THE_VILLAGE);
+				player.getInventory().getLeggings() == null || player.getInventory().getBoots() == null)
 			return;
-		}
 		if (player.getInventory().getHelmet().getItemMeta().hasEnchant(CustomEnchants.HERO) && player.getInventory().getChestplate().getItemMeta().hasEnchant(CustomEnchants.HERO) &&
 				player.getInventory().getLeggings().getItemMeta().hasEnchant(CustomEnchants.HERO) && player.getInventory().getBoots().getItemMeta().hasEnchant(CustomEnchants.HERO)) {
 			int lvl = player.getInventory().getBoots().getItemMeta().getEnchantLevel(CustomEnchants.HERO) - 1;
 			if (player.getInventory().getHelmet().getItemMeta().getDisplayName().substring(0, 4).equals(player.getInventory().getChestplate().getItemMeta().getDisplayName().substring(0, 4)) &&
 					player.getInventory().getHelmet().getItemMeta().getDisplayName().substring(0, 4).equals(player.getInventory().getLeggings().getItemMeta().getDisplayName().substring(0, 4)) &&
-					player.getInventory().getHelmet().getItemMeta().getDisplayName().substring(0, 4).equals(player.getInventory().getBoots().getItemMeta().getDisplayName().substring(0, 4)))
-				if (!(player.hasPotionEffect(PotionEffectType.HERO_OF_THE_VILLAGE))) {
-					player.addPotionEffect(new PotionEffect(PotionEffectType.HERO_OF_THE_VILLAGE, 1000000, lvl));
+					player.getInventory().getHelmet().getItemMeta().getDisplayName().substring(0, 4).equals(player.getInventory().getBoots().getItemMeta().getDisplayName().substring(0, 4))) {
+					player.addPotionEffect(new PotionEffect(PotionEffectType.HERO_OF_THE_VILLAGE, 205, lvl));
 					return;
 				}
 		}
-		else player.removePotionEffect(PotionEffectType.HERO_OF_THE_VILLAGE);
 	}
 	
 	@EventHandler()
@@ -1133,16 +1108,12 @@ public class EnchantEvents implements Listener {
 		Player player = e.getPlayer();
 		if (player.getGameMode() == GameMode.CREATIVE || player.getGameMode() == GameMode.SPECTATOR)
 			return;
-		if (player.getInventory().getLeggings() == null) {
-			player.removePotionEffect(PotionEffectType.DOLPHINS_GRACE);
+		if (player.getInventory().getLeggings() == null)
 			return;
-		}
 		if (player.getInventory().getLeggings().getItemMeta().hasEnchant(CustomEnchants.DOLPHIN)) {
-			if (!(player.hasPotionEffect(PotionEffectType.DOLPHINS_GRACE)))
-				player.addPotionEffect(new PotionEffect(PotionEffectType.DOLPHINS_GRACE, 1000000, 0));
+			player.addPotionEffect(new PotionEffect(PotionEffectType.DOLPHINS_GRACE, 205, 0));
 			return;
 		}
-		else player.removePotionEffect(PotionEffectType.DOLPHINS_GRACE);
 	}
 	
 	@EventHandler()
@@ -1152,17 +1123,13 @@ public class EnchantEvents implements Listener {
 		Player player = e.getPlayer();
 		if (player.getGameMode() == GameMode.CREATIVE || player.getGameMode() == GameMode.SPECTATOR)
 			return;
-		if (player.getInventory().getBoots() == null) {
-			player.removePotionEffect(PotionEffectType.JUMP);
+		if (player.getInventory().getBoots() == null)
 			return;
-		}
 		if (player.getInventory().getBoots().getItemMeta().hasEnchant(CustomEnchants.JUMP)) {
 			int lvl = player.getInventory().getBoots().getItemMeta().getEnchantLevel(CustomEnchants.JUMP) - 1;
-			if (!(player.hasPotionEffect(PotionEffectType.JUMP)))
-				player.addPotionEffect(new PotionEffect(PotionEffectType.JUMP, 1000000, lvl));
+			player.addPotionEffect(new PotionEffect(PotionEffectType.JUMP, 205, lvl));
 			return;
 		}
-		else player.removePotionEffect(PotionEffectType.JUMP);
 	}
 	
 	@EventHandler()
@@ -1172,16 +1139,20 @@ public class EnchantEvents implements Listener {
 		Player player = e.getPlayer();
 		if (player.getGameMode() == GameMode.CREATIVE || player.getGameMode() == GameMode.SPECTATOR)
 			return;
-		if (player.getInventory().getBoots() == null) {
-			player.removePotionEffect(PotionEffectType.FIRE_RESISTANCE);
+		if (player.getInventory().getHelmet() == null || player.getInventory().getChestplate() == null ||
+				player.getInventory().getLeggings() == null || player.getInventory().getBoots() == null)
+			return;
+		if (player.getInventory().getHelmet().getItemMeta().hasEnchant(CustomEnchants.VULCAN) && player.getInventory().getChestplate().getItemMeta().hasEnchant(CustomEnchants.VULCAN) &&
+				player.getInventory().getLeggings().getItemMeta().hasEnchant(CustomEnchants.VULCAN) && player.getInventory().getBoots().getItemMeta().hasEnchant(CustomEnchants.VULCAN)) {
+			if (player.getInventory().getHelmet().getItemMeta().getDisplayName().substring(0, 4).equals(player.getInventory().getChestplate().getItemMeta().getDisplayName().substring(0, 4)) &&
+					player.getInventory().getHelmet().getItemMeta().getDisplayName().substring(0, 4).equals(player.getInventory().getLeggings().getItemMeta().getDisplayName().substring(0, 4)) &&
+					player.getInventory().getHelmet().getItemMeta().getDisplayName().substring(0, 4).equals(player.getInventory().getBoots().getItemMeta().getDisplayName().substring(0, 4))) {
+				player.addPotionEffect(new PotionEffect(PotionEffectType.FIRE_RESISTANCE, 205, 0));
+				if (player.getInventory().getBoots().getItemMeta().getEnchantLevel(CustomEnchants.VULCAN) == 2)
+					player.setFireTicks(0);
+			}
 			return;
 		}
-		if (player.getInventory().getBoots().getItemMeta().hasEnchant(CustomEnchants.VULCAN)) {
-			if (!(player.hasPotionEffect(PotionEffectType.FIRE_RESISTANCE)))
-				player.addPotionEffect(new PotionEffect(PotionEffectType.FIRE_RESISTANCE, 1000000, 0));
-			return;
-		}
-		else player.removePotionEffect(PotionEffectType.FIRE_RESISTANCE);
 	}
 	
 	@EventHandler()
@@ -1204,8 +1175,62 @@ public class EnchantEvents implements Listener {
 		}
 	}
 	
-	Map<String, Double> cooldowns = new HashMap<String, Double>();
+	@EventHandler()
+	public void immunity(PlayerInteractEvent e) {
+		Player player = e.getPlayer();
+		if (!(player.getInventory().getItemInOffHand().getType().equals(Material.SHIELD) && player.getInventory().getItemInOffHand().getItemMeta().hasLore()))
+			return;
+		if (player.getGameMode() == GameMode.CREATIVE || player.getGameMode() == GameMode.SPECTATOR)
+			return;
+		if (player.getInventory().getItemInOffHand().getItemMeta().hasEnchant(CustomEnchants.IMMUNITY)) {
+			int lvl = player.getInventory().getItemInOffHand().getItemMeta().getEnchantLevel(CustomEnchants.IMMUNITY);
+			if (lvl == 1) {
+				player.removePotionEffect(PotionEffectType.SLOW);
+				player.removePotionEffect(PotionEffectType.SLOW_DIGGING);
+				player.removePotionEffect(PotionEffectType.CONFUSION);
+				player.removePotionEffect(PotionEffectType.BLINDNESS);
+				player.removePotionEffect(PotionEffectType.HUNGER);
+				player.removePotionEffect(PotionEffectType.WEAKNESS);
+				player.removePotionEffect(PotionEffectType.POISON);
+				player.removePotionEffect(PotionEffectType.WITHER);
+				player.removePotionEffect(PotionEffectType.UNLUCK);
+			}
+			if (lvl == 2) {
+				player.removePotionEffect(PotionEffectType.GLOWING);
+				player.removePotionEffect(PotionEffectType.LEVITATION);
+			}
+		}
+	}
 	
+	@EventHandler()
+	public void immunity(PlayerStatisticIncrementEvent e) {
+		if (!e.getStatistic().equals(Statistic.TIME_SINCE_REST))
+			return;
+		Player player = e.getPlayer();
+		if (player.getGameMode() == GameMode.CREATIVE || player.getGameMode() == GameMode.SPECTATOR)
+			return;
+		if (player.getInventory().getItemInOffHand() == null || player.getInventory().getItemInOffHand().getType().equals(Material.AIR))
+			return;
+		if (player.getInventory().getItemInOffHand().getItemMeta().hasEnchant(CustomEnchants.IMMUNITY)) {
+			int lvl = player.getInventory().getItemInOffHand().getItemMeta().getEnchantLevel(CustomEnchants.IMMUNITY);
+			if (lvl == 2) {
+				player.removePotionEffect(PotionEffectType.SLOW);
+				player.removePotionEffect(PotionEffectType.SLOW_DIGGING);
+				player.removePotionEffect(PotionEffectType.CONFUSION);
+				player.removePotionEffect(PotionEffectType.BLINDNESS);
+				player.removePotionEffect(PotionEffectType.HUNGER);
+				player.removePotionEffect(PotionEffectType.WEAKNESS);
+				player.removePotionEffect(PotionEffectType.POISON);
+				player.removePotionEffect(PotionEffectType.WITHER);
+				player.removePotionEffect(PotionEffectType.UNLUCK);
+			}
+		}
+	}
+	
+//	Weapons stuff
+	Map<String, Double> projectileCooldowns = new HashMap<String, Double>();
+	Map<String, Double> rocketCooldowns = new HashMap<String, Double>();
+
 	@EventHandler()
 	public void projectile(PlayerInteractEvent e) {
 		Player player = e.getPlayer();
@@ -1215,17 +1240,17 @@ public class EnchantEvents implements Listener {
 			if (e.getAction() == Action.LEFT_CLICK_AIR || e.getAction() == Action.LEFT_CLICK_BLOCK) {
 				int lvl = player.getInventory().getItemInMainHand().getItemMeta().getEnchantLevel(CustomEnchants.PROJECTILE);
 //				add cooldown
-				if (cooldowns.containsKey(player.getName())) {
+				if (projectileCooldowns.containsKey(player.getName())) {
 //					player is inside hashmap
-					if (cooldowns.get(player.getName()) > System.currentTimeMillis()) {
+					if (projectileCooldowns.get(player.getName()) > System.currentTimeMillis()) {
 //						they still have time left in the cooldown
-						double timeleft = (cooldowns.get(player.getName()) - System.currentTimeMillis()) / 1000;
+						double timeleft = (projectileCooldowns.get(player.getName()) - System.currentTimeMillis()) / 1000;
 						player.sendMessage(ChatColor.RED + "Wait " + timeleft + " second(s) to shoot!");
 						return;
 					}
 				}
 				player.launchProjectile(Arrow.class);
-				cooldowns.put(player.getName(), System.currentTimeMillis() + (1.0 * lvl * 1000));
+				projectileCooldowns.put(player.getName(), System.currentTimeMillis() + (1.0 * lvl * 1000));
 			}
 		return;
 	}
@@ -1276,18 +1301,18 @@ public class EnchantEvents implements Listener {
 		if (player.getInventory().getItemInMainHand().getItemMeta().hasEnchant(CustomEnchants.ROCKET))
 			if (e.getAction() == Action.RIGHT_CLICK_AIR || e.getAction() == Action.RIGHT_CLICK_BLOCK) {
 //				add cooldown
-				if (cooldowns.containsKey(player.getName())) {
+				if (rocketCooldowns.containsKey(player.getName())) {
 //					player is inside hashmap
-					if (cooldowns.get(player.getName()) > System.currentTimeMillis()) {
+					if (rocketCooldowns.get(player.getName()) > System.currentTimeMillis()) {
 //						they still have time left in the cooldown
-						double timeleft = (cooldowns.get(player.getName()) - System.currentTimeMillis()) / 1000;
+						double timeleft = (rocketCooldowns.get(player.getName()) - System.currentTimeMillis()) / 1000;
 						player.sendMessage(ChatColor.RED + "Wait " + timeleft + " second(s) to launch!");
 						e.setCancelled(true);
 						return;
 					}
 				}
 				player.launchProjectile(Firework.class);
-				cooldowns.put(player.getName(), System.currentTimeMillis() + (1.5 * 1000));
+				rocketCooldowns.put(player.getName(), System.currentTimeMillis() + (1.5 * 1000));
 				e.setCancelled(true);
 			}
 		return;

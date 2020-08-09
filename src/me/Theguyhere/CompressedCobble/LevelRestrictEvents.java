@@ -413,6 +413,70 @@ public class LevelRestrictEvents implements Listener {
 	}
 	
 	@EventHandler()
+	public void checkShield(PlayerStatisticIncrementEvent e) {
+		if (!e.getStatistic().equals(Statistic.TIME_SINCE_REST))
+			return;
+		
+		Player player = e.getPlayer();
+		
+		if (player.getGameMode() == GameMode.CREATIVE || player.getGameMode() == GameMode.SPECTATOR)
+			return;
+		
+		int lvl = player.getLevel();
+		int req = 0;
+		ItemStack shield = player.getInventory().getItemInOffHand();
+		Location loc = player.getLocation();
+		World world = player.getWorld();
+
+		if (!(shield == null || shield.getType() == Material.AIR)) {
+			if (shield.getItemMeta().hasLore()) {
+				if (shield.getItemMeta().getDisplayName().substring(0, 4).equals("Åò6T5"))
+					req = 25;
+				if (shield.getItemMeta().getDisplayName().substring(0, 4).equals("ÅòcT8"))
+					req = 40;
+				if (shield.getItemMeta().getDisplayName().substring(0, 4).equals("ÅòdÅòl"))
+					req = 50;
+			}
+			if (lvl < req) {
+					if (player.getInventory().firstEmpty() == -1) {
+//						inventory is full				
+						world.dropItemNaturally(loc, shield);
+						player.sendMessage(ChatColor.RED + "Your inventory is full!");
+					}
+					else player.getInventory().addItem(shield);
+					player.getInventory().setItemInOffHand(null);
+				player.sendMessage(ChatColor.RED + "Your level is not high enough to use this!");
+			}
+		}
+	}
+	
+	@EventHandler()
+	public void checkShieldInteract(PlayerInteractEvent e) {
+		Player player = (Player) e.getPlayer();
+		int lvl = player.getLevel();
+		int req = 0;
+		ItemStack shield = e.getItem();
+		
+		if (shield == null || shield.getType() == Material.AIR)
+			return;
+		if (!(e.getAction() == Action.RIGHT_CLICK_BLOCK || e.getAction() == Action.RIGHT_CLICK_AIR))
+			return;
+		if (shield.getItemMeta().hasLore()) {
+			if (shield.getItemMeta().getDisplayName().substring(0, 4).equals("Åò6T5"))
+				req = 25;
+			if (shield.getItemMeta().getDisplayName().substring(0, 4).equals("ÅòcT8"))
+				req = 40;
+			if (shield.getItemMeta().getDisplayName().substring(0, 4).equals("ÅòdÅòl"))
+				req = 50;
+		}
+		if (lvl < req) {
+			e.setCancelled(true);
+			player.sendMessage(ChatColor.RED + "Your level is not high enough to use this!");
+			return;
+		}
+	}
+	
+	@EventHandler()
 	public void checkRiptide(PlayerMoveEvent e) {
 		Player player = (Player) e.getPlayer();
 		int lvl = player.getLevel();

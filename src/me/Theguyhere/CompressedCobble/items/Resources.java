@@ -218,9 +218,11 @@ public class Resources {
 		pages.add("Rods are either stick for tiers 1-5, blaze rod for 6-8, or end rod for 9 & 10. Cobble is the associated tier of compressed cobblestone");
 		pages.add("There are a few extra recipes to help get more cobble. Two blackstone creates two cobblestone and three netherrack creates one."
 				+ " This conversion doesn't happen with the /cccraft command.");
-		pages.add("One more note about craft. Because shields are incredibly important early game, they will take an iron block to make instead of an iron ingot."
-				+ " I mean, what are you going to do with all that iron you dont need?");
-		pages.add("One final note about items, " + ChatColor.BOLD + "your ability to use them depend on your experience level." + ChatColor.RESET +
+		pages.add("The elytra can become part of the T10 set! Crafted with an elytra surrounded by T10 compressed cobblestone, this unbreakable elytra "
+				+ "allows for all the set bonuses while still having the elytra on.");
+		pages.add("There are tier 5, 8, and 10 shields! Because shields are incredibly important early game, normal shields will take an iron block to make instead of an iron ingot."
+				+ " For tiered shields, substitute wood with respective compressed cobblestone. Replace iron block for gold in T5, diamond for T8, and netherite for T10.");
+		pages.add("One important note about items, " + ChatColor.BOLD + "your ability to use them depend on your experience level." + ChatColor.RESET +
 				" Every tier requires 5 levels, chainmail requires 5, iron anything requires 10, gold armor require 15, diamond anything require 20, and netherite anything require 30.");
 		pages.add(ChatColor.BOLD + "Enchants");
 		pages.add("A lot of custom enchants have been added. Most have names that are self explanatory but a few may need further explaining.");
@@ -231,13 +233,12 @@ public class Resources {
 		pages.add(ChatColor.BOLD + "Radar" + ChatColor.RESET + " - Permenant night vision.");
 		pages.add(ChatColor.BOLD + "Soft Landing" + ChatColor.RESET + " - No fall damage.");
 		pages.add(ChatColor.BOLD + "Healthy" + ChatColor.RESET + " - Doubles normal max health.");
-		pages.add(ChatColor.BOLD + "Vulcan" + ChatColor.RESET + " - Permenant fire resistance.");
+		pages.add(ChatColor.BOLD + "Vulcan" + ChatColor.RESET + " - Permenant fire resistance. Vulcan II removes fire animation upon leaving fire source.");
 		pages.add(ChatColor.BOLD + "Powered" + ChatColor.RESET + " - Basically power for crossbows because late game, they needed to be buffed to be useful.");
 		pages.add(ChatColor.BOLD + "Projectile" + ChatColor.RESET + " - Trident shoots super strong arrows on left click with a cooldown between shots. Higher levels do more damage, but with a longer cooldown.");
 		pages.add(ChatColor.BOLD + "Rocket" + ChatColor.RESET + " - Trident launches fireworks on right click with a 1.5 second cooldown.");
-		pages.add("A known issue with the way enchants work is that " + ChatColor.BOLD + "many potion effects cannot be obtained normally and can only be obtained through wearing armor.");
-		pages.add("The following potion effects are affected: night vision, water breathing, haste, speed, luck, resistance, strength, hero of the village, "
-				+ "dolphin's grace, jump, and fire resistance.");
+		pages.add(ChatColor.BOLD + "Immunity" + ChatColor.RESET + " - Level 1 removes all negative effects except levitation when blocking. Level 2 removes all negative effects except levitiation upon recieving effect."
+				+ " It also removes glowing and levitation when blocking.");
 		pages.add(ChatColor.BOLD + "Mobs");
 		pages.add("Mobs behave normally, but mobs near the player will recieve CC gear depend on the highest tier CC item (not including cobblestone) in your inventory."
 				+ ChatColor.RED + " Basically, don't skip too far or the mobs will get very strong.");

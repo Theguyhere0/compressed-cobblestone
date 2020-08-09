@@ -508,7 +508,7 @@ public class Tools {
 		lore.add(ChatColor.GRAY + "Unbreaking X");
 		lore.add(ChatColor.GRAY + "Fortune X");
 		lore.add(ChatColor.GRAY + "Looting X");
-		lore.add(ChatColor.GRAY + "Petrifying IV");
+		lore.add(ChatColor.GRAY + "Petrifying V");
 		lore.add(ChatColor.GRAY + "Fire Aspect IV");
 		lore.add(ChatColor.GRAY + "Mending");
 		lore.add(ChatColor.GRAY + "Telepathy");
@@ -519,7 +519,7 @@ public class Tools {
 		meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
 
 		item.setItemMeta(meta);
-		item.addUnsafeEnchantment(CustomEnchants.PETRIFYING, 4);
+		item.addUnsafeEnchantment(CustomEnchants.PETRIFYING, 5);
 		item.addUnsafeEnchantment(CustomEnchants.TELEPATHY, 1);
 		
 		return item;
@@ -542,7 +542,7 @@ public class Tools {
 		lore.add(ChatColor.GRAY + "Efficiency XX");
 		lore.add(ChatColor.GRAY + "Fortune XV");
 		lore.add(ChatColor.GRAY + "Looting XV");
-		lore.add(ChatColor.GRAY + "Petrifying V");
+		lore.add(ChatColor.GRAY + "Petrifying VI");
 		lore.add(ChatColor.GRAY + "Fire Aspect V");
 		lore.add(ChatColor.GRAY + "Telepathy");
 		lore.add("");
@@ -552,7 +552,7 @@ public class Tools {
 		meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
 
 		item.setItemMeta(meta);
-		item.addUnsafeEnchantment(CustomEnchants.PETRIFYING, 5);
+		item.addUnsafeEnchantment(CustomEnchants.PETRIFYING, 6);
 		item.addUnsafeEnchantment(CustomEnchants.TELEPATHY, 1);
 		
 		return item;
@@ -1031,7 +1031,7 @@ public class Tools {
 		lore.add(ChatColor.GRAY + "Unbreaking X");
 		lore.add(ChatColor.GRAY + "Fortune X");
 		lore.add(ChatColor.GRAY + "Sharpness X");
-		lore.add(ChatColor.GRAY + "Pebbly IV");
+		lore.add(ChatColor.GRAY + "Pebbly V");
 		lore.add(ChatColor.GRAY + "Fire Aspect IV");
 		lore.add(ChatColor.GRAY + "Looting III");
 		lore.add(ChatColor.GRAY + "Mending");
@@ -1043,7 +1043,7 @@ public class Tools {
 		meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
 
 		item.setItemMeta(meta);
-		item.addUnsafeEnchantment(CustomEnchants.PEBBLY, 4);
+		item.addUnsafeEnchantment(CustomEnchants.PEBBLY, 5);
 		item.addUnsafeEnchantment(CustomEnchants.TELEPATHY, 1);
 		
 		return item;
@@ -1065,7 +1065,7 @@ public class Tools {
 		lore.add(ChatColor.GRAY + "Efficiency XX");
 		lore.add(ChatColor.GRAY + "Fortune XV");
 		lore.add(ChatColor.GRAY + "Sharpness XII");
-		lore.add(ChatColor.GRAY + "Pebbly V");
+		lore.add(ChatColor.GRAY + "Pebbly VI");
 		lore.add(ChatColor.GRAY + "Fire Aspect V");
 		lore.add(ChatColor.GRAY + "Looting IV");
 		lore.add(ChatColor.GRAY + "Telepathy");
@@ -1076,7 +1076,7 @@ public class Tools {
 		meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
 
 		item.setItemMeta(meta);
-		item.addUnsafeEnchantment(CustomEnchants.PEBBLY, 5);
+		item.addUnsafeEnchantment(CustomEnchants.PEBBLY, 6);
 		item.addUnsafeEnchantment(CustomEnchants.TELEPATHY, 1);
 		
 		return item;
@@ -1806,7 +1806,7 @@ public class Tools {
 		lore.add(ChatColor.GRAY + "Strength II");
 		lore.add(ChatColor.GRAY + "Absorption II");
 		lore.add(ChatColor.GRAY + "Resistance I");
-		lore.add(ChatColor.GRAY + "Vulcan");
+		lore.add(ChatColor.GRAY + "Vulcan I");
 		meta.setLore(lore);
 		meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
 
@@ -1850,7 +1850,7 @@ public class Tools {
 		lore.add(ChatColor.GRAY + "Strength III");
 		lore.add(ChatColor.GRAY + "Hero II");
 		lore.add(ChatColor.GRAY + "Resistance I");
-		lore.add(ChatColor.GRAY + "Vulcan");
+		lore.add(ChatColor.GRAY + "Vulcan I");
 		meta.setLore(lore);
 		meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
 		meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
@@ -1890,8 +1890,8 @@ public class Tools {
 		lore.add(ChatColor.GRAY + "Hero V");
 		lore.add(ChatColor.GRAY + "Strength IV");
 		lore.add(ChatColor.GRAY + "Resistance II");
+		lore.add(ChatColor.GRAY + "Vulcan II");
 		lore.add(ChatColor.GRAY + "Healthy");
-		lore.add(ChatColor.GRAY + "Vulcan");
 		lore.add("");
 		meta.setLore(lore);
 		meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
@@ -1904,7 +1904,7 @@ public class Tools {
 		item.addUnsafeEnchantment(CustomEnchants.HEALTHY, 1);
 		item.addUnsafeEnchantment(CustomEnchants.RESISTANCE, 3);
 		item.addUnsafeEnchantment(CustomEnchants.STRENGTH, 4);
-		item.addUnsafeEnchantment(CustomEnchants.VULCAN, 1);
+		item.addUnsafeEnchantment(CustomEnchants.VULCAN, 2);
 
 		return item;
 	}
@@ -2117,7 +2117,7 @@ public class Tools {
 		lore.add(ChatColor.GRAY + "Strength II");
 		lore.add(ChatColor.GRAY + "Absorption II");
 		lore.add(ChatColor.GRAY + "Resistance I");
-		lore.add(ChatColor.GRAY + "Vulcan");
+		lore.add(ChatColor.GRAY + "Vulcan I");
 		meta.setLore(lore);
 		meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
 		meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
@@ -2159,7 +2159,7 @@ public class Tools {
 		lore.add(ChatColor.GRAY + "Strength III");
 		lore.add(ChatColor.GRAY + "Hero II");
 		lore.add(ChatColor.GRAY + "Resistance I");
-		lore.add(ChatColor.GRAY + "Vulcan");
+		lore.add(ChatColor.GRAY + "Vulcan I");
 		meta.setLore(lore);
 		meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
 		meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
@@ -2196,8 +2196,8 @@ public class Tools {
 		lore.add(ChatColor.GRAY + "Hero V");
 		lore.add(ChatColor.GRAY + "Strength IV");
 		lore.add(ChatColor.GRAY + "Resistance II");
+		lore.add(ChatColor.GRAY + "Vulcan II");
 		lore.add(ChatColor.GRAY + "Healthy");
-		lore.add(ChatColor.GRAY + "Vulcan");
 		lore.add("");
 		meta.setLore(lore);
 		meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
@@ -2209,7 +2209,7 @@ public class Tools {
 		item.addUnsafeEnchantment(CustomEnchants.HEALTHY, 1);
 		item.addUnsafeEnchantment(CustomEnchants.RESISTANCE, 2);
 		item.addUnsafeEnchantment(CustomEnchants.STRENGTH, 4);
-		item.addUnsafeEnchantment(CustomEnchants.VULCAN, 1);
+		item.addUnsafeEnchantment(CustomEnchants.VULCAN, 2);
 
 		return item;
 	}
@@ -2412,7 +2412,7 @@ public class Tools {
 		lore.add(ChatColor.GRAY + "Strength II");
 		lore.add(ChatColor.GRAY + "Absorption II");
 		lore.add(ChatColor.GRAY + "Resistance I");
-		lore.add(ChatColor.GRAY + "Vulcan");
+		lore.add(ChatColor.GRAY + "Vulcan I");
 		meta.setLore(lore);
 		meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
 		meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
@@ -2453,7 +2453,7 @@ public class Tools {
 		lore.add(ChatColor.GRAY + "Strength III");
 		lore.add(ChatColor.GRAY + "Hero II");
 		lore.add(ChatColor.GRAY + "Resistance I");
-		lore.add(ChatColor.GRAY + "Vulcan");
+		lore.add(ChatColor.GRAY + "Vulcan I");
 		meta.setLore(lore);
 		meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
 		meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
@@ -2491,8 +2491,8 @@ public class Tools {
 		lore.add(ChatColor.GRAY + "Hero V");
 		lore.add(ChatColor.GRAY + "Strength IV");
 		lore.add(ChatColor.GRAY + "Resistance II");
+		lore.add(ChatColor.GRAY + "Vulcan II");
 		lore.add(ChatColor.GRAY + "Healthy");
-		lore.add(ChatColor.GRAY + "Vulcan");
 		lore.add("");
 		meta.setLore(lore);
 		meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
@@ -2505,7 +2505,7 @@ public class Tools {
 		item.addUnsafeEnchantment(CustomEnchants.HEALTHY, 1);
 		item.addUnsafeEnchantment(CustomEnchants.RESISTANCE, 2);
 		item.addUnsafeEnchantment(CustomEnchants.STRENGTH, 4);
-		item.addUnsafeEnchantment(CustomEnchants.VULCAN, 1);
+		item.addUnsafeEnchantment(CustomEnchants.VULCAN, 2);
 
 		return item;
 	}
@@ -2753,7 +2753,7 @@ public class Tools {
 		lore.add(ChatColor.GRAY + "Strength II");
 		lore.add(ChatColor.GRAY + "Absorption II");
 		lore.add(ChatColor.GRAY + "Resistance I");
-		lore.add(ChatColor.GRAY + "Vulcan");
+		lore.add(ChatColor.GRAY + "Vulcan I");
 		meta.setLore(lore);
 		meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
 		meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
@@ -2801,7 +2801,7 @@ public class Tools {
 		lore.add(ChatColor.GRAY + "Strength III");
 		lore.add(ChatColor.GRAY + "Hero II");
 		lore.add(ChatColor.GRAY + "Resistance I");
-		lore.add(ChatColor.GRAY + "Vulcan");
+		lore.add(ChatColor.GRAY + "Vulcan I");
 		meta.setLore(lore);
 		meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
 		meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
@@ -2842,8 +2842,8 @@ public class Tools {
 		lore.add(ChatColor.GRAY + "Hero V");
 		lore.add(ChatColor.GRAY + "Strength IV");
 		lore.add(ChatColor.GRAY + "Resistance II");
+		lore.add(ChatColor.GRAY + "Vulcan II");
 		lore.add(ChatColor.GRAY + "Healthy");
-		lore.add(ChatColor.GRAY + "Vulcan");
 		lore.add("");
 		meta.setLore(lore);
 		meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
@@ -2857,7 +2857,72 @@ public class Tools {
 		item.addUnsafeEnchantment(CustomEnchants.RESISTANCE, 2);
 		item.addUnsafeEnchantment(CustomEnchants.STRENGTH, 4);
 		item.addUnsafeEnchantment(CustomEnchants.JUMP, 2);
-		item.addUnsafeEnchantment(CustomEnchants.VULCAN, 1);
+		item.addUnsafeEnchantment(CustomEnchants.VULCAN, 2);
+
+		return item;
+	}
+	
+//	Shields
+	public ItemStack c2p5Shield() {
+		ItemStack item = new ItemStack(Material.SHIELD);
+		ItemMeta meta = item.getItemMeta();
+		
+		meta.setDisplayName(ChatColor.GOLD + "T5 Shiny Stone Shield");
+		meta.addEnchant(Enchantment.DURABILITY, 3, true);
+
+		List<String> lore = new ArrayList<String>();
+		lore.add("");
+		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "This shield emplys the rigidity of ");
+		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "1,458 Cobblestone");
+		meta.setLore(lore);
+
+		item.setItemMeta(meta);
+
+		return item;
+	}
+	
+	public ItemStack c4Shield() {
+		ItemStack item = new ItemStack(Material.SHIELD);
+		ItemMeta meta = item.getItemMeta();
+		
+		meta.setDisplayName(ChatColor.RED + "T8 Draconian Stone Shield");
+		meta.addEnchant(Enchantment.DURABILITY, 5, true);
+		meta.addEnchant(Enchantment.MENDING, 1, true);
+
+		List<String> lore = new ArrayList<String>();
+		lore.add(ChatColor.GRAY + "Unbreaking V");
+		lore.add(ChatColor.GRAY + "Immunity I");
+		lore.add(ChatColor.GRAY + "Mending");
+		lore.add("");
+		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "This shield emplys the rigidity of ");
+		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "39,366 Cobblestone");
+		meta.setLore(lore);
+		meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
+
+		item.setItemMeta(meta);
+		item.addUnsafeEnchantment(CustomEnchants.IMMUNITY, 1);
+
+		return item;
+	}
+	
+	public ItemStack c5Shield() {
+		ItemStack item = new ItemStack(Material.SHIELD);
+		ItemMeta meta = item.getItemMeta();
+		
+		meta.setDisplayName(ChatColor.LIGHT_PURPLE + "" + ChatColor.BOLD + "T10 Terminal Stone Shield");
+		meta.addEnchant(Enchantment.MENDING, 1, true);
+		meta.setUnbreakable(true);
+
+		List<String> lore = new ArrayList<String>();
+		lore.add(ChatColor.GRAY + "Immunity II");
+		lore.add("");
+		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "This shield emplys the rigidity of ");
+		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "354,294 Cobblestone");
+		meta.setLore(lore);
+		meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
+
+		item.setItemMeta(meta);
+		item.addUnsafeEnchantment(CustomEnchants.IMMUNITY, 2);
 
 		return item;
 	}
@@ -2883,8 +2948,8 @@ public class Tools {
 		lore.add(ChatColor.GRAY + "Hero V");
 		lore.add(ChatColor.GRAY + "Strength IV");
 		lore.add(ChatColor.GRAY + "Resistance II");
+		lore.add(ChatColor.GRAY + "Vulcan II");
 		lore.add(ChatColor.GRAY + "Healthy");
-		lore.add(ChatColor.GRAY + "Vulcan");
 		lore.add("");
 		meta.setLore(lore);
 		meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
@@ -2897,7 +2962,7 @@ public class Tools {
 		item.addUnsafeEnchantment(CustomEnchants.RESISTANCE, 2);
 		item.addUnsafeEnchantment(CustomEnchants.STRENGTH, 4);
 		item.addUnsafeEnchantment(CustomEnchants.DOLPHIN, 1);
-		item.addUnsafeEnchantment(CustomEnchants.VULCAN, 1);
+		item.addUnsafeEnchantment(CustomEnchants.VULCAN, 2);
 
 		return item;
 	}

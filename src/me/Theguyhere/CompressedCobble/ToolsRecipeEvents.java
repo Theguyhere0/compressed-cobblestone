@@ -22,7 +22,7 @@ public class ToolsRecipeEvents implements Listener {
 		String chestplate = ChatColor.WHITE + "T1 Durable Stone Chestplate";
 		String leggings = ChatColor.WHITE + "T1 Durable Stone Leggings";
 		String boots = ChatColor.WHITE + "T1 Durable Stone Boots";
-		String range = ChatColor.WHITE + "T1 Durable Stone Boots";
+		String range = ChatColor.WHITE + "T1 Durable Stone Bow";
 
 		if (e.getRecipe() != null)
 			if (e.getRecipe().getResult().hasItemMeta() && ((e.getRecipe().getResult().getItemMeta().getDisplayName().equals(pick)) ||
@@ -61,7 +61,7 @@ public class ToolsRecipeEvents implements Listener {
 		String chestplate = ChatColor.YELLOW + "T2 Resilient Stone Chestplate";
 		String leggings = ChatColor.YELLOW + "T2 Resilient Stone Leggings";
 		String boots = ChatColor.YELLOW + "T2 Resilient Stone Boots";
-		String range = ChatColor.YELLOW + "T2 Resilient Stone Boots";
+		String range = ChatColor.YELLOW + "T2 Resilient Stone Bow";
 
 		if (e.getRecipe() != null)
 			if (e.getRecipe().getResult().hasItemMeta() && ((e.getRecipe().getResult().getItemMeta().getDisplayName().equals(pick)) ||
@@ -100,7 +100,7 @@ public class ToolsRecipeEvents implements Listener {
 		String chestplate = ChatColor.YELLOW + "T3 Metallic Stone Chestplate";
 		String leggings = ChatColor.YELLOW + "T3 Metallic Stone Leggings";
 		String boots = ChatColor.YELLOW + "T3 Metallic Stone Boots";
-		String range = ChatColor.YELLOW + "T3 Metallic Stone Boots";
+		String range = ChatColor.YELLOW + "T3 Metallic Stone Bow";
 
 		if (e.getRecipe() != null)
 			if (e.getRecipe().getResult().hasItemMeta() && ((e.getRecipe().getResult().getItemMeta().getDisplayName().equals(pick)) ||
@@ -139,7 +139,7 @@ public class ToolsRecipeEvents implements Listener {
 		String chestplate = ChatColor.GOLD + "T4 Gilded Stone Chestplate";
 		String leggings = ChatColor.GOLD + "T4 Gilded Stone Leggings";
 		String boots = ChatColor.GOLD + "T4 Gilded Stone Boots";
-		String range = ChatColor.GOLD + "T4 Gilded Stone Boots";
+		String range = ChatColor.GOLD + "T4 Gilded Stone Bow";
 
 		if (e.getRecipe() != null)
 			if (e.getRecipe().getResult().hasItemMeta() && ((e.getRecipe().getResult().getItemMeta().getDisplayName().equals(pick)) ||
@@ -178,7 +178,8 @@ public class ToolsRecipeEvents implements Listener {
 		String chestplate = ChatColor.GOLD + "T5 Shiny Stone Chestplate";
 		String leggings = ChatColor.GOLD + "T5 Shiny Stone Leggings";
 		String boots = ChatColor.GOLD + "T5 Shiny Stone Boots";
-		String range = ChatColor.GOLD + "T5 Shiny Stone Boots";
+		String range = ChatColor.GOLD + "T5 Shiny Stone Bow";
+		String shield = ChatColor.GOLD + "T5 Shiny Stone Shield";
 
 		if (e.getRecipe() != null)
 			if (e.getRecipe().getResult().hasItemMeta() && ((e.getRecipe().getResult().getItemMeta().getDisplayName().equals(pick)) ||
@@ -190,7 +191,8 @@ public class ToolsRecipeEvents implements Listener {
 					e.getRecipe().getResult().getItemMeta().getDisplayName().equals(chestplate) ||
 					e.getRecipe().getResult().getItemMeta().getDisplayName().equals(leggings) ||
 					e.getRecipe().getResult().getItemMeta().getDisplayName().equals(boots) ||
-					e.getRecipe().getResult().getItemMeta().getDisplayName().equals(range))) {
+					e.getRecipe().getResult().getItemMeta().getDisplayName().equals(range) ||
+					e.getRecipe().getResult().getItemMeta().getDisplayName().equals(shield))) {
 				List<String> lore = new ArrayList<String>();
 				lore.add(ChatColor.GRAY + "Contains 9^2.5 (243) Cobblestone");
 				lore.add(ChatColor.DARK_RED + "" + ChatColor.ITALIC + "Warning! Item will lose value if placed.");
@@ -217,7 +219,7 @@ public class ToolsRecipeEvents implements Listener {
 		String chestplate = ChatColor.DARK_RED + "T6 Blazing Stone Chestplate";
 		String leggings = ChatColor.DARK_RED + "T6 Blazing Stone Leggings";
 		String boots = ChatColor.DARK_RED + "T6 Blazing Stone Boots";
-		String range = ChatColor.DARK_RED + "T6 Blazing Stone Boots";
+		String range = ChatColor.DARK_RED + "T6 Blazing Stone Bow";
 
 		if (e.getRecipe() != null)
 			if (e.getRecipe().getResult().hasItemMeta() && ((e.getRecipe().getResult().getItemMeta().getDisplayName().equals(pick)) ||
@@ -256,7 +258,7 @@ public class ToolsRecipeEvents implements Listener {
 		String chestplate = ChatColor.DARK_RED + "T7 Mystical Stone Chestplate";
 		String leggings = ChatColor.DARK_RED + "T7 Mystical Stone Leggings";
 		String boots = ChatColor.DARK_RED + "T7 Mystical Stone Boots";
-		String range = ChatColor.DARK_RED + "T7 Mystical Stone Boots";
+		String range = ChatColor.DARK_RED + "T7 Mystical Stone Crossbow";
 
 		if (e.getRecipe() != null)
 			if (e.getRecipe().getResult().hasItemMeta() && ((e.getRecipe().getResult().getItemMeta().getDisplayName().equals(pick)) ||
@@ -295,7 +297,8 @@ public class ToolsRecipeEvents implements Listener {
 		String chestplate = ChatColor.RED + "T8 Draconian Stone Chestplate";
 		String leggings = ChatColor.RED + "T8 Draconian Stone Leggings";
 		String boots = ChatColor.RED + "T8 Draconian Stone Boots";
-		String range = ChatColor.RED + "T8 Draconian Stone Boots";
+		String range = ChatColor.RED + "T8 Draconian Stone Crossbow";
+		String shield = ChatColor.RED + "T8 Draconian Stone Shield";
 
 		if (e.getRecipe() != null)
 			if (e.getRecipe().getResult().hasItemMeta() && ((e.getRecipe().getResult().getItemMeta().getDisplayName().equals(pick)) ||
@@ -307,7 +310,8 @@ public class ToolsRecipeEvents implements Listener {
 					e.getRecipe().getResult().getItemMeta().getDisplayName().equals(chestplate) ||
 					e.getRecipe().getResult().getItemMeta().getDisplayName().equals(leggings) ||
 					e.getRecipe().getResult().getItemMeta().getDisplayName().equals(boots) ||
-					e.getRecipe().getResult().getItemMeta().getDisplayName().equals(range))) {
+					e.getRecipe().getResult().getItemMeta().getDisplayName().equals(range) ||
+					e.getRecipe().getResult().getItemMeta().getDisplayName().equals(shield))) {
 				List<String> lore = new ArrayList<String>();
 				lore.add(ChatColor.GRAY + "Contains 9^4 (6,561) Cobblestone");
 				lore.add(ChatColor.DARK_RED + "" + ChatColor.ITALIC + "Warning! Item will lose value if placed.");
@@ -334,7 +338,7 @@ public class ToolsRecipeEvents implements Listener {
 		String chestplate = ChatColor.RED + "" + ChatColor.BOLD + "T9 Impossible Stone Chestplate";
 		String leggings = ChatColor.RED + "" + ChatColor.BOLD + "T9 Impossible Stone Leggings";
 		String boots = ChatColor.RED + "" + ChatColor.BOLD + "T9 Impossible Stone Boots";
-		String range = ChatColor.RED + "" + ChatColor.BOLD + "T9 Impossible Stone Boots";
+		String range = ChatColor.RED + "" + ChatColor.BOLD + "T9 Impossible Stone Trident";
 
 		if (e.getRecipe() != null)
 			if (e.getRecipe().getResult().hasItemMeta() && ((e.getRecipe().getResult().getItemMeta().getDisplayName().equals(pick)) ||
@@ -374,7 +378,8 @@ public class ToolsRecipeEvents implements Listener {
 		String leggings = ChatColor.LIGHT_PURPLE + "" + ChatColor.BOLD + "T10 Terminal Stone Leggings";
 		String boots = ChatColor.LIGHT_PURPLE + "" + ChatColor.BOLD + "T10 Terminal Stone Boots";
 		String elytra = ChatColor.LIGHT_PURPLE + "" + ChatColor.BOLD + "Terminal Stone Wings";
-		String range = ChatColor.LIGHT_PURPLE + "" + ChatColor.BOLD + "T10 Terminal Stone Boots";
+		String range = ChatColor.LIGHT_PURPLE + "" + ChatColor.BOLD + "T10 Terminal Stone Trident";
+		String shield = ChatColor.LIGHT_PURPLE + "" + ChatColor.BOLD + "T10 Terminal Stone Trident";
 
 		if (e.getRecipe() != null)
 			if (e.getRecipe().getResult().hasItemMeta() && ((e.getRecipe().getResult().getItemMeta().getDisplayName().equals(pick)) ||
@@ -387,7 +392,8 @@ public class ToolsRecipeEvents implements Listener {
 					e.getRecipe().getResult().getItemMeta().getDisplayName().equals(leggings) ||
 					e.getRecipe().getResult().getItemMeta().getDisplayName().equals(boots) ||
 					e.getRecipe().getResult().getItemMeta().getDisplayName().equals(elytra) ||
-					e.getRecipe().getResult().getItemMeta().getDisplayName().equals(range))) {
+					e.getRecipe().getResult().getItemMeta().getDisplayName().equals(range)  ||
+					e.getRecipe().getResult().getItemMeta().getDisplayName().equals(shield))) {
 				List<String> lore = new ArrayList<String>();
 				lore.add(ChatColor.GRAY + "Contains 9^5 (59,049) Cobblestone");
 				lore.add(ChatColor.DARK_RED + "" + ChatColor.ITALIC + "Warning! Item will lose value if placed.");

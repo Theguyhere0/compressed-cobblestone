@@ -22,6 +22,7 @@ import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.Skeleton;
 import org.bukkit.entity.Stray;
+import org.bukkit.entity.Villager;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.CreatureSpawnEvent;
@@ -44,14 +45,14 @@ public class MobSpawnEvents implements Listener {
 
 	@EventHandler()
 	public void onSpawn(CreatureSpawnEvent e) {
-		EntityType[] entities = {EntityType.BLAZE, EntityType.CAVE_SPIDER, EntityType.CREEPER, EntityType.DROWNED, EntityType.ENDERMAN, EntityType.ENDERMITE,
-				EntityType.EVOKER, EntityType.GIANT, EntityType.GUARDIAN, EntityType.HOGLIN, EntityType.HUSK, EntityType.ILLUSIONER,
+		EntityType[] entities = {EntityType.BLAZE, EntityType.CAVE_SPIDER, EntityType.CREEPER, EntityType.DROWNED, EntityType.ENDER_DRAGON, EntityType.ENDERMAN, EntityType.ENDERMITE,
+				EntityType.EVOKER, EntityType.GIANT, EntityType.GUARDIAN, EntityType.HOGLIN, EntityType.HUSK, EntityType.ILLUSIONER, EntityType.IRON_GOLEM,
 				EntityType.MAGMA_CUBE, EntityType.PHANTOM, EntityType.PIGLIN, EntityType.PILLAGER, EntityType.RAVAGER, EntityType.SKELETON, EntityType.SKELETON_HORSE,
-				EntityType.SILVERFISH, EntityType.SLIME, EntityType.SPIDER, EntityType.STRAY, EntityType.VEX, EntityType.VINDICATOR, EntityType.WITCH,
-				EntityType.WITHER_SKELETON, EntityType.ZOGLIN, EntityType.ZOMBIE, EntityType.ZOMBIE_HORSE, EntityType.ZOMBIE_VILLAGER, EntityType.ZOMBIFIED_PIGLIN};
-		EntityType[] basics = {EntityType.BLAZE, EntityType.CAVE_SPIDER, EntityType.ENDERMAN, EntityType.ENDERMITE, EntityType.EVOKER, EntityType.GHAST,
-				EntityType.GUARDIAN, EntityType.ILLUSIONER, EntityType.MAGMA_CUBE, EntityType.PHANTOM, EntityType.RAVAGER, EntityType.SKELETON_HORSE,
-				EntityType.SILVERFISH, EntityType.SLIME, EntityType.SPIDER, EntityType.VEX, EntityType.VINDICATOR, EntityType.WITCH, EntityType.ZOGLIN,
+				EntityType.SILVERFISH, EntityType.SLIME, EntityType.SPIDER, EntityType.STRAY, EntityType.VEX, EntityType.VILLAGER, EntityType.VINDICATOR, EntityType.WITCH,
+				EntityType.WITHER, EntityType.WITHER_SKELETON, EntityType.ZOGLIN, EntityType.ZOMBIE, EntityType.ZOMBIE_HORSE, EntityType.ZOMBIE_VILLAGER, EntityType.ZOMBIFIED_PIGLIN};
+		EntityType[] basics = {EntityType.BLAZE, EntityType.CAVE_SPIDER, EntityType.ENDER_DRAGON, EntityType.ENDERMAN, EntityType.ENDERMITE, EntityType.EVOKER, EntityType.GHAST,
+				EntityType.GUARDIAN, EntityType.ILLUSIONER, EntityType.IRON_GOLEM, EntityType.MAGMA_CUBE, EntityType.PHANTOM, EntityType.RAVAGER, EntityType.SKELETON_HORSE,
+				EntityType.SILVERFISH, EntityType.SLIME, EntityType.SPIDER, EntityType.VEX, EntityType.VINDICATOR, EntityType.WITCH, EntityType.WITHER, EntityType.ZOGLIN,
 				EntityType.ZOMBIE_HORSE};
 		EntityType[] fulls = {EntityType.DROWNED, EntityType.GIANT, EntityType.HOGLIN, EntityType.HUSK, EntityType.PIGLIN, 
 				EntityType.WITHER_SKELETON, EntityType.ZOMBIE, EntityType.ZOMBIE_VILLAGER, EntityType.ZOMBIFIED_PIGLIN};
@@ -100,13 +101,16 @@ public class MobSpawnEvents implements Listener {
 			int result = items[num];
 			int origH = (int) basic.getAttribute(Attribute.GENERIC_MAX_HEALTH).getValue();
 			AttributeModifier boostH = new AttributeModifier("boostH", origH * .2 * result, Operation.ADD_NUMBER);
-//			System.out.print(basic);
-			int origA = (int) basic.getAttribute(Attribute.GENERIC_ATTACK_DAMAGE).getValue();
-			AttributeModifier boostA = new AttributeModifier("boostA", origA * .2 * result, Operation.ADD_NUMBER);
-			
+
 			basic.getAttribute(Attribute.GENERIC_MAX_HEALTH).addModifier(boostH);
 			basic.setHealth(basic.getAttribute(Attribute.GENERIC_MAX_HEALTH).getValue());
-			basic.getAttribute(Attribute.GENERIC_ATTACK_DAMAGE).addModifier(boostA);
+
+			if (type != EntityType.ENDER_DRAGON) {
+				int origA = (int) basic.getAttribute(Attribute.GENERIC_ATTACK_DAMAGE).getValue();
+				AttributeModifier boostA = new AttributeModifier("boostA", origA * .2 * result, Operation.ADD_NUMBER);
+				
+				basic.getAttribute(Attribute.GENERIC_ATTACK_DAMAGE).addModifier(boostA);
+			}
 		}
 				
 		if (fullMobs.contains(type)) {
@@ -564,6 +568,7 @@ public class MobSpawnEvents implements Listener {
 			
 			ghast.getAttribute(Attribute.GENERIC_MAX_HEALTH).addModifier(boostH);
 			ghast.setHealth(orig + orig * .2 * result);
+			return;
 		}
 		
 		if (type == EntityType.CREEPER) {
@@ -581,6 +586,30 @@ public class MobSpawnEvents implements Listener {
 			int result = items[num];
 			if (result > 5)
 				creeper.setPowered(true);
+			return;
+		}
+		
+		if (type == EntityType.VILLAGER) {
+			Villager villager = (Villager) e.getEntity();
+			Integer[] items = new Integer[plugin.getConfig().getStringList(config).size()];
+			int item = 0;
+			Random r = new Random();
+			int position = 0;
+			for (String i : plugin.getConfig().getStringList(config)) {
+				item = Integer.parseInt(i);
+				items[position] = item;
+				position++;
+			}
+			int num = r.nextInt(items.length);
+			int result = items[num];
+			int origH = (int) villager.getAttribute(Attribute.GENERIC_MAX_HEALTH).getValue();
+			AttributeModifier boostH = new AttributeModifier("boost", origH * .2 * result, Operation.ADD_NUMBER);
+			int origS = (int) villager.getAttribute(Attribute.GENERIC_MOVEMENT_SPEED).getValue();
+			AttributeModifier boost = new AttributeModifier("boost", origS * .2 * lvl, Operation.ADD_NUMBER);
+			
+			villager.getAttribute(Attribute.GENERIC_MAX_HEALTH).addModifier(boostH);
+			villager.setHealth(origH + origH * .2 * result);
+			villager.getAttribute(Attribute.GENERIC_MOVEMENT_SPEED).addModifier(boost);
 			return;
 		}
 	}

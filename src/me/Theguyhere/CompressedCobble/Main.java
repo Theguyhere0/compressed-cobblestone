@@ -136,6 +136,9 @@ public class Main extends JavaPlugin implements Listener {
 		Bukkit.addRecipe(c4RangeRecipe());
 		Bukkit.addRecipe(c4p5RangeRecipe());
 		Bukkit.addRecipe(c5RangeRecipe());
+		Bukkit.addRecipe(c2p5ShieldRecipe());
+		Bukkit.addRecipe(c4ShieldRecipe());
+		Bukkit.addRecipe(c5ShieldRecipe());
 
 //		Armor
 		Bukkit.addRecipe(c0p5HelmetRecipe());
@@ -292,6 +295,7 @@ public class Main extends JavaPlugin implements Listener {
 		tools.add(new Tools().c5Leggings());
 		tools.add(new Tools().c5Boots());
 		tools.add(new Tools().elytra());
+		tools.add(new Tools().c5Shield());
 //		tools.add(test);
 
 //		Give materials
@@ -3060,6 +3064,52 @@ public class Main extends JavaPlugin implements Listener {
 		return recipe;
 	}
 	
+//	Shields
+	public ShapedRecipe c2p5ShieldRecipe() {
+		ItemStack item = new Tools().c2p5Shield();
+		
+		NamespacedKey key = new NamespacedKey(this, "c2p5Shield");
+		
+		ShapedRecipe recipe = new ShapedRecipe(key, item);
+		
+		recipe.shape("CGC", "CCC", " C ");
+		
+		recipe.setIngredient('C', Material.GLOWSTONE);
+		recipe.setIngredient('G', Material.GOLD_BLOCK);
+		
+		return recipe;
+	}
+
+	public ShapedRecipe c4ShieldRecipe() {
+		ItemStack item = new Tools().c4Shield();
+		
+		NamespacedKey key = new NamespacedKey(this, "c4Shield");
+		
+		ShapedRecipe recipe = new ShapedRecipe(key, item);
+		
+		recipe.shape("CDC", "CCC", " C ");
+		
+		recipe.setIngredient('C', Material.ANCIENT_DEBRIS);
+		recipe.setIngredient('D', Material.DIAMOND_BLOCK);
+		
+		return recipe;
+	}
+
+	public ShapedRecipe c5ShieldRecipe() {
+		ItemStack item = new Tools().c5Shield();
+		
+		NamespacedKey key = new NamespacedKey(this, "c5Shield");
+		
+		ShapedRecipe recipe = new ShapedRecipe(key, item);
+		
+		recipe.shape("CNC", "CCC", " C ");
+		
+		recipe.setIngredient('C', Material.END_PORTAL_FRAME);
+		recipe.setIngredient('N', Material.NETHERITE_BLOCK);
+		
+		return recipe;
+	}
+
 //	Elytra
 	public ShapedRecipe elytraRecipe() {
 		ItemStack item = new Tools().elytra();

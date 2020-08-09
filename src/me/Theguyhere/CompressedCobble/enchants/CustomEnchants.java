@@ -28,10 +28,11 @@ public class CustomEnchants {
 	public static final Enchantment HEALTHY = new EnchantmentWrapper("healthy", "Healthy", 1);
 	public static final Enchantment DOLPHIN = new EnchantmentWrapper("dolphin", "Dolphin", 5);
 	public static final Enchantment JUMP = new EnchantmentWrapper("jump", "Jump", 5);
-	public static final Enchantment VULCAN = new EnchantmentWrapper("vulcan", "Vulcan", 1);
+	public static final Enchantment VULCAN = new EnchantmentWrapper("vulcan", "Vulcan", 2);
 	public static final Enchantment PROJECTILE = new EnchantmentWrapper("projectile", "Projectile", 2);
 	public static final Enchantment POWERED = new EnchantmentWrapper("powered", "Powered", 2);
 	public static final Enchantment ROCKET = new EnchantmentWrapper("rocket", "Rocket", 1);
+	public static final Enchantment IMMUNITY = new EnchantmentWrapper("immunity", "Immunity", 2);
 
 	public static void register() {
 		boolean regTelepathy = Arrays.stream(Enchantment.values()).collect(Collectors.toList()).contains(CustomEnchants.TELEPATHY);
@@ -59,6 +60,7 @@ public class CustomEnchants {
 		boolean regProjectile = Arrays.stream(Enchantment.values()).collect(Collectors.toList()).contains(CustomEnchants.PROJECTILE);
 		boolean regPowered = Arrays.stream(Enchantment.values()).collect(Collectors.toList()).contains(CustomEnchants.POWERED);
 		boolean regRocket = Arrays.stream(Enchantment.values()).collect(Collectors.toList()).contains(CustomEnchants.ROCKET);
+		boolean regImmunity = Arrays.stream(Enchantment.values()).collect(Collectors.toList()).contains(CustomEnchants.IMMUNITY);
 
 		if (!regTelepathy)
 			registerEnchantment(TELEPATHY);
@@ -110,6 +112,8 @@ public class CustomEnchants {
 			registerEnchantment(POWERED);
 		if (!regRocket)
 			registerEnchantment(ROCKET);
+		if (!regImmunity)
+			registerEnchantment(IMMUNITY);
 	}
 	
 	public static void registerEnchantment(Enchantment enchantment) {
