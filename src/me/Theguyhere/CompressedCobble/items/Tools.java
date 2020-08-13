@@ -24,7 +24,7 @@ public class Tools {
 		List<String> lore = new ArrayList<String>();
 		lore.add("");
 		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "This tool holds the might of ");
-		lore.add("9 Cobblestone");
+		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "9 Cobblestone");
 		meta.setLore(lore);
 		meta.addEnchant(Enchantment.DIG_SPEED, 1, true);
 		meta.addEnchant(Enchantment.DURABILITY, 1, true);
@@ -567,7 +567,7 @@ public class Tools {
 		List<String> lore = new ArrayList<String>();
 		lore.add("");
 		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "This tool holds the might of ");
-		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "3 Cobblestone");
+		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "4 Cobblestone");
 		meta.setLore(lore);
 		meta.addEnchant(Enchantment.DIG_SPEED, 1, true);
 		meta.addEnchant(Enchantment.DURABILITY, 1, true);
@@ -589,7 +589,7 @@ public class Tools {
 		lore.add(ChatColor.GRAY + "Rocky I");
 		lore.add("");
 		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "This tool holds the might of ");
-		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "9 Cobblestone");
+		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "13 Cobblestone");
 		meta.setLore(lore);
 		
 		item.setItemMeta(meta);
@@ -610,7 +610,7 @@ public class Tools {
 		lore.add(ChatColor.GRAY + "Rocky I");
 		lore.add("");
 		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "This tool holds the might of ");
-		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "27 Cobblestone");
+		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "40 Cobblestone");
 		meta.setLore(lore);
 		
 		item.setItemMeta(meta);
@@ -631,7 +631,7 @@ public class Tools {
 		lore.add(ChatColor.GRAY + "Rocky II");
 		lore.add("");
 		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "This tool holds the might of ");
-		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "81 Cobblestone");
+		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "121 Cobblestone");
 		meta.setLore(lore);
 		
 		item.setItemMeta(meta);
@@ -652,7 +652,7 @@ public class Tools {
 		lore.add(ChatColor.GRAY + "Rocky II");
 		lore.add("");
 		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "This tool holds the might of ");
-		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "243 Cobblestone");
+		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "364 Cobblestone");
 		meta.setLore(lore);
 		
 		item.setItemMeta(meta);
@@ -673,7 +673,7 @@ public class Tools {
 		lore.add(ChatColor.GRAY + "Rocky III");
 		lore.add("");
 		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "This tool holds the might of ");
-		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "729 Cobblestone");
+		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "1,093 Cobblestone");
 		meta.setLore(lore);
 		
 		item.setItemMeta(meta);
@@ -698,7 +698,7 @@ public class Tools {
 		lore.add(ChatColor.GRAY + "Mending");
 		lore.add("");
 		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "This tool holds the might of ");
-		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "2,187 Cobblestone");
+		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "3,280 Cobblestone");
 		meta.setLore(lore);
 		meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
 		
@@ -724,7 +724,7 @@ public class Tools {
 		lore.add(ChatColor.GRAY + "Mending");
 		lore.add("");
 		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "This tool holds the might of ");
-		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "6,561 Cobblestone");
+		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "9,841 Cobblestone");
 		meta.setLore(lore);
 		meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
 
@@ -751,7 +751,7 @@ public class Tools {
 		lore.add(ChatColor.GRAY + "Telepathy");
 		lore.add("");
 		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "This tool holds the might of ");
-		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "19,683 Cobblestone");
+		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "29,524 Cobblestone");
 		meta.setLore(lore);
 		meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
 
@@ -776,7 +776,7 @@ public class Tools {
 		lore.add(ChatColor.GRAY + "Telepathy");
 		lore.add("");
 		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "This tool holds the might of ");
-		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "59,049 Cobblestone");
+		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "88,573 Cobblestone");
 		meta.setLore(lore);
 		meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
 
@@ -796,7 +796,7 @@ public class Tools {
 		List<String> lore = new ArrayList<String>();
 		lore.add("");
 		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "This tool holds the might of ");
-		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "6 Cobblestone");
+		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "5 Cobblestone");
 		meta.setLore(lore);
 		meta.addEnchant(Enchantment.DIG_SPEED, 1, true);
 		meta.addEnchant(Enchantment.DURABILITY, 1, true);
@@ -818,7 +818,7 @@ public class Tools {
 		lore.add(ChatColor.GRAY + "Pebbly I");
 		lore.add("");
 		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "This tool holds the might of ");
-		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "18 Cobblestone");
+		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "14 Cobblestone");
 		meta.setLore(lore);
 		
 		item.setItemMeta(meta);
@@ -843,7 +843,7 @@ public class Tools {
 		lore.add(ChatColor.GRAY + "Sharpness I");
 		lore.add("");
 		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "This tool holds the might of ");
-		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "54 Cobblestone");
+		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "41 Cobblestone");
 		meta.setLore(lore);
 		meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
 		
@@ -873,7 +873,7 @@ public class Tools {
 		lore.add(ChatColor.GRAY + "Looting I");
 		lore.add("");
 		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "This tool holds the might of ");
-		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "162 Cobblestone");
+		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "122 Cobblestone");
 		meta.setLore(lore);
 		meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
 		
@@ -903,7 +903,7 @@ public class Tools {
 		lore.add(ChatColor.GRAY + "Looting I");
 		lore.add("");
 		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "This tool holds the might of ");
-		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "486 Cobblestone");
+		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "365 Cobblestone");
 		meta.setLore(lore);
 		meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
 		
@@ -935,7 +935,7 @@ public class Tools {
 		lore.add(ChatColor.GRAY + "Fire Aspect I");
 		lore.add("");
 		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "This tool holds the might of ");
-		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "1,458 Cobblestone");
+		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "1,094 Cobblestone");
 		meta.setLore(lore);
 		meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
 		
@@ -969,7 +969,7 @@ public class Tools {
 		lore.add(ChatColor.GRAY + "Mending");
 		lore.add("");
 		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "This tool holds the might of ");
-		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "4,374 Cobblestone");
+		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "3,281 Cobblestone");
 		meta.setLore(lore);
 		meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
 		
@@ -1003,7 +1003,7 @@ public class Tools {
 		lore.add(ChatColor.GRAY + "Mending");
 		lore.add("");
 		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "This tool holds the might of ");
-		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "13,122 Cobblestone");
+		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "9,842 Cobblestone");
 		meta.setLore(lore);
 		meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
 
@@ -1038,7 +1038,7 @@ public class Tools {
 		lore.add(ChatColor.GRAY + "Telepathy");
 		lore.add("");
 		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "This tool holds the might of ");
-		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "39,366 Cobblestone");
+		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "29,525 Cobblestone");
 		meta.setLore(lore);
 		meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
 
@@ -1071,7 +1071,7 @@ public class Tools {
 		lore.add(ChatColor.GRAY + "Telepathy");
 		lore.add("");
 		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "This tool holds the might of ");
-		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "118,092 Cobblestone");
+		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "88,574 Cobblestone");
 		meta.setLore(lore);
 		meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
 
@@ -1094,7 +1094,7 @@ public class Tools {
 		List<String> lore = new ArrayList<String>();
 		lore.add("");
 		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "This weapon holds the strength of ");
-		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "6 Cobblestone");
+		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "5 Cobblestone");
 		meta.setLore(lore);
 		
 		item.setItemMeta(meta);
@@ -1114,7 +1114,7 @@ public class Tools {
 		lore.add(ChatColor.GRAY + "Medusa I");
 		lore.add("");
 		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "This weapon holds the strength of ");
-		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "18 Cobblestone");
+		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "14 Cobblestone");
 		meta.setLore(lore);
 		
 		item.setItemMeta(meta);
@@ -1139,7 +1139,7 @@ public class Tools {
 		lore.add(ChatColor.GRAY + "Sweeping Edge I");
 		lore.add("");
 		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "This weapon holds the strength of ");
-		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "54 Cobblestone");
+		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "41 Cobblestone");
 		meta.setLore(lore);
 		meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
 		
@@ -1167,7 +1167,7 @@ public class Tools {
 		lore.add(ChatColor.GRAY + "Looting I");
 		lore.add("");
 		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "This weapon holds the strength of ");
-		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "162 Cobblestone");
+		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "122 Cobblestone");
 		meta.setLore(lore);
 		meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
 		
@@ -1195,7 +1195,7 @@ public class Tools {
 		lore.add(ChatColor.GRAY + "Looting III");
 		lore.add("");
 		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "This weapon holds the strength of ");
-		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "486 Cobblestone");
+		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "365 Cobblestone");
 		meta.setLore(lore);
 		meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
 		
@@ -1225,7 +1225,7 @@ public class Tools {
 		lore.add(ChatColor.GRAY + "Fire Aspect I");
 		lore.add("");
 		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "This weapon holds the strength of ");
-		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "1,458 Cobblestone");
+		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "1,094 Cobblestone");
 		meta.setLore(lore);
 		meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
 		
@@ -1257,7 +1257,7 @@ public class Tools {
 		lore.add(ChatColor.GRAY + "Mending");
 		lore.add("");
 		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "This weapon holds the strength of ");
-		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "4,374 Cobblestone");
+		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "3,281 Cobblestone");
 		meta.setLore(lore);
 		meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
 		
@@ -1289,7 +1289,7 @@ public class Tools {
 		lore.add(ChatColor.GRAY + "Mending");
 		lore.add("");
 		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "This weapon holds the strength of ");
-		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "13,122 Cobblestone");
+		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "9,842 Cobblestone");
 		meta.setLore(lore);
 		meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
 
@@ -1322,7 +1322,7 @@ public class Tools {
 		lore.add(ChatColor.GRAY + "Telepathy");
 		lore.add("");
 		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "This weapon holds the strength of ");
-		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "39,366 Cobblestone");
+		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "29,525 Cobblestone");
 		meta.setLore(lore);
 		meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
 
@@ -1353,7 +1353,7 @@ public class Tools {
 		lore.add(ChatColor.GRAY + "Telepathy");
 		lore.add("");
 		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "This weapon holds the strength of ");
-		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "118,092 Cobblestone");
+		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "88,574 Cobblestone");
 		meta.setLore(lore);
 		meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
 
@@ -1395,7 +1395,7 @@ public class Tools {
 		List<String> lore = new ArrayList<String>();
 		lore.add("");
 		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "This weapon holds the strength of ");
-		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "18 Cobblestone");
+		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "24 Cobblestone");
 		meta.setLore(lore);
 		
 		item.setItemMeta(meta);
@@ -1415,7 +1415,7 @@ public class Tools {
 		List<String> lore = new ArrayList<String>();
 		lore.add("");
 		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "This weapon holds the strength of ");
-		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "54 Cobblestone");
+		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "78 Cobblestone");
 		meta.setLore(lore);
 		
 		item.setItemMeta(meta);
@@ -1435,7 +1435,7 @@ public class Tools {
 		List<String> lore = new ArrayList<String>();
 		lore.add("");
 		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "This weapon holds the strength of ");
-		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "162 Cobblestone");
+		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "240 Cobblestone");
 		meta.setLore(lore);
 		
 		item.setItemMeta(meta);
@@ -1455,7 +1455,7 @@ public class Tools {
 		List<String> lore = new ArrayList<String>();
 		lore.add("");
 		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "This weapon holds the strength of ");
-		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "486 Cobblestone");
+		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "726 Cobblestone");
 		meta.setLore(lore);
 		
 		item.setItemMeta(meta);
@@ -1477,7 +1477,7 @@ public class Tools {
 		List<String> lore = new ArrayList<String>();
 		lore.add("");
 		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "This weapon holds the strength of ");
-		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "1,458 Cobblestone");
+		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "2,184 Cobblestone");
 		meta.setLore(lore);
 		
 		item.setItemMeta(meta);
@@ -1507,7 +1507,7 @@ public class Tools {
 		lore.add(ChatColor.GRAY + "Mending");
 		lore.add("");
 		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "This weapon holds the strength of ");
-		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "4,374 Cobblestone");
+		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "6,558 Cobblestone");
 		meta.setLore(lore);
 		meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
 		
@@ -1539,7 +1539,7 @@ public class Tools {
 		lore.add(ChatColor.GRAY + "Mending");
 		lore.add("");
 		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "This weapon holds the strength of ");
-		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "13,122 Cobblestone");
+		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "19,680 Cobblestone");
 		meta.setLore(lore);
 		meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
 
@@ -1567,7 +1567,7 @@ public class Tools {
 		lore.add(ChatColor.GRAY + "Mending");
 		lore.add("");
 		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "This weapon holds the strength of ");
-		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "39,366 Cobblestone");
+		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "59,046 Cobblestone");
 		meta.setLore(lore);
 		meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
 
@@ -1590,7 +1590,7 @@ public class Tools {
 		lore.add(ChatColor.GRAY + "Rocket");
 		lore.add("");
 		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "This weapon holds the strength of ");
-		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "118,092 Cobblestone");
+		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "117,138 Cobblestone");
 		meta.setLore(lore);
 
 		item.setItemMeta(meta);
@@ -1611,7 +1611,7 @@ public class Tools {
 		List<String> lore = new ArrayList<String>();
 		lore.add("");
 		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "This armor harnesses the security of ");
-		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "15 Cobblestone");
+		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "12 Cobblestone");
 		meta.setLore(lore);
 		meta.setColor(Color.GRAY);
 		meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
@@ -1632,7 +1632,7 @@ public class Tools {
 		List<String> lore = new ArrayList<String>();
 		lore.add("");
 		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "This armor harnesses the security of ");
-		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "45 Cobblestone");
+		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "48 Cobblestone");
 		meta.setLore(lore);
 		meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
 
@@ -1652,7 +1652,7 @@ public class Tools {
 		List<String> lore = new ArrayList<String>();
 		lore.add("");
 		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "This armor harnesses the security of ");
-		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "135 Cobblestone");
+		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "156 Cobblestone");
 		meta.setLore(lore);
 		meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
 
@@ -1674,7 +1674,7 @@ public class Tools {
 		List<String> lore = new ArrayList<String>();
 		lore.add("");
 		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "This armor harnesses the security of ");
-		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "405 Cobblestone");
+		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "480 Cobblestone");
 		lore.add("");
 		lore.add(ChatColor.GOLD + "Set Bonus:");
 		lore.add(ChatColor.GRAY + "Lucky I");
@@ -1701,7 +1701,7 @@ public class Tools {
 		List<String> lore = new ArrayList<String>();
 		lore.add("");
 		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "This armor harnesses the security of ");
-		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "1,215 Cobblestone");
+		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "1,452 Cobblestone");
 		lore.add("");
 		lore.add(ChatColor.GOLD + "Set Bonus:");
 		lore.add(ChatColor.GRAY + "Lucky I");
@@ -1730,7 +1730,7 @@ public class Tools {
 		List<String> lore = new ArrayList<String>();
 		lore.add("");
 		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "This armor harnesses the security of ");
-		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "3,645 Cobblestone");
+		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "4,368 Cobblestone");
 		lore.add("");
 		lore.add(ChatColor.GOLD + "Set Bonus:");
 		lore.add(ChatColor.GRAY + "Lucky II");
@@ -1763,7 +1763,7 @@ public class Tools {
 		lore.add(ChatColor.GRAY + "Radar");
 		lore.add("");
 		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "This armor harnesses the security of ");
-		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "10,935 Cobblestone");
+		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "13,116 Cobblestone");
 		lore.add("");
 		lore.add(ChatColor.GOLD + "Set Bonus:");
 		lore.add(ChatColor.GRAY + "Lucky II");
@@ -1799,7 +1799,7 @@ public class Tools {
 		lore.add(ChatColor.GRAY + "Radar");
 		lore.add("");
 		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "This armor harnesses the security of ");
-		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "32,805 Cobblestone");
+		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "39,360 Cobblestone");
 		lore.add("");
 		lore.add(ChatColor.GOLD + "Set Bonus:");
 		lore.add(ChatColor.GRAY + "Lucky III");
@@ -1842,7 +1842,7 @@ public class Tools {
 		lore.add(ChatColor.GRAY + "Water Breathing");
 		lore.add("");
 		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "This armor harnesses the security of ");
-		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "98,415 Cobblestone");
+		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "118,092 Cobblestone");
 		lore.add("");
 		lore.add(ChatColor.GOLD + "Set Bonus:");
 		lore.add(ChatColor.GRAY + "Lucky IV");
@@ -1883,7 +1883,7 @@ public class Tools {
 		lore.add(ChatColor.GRAY + "Water Breathing");
 		lore.add("");
 		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "This armor harnesses the security of ");
-		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "295,245 Cobblestone");
+		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "354,288 Cobblestone");
 		lore.add("");
 		lore.add(ChatColor.GOLD + "Set Bonus:");
 		lore.add(ChatColor.GRAY + "Lucky V");
@@ -1902,9 +1902,80 @@ public class Tools {
 		item.addUnsafeEnchantment(CustomEnchants.LUCKY, 5);
 		item.addUnsafeEnchantment(CustomEnchants.HERO, 5);
 		item.addUnsafeEnchantment(CustomEnchants.HEALTHY, 1);
-		item.addUnsafeEnchantment(CustomEnchants.RESISTANCE, 3);
+		item.addUnsafeEnchantment(CustomEnchants.RESISTANCE, 2);
 		item.addUnsafeEnchantment(CustomEnchants.STRENGTH, 4);
 		item.addUnsafeEnchantment(CustomEnchants.VULCAN, 2);
+
+		return item;
+	}
+	
+	public ItemStack cNotHelmet() {
+		ItemStack item = new ItemStack(Material.GOLDEN_HELMET);
+		ItemMeta meta = item.getItemMeta();
+		
+		meta.setDisplayName(ChatColor.DARK_PURPLE + "" + ChatColor.BOLD + "Not Stone Crown");
+		meta.setUnbreakable(true);
+
+		List<String> lore = new ArrayList<String>();
+		lore.add(ChatColor.GRAY + "Disarming I");
+		lore.add(ChatColor.GRAY + "Radar");
+		lore.add("");
+		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "This armor harnesses the security of ");
+		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "708,588 Cobblestone");
+		lore.add("");
+		lore.add(ChatColor.GOLD + "Set Bonus:");
+		lore.add(ChatColor.GRAY + "Vulcan II");
+		lore.add("");
+		meta.setLore(lore);
+		meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
+
+		item.setItemMeta(meta);
+		item.addUnsafeEnchantment(CustomEnchants.RADAR, 1);
+		item.addUnsafeEnchantment(CustomEnchants.DISARMING, 1);
+		item.addUnsafeEnchantment(CustomEnchants.VULCAN, 2);
+
+		return item;
+	}
+	
+	public ItemStack cAHelmet() {
+		ItemStack item = new ItemStack(Material.GOLDEN_HELMET);
+		ItemMeta meta = item.getItemMeta();
+		
+		meta.setDisplayName(ChatColor.DARK_BLUE + "" + ChatColor.BOLD + "Anti-Stone Crown");
+		meta.addEnchant(Enchantment.WATER_WORKER, 1, true);
+		meta.setUnbreakable(true);
+
+		List<String> lore = new ArrayList<String>();
+		lore.add(ChatColor.GRAY + "Disarming II");
+		lore.add(ChatColor.GRAY + "Aqua Affinity");
+		lore.add(ChatColor.GRAY + "Radar");
+		lore.add(ChatColor.GRAY + "Water Breathing");
+		lore.add("");
+		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "This armor harnesses the security of ");
+		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "2,834,352 Cobblestone");
+		lore.add("");
+		lore.add(ChatColor.GOLD + "Set Bonus:");
+		lore.add(ChatColor.GRAY + "Lucky V");
+		lore.add(ChatColor.GRAY + "Hero V");
+		lore.add(ChatColor.GRAY + "Strength IV");
+		lore.add(ChatColor.GRAY + "Resistance II");
+		lore.add(ChatColor.GRAY + "Vulcan II");
+		lore.add(ChatColor.GRAY + "Healthy");
+		lore.add("");
+		meta.setLore(lore);
+		meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
+		meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
+
+		item.setItemMeta(meta);
+		item.addUnsafeEnchantment(CustomEnchants.RADAR, 1);
+		item.addUnsafeEnchantment(CustomEnchants.WATER_BREATHING, 1);
+		item.addUnsafeEnchantment(CustomEnchants.LUCKY, 5);
+		item.addUnsafeEnchantment(CustomEnchants.HERO, 5);
+		item.addUnsafeEnchantment(CustomEnchants.HEALTHY, 1);
+		item.addUnsafeEnchantment(CustomEnchants.RESISTANCE, 2);
+		item.addUnsafeEnchantment(CustomEnchants.STRENGTH, 4);
+		item.addUnsafeEnchantment(CustomEnchants.VULCAN, 2);
+		item.addUnsafeEnchantment(CustomEnchants.DISARMING, 2);
 
 		return item;
 	}
@@ -1920,7 +1991,7 @@ public class Tools {
 		List<String> lore = new ArrayList<String>();
 		lore.add("");
 		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "This armor harnesses the security of ");
-		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "24 Cobblestone");
+		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "21 Cobblestone");
 		meta.setLore(lore);
 		meta.setColor(Color.GRAY);
 		meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
@@ -1941,7 +2012,7 @@ public class Tools {
 		List<String> lore = new ArrayList<String>();
 		lore.add("");
 		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "This armor harnesses the security of ");
-		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "72 Cobblestone");
+		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "84 Cobblestone");
 		meta.setLore(lore);
 		meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
 
@@ -1961,7 +2032,7 @@ public class Tools {
 		List<String> lore = new ArrayList<String>();
 		lore.add("");
 		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "This armor harnesses the security of ");
-		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "216 Cobblestone");
+		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "273 Cobblestone");
 		meta.setLore(lore);
 		meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
 
@@ -1982,7 +2053,7 @@ public class Tools {
 		List<String> lore = new ArrayList<String>();
 		lore.add("");
 		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "This armor harnesses the security of ");
-		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "648 Cobblestone");
+		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "840 Cobblestone");
 		lore.add("");
 		lore.add(ChatColor.GOLD + "Set Bonus:");
 		lore.add(ChatColor.GRAY + "Lucky I");
@@ -2007,7 +2078,7 @@ public class Tools {
 		List<String> lore = new ArrayList<String>();
 		lore.add("");
 		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "This armor harnesses the security of ");
-		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "1,944 Cobblestone");
+		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "2,541 Cobblestone");
 		lore.add("");
 		lore.add(ChatColor.GOLD + "Set Bonus:");
 		lore.add(ChatColor.GRAY + "Lucky I");
@@ -2035,7 +2106,7 @@ public class Tools {
 		lore.add(ChatColor.GRAY + "Haste I");
 		lore.add("");
 		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "This armor harnesses the security of ");
-		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "5,832 Cobblestone");
+		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "7,644 Cobblestone");
 		lore.add("");
 		lore.add(ChatColor.GOLD + "Set Bonus:");
 		lore.add(ChatColor.GRAY + "Lucky II");
@@ -2071,7 +2142,7 @@ public class Tools {
 		lore.add(ChatColor.GRAY + "Mending");
 		lore.add("");
 		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "This armor harnesses the security of ");
-		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "17,496 Cobblestone");
+		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "22,953 Cobblestone");
 		lore.add("");
 		lore.add(ChatColor.GOLD + "Set Bonus:");
 		lore.add(ChatColor.GRAY + "Lucky II");
@@ -2110,7 +2181,7 @@ public class Tools {
 		lore.add(ChatColor.GRAY + "Mending");
 		lore.add("");
 		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "This armor harnesses the security of ");
-		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "52,488 Cobblestone");
+		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "68,880 Cobblestone");
 		lore.add("");
 		lore.add(ChatColor.GOLD + "Set Bonus:");
 		lore.add(ChatColor.GRAY + "Lucky III");
@@ -2151,7 +2222,7 @@ public class Tools {
 		lore.add(ChatColor.GRAY + "Mending");
 		lore.add("");
 		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "This armor harnesses the security of ");
-		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "157,464 Cobblestone");
+		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "206,661 Cobblestone");
 		lore.add("");
 		lore.add(ChatColor.GOLD + "Set Bonus:");
 		lore.add(ChatColor.GRAY + "Lucky IV");
@@ -2189,7 +2260,7 @@ public class Tools {
 		lore.add(ChatColor.GRAY + "Haste II");
 		lore.add("");
 		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "This armor harnesses the security of ");
-		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "472,392 Cobblestone");
+		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "620,004 Cobblestone");
 		lore.add("");
 		lore.add(ChatColor.GOLD + "Set Bonus:");
 		lore.add(ChatColor.GRAY + "Lucky V");
@@ -2225,7 +2296,7 @@ public class Tools {
 		List<String> lore = new ArrayList<String>();
 		lore.add("");
 		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "This armor harnesses the security of ");
-		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "21 Cobblestone");
+		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "18 Cobblestone");
 		meta.setLore(lore);
 		meta.setColor(Color.GRAY);
 		meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
@@ -2246,7 +2317,7 @@ public class Tools {
 		List<String> lore = new ArrayList<String>();
 		lore.add("");
 		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "This armor harnesses the security of ");
-		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "63 Cobblestone");
+		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "72 Cobblestone");
 		meta.setLore(lore);
 		meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
 
@@ -2266,7 +2337,7 @@ public class Tools {
 		List<String> lore = new ArrayList<String>();
 		lore.add("");
 		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "This armor harnesses the security of ");
-		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "189 Cobblestone");
+		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "234 Cobblestone");
 		meta.setLore(lore);
 		meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
 
@@ -2287,7 +2358,7 @@ public class Tools {
 		List<String> lore = new ArrayList<String>();
 		lore.add("");
 		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "This armor harnesses the security of ");
-		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "567 Cobblestone");
+		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "720 Cobblestone");
 		lore.add("");
 		lore.add(ChatColor.GOLD + "Set Bonus:");
 		lore.add(ChatColor.GRAY + "Lucky I");
@@ -2312,7 +2383,7 @@ public class Tools {
 		List<String> lore = new ArrayList<String>();
 		lore.add("");
 		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "This armor harnesses the security of ");
-		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "1,701 Cobblestone");
+		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "2,178 Cobblestone");
 		lore.add("");
 		lore.add(ChatColor.GOLD + "Set Bonus:");
 		lore.add(ChatColor.GRAY + "Lucky I");
@@ -2339,7 +2410,7 @@ public class Tools {
 		List<String> lore = new ArrayList<String>();
 		lore.add("");
 		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "This armor harnesses the security of ");
-		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "5,103 Cobblestone");
+		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "6,552 Cobblestone");
 		lore.add("");
 		lore.add(ChatColor.GOLD + "Set Bonus:");
 		lore.add(ChatColor.GRAY + "Lucky II");
@@ -2369,7 +2440,7 @@ public class Tools {
 		List<String> lore = new ArrayList<String>();
 		lore.add("");
 		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "This armor harnesses the security of ");
-		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "15,309 Cobblestone");
+		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "19,674 Cobblestone");
 		lore.add("");
 		lore.add(ChatColor.GOLD + "Set Bonus:");
 		lore.add(ChatColor.GRAY + "Lucky II");
@@ -2405,7 +2476,7 @@ public class Tools {
 		lore.add(ChatColor.GRAY + "Mending");
 		lore.add("");
 		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "This armor harnesses the security of ");
-		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "45,927 Cobblestone");
+		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "59,040 Cobblestone");
 		lore.add("");
 		lore.add(ChatColor.GOLD + "Set Bonus:");
 		lore.add(ChatColor.GRAY + "Lucky III");
@@ -2445,7 +2516,7 @@ public class Tools {
 		lore.add(ChatColor.GRAY + "Dolphin");
 		lore.add("");
 		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "This armor harnesses the security of ");
-		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "137,781 Cobblestone");
+		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "177,138 Cobblestone");
 		lore.add("");
 		lore.add(ChatColor.GOLD + "Set Bonus:");
 		lore.add(ChatColor.GRAY + "Lucky IV");
@@ -2484,7 +2555,7 @@ public class Tools {
 		lore.add(ChatColor.GRAY + "Saturation");
 		lore.add("");
 		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "This armor harnesses the security of ");
-		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "413,343 Cobblestone");
+		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "531,432 Cobblestone");
 		lore.add("");
 		lore.add(ChatColor.GOLD + "Set Bonus:");
 		lore.add(ChatColor.GRAY + "Lucky V");
@@ -2521,7 +2592,7 @@ public class Tools {
 		List<String> lore = new ArrayList<String>();
 		lore.add("");
 		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "This armor harnesses the security of ");
-		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "12 Cobblestone");
+		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "9 Cobblestone");
 		meta.setLore(lore);
 		meta.setColor(Color.GRAY);
 		meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
@@ -2563,7 +2634,7 @@ public class Tools {
 		lore.add(ChatColor.GRAY + "Speedy I");
 		lore.add("");
 		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "This armor harnesses the security of ");
-		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "108 Cobblestone");
+		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "117 Cobblestone");
 		meta.setLore(lore);
 		meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
 
@@ -2591,7 +2662,7 @@ public class Tools {
 		lore.add(ChatColor.GRAY + "Feather Falling I");
 		lore.add("");
 		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "This armor harnesses the security of ");
-		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "324 Cobblestone");
+		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "360 Cobblestone");
 		lore.add("");
 		lore.add(ChatColor.GOLD + "Set Bonus:");
 		lore.add(ChatColor.GRAY + "Lucky I");
@@ -2624,7 +2695,7 @@ public class Tools {
 		lore.add(ChatColor.GRAY + "Feather Falling I");
 		lore.add("");
 		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "This armor harnesses the security of ");
-		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "972 Cobblestone");
+		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "1,089 Cobblestone");
 		lore.add("");
 		lore.add(ChatColor.GOLD + "Set Bonus:");
 		lore.add(ChatColor.GRAY + "Lucky I");
@@ -2661,7 +2732,7 @@ public class Tools {
 		lore.add(ChatColor.GRAY + "Soul Speed I");
 		lore.add("");
 		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "This armor harnesses the security of ");
-		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "2,916 Cobblestone");
+		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "3,276 Cobblestone");
 		lore.add("");
 		lore.add(ChatColor.GOLD + "Set Bonus:");
 		lore.add(ChatColor.GRAY + "Lucky II");
@@ -2702,7 +2773,7 @@ public class Tools {
 		lore.add(ChatColor.GRAY + "Mending");
 		lore.add("");
 		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "This armor harnesses the security of ");
-		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "8,748 Cobblestone");
+		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "9,837 Cobblestone");
 		lore.add("");
 		lore.add(ChatColor.GOLD + "Set Bonus:");
 		lore.add(ChatColor.GRAY + "Lucky II");
@@ -2746,7 +2817,7 @@ public class Tools {
 		lore.add(ChatColor.GRAY + "Mending");
 		lore.add("");
 		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "This armor harnesses the security of ");
-		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "26,244 Cobblestone");
+		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "29,520 Cobblestone");
 		lore.add("");
 		lore.add(ChatColor.GOLD + "Set Bonus:");
 		lore.add(ChatColor.GRAY + "Lucky III");
@@ -2793,7 +2864,7 @@ public class Tools {
 		lore.add(ChatColor.GRAY + "Mending");
 		lore.add("");
 		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "This armor harnesses the security of ");
-		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "78,732 Cobblestone");
+		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "88,569 Cobblestone");
 		lore.add("");
 		lore.add(ChatColor.GOLD + "Set Bonus:");
 		lore.add(ChatColor.GRAY + "Lucky IV");
@@ -2835,7 +2906,7 @@ public class Tools {
 		lore.add(ChatColor.GRAY + "Soft Landing");
 		lore.add("");
 		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "This armor harnesses the security of ");
-		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "236,196 Cobblestone");
+		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "265,716 Cobblestone");
 		lore.add("");
 		lore.add(ChatColor.GOLD + "Set Bonus:");
 		lore.add(ChatColor.GRAY + "Lucky V");
@@ -2872,8 +2943,8 @@ public class Tools {
 
 		List<String> lore = new ArrayList<String>();
 		lore.add("");
-		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "This shield emplys the rigidity of ");
-		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "1,458 Cobblestone");
+		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "This shield employs the rigidity of ");
+		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "1,215 Cobblestone");
 		meta.setLore(lore);
 
 		item.setItemMeta(meta);
@@ -2894,8 +2965,8 @@ public class Tools {
 		lore.add(ChatColor.GRAY + "Immunity I");
 		lore.add(ChatColor.GRAY + "Mending");
 		lore.add("");
-		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "This shield emplys the rigidity of ");
-		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "39,366 Cobblestone");
+		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "This shield employs the rigidity of ");
+		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "34,020 Cobblestone");
 		meta.setLore(lore);
 		meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
 
@@ -2916,8 +2987,8 @@ public class Tools {
 		List<String> lore = new ArrayList<String>();
 		lore.add(ChatColor.GRAY + "Immunity II");
 		lore.add("");
-		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "This shield emplys the rigidity of ");
-		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "354,294 Cobblestone");
+		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "This shield employs the rigidity of ");
+		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "329,265 Cobblestone");
 		meta.setLore(lore);
 		meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
 
@@ -2928,20 +2999,60 @@ public class Tools {
 	}
 	
 //	Elytra
-	public ItemStack elytra() {
+	public ItemStack c4p5Elytra() {
 		ItemStack item = new ItemStack(Material.ELYTRA);
 		ItemMeta meta = item.getItemMeta();
 		
-		meta.setDisplayName(ChatColor.LIGHT_PURPLE + "" + ChatColor.BOLD + "Terminal Stone Wings");
+		meta.setDisplayName(ChatColor.RED + "" + ChatColor.BOLD + "T9 Impossible Stone Elytra");
+		meta.addEnchant(Enchantment.DURABILITY, 15, true);
+		meta.addEnchant(Enchantment.THORNS, 5, true);
+		meta.addEnchant(Enchantment.MENDING, 1, true);
+
+		List<String> lore = new ArrayList<String>();
+		lore.add(ChatColor.GRAY + "Unbreaking XV");
+		lore.add(ChatColor.GRAY + "Thorns V");
+		lore.add(ChatColor.GRAY + "Haste II");
+		lore.add(ChatColor.GRAY + "Mending");
+		lore.add("");
+		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "These wings mobilize the power of ");
+		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "157,464 Cobblestone");
+		lore.add("");
+		lore.add(ChatColor.GOLD + "Set Bonus:");
+		lore.add(ChatColor.GRAY + "Lucky IV");
+		lore.add(ChatColor.GRAY + "Absorption IV");
+		lore.add(ChatColor.GRAY + "Strength III");
+		lore.add(ChatColor.GRAY + "Hero II");
+		lore.add(ChatColor.GRAY + "Resistance I");
+		lore.add(ChatColor.GRAY + "Vulcan I");
+		meta.setLore(lore);
+		meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
+		meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
+
+		item.setItemMeta(meta);
+		item.addUnsafeEnchantment(CustomEnchants.HASTE, 2);
+		item.addUnsafeEnchantment(CustomEnchants.LUCKY, 4);
+		item.addUnsafeEnchantment(CustomEnchants.ABSORPTION, 4);
+		item.addUnsafeEnchantment(CustomEnchants.RESISTANCE, 1);
+		item.addUnsafeEnchantment(CustomEnchants.HERO, 2);
+		item.addUnsafeEnchantment(CustomEnchants.STRENGTH, 3);
+		item.addUnsafeEnchantment(CustomEnchants.VULCAN, 1);
+
+		return item;
+	}
+	
+	public ItemStack c5Elytra() {
+		ItemStack item = new ItemStack(Material.ELYTRA);
+		ItemMeta meta = item.getItemMeta();
+		
+		meta.setDisplayName(ChatColor.LIGHT_PURPLE + "" + ChatColor.BOLD + "T10 Terminal Stone Elytra");
 		meta.addEnchant(Enchantment.THORNS, 7, true);
 		meta.setUnbreakable(true);
 
 		List<String> lore = new ArrayList<String>();
 		lore.add(ChatColor.GRAY + "Haste II");
-		lore.add(ChatColor.GRAY + "Dolphin");
 		lore.add("");
 		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "These wings mobilize the power of ");
-		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "472,392 Cobblestone");
+		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "629,856 Cobblestone");
 		lore.add("");
 		lore.add(ChatColor.GOLD + "Set Bonus:");
 		lore.add(ChatColor.GRAY + "Lucky V");
@@ -2961,7 +3072,6 @@ public class Tools {
 		item.addUnsafeEnchantment(CustomEnchants.HEALTHY, 1);
 		item.addUnsafeEnchantment(CustomEnchants.RESISTANCE, 2);
 		item.addUnsafeEnchantment(CustomEnchants.STRENGTH, 4);
-		item.addUnsafeEnchantment(CustomEnchants.DOLPHIN, 1);
 		item.addUnsafeEnchantment(CustomEnchants.VULCAN, 2);
 
 		return item;

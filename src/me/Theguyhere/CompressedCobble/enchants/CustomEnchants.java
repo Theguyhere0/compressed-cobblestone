@@ -10,9 +10,9 @@ public class CustomEnchants {
 	public static final Enchantment TELEPATHY = new EnchantmentWrapper("telepathy", "Telepathy", 1);
 	public static final Enchantment STONY = new EnchantmentWrapper("stony", "Stony", 5);
 	public static final Enchantment FIERY = new EnchantmentWrapper("fiery", "Fiery", 1);
-	public static final Enchantment PETRIFYING = new EnchantmentWrapper("petrifying", "Petrifying", 5);
+	public static final Enchantment PETRIFYING = new EnchantmentWrapper("petrifying", "Petrifying", 6);
 	public static final Enchantment ROCKY = new EnchantmentWrapper("rocky", "Rocky", 5);
-	public static final Enchantment PEBBLY = new EnchantmentWrapper("pebbly", "Pebbly", 5);
+	public static final Enchantment PEBBLY = new EnchantmentWrapper("pebbly", "Pebbly", 6);
 	public static final Enchantment MEDUSA = new EnchantmentWrapper("medusa", "Medusa", 8);
 	public static final Enchantment RADAR = new EnchantmentWrapper("radar", "Radar", 1);
 	public static final Enchantment WATER_BREATHING = new EnchantmentWrapper("water_breathing", "Water Breathing", 1);
@@ -27,12 +27,13 @@ public class CustomEnchants {
 	public static final Enchantment HERO = new EnchantmentWrapper("hero", "Hero", 5);
 	public static final Enchantment HEALTHY = new EnchantmentWrapper("healthy", "Healthy", 1);
 	public static final Enchantment DOLPHIN = new EnchantmentWrapper("dolphin", "Dolphin", 5);
-	public static final Enchantment JUMP = new EnchantmentWrapper("jump", "Jump", 5);
+	public static final Enchantment JUMP = new EnchantmentWrapper("jump", "Jump", 2);
 	public static final Enchantment VULCAN = new EnchantmentWrapper("vulcan", "Vulcan", 2);
 	public static final Enchantment PROJECTILE = new EnchantmentWrapper("projectile", "Projectile", 2);
 	public static final Enchantment POWERED = new EnchantmentWrapper("powered", "Powered", 2);
 	public static final Enchantment ROCKET = new EnchantmentWrapper("rocket", "Rocket", 1);
 	public static final Enchantment IMMUNITY = new EnchantmentWrapper("immunity", "Immunity", 2);
+	public static final Enchantment DISARMING = new EnchantmentWrapper("disarming", "Disarming", 2);
 
 	public static void register() {
 		boolean regTelepathy = Arrays.stream(Enchantment.values()).collect(Collectors.toList()).contains(CustomEnchants.TELEPATHY);
@@ -61,6 +62,7 @@ public class CustomEnchants {
 		boolean regPowered = Arrays.stream(Enchantment.values()).collect(Collectors.toList()).contains(CustomEnchants.POWERED);
 		boolean regRocket = Arrays.stream(Enchantment.values()).collect(Collectors.toList()).contains(CustomEnchants.ROCKET);
 		boolean regImmunity = Arrays.stream(Enchantment.values()).collect(Collectors.toList()).contains(CustomEnchants.IMMUNITY);
+		boolean regDisarming = Arrays.stream(Enchantment.values()).collect(Collectors.toList()).contains(CustomEnchants.DISARMING);
 
 		if (!regTelepathy)
 			registerEnchantment(TELEPATHY);
@@ -114,6 +116,8 @@ public class CustomEnchants {
 			registerEnchantment(ROCKET);
 		if (!regImmunity)
 			registerEnchantment(IMMUNITY);
+		if (!regDisarming)
+			registerEnchantment(DISARMING);
 	}
 	
 	public static void registerEnchantment(Enchantment enchantment) {

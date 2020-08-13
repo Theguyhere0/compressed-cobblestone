@@ -31,6 +31,7 @@ import org.bukkit.event.player.PlayerStatisticIncrementEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.Plugin;
 
+import me.Theguyhere.CompressedCobble.enchants.CustomEnchants;
 import me.Theguyhere.CompressedCobble.items.Tools;
 
 public class MobSpawnEvents implements Listener {
@@ -42,6 +43,7 @@ public class MobSpawnEvents implements Listener {
 
 	private HashMap<String, Location> locations = new HashMap<>();
 	private HashMap<String, Integer> tiers = new HashMap<>();
+	private HashMap<String, Integer> disarm = new HashMap<>();
 
 	@EventHandler()
 	public void onSpawn(CreatureSpawnEvent e) {
@@ -68,22 +70,29 @@ public class MobSpawnEvents implements Listener {
 		Location loc = e.getLocation();
 		Set<String> names = new HashSet<>();
 		int lvl = 0;
+		int disarming = 0;
 		if (locations.isEmpty())
 			return;
 		
 		locations.forEach((k, v) -> {
-			if (e.getEntity().getWorld().getEnvironment() == loc.getWorld().getEnvironment())
+			if (v.getWorld().getEnvironment().equals(loc.getWorld().getEnvironment()))
 				if (loc.distance(v) < 200)
 					names.add(k);
 		});
 		for (String i : names) {
 			if (tiers.get(i) > lvl)
 				lvl = tiers.get(i);
+				disarming = disarm.get(i);
 		}
+//		System.out.print(disarming);
+		if (disarming == 1)
+			lvl -= 2;
+		if (disarming == 2)
+			lvl = 0;
 		
 		String config = "tier" + lvl;
 		
-		if (lvl == 0)
+		if (lvl < 1)
 			return;
 		
 		if (basicMobs.contains(type)) {
@@ -257,7 +266,7 @@ public class MobSpawnEvents implements Listener {
 				full.getEquipment().setItemInMainHandDropChance(0);
 				return;
 			}
-			if (result == 0)
+			if (result < 1)
 				return;
 			return;
 		}
@@ -618,16 +627,20 @@ public class MobSpawnEvents implements Listener {
 	public void playerStat(PlayerStatisticIncrementEvent e) {
 		if (!e.getStatistic().equals(Statistic.TIME_SINCE_REST))
 			return;
-//		System.out.print(e.getStatistic() + "a");
+		
 		Player player = e.getPlayer();
 		if (player.getGameMode() == GameMode.CREATIVE || player.getGameMode() == GameMode.SPECTATOR) {
 			if (locations.containsKey(player.getName()))
 				locations.remove(player.getName());
 			if (tiers.containsKey(player.getName()))
 				tiers.remove(player.getName());
+			if (disarm.containsKey(player.getName()))
+				disarm.remove(player.getName());
 			return;
 		}
+		
 		int highestTier = 0;
+		int disarming = 0;
 		Set<String> keyValues = new HashSet<>();
 		Collection<Material> materials = new HashSet<>();
 		materials.add(Material.STONE_AXE);
@@ -674,6 +687,7 @@ public class MobSpawnEvents implements Listener {
 		materials.add(Material.BOW);
 		materials.add(Material.CROSSBOW);
 		materials.add(Material.TRIDENT);
+		materials.add(Material.SHIELD);
 
 		for (Material m : materials) {
 			Set<Integer> preKeys = player.getInventory().all(m).keySet();
@@ -684,13 +698,18 @@ public class MobSpawnEvents implements Listener {
 			}
 		}
 		
-//		System.out.print(player.getName() + "b");
+		ItemStack item = player.getInventory().getItemInOffHand();
+		if (!(item == null || item.getType() == Material.AIR))	
+			if (item.getItemMeta().hasLore())
+				keyValues.add(item.getItemMeta().getDisplayName().substring(0, 4));
 		
 		if (keyValues.isEmpty()) {
 			if (locations.containsKey(player.getName()))
 				locations.remove(player.getName());
 			if (tiers.containsKey(player.getName()))
 				tiers.remove(player.getName());
+			if (disarm.containsKey(player.getName()))
+				disarm.remove(player.getName());
 			return;
 		}
 		
@@ -720,13 +739,18 @@ public class MobSpawnEvents implements Listener {
 				locations.remove(player.getName());
 			if (tiers.containsKey(player.getName()))
 				tiers.remove(player.getName());
+			if (disarm.containsKey(player.getName()))
+				disarm.remove(player.getName());
 			return;
 		}
-		
-//		System.out.print(highestTier + "c");
-		
+				
+		if (!(player.getInventory().getHelmet() == null || player.getInventory().getHelmet().getType() == Material.AIR))
+		if (player.getInventory().getHelmet().equals(new Tools().cNotHelmet()) || player.getInventory().getHelmet().equals(new Tools().cAHelmet()))
+			disarming = player.getInventory().getHelmet().getItemMeta().getEnchantLevel(CustomEnchants.DISARMING);
+//		System.out.print(player.getInventory().getHelmet().getItemMeta().getEnchantLevel(CustomEnchants.DISARMING));
 		locations.put(player.getName(), player.getLocation());
 		tiers.put(player.getName(), highestTier);
+		disarm.put(player.getName(), disarming);
 		return;
 	}
 	
@@ -738,6 +762,8 @@ public class MobSpawnEvents implements Listener {
 			return;
 		LivingEntity skelly = (LivingEntity) e.getEntity().getShooter();
 		Arrow arrow = (Arrow) e.getEntity();
+		if (skelly.getEquipment().getBoots() == null || skelly.getEquipment().getBoots().getType() == Material.AIR)
+			return;
 		if (skelly.getEquipment().getBoots().getItemMeta().getDisplayName().substring(0, 4).equals("Åò4T7")) {
 			arrow.setDamage(arrow.getDamage() + 2);
 			return;

@@ -22,6 +22,8 @@ import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.event.player.PlayerStatisticIncrementEvent;
 import org.bukkit.inventory.ItemStack;
 
+import me.Theguyhere.CompressedCobble.enchants.CustomEnchants;
+
 public class LevelRestrictEvents implements Listener {
 	Material[] chainmails = {Material.CHAINMAIL_HELMET, Material.CHAINMAIL_CHESTPLATE, Material.CHAINMAIL_LEGGINGS,
 			Material.CHAINMAIL_BOOTS};
@@ -272,6 +274,10 @@ public class LevelRestrictEvents implements Listener {
 					req = 45;
 				if (helmet.getItemMeta().getDisplayName().substring(0, 4).equals("ÅòdÅòl"))
 					req = 50;
+				if (helmet.getItemMeta().getDisplayName().substring(0, 4).equals("Åò5Åòl"))
+					req = 55;
+				if (helmet.getItemMeta().getDisplayName().substring(0, 4).equals("Åò1Åòl"))
+					req = 60;
 			}
 			if (lvl < req) {
 					if (player.getInventory().firstEmpty() == -1) {
@@ -413,7 +419,7 @@ public class LevelRestrictEvents implements Listener {
 	}
 	
 	@EventHandler()
-	public void checkShield(PlayerStatisticIncrementEvent e) {
+	public void checkOffHand(PlayerStatisticIncrementEvent e) {
 		if (!e.getStatistic().equals(Statistic.TIME_SINCE_REST))
 			return;
 		
@@ -424,30 +430,63 @@ public class LevelRestrictEvents implements Listener {
 		
 		int lvl = player.getLevel();
 		int req = 0;
-		ItemStack shield = player.getInventory().getItemInOffHand();
+		ItemStack off = player.getInventory().getItemInOffHand();
 		Location loc = player.getLocation();
 		World world = player.getWorld();
 
-		if (!(shield == null || shield.getType() == Material.AIR)) {
-			if (shield.getItemMeta().hasLore()) {
-				if (shield.getItemMeta().getDisplayName().substring(0, 4).equals("Åò6T5"))
+		if (!(off == null || off.getType() == Material.AIR)) {
+			if (!off.getItemMeta().hasLore()) {
+				if (iron.contains(off.getType()))
+					req = 10;
+				if (diamond.contains(off.getType()))
+					req = 20;
+				if (netherite.contains(off.getType()))
+					req = 30;
+			}
+			else {
+				if (off.getItemMeta().getDisplayName().substring(0, 4).equals("ÅòfT1"))
+					req = 5;
+				if (off.getItemMeta().getDisplayName().substring(0, 4).equals("ÅòeT2"))
+					req = 10;
+				if (off.getItemMeta().getDisplayName().substring(0, 4).equals("ÅòeT3"))
+					req = 15;
+				if (off.getItemMeta().getDisplayName().substring(0, 4).equals("Åò6T4"))
+					req = 20;
+				if (off.getItemMeta().getDisplayName().substring(0, 4).equals("Åò6T5"))
 					req = 25;
-				if (shield.getItemMeta().getDisplayName().substring(0, 4).equals("ÅòcT8"))
+				if (off.getItemMeta().getDisplayName().substring(0, 4).equals("Åò4T6"))
+					req = 30;
+				if (off.getItemMeta().getDisplayName().substring(0, 4).equals("Åò4T7"))
+					req = 35;
+				if (off.getItemMeta().getDisplayName().substring(0, 4).equals("ÅòcT8"))
 					req = 40;
-				if (shield.getItemMeta().getDisplayName().substring(0, 4).equals("ÅòdÅòl"))
+				if (off.getItemMeta().getDisplayName().substring(0, 4).equals("ÅòcÅòl"))
+					req = 45;
+				if (off.getItemMeta().getDisplayName().substring(0, 4).equals("ÅòdÅòl"))
 					req = 50;
 			}
 			if (lvl < req) {
-					if (player.getInventory().firstEmpty() == -1) {
+				if (player.getInventory().firstEmpty() == -1) {
 //						inventory is full				
-						world.dropItemNaturally(loc, shield);
-						player.sendMessage(ChatColor.RED + "Your inventory is full!");
-					}
-					else player.getInventory().addItem(shield);
-					player.getInventory().setItemInOffHand(null);
+					world.dropItemNaturally(loc, off);
+					player.sendMessage(ChatColor.RED + "Your inventory is full!");
+				}
+				else player.getInventory().addItem(off);
+				player.getInventory().setItemInOffHand(null);
 				player.sendMessage(ChatColor.RED + "Your level is not high enough to use this!");
 			}
 		}
+		if (player.getInventory().getItemInOffHand().getType().equals(Material.TRIDENT) && player.getInventory().getItemInOffHand().getItemMeta().hasLore())
+			if (player.getInventory().getItemInOffHand().getItemMeta().hasEnchant(CustomEnchants.ROCKET)) {
+				if (player.getInventory().firstEmpty() == -1) {
+//					inventory is full				
+					world.dropItemNaturally(loc, off);
+					player.sendMessage(ChatColor.RED + "Your inventory is full!");
+				}
+				else player.getInventory().addItem(off);
+				player.getInventory().setItemInOffHand(null);
+				player.sendMessage(ChatColor.RED + "You can't hold this in your off hand!!");
+			}
 	}
 	
 	@EventHandler()
