@@ -75,7 +75,7 @@ public class MobSpawnEvents implements Listener {
 			return;
 		
 		locations.forEach((k, v) -> {
-			if (v.getWorld().getEnvironment().equals(loc.getWorld().getEnvironment()))
+			if (v.getWorld().equals(loc.getWorld()))
 				if (loc.distance(v) < 200)
 					names.add(k);
 		});

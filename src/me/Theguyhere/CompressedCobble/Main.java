@@ -1484,7 +1484,7 @@ public class Main extends JavaPlugin implements Listener {
 	}
 	
 	public ShapelessRecipe cNotAltRecipe() {
-		ItemStack item = new Resources().c5();
+		ItemStack item = new Resources().cNot();
 		
 		NamespacedKey key = new NamespacedKey(this, "cNot_cobblestone_alt");
 		
@@ -1523,7 +1523,7 @@ public class Main extends JavaPlugin implements Listener {
 	}
 	
 	public ShapelessRecipe cAAltRecipe() {
-		ItemStack item = new Resources().c5();
+		ItemStack item = new Resources().cA();
 		
 		NamespacedKey key = new NamespacedKey(this, "cA_cobblestone_alt");
 		
