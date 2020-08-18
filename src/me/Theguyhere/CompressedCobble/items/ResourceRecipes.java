@@ -17,7 +17,19 @@ public class ResourceRecipes implements Listener {
 		this.plugin = plugin;
 	}
 	
-	public ShapelessRecipe cobbleConversion() {
+	public ShapelessRecipe fleshConversion() {
+		ItemStack item = new ItemStack(Material.LEATHER);
+		
+		NamespacedKey key = new NamespacedKey(plugin, "leather");
+		
+		ShapelessRecipe recipe = new ShapelessRecipe(key, item);
+		
+		recipe.addIngredient(9, Material.ROTTEN_FLESH);
+		
+		return recipe;
+	}
+	
+	public ShapelessRecipe blackstoneConversion() {
 		ItemStack item = new ItemStack(Material.COBBLESTONE, 2);
 		
 		NamespacedKey key = new NamespacedKey(plugin, "cobblestone_x2");

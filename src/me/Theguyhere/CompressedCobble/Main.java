@@ -25,7 +25,8 @@ public class Main extends JavaPlugin implements Listener {
 //		Resources
 		ResourceRecipes rr = new ResourceRecipes(this);
 		
-		Bukkit.addRecipe(rr.cobbleConversion());
+		Bukkit.addRecipe(rr.fleshConversion());
+		Bukkit.addRecipe(rr.blackstoneConversion());
 		Bukkit.addRecipe(rr.netherrackConversion());
 		Bukkit.addRecipe(rr.coalConversion());
 		Bukkit.addRecipe(rr.redstoneConversion());
@@ -382,8 +383,11 @@ public class Main extends JavaPlugin implements Listener {
 	        return false;
 	    if(a.hasItemMeta() != b.hasItemMeta())
 	        return false;
-	    if(a.hasItemMeta() && !a.getItemMeta().getLore().equals(b.getItemMeta().getLore()))
+	    if(a.getItemMeta().hasLore() != b.getItemMeta().hasLore())
 	        return false;
+	    if (a.getItemMeta().hasLore() && b.getItemMeta().hasLore())
+		    if(!a.getItemMeta().getLore().equals(b.getItemMeta().getLore()))
+		        return false;
 	    return true;
 	}
 }

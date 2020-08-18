@@ -698,14 +698,6 @@ public class MobSpawnEvents implements Listener {
 				keyItems.add(item);
 				
 		for (ItemStack i : keyItems) {
-			if (highestTier < 12)
-				for (ItemStack j : new Armor().antis())
-					if (Main.equals(i, j))
-						highestTier = 12;
-			if (highestTier < 11)
-				for (ItemStack j : new Armor().nots())
-					if (Main.equals(i, j))
-						highestTier = 11;
 			if (highestTier < 10) {
 				for (ItemStack j : new Tools().t10s())
 					if (Main.equals(i, j))
@@ -787,7 +779,7 @@ public class MobSpawnEvents implements Listener {
 						highestTier = 1;
 			}
 		}
-				
+		
 		if (highestTier == 0) {
 			if (locations.containsKey(player.getName()))
 				locations.remove(player.getName());
@@ -801,7 +793,7 @@ public class MobSpawnEvents implements Listener {
 		if (!(player.getInventory().getHelmet() == null || player.getInventory().getHelmet().getType() == Material.AIR))
 		if (player.getInventory().getHelmet().equals(new Armor().notHelmet()) || player.getInventory().getHelmet().equals(new Armor().aHelmet()))
 			disarming = player.getInventory().getHelmet().getItemMeta().getEnchantLevel(CustomEnchants.DISARMING);
-//		System.out.print(player.getInventory().getHelmet().getItemMeta().getEnchantLevel(CustomEnchants.DISARMING));
+		highestTier += disarming;
 		locations.put(player.getName(), player.getLocation());
 		tiers.put(player.getName(), highestTier);
 		disarm.put(player.getName(), disarming);
