@@ -32,6 +32,7 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.Plugin;
 
 import me.Theguyhere.CompressedCobble.enchants.CustomEnchants;
+import me.Theguyhere.CompressedCobble.items.Armor;
 import me.Theguyhere.CompressedCobble.items.Tools;
 
 public class MobSpawnEvents implements Listener {
@@ -84,7 +85,7 @@ public class MobSpawnEvents implements Listener {
 				lvl = tiers.get(i);
 				disarming = disarm.get(i);
 		}
-//		System.out.print(disarming);
+
 		if (disarming == 1)
 			lvl -= 2;
 		if (disarming == 2)
@@ -92,7 +93,7 @@ public class MobSpawnEvents implements Listener {
 		
 		String config = "tier" + lvl;
 		
-		if (lvl < 1)
+		if (lvl == 0 || lvl == 11 || lvl == 12)
 			return;
 		
 		if (basicMobs.contains(type)) {
@@ -137,11 +138,11 @@ public class MobSpawnEvents implements Listener {
 			int result = items[num];
 			
 			if (result == 1) {
-				full.getEquipment().setHelmet(new Tools().c0p5Helmet());
-				full.getEquipment().setChestplate(new Tools().c0p5Chestplate());
-				full.getEquipment().setLeggings(new Tools().c0p5Leggings());
-				full.getEquipment().setBoots(new Tools().c0p5Boots());
-				full.getEquipment().setItemInMainHand(new Tools().c0p5Axe());
+				full.getEquipment().setHelmet(new Armor().t1Helmet());
+				full.getEquipment().setChestplate(new Armor().t1Chestplate());
+				full.getEquipment().setLeggings(new Armor().t1Leggings());
+				full.getEquipment().setBoots(new Armor().t1Boots());
+				full.getEquipment().setItemInMainHand(new Tools().t1Axe());
 				full.getEquipment().setHelmetDropChance(0);
 				full.getEquipment().setChestplateDropChance(0);
 				full.getEquipment().setLeggingsDropChance(0);
@@ -150,11 +151,11 @@ public class MobSpawnEvents implements Listener {
 				return;
 			}
 			if (result == 2) {
-				full.getEquipment().setHelmet(new Tools().c1Helmet());
-				full.getEquipment().setChestplate(new Tools().c1Chestplate());
-				full.getEquipment().setLeggings(new Tools().c1Leggings());
-				full.getEquipment().setBoots(new Tools().c1Boots());
-				full.getEquipment().setItemInMainHand(new Tools().c1Axe());
+				full.getEquipment().setHelmet(new Armor().t2Helmet());
+				full.getEquipment().setChestplate(new Armor().t2Chestplate());
+				full.getEquipment().setLeggings(new Armor().t2Leggings());
+				full.getEquipment().setBoots(new Armor().t2Boots());
+				full.getEquipment().setItemInMainHand(new Tools().t2Axe());
 				full.getEquipment().setHelmetDropChance(0);
 				full.getEquipment().setChestplateDropChance(0);
 				full.getEquipment().setLeggingsDropChance(0);
@@ -163,11 +164,11 @@ public class MobSpawnEvents implements Listener {
 				return;					
 			}
 			if (result == 3) {
-				full.getEquipment().setHelmet(new Tools().c1p5Helmet());
-				full.getEquipment().setChestplate(new Tools().c1p5Chestplate());
-				full.getEquipment().setLeggings(new Tools().c1p5Leggings());
-				full.getEquipment().setBoots(new Tools().c1p5Boots());
-				full.getEquipment().setItemInMainHand(new Tools().c1p5Axe());
+				full.getEquipment().setHelmet(new Armor().t3Helmet());
+				full.getEquipment().setChestplate(new Armor().t3Chestplate());
+				full.getEquipment().setLeggings(new Armor().t3Leggings());
+				full.getEquipment().setBoots(new Armor().t3Boots());
+				full.getEquipment().setItemInMainHand(new Tools().t3Axe());
 				full.getEquipment().setHelmetDropChance(0);
 				full.getEquipment().setChestplateDropChance(0);
 				full.getEquipment().setLeggingsDropChance(0);
@@ -176,11 +177,11 @@ public class MobSpawnEvents implements Listener {
 				return;
 			}
 			if (result == 4) {
-				full.getEquipment().setHelmet(new Tools().c2Helmet());
-				full.getEquipment().setChestplate(new Tools().c2Chestplate());
-				full.getEquipment().setLeggings(new Tools().c2Leggings());
-				full.getEquipment().setBoots(new Tools().c2Boots());
-				full.getEquipment().setItemInMainHand(new Tools().c2Axe());
+				full.getEquipment().setHelmet(new Armor().t4Helmet());
+				full.getEquipment().setChestplate(new Armor().t4Chestplate());
+				full.getEquipment().setLeggings(new Armor().t4Leggings());
+				full.getEquipment().setBoots(new Armor().t4Boots());
+				full.getEquipment().setItemInMainHand(new Tools().t4Axe());
 				full.getEquipment().setHelmetDropChance(0);
 				full.getEquipment().setChestplateDropChance(0);
 				full.getEquipment().setLeggingsDropChance(0);
@@ -189,11 +190,11 @@ public class MobSpawnEvents implements Listener {
 				return;
 			}
 			if (result == 5) {
-				full.getEquipment().setHelmet(new Tools().c2p5Helmet());
-				full.getEquipment().setChestplate(new Tools().c2p5Chestplate());
-				full.getEquipment().setLeggings(new Tools().c2p5Leggings());
-				full.getEquipment().setBoots(new Tools().c2p5Boots());
-				full.getEquipment().setItemInMainHand(new Tools().c2p5Axe());
+				full.getEquipment().setHelmet(new Armor().t5Helmet());
+				full.getEquipment().setChestplate(new Armor().t5Chestplate());
+				full.getEquipment().setLeggings(new Armor().t5Leggings());
+				full.getEquipment().setBoots(new Armor().t5Boots());
+				full.getEquipment().setItemInMainHand(new Tools().t5Axe());
 				full.getEquipment().setHelmetDropChance(0);
 				full.getEquipment().setChestplateDropChance(0);
 				full.getEquipment().setLeggingsDropChance(0);
@@ -202,11 +203,11 @@ public class MobSpawnEvents implements Listener {
 				return;
 			}
 			if (result == 6) {
-				full.getEquipment().setHelmet(new Tools().c3Helmet());
-				full.getEquipment().setChestplate(new Tools().c3Chestplate());
-				full.getEquipment().setLeggings(new Tools().c3Leggings());
-				full.getEquipment().setBoots(new Tools().c3Boots());
-				full.getEquipment().setItemInMainHand(new Tools().c3Axe());
+				full.getEquipment().setHelmet(new Armor().t6Helmet());
+				full.getEquipment().setChestplate(new Armor().t6Chestplate());
+				full.getEquipment().setLeggings(new Armor().t6Leggings());
+				full.getEquipment().setBoots(new Armor().t6Boots());
+				full.getEquipment().setItemInMainHand(new Tools().t6Axe());
 				full.getEquipment().setHelmetDropChance(0);
 				full.getEquipment().setChestplateDropChance(0);
 				full.getEquipment().setLeggingsDropChance(0);
@@ -215,11 +216,11 @@ public class MobSpawnEvents implements Listener {
 				return;
 			}
 			if (result == 7) {
-				full.getEquipment().setHelmet(new Tools().c3p5Helmet());
-				full.getEquipment().setChestplate(new Tools().c3p5Chestplate());
-				full.getEquipment().setLeggings(new Tools().c3p5Leggings());
-				full.getEquipment().setBoots(new Tools().c3p5Boots());
-				full.getEquipment().setItemInMainHand(new Tools().c3p5Axe());
+				full.getEquipment().setHelmet(new Armor().t7Helmet());
+				full.getEquipment().setChestplate(new Armor().t7Chestplate());
+				full.getEquipment().setLeggings(new Armor().t7Leggings());
+				full.getEquipment().setBoots(new Armor().t7Boots());
+				full.getEquipment().setItemInMainHand(new Tools().t7Axe());
 				full.getEquipment().setHelmetDropChance(0);
 				full.getEquipment().setChestplateDropChance(0);
 				full.getEquipment().setLeggingsDropChance(0);
@@ -228,11 +229,11 @@ public class MobSpawnEvents implements Listener {
 				return;
 			}
 			if (result == 8) {
-				full.getEquipment().setHelmet(new Tools().c4Helmet());
-				full.getEquipment().setChestplate(new Tools().c4Chestplate());
-				full.getEquipment().setLeggings(new Tools().c4Leggings());
-				full.getEquipment().setBoots(new Tools().c4Boots());
-				full.getEquipment().setItemInMainHand(new Tools().c4Axe());
+				full.getEquipment().setHelmet(new Armor().t8Helmet());
+				full.getEquipment().setChestplate(new Armor().t8Chestplate());
+				full.getEquipment().setLeggings(new Armor().t8Leggings());
+				full.getEquipment().setBoots(new Armor().t8Boots());
+				full.getEquipment().setItemInMainHand(new Tools().t8Axe());
 				full.getEquipment().setHelmetDropChance(0);
 				full.getEquipment().setChestplateDropChance(0);
 				full.getEquipment().setLeggingsDropChance(0);
@@ -241,11 +242,11 @@ public class MobSpawnEvents implements Listener {
 				return;
 			}
 			if (result == 9) {
-				full.getEquipment().setHelmet(new Tools().c4p5Helmet());
-				full.getEquipment().setChestplate(new Tools().c4p5Chestplate());
-				full.getEquipment().setLeggings(new Tools().c4p5Leggings());
-				full.getEquipment().setBoots(new Tools().c4p5Boots());
-				full.getEquipment().setItemInMainHand(new Tools().c4p5Axe());
+				full.getEquipment().setHelmet(new Armor().t9Helmet());
+				full.getEquipment().setChestplate(new Armor().t9Chestplate());
+				full.getEquipment().setLeggings(new Armor().t9Leggings());
+				full.getEquipment().setBoots(new Armor().t9Boots());
+				full.getEquipment().setItemInMainHand(new Tools().t9Axe());
 				full.getEquipment().setHelmetDropChance(0);
 				full.getEquipment().setChestplateDropChance(0);
 				full.getEquipment().setLeggingsDropChance(0);
@@ -254,11 +255,11 @@ public class MobSpawnEvents implements Listener {
 				return;
 			}
 			if (result == 10) {
-				full.getEquipment().setHelmet(new Tools().c5Helmet());
-				full.getEquipment().setChestplate(new Tools().c5Chestplate());
-				full.getEquipment().setLeggings(new Tools().c5Leggings());
-				full.getEquipment().setBoots(new Tools().c5Boots());
-				full.getEquipment().setItemInMainHand(new Tools().c5Axe());
+				full.getEquipment().setHelmet(new Armor().t10Helmet());
+				full.getEquipment().setChestplate(new Armor().t10Chestplate());
+				full.getEquipment().setLeggings(new Armor().t10Leggings());
+				full.getEquipment().setBoots(new Armor().t10Boots());
+				full.getEquipment().setItemInMainHand(new Tools().t10Axe());
 				full.getEquipment().setHelmetDropChance(0);
 				full.getEquipment().setChestplateDropChance(0);
 				full.getEquipment().setLeggingsDropChance(0);
@@ -266,8 +267,6 @@ public class MobSpawnEvents implements Listener {
 				full.getEquipment().setItemInMainHandDropChance(0);
 				return;
 			}
-			if (result < 1)
-				return;
 			return;
 		}
 		
@@ -288,11 +287,11 @@ public class MobSpawnEvents implements Listener {
 			AttributeModifier boost = new AttributeModifier("boost", orig * 50 * (result - 6), Operation.ADD_NUMBER);
 
 			if (result == 1) {
-				full.getEquipment().setHelmet(new Tools().c0p5Helmet());
-				full.getEquipment().setChestplate(new Tools().c0p5Chestplate());
-				full.getEquipment().setLeggings(new Tools().c0p5Leggings());
-				full.getEquipment().setBoots(new Tools().c0p5Boots());
-				full.getEquipment().setItemInMainHand(new Tools().c0p5Range());
+				full.getEquipment().setHelmet(new Armor().t1Helmet());
+				full.getEquipment().setChestplate(new Armor().t1Chestplate());
+				full.getEquipment().setLeggings(new Armor().t1Leggings());
+				full.getEquipment().setBoots(new Armor().t1Boots());
+				full.getEquipment().setItemInMainHand(new Tools().t1Range());
 				full.getEquipment().setHelmetDropChance(0);
 				full.getEquipment().setChestplateDropChance(0);
 				full.getEquipment().setLeggingsDropChance(0);
@@ -301,11 +300,11 @@ public class MobSpawnEvents implements Listener {
 				return;
 			}
 			if (result == 2) {
-				full.getEquipment().setHelmet(new Tools().c1Helmet());
-				full.getEquipment().setChestplate(new Tools().c1Chestplate());
-				full.getEquipment().setLeggings(new Tools().c1Leggings());
-				full.getEquipment().setBoots(new Tools().c1Boots());
-				full.getEquipment().setItemInMainHand(new Tools().c1Range());
+				full.getEquipment().setHelmet(new Armor().t2Helmet());
+				full.getEquipment().setChestplate(new Armor().t2Chestplate());
+				full.getEquipment().setLeggings(new Armor().t2Leggings());
+				full.getEquipment().setBoots(new Armor().t2Boots());
+				full.getEquipment().setItemInMainHand(new Tools().t2Range());
 				full.getEquipment().setHelmetDropChance(0);
 				full.getEquipment().setChestplateDropChance(0);
 				full.getEquipment().setLeggingsDropChance(0);
@@ -314,11 +313,11 @@ public class MobSpawnEvents implements Listener {
 				return;					
 			}
 			if (result == 3) {
-				full.getEquipment().setHelmet(new Tools().c1p5Helmet());
-				full.getEquipment().setChestplate(new Tools().c1p5Chestplate());
-				full.getEquipment().setLeggings(new Tools().c1p5Leggings());
-				full.getEquipment().setBoots(new Tools().c1p5Boots());
-				full.getEquipment().setItemInMainHand(new Tools().c1p5Range());
+				full.getEquipment().setHelmet(new Armor().t3Helmet());
+				full.getEquipment().setChestplate(new Armor().t3Chestplate());
+				full.getEquipment().setLeggings(new Armor().t3Leggings());
+				full.getEquipment().setBoots(new Armor().t3Boots());
+				full.getEquipment().setItemInMainHand(new Tools().t3Range());
 				full.getEquipment().setHelmetDropChance(0);
 				full.getEquipment().setChestplateDropChance(0);
 				full.getEquipment().setLeggingsDropChance(0);
@@ -327,11 +326,11 @@ public class MobSpawnEvents implements Listener {
 				return;
 			}
 			if (result == 4) {
-				full.getEquipment().setHelmet(new Tools().c2Helmet());
-				full.getEquipment().setChestplate(new Tools().c2Chestplate());
-				full.getEquipment().setLeggings(new Tools().c2Leggings());
-				full.getEquipment().setBoots(new Tools().c2Boots());
-				full.getEquipment().setItemInMainHand(new Tools().c2Range());
+				full.getEquipment().setHelmet(new Armor().t4Helmet());
+				full.getEquipment().setChestplate(new Armor().t4Chestplate());
+				full.getEquipment().setLeggings(new Armor().t4Leggings());
+				full.getEquipment().setBoots(new Armor().t4Boots());
+				full.getEquipment().setItemInMainHand(new Tools().t4Range());
 				full.getEquipment().setHelmetDropChance(0);
 				full.getEquipment().setChestplateDropChance(0);
 				full.getEquipment().setLeggingsDropChance(0);
@@ -340,11 +339,11 @@ public class MobSpawnEvents implements Listener {
 				return;
 			}
 			if (result == 5) {
-				full.getEquipment().setHelmet(new Tools().c2p5Helmet());
-				full.getEquipment().setChestplate(new Tools().c2p5Chestplate());
-				full.getEquipment().setLeggings(new Tools().c2p5Leggings());
-				full.getEquipment().setBoots(new Tools().c2p5Boots());
-				full.getEquipment().setItemInMainHand(new Tools().c2p5Range());
+				full.getEquipment().setHelmet(new Armor().t5Helmet());
+				full.getEquipment().setChestplate(new Armor().t5Chestplate());
+				full.getEquipment().setLeggings(new Armor().t5Leggings());
+				full.getEquipment().setBoots(new Armor().t5Boots());
+				full.getEquipment().setItemInMainHand(new Tools().t5Range());
 				full.getEquipment().setHelmetDropChance(0);
 				full.getEquipment().setChestplateDropChance(0);
 				full.getEquipment().setLeggingsDropChance(0);
@@ -353,11 +352,11 @@ public class MobSpawnEvents implements Listener {
 				return;
 			}
 			if (result == 6) {
-				full.getEquipment().setHelmet(new Tools().c3Helmet());
-				full.getEquipment().setChestplate(new Tools().c3Chestplate());
-				full.getEquipment().setLeggings(new Tools().c3Leggings());
-				full.getEquipment().setBoots(new Tools().c3Boots());
-				full.getEquipment().setItemInMainHand(new Tools().c3Range());
+				full.getEquipment().setHelmet(new Armor().t6Helmet());
+				full.getEquipment().setChestplate(new Armor().t6Chestplate());
+				full.getEquipment().setLeggings(new Armor().t6Leggings());
+				full.getEquipment().setBoots(new Armor().t6Boots());
+				full.getEquipment().setItemInMainHand(new Tools().t6Range());
 				full.getEquipment().setHelmetDropChance(0);
 				full.getEquipment().setChestplateDropChance(0);
 				full.getEquipment().setLeggingsDropChance(0);
@@ -366,11 +365,11 @@ public class MobSpawnEvents implements Listener {
 				return;
 			}
 			if (result == 7) {
-				full.getEquipment().setHelmet(new Tools().c3p5Helmet());
-				full.getEquipment().setChestplate(new Tools().c3p5Chestplate());
-				full.getEquipment().setLeggings(new Tools().c3p5Leggings());
-				full.getEquipment().setBoots(new Tools().c3p5Boots());
-				full.getEquipment().setItemInMainHand(new Tools().c3Range());
+				full.getEquipment().setHelmet(new Armor().t7Helmet());
+				full.getEquipment().setChestplate(new Armor().t7Chestplate());
+				full.getEquipment().setLeggings(new Armor().t7Leggings());
+				full.getEquipment().setBoots(new Armor().t7Boots());
+				full.getEquipment().setItemInMainHand(new Tools().t6Range());
 				full.getEquipment().setHelmetDropChance(0);
 				full.getEquipment().setChestplateDropChance(0);
 				full.getEquipment().setLeggingsDropChance(0);
@@ -380,11 +379,11 @@ public class MobSpawnEvents implements Listener {
 				return;
 			}
 			if (result == 8) {
-				full.getEquipment().setHelmet(new Tools().c4Helmet());
-				full.getEquipment().setChestplate(new Tools().c4Chestplate());
-				full.getEquipment().setLeggings(new Tools().c4Leggings());
-				full.getEquipment().setBoots(new Tools().c4Boots());
-				full.getEquipment().setItemInMainHand(new Tools().c3Range());
+				full.getEquipment().setHelmet(new Armor().t8Helmet());
+				full.getEquipment().setChestplate(new Armor().t8Chestplate());
+				full.getEquipment().setLeggings(new Armor().t8Leggings());
+				full.getEquipment().setBoots(new Armor().t8Boots());
+				full.getEquipment().setItemInMainHand(new Tools().t6Range());
 				full.getEquipment().setHelmetDropChance(0);
 				full.getEquipment().setChestplateDropChance(0);
 				full.getEquipment().setLeggingsDropChance(0);
@@ -394,11 +393,11 @@ public class MobSpawnEvents implements Listener {
 				return;
 			}
 			if (result == 9) {
-				full.getEquipment().setHelmet(new Tools().c4p5Helmet());
-				full.getEquipment().setChestplate(new Tools().c4p5Chestplate());
-				full.getEquipment().setLeggings(new Tools().c4p5Leggings());
-				full.getEquipment().setBoots(new Tools().c4p5Boots());
-				full.getEquipment().setItemInMainHand(new Tools().c3Range());
+				full.getEquipment().setHelmet(new Armor().t9Helmet());
+				full.getEquipment().setChestplate(new Armor().t9Chestplate());
+				full.getEquipment().setLeggings(new Armor().t9Leggings());
+				full.getEquipment().setBoots(new Armor().t9Boots());
+				full.getEquipment().setItemInMainHand(new Tools().t6Range());
 				full.getEquipment().setHelmetDropChance(0);
 				full.getEquipment().setChestplateDropChance(0);
 				full.getEquipment().setLeggingsDropChance(0);
@@ -408,11 +407,11 @@ public class MobSpawnEvents implements Listener {
 				return;
 			}
 			if (result == 10) {
-				full.getEquipment().setHelmet(new Tools().c5Helmet());
-				full.getEquipment().setChestplate(new Tools().c5Chestplate());
-				full.getEquipment().setLeggings(new Tools().c5Leggings());
-				full.getEquipment().setBoots(new Tools().c5Boots());
-				full.getEquipment().setItemInMainHand(new Tools().c3Range());
+				full.getEquipment().setHelmet(new Armor().t10Helmet());
+				full.getEquipment().setChestplate(new Armor().t10Chestplate());
+				full.getEquipment().setLeggings(new Armor().t10Leggings());
+				full.getEquipment().setBoots(new Armor().t10Boots());
+				full.getEquipment().setItemInMainHand(new Tools().t6Range());
 				full.getEquipment().setHelmetDropChance(0);
 				full.getEquipment().setChestplateDropChance(0);
 				full.getEquipment().setLeggingsDropChance(0);
@@ -421,8 +420,6 @@ public class MobSpawnEvents implements Listener {
 				full.getAttribute(Attribute.GENERIC_ATTACK_DAMAGE).addModifier(boost);
 				return;
 			}
-			if (result == 0)
-				return;
 			return;
 		}
 		
@@ -441,10 +438,10 @@ public class MobSpawnEvents implements Listener {
 			int result = items[num];
 			
 			if (result == 1) {
-				full.getEquipment().setHelmet(new Tools().c0p5Helmet());
-				full.getEquipment().setChestplate(new Tools().c0p5Chestplate());
-				full.getEquipment().setLeggings(new Tools().c0p5Leggings());
-				full.getEquipment().setBoots(new Tools().c0p5Boots());
+				full.getEquipment().setHelmet(new Armor().t1Helmet());
+				full.getEquipment().setChestplate(new Armor().t1Chestplate());
+				full.getEquipment().setLeggings(new Armor().t1Leggings());
+				full.getEquipment().setBoots(new Armor().t1Boots());
 				full.getEquipment().setHelmetDropChance(0);
 				full.getEquipment().setChestplateDropChance(0);
 				full.getEquipment().setLeggingsDropChance(0);
@@ -452,10 +449,10 @@ public class MobSpawnEvents implements Listener {
 				return;
 			}
 			if (result == 2) {
-				full.getEquipment().setHelmet(new Tools().c1Helmet());
-				full.getEquipment().setChestplate(new Tools().c1Chestplate());
-				full.getEquipment().setLeggings(new Tools().c1Leggings());
-				full.getEquipment().setBoots(new Tools().c1Boots());
+				full.getEquipment().setHelmet(new Armor().t2Helmet());
+				full.getEquipment().setChestplate(new Armor().t2Chestplate());
+				full.getEquipment().setLeggings(new Armor().t2Leggings());
+				full.getEquipment().setBoots(new Armor().t2Boots());
 				full.getEquipment().setHelmetDropChance(0);
 				full.getEquipment().setChestplateDropChance(0);
 				full.getEquipment().setLeggingsDropChance(0);
@@ -463,10 +460,10 @@ public class MobSpawnEvents implements Listener {
 				return;					
 			}
 			if (result == 3) {
-				full.getEquipment().setHelmet(new Tools().c1p5Helmet());
-				full.getEquipment().setChestplate(new Tools().c1p5Chestplate());
-				full.getEquipment().setLeggings(new Tools().c1p5Leggings());
-				full.getEquipment().setBoots(new Tools().c1p5Boots());
+				full.getEquipment().setHelmet(new Armor().t3Helmet());
+				full.getEquipment().setChestplate(new Armor().t3Chestplate());
+				full.getEquipment().setLeggings(new Armor().t3Leggings());
+				full.getEquipment().setBoots(new Armor().t3Boots());
 				full.getEquipment().setHelmetDropChance(0);
 				full.getEquipment().setChestplateDropChance(0);
 				full.getEquipment().setLeggingsDropChance(0);
@@ -474,10 +471,10 @@ public class MobSpawnEvents implements Listener {
 				return;
 			}
 			if (result == 4) {
-				full.getEquipment().setHelmet(new Tools().c2Helmet());
-				full.getEquipment().setChestplate(new Tools().c2Chestplate());
-				full.getEquipment().setLeggings(new Tools().c2Leggings());
-				full.getEquipment().setBoots(new Tools().c2Boots());
+				full.getEquipment().setHelmet(new Armor().t4Helmet());
+				full.getEquipment().setChestplate(new Armor().t4Chestplate());
+				full.getEquipment().setLeggings(new Armor().t4Leggings());
+				full.getEquipment().setBoots(new Armor().t4Boots());
 				full.getEquipment().setHelmetDropChance(0);
 				full.getEquipment().setChestplateDropChance(0);
 				full.getEquipment().setLeggingsDropChance(0);
@@ -485,10 +482,10 @@ public class MobSpawnEvents implements Listener {
 				return;
 			}
 			if (result == 5) {
-				full.getEquipment().setHelmet(new Tools().c2p5Helmet());
-				full.getEquipment().setChestplate(new Tools().c2p5Chestplate());
-				full.getEquipment().setLeggings(new Tools().c2p5Leggings());
-				full.getEquipment().setBoots(new Tools().c2p5Boots());
+				full.getEquipment().setHelmet(new Armor().t5Helmet());
+				full.getEquipment().setChestplate(new Armor().t5Chestplate());
+				full.getEquipment().setLeggings(new Armor().t5Leggings());
+				full.getEquipment().setBoots(new Armor().t5Boots());
 				full.getEquipment().setHelmetDropChance(0);
 				full.getEquipment().setChestplateDropChance(0);
 				full.getEquipment().setLeggingsDropChance(0);
@@ -496,10 +493,10 @@ public class MobSpawnEvents implements Listener {
 				return;
 			}
 			if (result == 6) {
-				full.getEquipment().setHelmet(new Tools().c3Helmet());
-				full.getEquipment().setChestplate(new Tools().c3Chestplate());
-				full.getEquipment().setLeggings(new Tools().c3Leggings());
-				full.getEquipment().setBoots(new Tools().c3Boots());
+				full.getEquipment().setHelmet(new Armor().t6Helmet());
+				full.getEquipment().setChestplate(new Armor().t6Chestplate());
+				full.getEquipment().setLeggings(new Armor().t6Leggings());
+				full.getEquipment().setBoots(new Armor().t6Boots());
 				full.getEquipment().setHelmetDropChance(0);
 				full.getEquipment().setChestplateDropChance(0);
 				full.getEquipment().setLeggingsDropChance(0);
@@ -507,11 +504,11 @@ public class MobSpawnEvents implements Listener {
 				return;
 			}
 			if (result == 7) {
-				full.getEquipment().setHelmet(new Tools().c3p5Helmet());
-				full.getEquipment().setChestplate(new Tools().c3p5Chestplate());
-				full.getEquipment().setLeggings(new Tools().c3p5Leggings());
-				full.getEquipment().setBoots(new Tools().c3p5Boots());
-				full.getEquipment().setItemInMainHand(new Tools().c3p5Range());
+				full.getEquipment().setHelmet(new Armor().t7Helmet());
+				full.getEquipment().setChestplate(new Armor().t7Chestplate());
+				full.getEquipment().setLeggings(new Armor().t7Leggings());
+				full.getEquipment().setBoots(new Armor().t7Boots());
+				full.getEquipment().setItemInMainHand(new Tools().t7Range());
 				full.getEquipment().setHelmetDropChance(0);
 				full.getEquipment().setChestplateDropChance(0);
 				full.getEquipment().setLeggingsDropChance(0);
@@ -519,11 +516,11 @@ public class MobSpawnEvents implements Listener {
 				return;
 			}
 			if (result == 8) {
-				full.getEquipment().setHelmet(new Tools().c4Helmet());
-				full.getEquipment().setChestplate(new Tools().c4Chestplate());
-				full.getEquipment().setLeggings(new Tools().c4Leggings());
-				full.getEquipment().setBoots(new Tools().c4Boots());
-				full.getEquipment().setItemInMainHand(new Tools().c4Range());
+				full.getEquipment().setHelmet(new Armor().t8Helmet());
+				full.getEquipment().setChestplate(new Armor().t8Chestplate());
+				full.getEquipment().setLeggings(new Armor().t8Leggings());
+				full.getEquipment().setBoots(new Armor().t8Boots());
+				full.getEquipment().setItemInMainHand(new Tools().t8Range());
 				full.getEquipment().setHelmetDropChance(0);
 				full.getEquipment().setChestplateDropChance(0);
 				full.getEquipment().setLeggingsDropChance(0);
@@ -531,11 +528,11 @@ public class MobSpawnEvents implements Listener {
 				return;
 			}
 			if (result == 9) {
-				full.getEquipment().setHelmet(new Tools().c4p5Helmet());
-				full.getEquipment().setChestplate(new Tools().c4p5Chestplate());
-				full.getEquipment().setLeggings(new Tools().c4p5Leggings());
-				full.getEquipment().setBoots(new Tools().c4p5Boots());
-				full.getEquipment().setItemInMainHand(new Tools().c4Range());
+				full.getEquipment().setHelmet(new Armor().t9Helmet());
+				full.getEquipment().setChestplate(new Armor().t9Chestplate());
+				full.getEquipment().setLeggings(new Armor().t9Leggings());
+				full.getEquipment().setBoots(new Armor().t9Boots());
+				full.getEquipment().setItemInMainHand(new Tools().t8Range());
 				full.getEquipment().setHelmetDropChance(0);
 				full.getEquipment().setChestplateDropChance(0);
 				full.getEquipment().setLeggingsDropChance(0);
@@ -543,19 +540,17 @@ public class MobSpawnEvents implements Listener {
 				return;
 			}
 			if (result == 10) {
-				full.getEquipment().setHelmet(new Tools().c5Helmet());
-				full.getEquipment().setChestplate(new Tools().c5Chestplate());
-				full.getEquipment().setLeggings(new Tools().c5Leggings());
-				full.getEquipment().setBoots(new Tools().c5Boots());
-				full.getEquipment().setItemInMainHand(new Tools().c4Range());
+				full.getEquipment().setHelmet(new Armor().t10Helmet());
+				full.getEquipment().setChestplate(new Armor().t10Chestplate());
+				full.getEquipment().setLeggings(new Armor().t10Leggings());
+				full.getEquipment().setBoots(new Armor().t10Boots());
+				full.getEquipment().setItemInMainHand(new Tools().t8Range());
 				full.getEquipment().setHelmetDropChance(0);
 				full.getEquipment().setChestplateDropChance(0);
 				full.getEquipment().setLeggingsDropChance(0);
 				full.getEquipment().setBootsDropChance(0);
 				return;
 			}
-			if (result == 0)
-				return;
 			return;
 		}
 		
@@ -641,7 +636,7 @@ public class MobSpawnEvents implements Listener {
 		
 		int highestTier = 0;
 		int disarming = 0;
-		Set<String> keyValues = new HashSet<>();
+		Collection<ItemStack> keyItems = new HashSet<>();
 		Collection<Material> materials = new HashSet<>();
 		materials.add(Material.STONE_AXE);
 		materials.add(Material.STONE_PICKAXE);
@@ -693,47 +688,106 @@ public class MobSpawnEvents implements Listener {
 			Set<Integer> preKeys = player.getInventory().all(m).keySet();
 			for (int i : preKeys) {
 				ItemStack item = player.getInventory().all(m).get(i);
-				if (item.getItemMeta().hasLore())
-					keyValues.add(item.getItemMeta().getDisplayName().substring(0, 4));
+				keyItems.add(item);
 			}
 		}
 		
 		ItemStack item = player.getInventory().getItemInOffHand();
 		if (!(item == null || item.getType() == Material.AIR))	
 			if (item.getItemMeta().hasLore())
-				keyValues.add(item.getItemMeta().getDisplayName().substring(0, 4));
-		
-		if (keyValues.isEmpty()) {
-			if (locations.containsKey(player.getName()))
-				locations.remove(player.getName());
-			if (tiers.containsKey(player.getName()))
-				tiers.remove(player.getName());
-			if (disarm.containsKey(player.getName()))
-				disarm.remove(player.getName());
-			return;
+				keyItems.add(item);
+				
+		for (ItemStack i : keyItems) {
+			if (highestTier < 12)
+				for (ItemStack j : new Armor().antis())
+					if (Main.equals(i, j))
+						highestTier = 12;
+			if (highestTier < 11)
+				for (ItemStack j : new Armor().nots())
+					if (Main.equals(i, j))
+						highestTier = 11;
+			if (highestTier < 10) {
+				for (ItemStack j : new Tools().t10s())
+					if (Main.equals(i, j))
+						highestTier = 10;
+				for (ItemStack j : new Armor().t10s())
+					if (Main.equals(i, j))
+						highestTier = 10;
+			}
+			if (highestTier < 9) {
+				for (ItemStack j : new Tools().t9s())
+					if (Main.equals(i, j))
+						highestTier = 9;
+				for (ItemStack j : new Armor().t9s())
+					if (Main.equals(i, j))
+						highestTier = 9;
+			}
+			if (highestTier < 8) {
+				for (ItemStack j : new Tools().t8s())
+					if (Main.equals(i, j))
+						highestTier = 8;
+				for (ItemStack j : new Armor().t8s())
+					if (Main.equals(i, j))
+						highestTier = 8;
+			}
+			if (highestTier < 7) {
+				for (ItemStack j : new Tools().t7s())
+					if (Main.equals(i, j))
+						highestTier = 7;
+				for (ItemStack j : new Armor().t7s())
+					if (Main.equals(i, j))
+						highestTier = 7;
+			}
+			if (highestTier < 6) {
+				for (ItemStack j : new Tools().t6s())
+					if (Main.equals(i, j))
+						highestTier = 6;
+				for (ItemStack j : new Armor().t6s())
+					if (Main.equals(i, j))
+						highestTier = 6;
+			}
+			if (highestTier < 5) {
+				for (ItemStack j : new Tools().t5s())
+					if (Main.equals(i, j))
+						highestTier = 5;
+				for (ItemStack j : new Armor().t5s())
+					if (Main.equals(i, j))
+						highestTier = 5;
+			}
+			if (highestTier < 4) {
+				for (ItemStack j : new Tools().t4s())
+					if (Main.equals(i, j))
+						highestTier = 4;
+				for (ItemStack j : new Armor().t4s())
+					if (Main.equals(i, j))
+						highestTier = 4;
+			}
+			if (highestTier < 3) {
+				for (ItemStack j : new Tools().t3s())
+					if (Main.equals(i, j))
+						highestTier = 3;
+				for (ItemStack j : new Armor().t3s())
+					if (Main.equals(i, j))
+						highestTier = 3;
+			}
+			if (highestTier < 2) {
+				for (ItemStack j : new Tools().t2s())
+					if (Main.equals(i, j))
+						highestTier = 2;
+				for (ItemStack j : new Armor().t2s())
+					if (Main.equals(i, j))
+						highestTier = 2;
+			}
+			if (highestTier < 1) {
+				for (ItemStack j : new Tools().t1s())
+					if (Main.equals(i, j))
+						highestTier = 1;
+				for (ItemStack j : new Armor().t1s())
+					if (Main.equals(i, j))
+						highestTier = 1;
+			}
 		}
-		
-		if (keyValues.contains("˜fT1"))
-			highestTier = 1;
-		if (keyValues.contains("˜eT2"))
-			highestTier = 2;
-		if (keyValues.contains("˜eT3"))
-			highestTier = 3;
-		if (keyValues.contains("˜6T4"))
-			highestTier = 4;
-		if (keyValues.contains("˜6T5"))
-			highestTier = 5;
-		if (keyValues.contains("˜4T6"))
-			highestTier = 6;
-		if (keyValues.contains("˜4T7"))
-			highestTier = 7;
-		if (keyValues.contains("˜cT8"))
-			highestTier = 8;
-		if (keyValues.contains("˜c˜l"))
-			highestTier = 9;
-		if (keyValues.contains("˜d˜l"))
-			highestTier = 10;
-		
+				
 		if (highestTier == 0) {
 			if (locations.containsKey(player.getName()))
 				locations.remove(player.getName());
@@ -745,7 +799,7 @@ public class MobSpawnEvents implements Listener {
 		}
 				
 		if (!(player.getInventory().getHelmet() == null || player.getInventory().getHelmet().getType() == Material.AIR))
-		if (player.getInventory().getHelmet().equals(new Tools().cNotHelmet()) || player.getInventory().getHelmet().equals(new Tools().cAHelmet()))
+		if (player.getInventory().getHelmet().equals(new Armor().notHelmet()) || player.getInventory().getHelmet().equals(new Armor().aHelmet()))
 			disarming = player.getInventory().getHelmet().getItemMeta().getEnchantLevel(CustomEnchants.DISARMING);
 //		System.out.print(player.getInventory().getHelmet().getItemMeta().getEnchantLevel(CustomEnchants.DISARMING));
 		locations.put(player.getName(), player.getLocation());
@@ -764,21 +818,21 @@ public class MobSpawnEvents implements Listener {
 		Arrow arrow = (Arrow) e.getEntity();
 		if (skelly.getEquipment().getBoots() == null || skelly.getEquipment().getBoots().getType() == Material.AIR)
 			return;
-		if (skelly.getEquipment().getBoots().getItemMeta().getDisplayName().substring(0, 4).equals("˜4T7")) {
+		if (Main.equals(skelly.getEquipment().getBoots(), new Armor().t7Boots())) {
 			arrow.setDamage(arrow.getDamage() + 2);
 			return;
 		}
-		if (skelly.getEquipment().getBoots().getItemMeta().getDisplayName().substring(0, 4).equals("˜cT8")) {
+		if (Main.equals(skelly.getEquipment().getBoots(), new Armor().t8Boots())) {
 			arrow.setDamage(arrow.getDamage() + 5);
 			arrow.setKnockbackStrength(arrow.getKnockbackStrength() + 1);
 			return;
 		}
-		if (skelly.getEquipment().getBoots().getItemMeta().getDisplayName().substring(0, 4).equals("˜c˜l")) {
+		if (Main.equals(skelly.getEquipment().getBoots(), new Armor().t9Boots())) {
 			arrow.setDamage(arrow.getDamage() + 8);
 			arrow.setKnockbackStrength(arrow.getKnockbackStrength() + 2);
 			return;
 		}
-		if (skelly.getEquipment().getBoots().getItemMeta().getDisplayName().substring(0, 4).equals("˜d˜l")) {
+		if (Main.equals(skelly.getEquipment().getBoots(), new Armor().t10Boots())) {
 			arrow.setDamage(arrow.getDamage() + 12);
 			arrow.setKnockbackStrength(arrow.getKnockbackStrength() + 3);
 			return;

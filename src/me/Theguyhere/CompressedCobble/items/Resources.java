@@ -11,7 +11,7 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
 public class Resources {
-	public ItemStack c0p5() {
+	public ItemStack t1() {
 		ItemStack item = new ItemStack(Material.BASALT);
 		ItemMeta meta = item.getItemMeta();
 		
@@ -29,7 +29,7 @@ public class Resources {
 		return item;
 	}
 	
-	public ItemStack c1() {
+	public ItemStack t2() {
 		ItemStack item = new ItemStack(Material.BLACKSTONE);
 		ItemMeta meta = item.getItemMeta();
 		
@@ -46,7 +46,7 @@ public class Resources {
 		return item;
 	}
 	
-	public ItemStack c1p5() {
+	public ItemStack t3() {
 		ItemStack item = new ItemStack(Material.OBSIDIAN);
 		ItemMeta meta = item.getItemMeta();
 		
@@ -63,7 +63,7 @@ public class Resources {
 		return item;
 	}
 	
-	public ItemStack c2() {
+	public ItemStack t4() {
 		ItemStack item = new ItemStack(Material.GILDED_BLACKSTONE);
 		ItemMeta meta = item.getItemMeta();
 		
@@ -80,7 +80,7 @@ public class Resources {
 		return item;
 	}
 	
-	public ItemStack c2p5() {
+	public ItemStack t5() {
 		ItemStack item = new ItemStack(Material.GLOWSTONE);
 		ItemMeta meta = item.getItemMeta();
 		
@@ -97,7 +97,7 @@ public class Resources {
 		return item;
 	}
 	
-	public ItemStack c3() {
+	public ItemStack t6() {
 		ItemStack item = new ItemStack(Material.MAGMA_BLOCK);
 		ItemMeta meta = item.getItemMeta();
 		
@@ -114,7 +114,7 @@ public class Resources {
 		return item;
 	}
 	
-	public ItemStack c3p5() {
+	public ItemStack t7() {
 		ItemStack item = new ItemStack(Material.CRYING_OBSIDIAN);
 		ItemMeta meta = item.getItemMeta();
 		
@@ -131,7 +131,7 @@ public class Resources {
 		return item;
 	}
 	
-	public ItemStack c4() {
+	public ItemStack t8() {
 		ItemStack item = new ItemStack(Material.ANCIENT_DEBRIS);
 		ItemMeta meta = item.getItemMeta();
 		
@@ -148,7 +148,7 @@ public class Resources {
 		return item;
 	}
 	
-	public ItemStack c4p5() {
+	public ItemStack t9() {
 		ItemStack item = new ItemStack(Material.BEDROCK);
 		ItemMeta meta = item.getItemMeta();
 		
@@ -165,7 +165,7 @@ public class Resources {
 		return item;
 	}
 	
-	public ItemStack c5() {
+	public ItemStack t10() {
 		ItemStack item = new ItemStack(Material.END_PORTAL_FRAME);
 		ItemMeta meta = item.getItemMeta();
 		
@@ -182,7 +182,7 @@ public class Resources {
 		return item;
 	}
 	
-	public ItemStack cNot() {
+	public ItemStack not() {
 		ItemStack item = new ItemStack(Material.BARRIER);
 		ItemMeta meta = item.getItemMeta();
 		
@@ -199,7 +199,7 @@ public class Resources {
 		return item;
 	}
 
-	public ItemStack cA() {
+	public ItemStack a() {
 		ItemStack item = new ItemStack(Material.COMMAND_BLOCK);
 		ItemMeta meta = item.getItemMeta();
 		

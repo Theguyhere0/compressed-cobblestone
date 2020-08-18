@@ -42,6 +42,7 @@ import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
 import me.Theguyhere.CompressedCobble.Main;
+import me.Theguyhere.CompressedCobble.items.Armor;
 import me.Theguyhere.CompressedCobble.items.Resources;
 import me.Theguyhere.CompressedCobble.items.Tools;
 import net.md_5.bungee.api.ChatColor;
@@ -209,15 +210,15 @@ public class EnchantEvents implements Listener {
 					if (i.equals("c"))
 						item = drops.iterator().next();
 					if (i.equals("c0p5"))
-						item = new Resources().c0p5();
+						item = new Resources().t1();
 					if (i.equals("c1"))
-						item = new Resources().c1();
+						item = new Resources().t2();
 					if (i.equals("c1p5"))
-						item = new Resources().c1p5();
+						item = new Resources().t3();
 					if (i.equals("c2"))
-						item = new Resources().c2();
+						item = new Resources().t4();
 					if (i.equals("c2p5"))
-						item = new Resources().c2p5();
+						item = new Resources().t5();
 					items[position] = item;
 					position++;
 				}
@@ -324,17 +325,17 @@ public class EnchantEvents implements Listener {
 					if (i.equals("c"))
 						item = new ItemStack(event.getBlock().getType());
 					if (i.equals("c0p5"))
-						item = new Resources().c0p5();
+						item = new Resources().t1();
 					if (i.equals("c1"))
-						item = new Resources().c1();
+						item = new Resources().t2();
 					if (i.equals("c1p5"))
-						item = new Resources().c1p5();
+						item = new Resources().t3();
 					if (i.equals("c2"))
-						item = new Resources().c2();
+						item = new Resources().t4();
 					if (i.equals("c2p5"))
-						item = new Resources().c2p5();
+						item = new Resources().t5();
 					if (i.equals("c3"))
-						item = new Resources().c3();
+						item = new Resources().t6();
 					items[position] = item;
 					position++;
 				}
@@ -396,15 +397,15 @@ public class EnchantEvents implements Listener {
 					if (i.equals("c"))
 						item = new ItemStack(drops.iterator().next());
 					if (i.equals("c0p5"))
-						item = new Resources().c0p5();
+						item = new Resources().t1();
 					if (i.equals("c1"))
-						item = new Resources().c1();
+						item = new Resources().t2();
 					if (i.equals("c1p5"))
-						item = new Resources().c1p5();
+						item = new Resources().t3();
 					if (i.equals("c2"))
-						item = new Resources().c2();
+						item = new Resources().t4();
 					if (i.equals("c2p5"))
-						item = new Resources().c2p5();
+						item = new Resources().t5();
 					items[position] = item;
 					position++;
 				}
@@ -568,17 +569,17 @@ public class EnchantEvents implements Listener {
 					if (i.equals("c"))
 						item = new ItemStack(first);
 					if (i.equals("c0p5"))
-						item = new Resources().c0p5();
+						item = new Resources().t1();
 					if (i.equals("c1"))
-						item = new Resources().c1();
+						item = new Resources().t2();
 					if (i.equals("c1p5"))
-						item = new Resources().c1p5();
+						item = new Resources().t3();
 					if (i.equals("c2"))
-						item = new Resources().c2();
+						item = new Resources().t4();
 					if (i.equals("c2p5"))
-						item = new Resources().c2p5();
+						item = new Resources().t5();
 					if (i.equals("c3"))
-						item = new Resources().c3();
+						item = new Resources().t6();
 					items[position] = item;
 					position++;
 				}
@@ -676,21 +677,21 @@ public class EnchantEvents implements Listener {
 					if (i.equals("c"))
 						item = new ItemStack(first);
 					if (i.equals("c0p5"))
-						item = new Resources().c0p5();
+						item = new Resources().t1();
 					if (i.equals("c1"))
-						item = new Resources().c1();
+						item = new Resources().t2();
 					if (i.equals("c1p5"))
-						item = new Resources().c1p5();
+						item = new Resources().t3();
 					if (i.equals("c2"))
-						item = new Resources().c2();
+						item = new Resources().t4();
 					if (i.equals("c2p5"))
-						item = new Resources().c2p5();
+						item = new Resources().t5();
 					if (i.equals("c3"))
-						item = new Resources().c3();
+						item = new Resources().t6();
 					if (i.equals("c3p5"))
-						item = new Resources().c3p5();
+						item = new Resources().t7();
 					if (i.equals("c4"))
-						item = new Resources().c4();
+						item = new Resources().t8();
 					items[position] = item;
 					position++;
 				}
@@ -876,7 +877,7 @@ public class EnchantEvents implements Listener {
 				player.getInventory().getLeggings().getItemMeta().hasEnchant(CustomEnchants.LUCKY) && player.getInventory().getBoots().getItemMeta().hasEnchant(CustomEnchants.LUCKY)) {
 			int lvl = player.getInventory().getBoots().getItemMeta().getEnchantLevel(CustomEnchants.LUCKY) - 1;
 			if ((player.getInventory().getHelmet().getItemMeta().getDisplayName().substring(0, 4).equals(player.getInventory().getChestplate().getItemMeta().getDisplayName().substring(0, 4)) ||
-					player.getInventory().getHelmet().equals(new Tools().cNotHelmet()) || player.getInventory().getHelmet().equals(new Tools().cAHelmet())) &&
+					player.getInventory().getHelmet().equals(new Armor().notHelmet()) || player.getInventory().getHelmet().equals(new Armor().aHelmet())) &&
 					player.getInventory().getChestplate().getItemMeta().getDisplayName().substring(0, 4).equals(player.getInventory().getLeggings().getItemMeta().getDisplayName().substring(0, 4)) &&
 					player.getInventory().getChestplate().getItemMeta().getDisplayName().substring(0, 4).equals(player.getInventory().getBoots().getItemMeta().getDisplayName().substring(0, 4))) {
 				player.addPotionEffect(new PotionEffect(PotionEffectType.LUCK, 205, lvl));
@@ -899,7 +900,7 @@ public class EnchantEvents implements Listener {
 				player.getInventory().getLeggings().getItemMeta().hasEnchant(CustomEnchants.RESISTANCE) && player.getInventory().getBoots().getItemMeta().hasEnchant(CustomEnchants.RESISTANCE)) {
 			int lvl = player.getInventory().getBoots().getItemMeta().getEnchantLevel(CustomEnchants.RESISTANCE) - 1;
 			if ((player.getInventory().getHelmet().getItemMeta().getDisplayName().substring(0, 4).equals(player.getInventory().getChestplate().getItemMeta().getDisplayName().substring(0, 4)) ||
-					player.getInventory().getHelmet().equals(new Tools().cNotHelmet()) || player.getInventory().getHelmet().equals(new Tools().cAHelmet())) &&
+					player.getInventory().getHelmet().equals(new Armor().notHelmet()) || player.getInventory().getHelmet().equals(new Armor().aHelmet())) &&
 					player.getInventory().getChestplate().getItemMeta().getDisplayName().substring(0, 4).equals(player.getInventory().getLeggings().getItemMeta().getDisplayName().substring(0, 4)) &&
 					player.getInventory().getChestplate().getItemMeta().getDisplayName().substring(0, 4).equals(player.getInventory().getBoots().getItemMeta().getDisplayName().substring(0, 4))) {
 					player.addPotionEffect(new PotionEffect(PotionEffectType.DAMAGE_RESISTANCE, 205, lvl));
@@ -944,7 +945,7 @@ public class EnchantEvents implements Listener {
 				player.getInventory().getLeggings().getItemMeta().hasEnchant(CustomEnchants.STRENGTH) && player.getInventory().getBoots().getItemMeta().hasEnchant(CustomEnchants.STRENGTH)) {
 			int lvl = player.getInventory().getBoots().getItemMeta().getEnchantLevel(CustomEnchants.STRENGTH) - 1;
 			if ((player.getInventory().getHelmet().getItemMeta().getDisplayName().substring(0, 4).equals(player.getInventory().getChestplate().getItemMeta().getDisplayName().substring(0, 4)) ||
-					player.getInventory().getHelmet().equals(new Tools().cNotHelmet()) || player.getInventory().getHelmet().equals(new Tools().cAHelmet())) &&
+					player.getInventory().getHelmet().equals(new Armor().notHelmet()) || player.getInventory().getHelmet().equals(new Armor().aHelmet())) &&
 					player.getInventory().getChestplate().getItemMeta().getDisplayName().substring(0, 4).equals(player.getInventory().getLeggings().getItemMeta().getDisplayName().substring(0, 4)) &&
 					player.getInventory().getChestplate().getItemMeta().getDisplayName().substring(0, 4).equals(player.getInventory().getBoots().getItemMeta().getDisplayName().substring(0, 4))) {
 					player.addPotionEffect(new PotionEffect(PotionEffectType.INCREASE_DAMAGE, 205, lvl));
@@ -1042,7 +1043,7 @@ public class EnchantEvents implements Listener {
 				player.getInventory().getLeggings().getItemMeta().hasEnchant(CustomEnchants.HERO) && player.getInventory().getBoots().getItemMeta().hasEnchant(CustomEnchants.HERO)) {
 			int lvl = player.getInventory().getBoots().getItemMeta().getEnchantLevel(CustomEnchants.HERO) - 1;
 			if ((player.getInventory().getHelmet().getItemMeta().getDisplayName().substring(0, 4).equals(player.getInventory().getChestplate().getItemMeta().getDisplayName().substring(0, 4)) ||
-					player.getInventory().getHelmet().equals(new Tools().cNotHelmet()) || player.getInventory().getHelmet().equals(new Tools().cAHelmet())) &&
+					player.getInventory().getHelmet().equals(new Armor().notHelmet()) || player.getInventory().getHelmet().equals(new Armor().aHelmet())) &&
 					player.getInventory().getChestplate().getItemMeta().getDisplayName().substring(0, 4).equals(player.getInventory().getLeggings().getItemMeta().getDisplayName().substring(0, 4)) &&
 					player.getInventory().getChestplate().getItemMeta().getDisplayName().substring(0, 4).equals(player.getInventory().getBoots().getItemMeta().getDisplayName().substring(0, 4))) {
 					player.addPotionEffect(new PotionEffect(PotionEffectType.HERO_OF_THE_VILLAGE, 205, lvl));
@@ -1068,7 +1069,7 @@ public class EnchantEvents implements Listener {
 		if (player.getInventory().getHelmet().getItemMeta().hasEnchant(CustomEnchants.HEALTHY) && player.getInventory().getChestplate().getItemMeta().hasEnchant(CustomEnchants.HEALTHY) &&
 				player.getInventory().getLeggings().getItemMeta().hasEnchant(CustomEnchants.HEALTHY) && player.getInventory().getBoots().getItemMeta().hasEnchant(CustomEnchants.HEALTHY)) {
 			if ((player.getInventory().getHelmet().getItemMeta().getDisplayName().substring(0, 4).equals(player.getInventory().getChestplate().getItemMeta().getDisplayName().substring(0, 4)) ||
-					player.getInventory().getHelmet().equals(new Tools().cNotHelmet()) || player.getInventory().getHelmet().equals(new Tools().cAHelmet())) &&
+					player.getInventory().getHelmet().equals(new Armor().notHelmet()) || player.getInventory().getHelmet().equals(new Armor().aHelmet())) &&
 					player.getInventory().getChestplate().getItemMeta().getDisplayName().substring(0, 4).equals(player.getInventory().getLeggings().getItemMeta().getDisplayName().substring(0, 4)) &&
 					player.getInventory().getChestplate().getItemMeta().getDisplayName().substring(0, 4).equals(player.getInventory().getBoots().getItemMeta().getDisplayName().substring(0, 4)))
 				if (player.getAttribute(Attribute.GENERIC_MAX_HEALTH).getModifiers().isEmpty()) {
@@ -1151,7 +1152,7 @@ public class EnchantEvents implements Listener {
 		if (player.getInventory().getHelmet().getItemMeta().hasEnchant(CustomEnchants.VULCAN) && player.getInventory().getChestplate().getItemMeta().hasEnchant(CustomEnchants.VULCAN) &&
 				player.getInventory().getLeggings().getItemMeta().hasEnchant(CustomEnchants.VULCAN) && player.getInventory().getBoots().getItemMeta().hasEnchant(CustomEnchants.VULCAN)) {
 			if ((player.getInventory().getHelmet().getItemMeta().getDisplayName().substring(0, 4).equals(player.getInventory().getChestplate().getItemMeta().getDisplayName().substring(0, 4)) ||
-					player.getInventory().getHelmet().equals(new Tools().cNotHelmet()) || player.getInventory().getHelmet().equals(new Tools().cAHelmet())) &&
+					player.getInventory().getHelmet().equals(new Armor().notHelmet()) || player.getInventory().getHelmet().equals(new Armor().aHelmet())) &&
 					player.getInventory().getChestplate().getItemMeta().getDisplayName().substring(0, 4).equals(player.getInventory().getLeggings().getItemMeta().getDisplayName().substring(0, 4)) &&
 					player.getInventory().getChestplate().getItemMeta().getDisplayName().substring(0, 4).equals(player.getInventory().getBoots().getItemMeta().getDisplayName().substring(0, 4))) {
 				player.addPotionEffect(new PotionEffect(PotionEffectType.FIRE_RESISTANCE, 205, 0));
@@ -1241,11 +1242,24 @@ public class EnchantEvents implements Listener {
 	@EventHandler()
 	public void projectile(PlayerInteractEvent e) {
 		Player player = e.getPlayer();
-		if (!(player.getInventory().getItemInMainHand().getType().equals(Material.TRIDENT) && player.getInventory().getItemInMainHand().getItemMeta().hasLore()))
+		ItemStack item = player.getInventory().getItemInMainHand();
+		int lvl = player.getLevel();
+		int req = 0;
+
+		if (Main.equals(item, new Tools().t9Range())) {
+			req = 45;
+		}
+		else if (Main.equals(item, new Tools().t10Range())) {
+			req = 50;
+		}
+		else return;
+		if (lvl < req) {
+			e.setCancelled(true);
 			return;
+		}
 		if (player.getInventory().getItemInMainHand().getItemMeta().hasEnchant(CustomEnchants.PROJECTILE))
 			if (e.getAction() == Action.LEFT_CLICK_AIR || e.getAction() == Action.LEFT_CLICK_BLOCK) {
-				int lvl = player.getInventory().getItemInMainHand().getItemMeta().getEnchantLevel(CustomEnchants.PROJECTILE);
+				int level = player.getInventory().getItemInMainHand().getItemMeta().getEnchantLevel(CustomEnchants.PROJECTILE);
 //				add cooldown
 				if (projectileCooldowns.containsKey(player.getName())) {
 //					player is inside hashmap
@@ -1257,7 +1271,7 @@ public class EnchantEvents implements Listener {
 					}
 				}
 				player.launchProjectile(Arrow.class);
-				projectileCooldowns.put(player.getName(), System.currentTimeMillis() + (1.0 * lvl * 1000));
+				projectileCooldowns.put(player.getName(), System.currentTimeMillis() + (1.0 * level * 1000));
 			}
 		return;
 	}
@@ -1303,24 +1317,37 @@ public class EnchantEvents implements Listener {
 	@EventHandler()
 	public void rocket(PlayerInteractEvent e) {
 		Player player = e.getPlayer();
-		if (player.getInventory().getItemInMainHand().getType().equals(Material.TRIDENT) && player.getInventory().getItemInMainHand().getItemMeta().hasLore())
-			if (player.getInventory().getItemInMainHand().getItemMeta().hasEnchant(CustomEnchants.ROCKET))
-				if (e.getAction() == Action.RIGHT_CLICK_AIR || e.getAction() == Action.RIGHT_CLICK_BLOCK) {
-	//				add cooldown
-					if (rocketCooldowns.containsKey(player.getName())) {
-	//					player is inside hashmap
-						if (rocketCooldowns.get(player.getName()) > System.currentTimeMillis()) {
-	//						they still have time left in the cooldown
-							double timeleft = (rocketCooldowns.get(player.getName()) - System.currentTimeMillis()) / 1000;
-							player.sendMessage(ChatColor.RED + "Wait " + timeleft + " second(s) to launch!");
-							e.setCancelled(true);
-							return;
-						}
-					}
-					player.launchProjectile(Firework.class);
-					rocketCooldowns.put(player.getName(), System.currentTimeMillis() + (1.5 * 1000));
+		ItemStack item = player.getInventory().getItemInMainHand();
+		int lvl = player.getLevel();
+		int req = 0;
+
+		if (Main.equals(item, new Tools().t9Range())) {
+			req = 45;
+		}
+		else if (Main.equals(item, new Tools().t10Range())) {
+			req = 50;
+		}
+		else return;
+		if (lvl < req) {
+			e.setCancelled(true);
+			player.sendMessage(ChatColor.RED + "Your level is not high enough to use this!");
+			return;
+		}
+		if (e.getAction() == Action.RIGHT_CLICK_AIR || e.getAction() == Action.RIGHT_CLICK_BLOCK) {
+//				add cooldown
+			if (rocketCooldowns.containsKey(player.getName())) {
+//					player is inside hashmap
+				if (rocketCooldowns.get(player.getName()) > System.currentTimeMillis()) {
+//						they still have time left in the cooldown
+					double timeleft = (rocketCooldowns.get(player.getName()) - System.currentTimeMillis()) / 1000;
+					player.sendMessage(ChatColor.RED + "Wait " + timeleft + " second(s) to launch!");
 					e.setCancelled(true);
+					return;
 				}
-		return;
+			}
+			player.launchProjectile(Firework.class);
+			rocketCooldowns.put(player.getName(), System.currentTimeMillis() + (1.5 * 1000));
+			e.setCancelled(true);
+		}
 	}
 }

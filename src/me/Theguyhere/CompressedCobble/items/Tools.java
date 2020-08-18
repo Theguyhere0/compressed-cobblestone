@@ -1,22 +1,22 @@
 package me.Theguyhere.CompressedCobble.items;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashSet;
 import java.util.List;
 
 import org.bukkit.ChatColor;
-import org.bukkit.Color;
 import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
-import org.bukkit.inventory.meta.LeatherArmorMeta;
 
 import me.Theguyhere.CompressedCobble.enchants.CustomEnchants;
 
 public class Tools {
 //	Pickaxes
-	public ItemStack c0p5Pick() {
+	public ItemStack t1Pick() {
 		ItemStack item = new ItemStack(Material.STONE_PICKAXE);
 		ItemMeta meta = item.getItemMeta();
 		
@@ -34,7 +34,7 @@ public class Tools {
 		return item;
 	}
 	
-	public ItemStack c1Pick() {
+	public ItemStack t2Pick() {
 		ItemStack item = new ItemStack(Material.STONE_PICKAXE);
 		ItemMeta meta = item.getItemMeta();
 		
@@ -55,7 +55,7 @@ public class Tools {
 		return item;
 	}
 	
-	public ItemStack c1p5Pick() {
+	public ItemStack t3Pick() {
 		ItemStack item = new ItemStack(Material.IRON_PICKAXE);
 		ItemMeta meta = item.getItemMeta();
 		
@@ -76,7 +76,7 @@ public class Tools {
 		return item;
 	}
 	
-	public ItemStack c2Pick() {
+	public ItemStack t4Pick() {
 		ItemStack item = new ItemStack(Material.IRON_PICKAXE);
 		ItemMeta meta = item.getItemMeta();
 		
@@ -102,7 +102,7 @@ public class Tools {
 		return item;
 	}
 	
-	public ItemStack c2p5Pick() {
+	public ItemStack t5Pick() {
 		ItemStack item = new ItemStack(Material.DIAMOND_PICKAXE);
 		ItemMeta meta = item.getItemMeta();
 		
@@ -124,7 +124,7 @@ public class Tools {
 		return item;
 	}
 	
-	public ItemStack c3Pick() {
+	public ItemStack t6Pick() {
 		ItemStack item = new ItemStack(Material.DIAMOND_PICKAXE);
 		ItemMeta meta = item.getItemMeta();
 		
@@ -148,7 +148,7 @@ public class Tools {
 		return item;
 	}
 	
-	public ItemStack c3p5Pick() {
+	public ItemStack t7Pick() {
 		ItemStack item = new ItemStack(Material.NETHERITE_PICKAXE);
 		ItemMeta meta = item.getItemMeta();
 		
@@ -178,7 +178,8 @@ public class Tools {
 		return item;
 	}
 	
-	public ItemStack c4Pick() {
+	
+	public ItemStack t8Pick() {
 		ItemStack item = new ItemStack(Material.NETHERITE_PICKAXE);
 		ItemMeta meta = item.getItemMeta();
 		
@@ -208,7 +209,7 @@ public class Tools {
 		return item;
 	}
 	
-	public ItemStack c4p5Pick() {
+	public ItemStack t9Pick() {
 		ItemStack item = new ItemStack(Material.NETHERITE_PICKAXE);
 		ItemMeta meta = item.getItemMeta();
 		
@@ -240,7 +241,7 @@ public class Tools {
 		return item;
 	}
 	
-	public ItemStack c5Pick() {
+	public ItemStack t10Pick() {
 		ItemStack item = new ItemStack(Material.NETHERITE_PICKAXE);
 		ItemMeta meta = item.getItemMeta();
 		
@@ -269,8 +270,20 @@ public class Tools {
 		return item;
 	}
 	
+	public Collection<Material> picks() {
+		Collection<Material> items = new HashSet<>();
+		items.add(Material.WOODEN_PICKAXE);
+		items.add(Material.STONE_PICKAXE);
+		items.add(Material.GOLDEN_PICKAXE);
+		items.add(Material.IRON_PICKAXE);
+		items.add(Material.DIAMOND_PICKAXE);
+		items.add(Material.NETHERITE_PICKAXE);
+
+		return items;
+	}
+	
 //	Axes
-	public ItemStack c0p5Axe() {
+	public ItemStack t1Axe() {
 		ItemStack item = new ItemStack(Material.STONE_AXE);
 		ItemMeta meta = item.getItemMeta();
 		
@@ -288,7 +301,7 @@ public class Tools {
 		return item;
 	}
 	
-	public ItemStack c1Axe() {
+	public ItemStack t2Axe() {
 		ItemStack item = new ItemStack(Material.STONE_AXE);
 		ItemMeta meta = item.getItemMeta();
 		
@@ -309,7 +322,7 @@ public class Tools {
 		return item;
 	}
 	
-	public ItemStack c1p5Axe() {
+	public ItemStack t3Axe() {
 		ItemStack item = new ItemStack(Material.IRON_AXE);
 		ItemMeta meta = item.getItemMeta();
 		
@@ -335,7 +348,7 @@ public class Tools {
 		return item;
 	}
 	
-	public ItemStack c2Axe() {
+	public ItemStack t4Axe() {
 		ItemStack item = new ItemStack(Material.IRON_AXE);
 		ItemMeta meta = item.getItemMeta();
 		
@@ -365,7 +378,7 @@ public class Tools {
 		return item;
 	}
 	
-	public ItemStack c2p5Axe() {
+	public ItemStack t5Axe() {
 		ItemStack item = new ItemStack(Material.DIAMOND_AXE);
 		ItemMeta meta = item.getItemMeta();
 		
@@ -389,7 +402,8 @@ public class Tools {
 		return item;
 	}
 	
-	public ItemStack c3Axe() {
+	
+	public ItemStack t6Axe() {
 		ItemStack item = new ItemStack(Material.DIAMOND_AXE);
 		ItemMeta meta = item.getItemMeta();
 		
@@ -421,7 +435,7 @@ public class Tools {
 		return item;
 	}
 	
-	public ItemStack c3p5Axe() {
+	public ItemStack t7Axe() {
 		ItemStack item = new ItemStack(Material.NETHERITE_AXE);
 		ItemMeta meta = item.getItemMeta();
 		
@@ -455,7 +469,7 @@ public class Tools {
 		return item;
 	}
 	
-	public ItemStack c4Axe() {
+	public ItemStack t8Axe() {
 		ItemStack item = new ItemStack(Material.NETHERITE_AXE);
 		ItemMeta meta = item.getItemMeta();
 		
@@ -489,7 +503,7 @@ public class Tools {
 		return item;
 	}
 	
-	public ItemStack c4p5Axe() {
+	public ItemStack t9Axe() {
 		ItemStack item = new ItemStack(Material.NETHERITE_AXE);
 		ItemMeta meta = item.getItemMeta();
 		
@@ -525,7 +539,7 @@ public class Tools {
 		return item;
 	}
 	
-	public ItemStack c5Axe() {
+	public ItemStack t10Axe() {
 		ItemStack item = new ItemStack(Material.NETHERITE_AXE);
 		ItemMeta meta = item.getItemMeta();
 		
@@ -558,8 +572,20 @@ public class Tools {
 		return item;
 	}
 	
+	public Collection<Material> axes() {
+		Collection<Material> items = new HashSet<>();
+		items.add(Material.WOODEN_AXE);
+		items.add(Material.STONE_AXE);
+		items.add(Material.GOLDEN_AXE);
+		items.add(Material.IRON_AXE);
+		items.add(Material.DIAMOND_AXE);
+		items.add(Material.NETHERITE_AXE);
+
+		return items;
+	}
+
 //	Shovels
-	public ItemStack c0p5Spade() {
+	public ItemStack t1Spade() {
 		ItemStack item = new ItemStack(Material.STONE_SHOVEL);
 		ItemMeta meta = item.getItemMeta();
 		
@@ -577,7 +603,7 @@ public class Tools {
 		return item;
 	}
 	
-	public ItemStack c1Spade() {
+	public ItemStack t2Spade() {
 		ItemStack item = new ItemStack(Material.STONE_SHOVEL);
 		ItemMeta meta = item.getItemMeta();
 		
@@ -598,7 +624,7 @@ public class Tools {
 		return item;
 	}
 	
-	public ItemStack c1p5Spade() {
+	public ItemStack t3Spade() {
 		ItemStack item = new ItemStack(Material.IRON_SHOVEL);
 		ItemMeta meta = item.getItemMeta();
 		
@@ -619,7 +645,8 @@ public class Tools {
 		return item;
 	}
 	
-	public ItemStack c2Spade() {
+	
+	public ItemStack t4Spade() {
 		ItemStack item = new ItemStack(Material.IRON_SHOVEL);
 		ItemMeta meta = item.getItemMeta();
 		
@@ -640,7 +667,7 @@ public class Tools {
 		return item;
 	}
 	
-	public ItemStack c2p5Spade() {
+	public ItemStack t5Spade() {
 		ItemStack item = new ItemStack(Material.DIAMOND_SHOVEL);
 		ItemMeta meta = item.getItemMeta();
 		
@@ -661,7 +688,7 @@ public class Tools {
 		return item;
 	}
 	
-	public ItemStack c3Spade() {
+	public ItemStack t6Spade() {
 		ItemStack item = new ItemStack(Material.DIAMOND_SHOVEL);
 		ItemMeta meta = item.getItemMeta();
 		
@@ -682,7 +709,7 @@ public class Tools {
 		return item;
 	}
 	
-	public ItemStack c3p5Spade() {
+	public ItemStack t7Spade() {
 		ItemStack item = new ItemStack(Material.NETHERITE_SHOVEL);
 		ItemMeta meta = item.getItemMeta();
 		
@@ -708,7 +735,7 @@ public class Tools {
 		return item;
 	}
 	
-	public ItemStack c4Spade() {
+	public ItemStack t8Spade() {
 		ItemStack item = new ItemStack(Material.NETHERITE_SHOVEL);
 		ItemMeta meta = item.getItemMeta();
 		
@@ -734,7 +761,7 @@ public class Tools {
 		return item;
 	}
 	
-	public ItemStack c4p5Spade() {
+	public ItemStack t9Spade() {
 		ItemStack item = new ItemStack(Material.NETHERITE_SHOVEL);
 		ItemMeta meta = item.getItemMeta();
 		
@@ -762,7 +789,7 @@ public class Tools {
 		return item;
 	}
 	
-	public ItemStack c5Spade() {
+	public ItemStack t10Spade() {
 		ItemStack item = new ItemStack(Material.NETHERITE_SHOVEL);
 		ItemMeta meta = item.getItemMeta();
 		
@@ -787,8 +814,20 @@ public class Tools {
 		return item;
 	}
 	
+	public Collection<Material> spades() {
+		Collection<Material> items = new HashSet<>();
+		items.add(Material.WOODEN_SHOVEL);
+		items.add(Material.STONE_SHOVEL);
+		items.add(Material.GOLDEN_SHOVEL);
+		items.add(Material.IRON_SHOVEL);
+		items.add(Material.DIAMOND_SHOVEL);
+		items.add(Material.NETHERITE_SHOVEL);
+
+		return items;
+	}
+	
 //	Hoes
-	public ItemStack c0p5Hoe() {
+	public ItemStack t1Hoe() {
 		ItemStack item = new ItemStack(Material.STONE_HOE);
 		ItemMeta meta = item.getItemMeta();
 		
@@ -806,7 +845,7 @@ public class Tools {
 		return item;
 	}
 	
-	public ItemStack c1Hoe() {
+	public ItemStack t2Hoe() {
 		ItemStack item = new ItemStack(Material.STONE_HOE);
 		ItemMeta meta = item.getItemMeta();
 		
@@ -827,7 +866,7 @@ public class Tools {
 		return item;
 	}
 	
-	public ItemStack c1p5Hoe() {
+	public ItemStack t3Hoe() {
 		ItemStack item = new ItemStack(Material.IRON_HOE);
 		ItemMeta meta = item.getItemMeta();
 		
@@ -853,7 +892,7 @@ public class Tools {
 		return item;
 	}
 	
-	public ItemStack c2Hoe() {
+	public ItemStack t4Hoe() {
 		ItemStack item = new ItemStack(Material.IRON_HOE);
 		ItemMeta meta = item.getItemMeta();
 		
@@ -883,7 +922,7 @@ public class Tools {
 		return item;
 	}
 	
-	public ItemStack c2p5Hoe() {
+	public ItemStack t5Hoe() {
 		ItemStack item = new ItemStack(Material.DIAMOND_HOE);
 		ItemMeta meta = item.getItemMeta();
 		
@@ -913,7 +952,7 @@ public class Tools {
 		return item;
 	}
 	
-	public ItemStack c3Hoe() {
+	public ItemStack t6Hoe() {
 		ItemStack item = new ItemStack(Material.DIAMOND_HOE);
 		ItemMeta meta = item.getItemMeta();
 		
@@ -945,7 +984,7 @@ public class Tools {
 		return item;
 	}
 	
-	public ItemStack c3p5Hoe() {
+	public ItemStack t7Hoe() {
 		ItemStack item = new ItemStack(Material.NETHERITE_HOE);
 		ItemMeta meta = item.getItemMeta();
 		
@@ -979,7 +1018,7 @@ public class Tools {
 		return item;
 	}
 	
-	public ItemStack c4Hoe() {
+	public ItemStack t8Hoe() {
 		ItemStack item = new ItemStack(Material.NETHERITE_HOE);
 		ItemMeta meta = item.getItemMeta();
 		
@@ -1013,7 +1052,7 @@ public class Tools {
 		return item;
 	}
 	
-	public ItemStack c4p5Hoe() {
+	public ItemStack t9Hoe() {
 		ItemStack item = new ItemStack(Material.NETHERITE_HOE);
 		ItemMeta meta = item.getItemMeta();
 		
@@ -1049,7 +1088,7 @@ public class Tools {
 		return item;
 	}
 	
-	public ItemStack c5Hoe() {
+	public ItemStack t10Hoe() {
 		ItemStack item = new ItemStack(Material.NETHERITE_HOE);
 		ItemMeta meta = item.getItemMeta();
 		
@@ -1082,8 +1121,20 @@ public class Tools {
 		return item;
 	}
 	
+	public Collection<Material> hoes() {
+		Collection<Material> items = new HashSet<>();
+		items.add(Material.WOODEN_HOE);
+		items.add(Material.STONE_HOE);
+		items.add(Material.GOLDEN_HOE);
+		items.add(Material.IRON_HOE);
+		items.add(Material.DIAMOND_HOE);
+		items.add(Material.NETHERITE_HOE);
+
+		return items;
+	}
+	
 //	Swords
-	public ItemStack c0p5Sword() {
+	public ItemStack t1Sword() {
 		ItemStack item = new ItemStack(Material.STONE_SWORD);
 		ItemMeta meta = item.getItemMeta();
 		
@@ -1102,7 +1153,7 @@ public class Tools {
 		return item;
 	}
 	
-	public ItemStack c1Sword() {
+	public ItemStack t2Sword() {
 		ItemStack item = new ItemStack(Material.STONE_SWORD);
 		ItemMeta meta = item.getItemMeta();
 		
@@ -1123,7 +1174,7 @@ public class Tools {
 		return item;
 	}
 	
-	public ItemStack c1p5Sword() {
+	public ItemStack t3Sword() {
 		ItemStack item = new ItemStack(Material.IRON_SWORD);
 		ItemMeta meta = item.getItemMeta();
 		
@@ -1149,7 +1200,7 @@ public class Tools {
 		return item;
 	}
 	
-	public ItemStack c2Sword() {
+	public ItemStack t4Sword() {
 		ItemStack item = new ItemStack(Material.IRON_SWORD);
 		ItemMeta meta = item.getItemMeta();
 		
@@ -1177,7 +1228,7 @@ public class Tools {
 		return item;
 	}
 	
-	public ItemStack c2p5Sword() {
+	public ItemStack t5Sword() {
 		ItemStack item = new ItemStack(Material.DIAMOND_SWORD);
 		ItemMeta meta = item.getItemMeta();
 		
@@ -1205,7 +1256,7 @@ public class Tools {
 		return item;
 	}
 	
-	public ItemStack c3Sword() {
+	public ItemStack t6Sword() {
 		ItemStack item = new ItemStack(Material.DIAMOND_SWORD);
 		ItemMeta meta = item.getItemMeta();
 		
@@ -1235,7 +1286,7 @@ public class Tools {
 		return item;
 	}
 	
-	public ItemStack c3p5Sword() {
+	public ItemStack t7Sword() {
 		ItemStack item = new ItemStack(Material.NETHERITE_SWORD);
 		ItemMeta meta = item.getItemMeta();
 		
@@ -1267,7 +1318,7 @@ public class Tools {
 		return item;
 	}
 	
-	public ItemStack c4Sword() {
+	public ItemStack t8Sword() {
 		ItemStack item = new ItemStack(Material.NETHERITE_SWORD);
 		ItemMeta meta = item.getItemMeta();
 		
@@ -1299,7 +1350,7 @@ public class Tools {
 		return item;
 	}
 	
-	public ItemStack c4p5Sword() {
+	public ItemStack t9Sword() {
 		ItemStack item = new ItemStack(Material.NETHERITE_SWORD);
 		ItemMeta meta = item.getItemMeta();
 		
@@ -1333,7 +1384,7 @@ public class Tools {
 		return item;
 	}
 	
-	public ItemStack c5Sword() {
+	public ItemStack t10Sword() {
 		ItemStack item = new ItemStack(Material.NETHERITE_SWORD);
 		ItemMeta meta = item.getItemMeta();
 		
@@ -1364,8 +1415,20 @@ public class Tools {
 		return item;
 	}
 	
+	public Collection<Material> swords() {
+		Collection<Material> items = new HashSet<>();
+		items.add(Material.WOODEN_SWORD);
+		items.add(Material.STONE_SWORD);
+		items.add(Material.GOLDEN_SWORD);
+		items.add(Material.IRON_SWORD);
+		items.add(Material.DIAMOND_SWORD);
+		items.add(Material.NETHERITE_SWORD);
+
+		return items;
+	}
+	
 //	Ranged weapons
-	public ItemStack c0p5Range() {
+	public ItemStack t1Range() {
 		ItemStack item = new ItemStack(Material.BOW);
 		ItemMeta meta = item.getItemMeta();
 		
@@ -1383,7 +1446,7 @@ public class Tools {
 		return item;
 	}
 	
-	public ItemStack c1Range() {
+	public ItemStack t2Range() {
 		ItemStack item = new ItemStack(Material.BOW);
 		ItemMeta meta = item.getItemMeta();
 		
@@ -1403,7 +1466,7 @@ public class Tools {
 		return item;
 	}
 	
-	public ItemStack c1p5Range() {
+	public ItemStack t3Range() {
 		ItemStack item = new ItemStack(Material.BOW);
 		ItemMeta meta = item.getItemMeta();
 		
@@ -1423,7 +1486,7 @@ public class Tools {
 		return item;
 	}
 	
-	public ItemStack c2Range() {
+	public ItemStack t4Range() {
 		ItemStack item = new ItemStack(Material.BOW);
 		ItemMeta meta = item.getItemMeta();
 		
@@ -1443,7 +1506,7 @@ public class Tools {
 		return item;
 	}
 	
-	public ItemStack c2p5Range() {
+	public ItemStack t5Range() {
 		ItemStack item = new ItemStack(Material.BOW);
 		ItemMeta meta = item.getItemMeta();
 		
@@ -1463,7 +1526,7 @@ public class Tools {
 		return item;
 	}
 	
-	public ItemStack c3Range() {
+	public ItemStack t6Range() {
 		ItemStack item = new ItemStack(Material.BOW);
 		ItemMeta meta = item.getItemMeta();
 		
@@ -1485,7 +1548,7 @@ public class Tools {
 		return item;
 	}
 	
-	public ItemStack c3p5Range() {
+	public ItemStack t7Range() {
 		ItemStack item = new ItemStack(Material.CROSSBOW);
 		ItemMeta meta = item.getItemMeta();
 		
@@ -1517,7 +1580,7 @@ public class Tools {
 		return item;
 	}
 	
-	public ItemStack c4Range() {
+	public ItemStack t8Range() {
 		ItemStack item = new ItemStack(Material.CROSSBOW);
 		ItemMeta meta = item.getItemMeta();
 		
@@ -1549,7 +1612,7 @@ public class Tools {
 		return item;
 	}
 	
-	public ItemStack c4p5Range() {
+	public ItemStack t9Range() {
 		ItemStack item = new ItemStack(Material.TRIDENT);
 		ItemMeta meta = item.getItemMeta();
 		
@@ -1577,7 +1640,7 @@ public class Tools {
 		return item;
 	}
 	
-	public ItemStack c5Range() {
+	public ItemStack t10Range() {
 		ItemStack item = new ItemStack(Material.TRIDENT);
 		ItemMeta meta = item.getItemMeta();
 		
@@ -1599,1342 +1662,9 @@ public class Tools {
 		
 		return item;
 	}
-	
-//	Helmets
-	public ItemStack c0p5Helmet() {
-		ItemStack item = new ItemStack(Material.LEATHER_HELMET);
-		LeatherArmorMeta meta = (LeatherArmorMeta) item.getItemMeta();
 		
-		meta.setDisplayName(ChatColor.WHITE + "T1 Durable Stone Helmet");
-		meta.addEnchant(Enchantment.PROTECTION_ENVIRONMENTAL, 1, true);
-		
-		List<String> lore = new ArrayList<String>();
-		lore.add("");
-		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "This armor harnesses the security of ");
-		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "12 Cobblestone");
-		meta.setLore(lore);
-		meta.setColor(Color.GRAY);
-		meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
-
-		item.setItemMeta(meta);
-		
-		return item;
-	}
-	
-	public ItemStack c1Helmet() {
-		ItemStack item = new ItemStack(Material.CHAINMAIL_HELMET);
-		ItemMeta meta = item.getItemMeta();
-		
-		meta.setDisplayName(ChatColor.YELLOW + "T2 Resilient Stone Helmet");
-		meta.addEnchant(Enchantment.PROTECTION_ENVIRONMENTAL, 1, true);
-		meta.addEnchant(Enchantment.DURABILITY, 1, true);
-
-		List<String> lore = new ArrayList<String>();
-		lore.add("");
-		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "This armor harnesses the security of ");
-		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "48 Cobblestone");
-		meta.setLore(lore);
-		meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
-
-		item.setItemMeta(meta);
-		
-		return item;
-	}
-	
-	public ItemStack c1p5Helmet() {
-		ItemStack item = new ItemStack(Material.CHAINMAIL_HELMET);
-		ItemMeta meta = item.getItemMeta();
-		
-		meta.setDisplayName(ChatColor.YELLOW + "T3 Metallic Stone Helmet");
-		meta.addEnchant(Enchantment.PROTECTION_ENVIRONMENTAL, 2, true);
-		meta.addEnchant(Enchantment.DURABILITY, 2, true);
-
-		List<String> lore = new ArrayList<String>();
-		lore.add("");
-		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "This armor harnesses the security of ");
-		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "156 Cobblestone");
-		meta.setLore(lore);
-		meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
-
-		item.setItemMeta(meta);
-		
-		return item;
-	}
-	
-	public ItemStack c2Helmet() {
-		ItemStack item = new ItemStack(Material.IRON_HELMET);
-		ItemMeta meta = item.getItemMeta();
-		
-		meta.setDisplayName(ChatColor.GOLD + "T4 Gilded Stone Helmet");
-		meta.addEnchant(Enchantment.PROTECTION_ENVIRONMENTAL, 2, true);
-		meta.addEnchant(Enchantment.DURABILITY, 2, true);
-		meta.addEnchant(Enchantment.THORNS, 1, true);
-		meta.addEnchant(Enchantment.OXYGEN, 1, true);
-
-		List<String> lore = new ArrayList<String>();
-		lore.add("");
-		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "This armor harnesses the security of ");
-		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "480 Cobblestone");
-		lore.add("");
-		lore.add(ChatColor.GOLD + "Set Bonus:");
-		lore.add(ChatColor.GRAY + "Lucky I");
-		meta.setLore(lore);
-		meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
-
-		item.setItemMeta(meta);
-		item.addUnsafeEnchantment(CustomEnchants.LUCKY, 1);
-
-		return item;
-	}
-	
-	public ItemStack c2p5Helmet() {
-		ItemStack item = new ItemStack(Material.IRON_HELMET);
-		ItemMeta meta = item.getItemMeta();
-		
-		meta.setDisplayName(ChatColor.GOLD + "T5 Shiny Stone Helmet");
-		meta.addEnchant(Enchantment.PROTECTION_ENVIRONMENTAL, 3, true);
-		meta.addEnchant(Enchantment.DURABILITY, 3, true);
-		meta.addEnchant(Enchantment.THORNS, 1, true);
-		meta.addEnchant(Enchantment.OXYGEN, 1, true);
-		meta.addEnchant(Enchantment.WATER_WORKER, 1, true);
-
-		List<String> lore = new ArrayList<String>();
-		lore.add("");
-		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "This armor harnesses the security of ");
-		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "1,452 Cobblestone");
-		lore.add("");
-		lore.add(ChatColor.GOLD + "Set Bonus:");
-		lore.add(ChatColor.GRAY + "Lucky I");
-		lore.add(ChatColor.GRAY + "Resistance I");
-		meta.setLore(lore);
-		meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
-
-		item.setItemMeta(meta);
-		item.addUnsafeEnchantment(CustomEnchants.LUCKY, 1);
-		item.addUnsafeEnchantment(CustomEnchants.RESISTANCE, 1);
-
-		return item;
-	}
-	
-	public ItemStack c3Helmet() {
-		ItemStack item = new ItemStack(Material.DIAMOND_HELMET);
-		ItemMeta meta = item.getItemMeta();
-		
-		meta.setDisplayName(ChatColor.DARK_RED + "T6 Blazing Stone Helmet");
-		meta.addEnchant(Enchantment.DURABILITY, 5, true);
-		meta.addEnchant(Enchantment.PROTECTION_ENVIRONMENTAL, 3, true);
-		meta.addEnchant(Enchantment.THORNS, 2, true);
-		meta.addEnchant(Enchantment.OXYGEN, 2, true);
-		meta.addEnchant(Enchantment.WATER_WORKER, 1, true);
-
-		List<String> lore = new ArrayList<String>();
-		lore.add("");
-		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "This armor harnesses the security of ");
-		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "4,368 Cobblestone");
-		lore.add("");
-		lore.add(ChatColor.GOLD + "Set Bonus:");
-		lore.add(ChatColor.GRAY + "Lucky II");
-		lore.add(ChatColor.GRAY + "Resistance I");
-		lore.add(ChatColor.GRAY + "Strength I");
-		meta.setLore(lore);
-		meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
-
-		item.setItemMeta(meta);
-		item.addUnsafeEnchantment(CustomEnchants.LUCKY, 2);
-		item.addUnsafeEnchantment(CustomEnchants.RESISTANCE, 1);
-		item.addUnsafeEnchantment(CustomEnchants.STRENGTH, 1);
-
-		return item;
-	}
-	
-	public ItemStack c3p5Helmet() {
-		ItemStack item = new ItemStack(Material.DIAMOND_HELMET);
-		ItemMeta meta = item.getItemMeta();
-		
-		meta.setDisplayName(ChatColor.DARK_RED + "T7 Mystical Stone Helmet");
-		meta.addEnchant(Enchantment.DURABILITY, 7, true);
-		meta.addEnchant(Enchantment.PROTECTION_ENVIRONMENTAL, 4, true);
-		meta.addEnchant(Enchantment.THORNS, 3, true);
-		meta.addEnchant(Enchantment.OXYGEN, 3, true);
-		meta.addEnchant(Enchantment.WATER_WORKER, 1, true);
-		meta.addEnchant(Enchantment.MENDING, 1, true);
-
-		List<String> lore = new ArrayList<String>();
-		lore.add(ChatColor.GRAY + "Radar");
-		lore.add("");
-		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "This armor harnesses the security of ");
-		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "13,116 Cobblestone");
-		lore.add("");
-		lore.add(ChatColor.GOLD + "Set Bonus:");
-		lore.add(ChatColor.GRAY + "Lucky II");
-		lore.add(ChatColor.GRAY + "Resistance I");
-		lore.add(ChatColor.GRAY + "Strength I");
-		lore.add(ChatColor.GRAY + "Absorption I");
-		meta.setLore(lore);
-		meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
-
-		item.setItemMeta(meta);
-		item.addUnsafeEnchantment(CustomEnchants.RADAR, 1);
-		item.addUnsafeEnchantment(CustomEnchants.LUCKY, 2);
-		item.addUnsafeEnchantment(CustomEnchants.RESISTANCE, 1);
-		item.addUnsafeEnchantment(CustomEnchants.STRENGTH, 1);
-		item.addUnsafeEnchantment(CustomEnchants.ABSORPTION, 1);
-
-		return item;
-	}
-	
-	public ItemStack c4Helmet() {
-		ItemStack item = new ItemStack(Material.NETHERITE_HELMET);
-		ItemMeta meta = item.getItemMeta();
-		
-		meta.setDisplayName(ChatColor.RED + "T8 Draconian Stone Helmet");
-		meta.addEnchant(Enchantment.DURABILITY, 10, true);
-		meta.addEnchant(Enchantment.PROTECTION_ENVIRONMENTAL, 4, true);
-		meta.addEnchant(Enchantment.THORNS, 4, true);
-		meta.addEnchant(Enchantment.OXYGEN, 3, true);
-		meta.addEnchant(Enchantment.WATER_WORKER, 1, true);
-		meta.addEnchant(Enchantment.MENDING, 1, true);
-
-		List<String> lore = new ArrayList<String>();
-		lore.add(ChatColor.GRAY + "Radar");
-		lore.add("");
-		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "This armor harnesses the security of ");
-		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "39,360 Cobblestone");
-		lore.add("");
-		lore.add(ChatColor.GOLD + "Set Bonus:");
-		lore.add(ChatColor.GRAY + "Lucky III");
-		lore.add(ChatColor.GRAY + "Strength II");
-		lore.add(ChatColor.GRAY + "Absorption II");
-		lore.add(ChatColor.GRAY + "Resistance I");
-		lore.add(ChatColor.GRAY + "Vulcan I");
-		meta.setLore(lore);
-		meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
-
-		item.setItemMeta(meta);
-		item.addUnsafeEnchantment(CustomEnchants.RADAR, 1);
-		item.addUnsafeEnchantment(CustomEnchants.LUCKY, 3);
-		item.addUnsafeEnchantment(CustomEnchants.RESISTANCE, 2);
-		item.addUnsafeEnchantment(CustomEnchants.ABSORPTION, 2);
-		item.addUnsafeEnchantment(CustomEnchants.STRENGTH, 2);
-		item.addUnsafeEnchantment(CustomEnchants.VULCAN, 1);
-
-		return item;
-	}
-	
-	public ItemStack c4p5Helmet() {
-		ItemStack item = new ItemStack(Material.NETHERITE_HELMET);
-		ItemMeta meta = item.getItemMeta();
-		
-		meta.setDisplayName(ChatColor.RED + "" + ChatColor.BOLD + "T9 Impossible Stone Helmet");
-		meta.addEnchant(Enchantment.DURABILITY, 15, true);
-		meta.addEnchant(Enchantment.PROTECTION_ENVIRONMENTAL, 5, true);
-		meta.addEnchant(Enchantment.THORNS, 5, true);
-		meta.addEnchant(Enchantment.WATER_WORKER, 1, true);
-		meta.addEnchant(Enchantment.MENDING, 1, true);
-
-		List<String> lore = new ArrayList<String>();
-		lore.add(ChatColor.GRAY + "Unbreaking XV");
-		lore.add(ChatColor.GRAY + "Protection V");
-		lore.add(ChatColor.GRAY + "Thorns V");
-		lore.add(ChatColor.GRAY + "Aqua Affinity");
-		lore.add(ChatColor.GRAY + "Mending");
-		lore.add(ChatColor.GRAY + "Radar");
-		lore.add(ChatColor.GRAY + "Water Breathing");
-		lore.add("");
-		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "This armor harnesses the security of ");
-		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "118,092 Cobblestone");
-		lore.add("");
-		lore.add(ChatColor.GOLD + "Set Bonus:");
-		lore.add(ChatColor.GRAY + "Lucky IV");
-		lore.add(ChatColor.GRAY + "Absorption IV");
-		lore.add(ChatColor.GRAY + "Strength III");
-		lore.add(ChatColor.GRAY + "Hero II");
-		lore.add(ChatColor.GRAY + "Resistance I");
-		lore.add(ChatColor.GRAY + "Vulcan I");
-		meta.setLore(lore);
-		meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
-		meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
-
-		item.setItemMeta(meta);
-		item.addUnsafeEnchantment(CustomEnchants.RADAR, 1);
-		item.addUnsafeEnchantment(CustomEnchants.WATER_BREATHING, 1);
-		item.addUnsafeEnchantment(CustomEnchants.LUCKY, 4);
-		item.addUnsafeEnchantment(CustomEnchants.ABSORPTION, 4);
-		item.addUnsafeEnchantment(CustomEnchants.RESISTANCE, 1);
-		item.addUnsafeEnchantment(CustomEnchants.HERO, 2);
-		item.addUnsafeEnchantment(CustomEnchants.STRENGTH, 3);
-		item.addUnsafeEnchantment(CustomEnchants.VULCAN, 1);
-
-		return item;
-	}
-	
-	public ItemStack c5Helmet() {
-		ItemStack item = new ItemStack(Material.NETHERITE_HELMET);
-		ItemMeta meta = item.getItemMeta();
-		
-		meta.setDisplayName(ChatColor.LIGHT_PURPLE + "" + ChatColor.BOLD + "T10 Terminal Stone Helmet");
-		meta.addEnchant(Enchantment.THORNS, 7, true);
-		meta.addEnchant(Enchantment.PROTECTION_ENVIRONMENTAL, 5, true);
-		meta.addEnchant(Enchantment.WATER_WORKER, 1, true);
-		meta.setUnbreakable(true);
-
-		List<String> lore = new ArrayList<String>();
-		lore.add(ChatColor.GRAY + "Radar");
-		lore.add(ChatColor.GRAY + "Water Breathing");
-		lore.add("");
-		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "This armor harnesses the security of ");
-		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "354,288 Cobblestone");
-		lore.add("");
-		lore.add(ChatColor.GOLD + "Set Bonus:");
-		lore.add(ChatColor.GRAY + "Lucky V");
-		lore.add(ChatColor.GRAY + "Hero V");
-		lore.add(ChatColor.GRAY + "Strength IV");
-		lore.add(ChatColor.GRAY + "Resistance II");
-		lore.add(ChatColor.GRAY + "Vulcan II");
-		lore.add(ChatColor.GRAY + "Healthy");
-		lore.add("");
-		meta.setLore(lore);
-		meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
-
-		item.setItemMeta(meta);
-		item.addUnsafeEnchantment(CustomEnchants.RADAR, 1);
-		item.addUnsafeEnchantment(CustomEnchants.WATER_BREATHING, 1);
-		item.addUnsafeEnchantment(CustomEnchants.LUCKY, 5);
-		item.addUnsafeEnchantment(CustomEnchants.HERO, 5);
-		item.addUnsafeEnchantment(CustomEnchants.HEALTHY, 1);
-		item.addUnsafeEnchantment(CustomEnchants.RESISTANCE, 2);
-		item.addUnsafeEnchantment(CustomEnchants.STRENGTH, 4);
-		item.addUnsafeEnchantment(CustomEnchants.VULCAN, 2);
-
-		return item;
-	}
-	
-	public ItemStack cNotHelmet() {
-		ItemStack item = new ItemStack(Material.GOLDEN_HELMET);
-		ItemMeta meta = item.getItemMeta();
-		
-		meta.setDisplayName(ChatColor.DARK_PURPLE + "" + ChatColor.BOLD + "Not Stone Crown");
-		meta.setUnbreakable(true);
-
-		List<String> lore = new ArrayList<String>();
-		lore.add(ChatColor.GRAY + "Disarming I");
-		lore.add(ChatColor.GRAY + "Radar");
-		lore.add("");
-		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "This armor harnesses the security of ");
-		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "708,588 Cobblestone");
-		lore.add("");
-		lore.add(ChatColor.GOLD + "Set Bonus:");
-		lore.add(ChatColor.GRAY + "Vulcan II");
-		lore.add("");
-		meta.setLore(lore);
-		meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
-
-		item.setItemMeta(meta);
-		item.addUnsafeEnchantment(CustomEnchants.RADAR, 1);
-		item.addUnsafeEnchantment(CustomEnchants.DISARMING, 1);
-		item.addUnsafeEnchantment(CustomEnchants.VULCAN, 2);
-
-		return item;
-	}
-	
-	public ItemStack cAHelmet() {
-		ItemStack item = new ItemStack(Material.GOLDEN_HELMET);
-		ItemMeta meta = item.getItemMeta();
-		
-		meta.setDisplayName(ChatColor.DARK_BLUE + "" + ChatColor.BOLD + "Anti-Stone Crown");
-		meta.addEnchant(Enchantment.WATER_WORKER, 1, true);
-		meta.setUnbreakable(true);
-
-		List<String> lore = new ArrayList<String>();
-		lore.add(ChatColor.GRAY + "Disarming II");
-		lore.add(ChatColor.GRAY + "Aqua Affinity");
-		lore.add(ChatColor.GRAY + "Radar");
-		lore.add(ChatColor.GRAY + "Water Breathing");
-		lore.add("");
-		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "This armor harnesses the security of ");
-		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "2,834,352 Cobblestone");
-		lore.add("");
-		lore.add(ChatColor.GOLD + "Set Bonus:");
-		lore.add(ChatColor.GRAY + "Lucky V");
-		lore.add(ChatColor.GRAY + "Hero V");
-		lore.add(ChatColor.GRAY + "Strength IV");
-		lore.add(ChatColor.GRAY + "Resistance II");
-		lore.add(ChatColor.GRAY + "Vulcan II");
-		lore.add(ChatColor.GRAY + "Healthy");
-		lore.add("");
-		meta.setLore(lore);
-		meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
-		meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
-
-		item.setItemMeta(meta);
-		item.addUnsafeEnchantment(CustomEnchants.RADAR, 1);
-		item.addUnsafeEnchantment(CustomEnchants.WATER_BREATHING, 1);
-		item.addUnsafeEnchantment(CustomEnchants.LUCKY, 5);
-		item.addUnsafeEnchantment(CustomEnchants.HERO, 5);
-		item.addUnsafeEnchantment(CustomEnchants.HEALTHY, 1);
-		item.addUnsafeEnchantment(CustomEnchants.RESISTANCE, 2);
-		item.addUnsafeEnchantment(CustomEnchants.STRENGTH, 4);
-		item.addUnsafeEnchantment(CustomEnchants.VULCAN, 2);
-		item.addUnsafeEnchantment(CustomEnchants.DISARMING, 2);
-
-		return item;
-	}
-	
-//	Chestplates
-	public ItemStack c0p5Chestplate() {
-		ItemStack item = new ItemStack(Material.LEATHER_CHESTPLATE);
-		LeatherArmorMeta meta = (LeatherArmorMeta) item.getItemMeta();
-		
-		meta.setDisplayName(ChatColor.WHITE + "T1 Durable Stone Chestplate");
-		meta.addEnchant(Enchantment.PROTECTION_ENVIRONMENTAL, 1, true);
-		
-		List<String> lore = new ArrayList<String>();
-		lore.add("");
-		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "This armor harnesses the security of ");
-		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "21 Cobblestone");
-		meta.setLore(lore);
-		meta.setColor(Color.GRAY);
-		meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
-
-		item.setItemMeta(meta);
-		
-		return item;
-	}
-	
-	public ItemStack c1Chestplate() {
-		ItemStack item = new ItemStack(Material.CHAINMAIL_CHESTPLATE);
-		ItemMeta meta = item.getItemMeta();
-		
-		meta.setDisplayName(ChatColor.YELLOW + "T2 Resilient Stone Chestplate");
-		meta.addEnchant(Enchantment.PROTECTION_ENVIRONMENTAL, 1, true);
-		meta.addEnchant(Enchantment.DURABILITY, 1, true);
-
-		List<String> lore = new ArrayList<String>();
-		lore.add("");
-		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "This armor harnesses the security of ");
-		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "84 Cobblestone");
-		meta.setLore(lore);
-		meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
-
-		item.setItemMeta(meta);
-		
-		return item;
-	}
-	
-	public ItemStack c1p5Chestplate() {
-		ItemStack item = new ItemStack(Material.CHAINMAIL_CHESTPLATE);
-		ItemMeta meta = item.getItemMeta();
-		
-		meta.setDisplayName(ChatColor.YELLOW + "T3 Metallic Stone Chestplate");
-		meta.addEnchant(Enchantment.PROTECTION_ENVIRONMENTAL, 2, true);
-		meta.addEnchant(Enchantment.DURABILITY, 2, true);
-
-		List<String> lore = new ArrayList<String>();
-		lore.add("");
-		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "This armor harnesses the security of ");
-		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "273 Cobblestone");
-		meta.setLore(lore);
-		meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
-
-		item.setItemMeta(meta);
-		
-		return item;
-	}
-	
-	public ItemStack c2Chestplate() {
-		ItemStack item = new ItemStack(Material.IRON_CHESTPLATE);
-		ItemMeta meta = item.getItemMeta();
-		
-		meta.setDisplayName(ChatColor.GOLD + "T4 Gilded Stone Chestplate");
-		meta.addEnchant(Enchantment.PROTECTION_ENVIRONMENTAL, 2, true);
-		meta.addEnchant(Enchantment.DURABILITY, 2, true);
-		meta.addEnchant(Enchantment.THORNS, 1, true);
-
-		List<String> lore = new ArrayList<String>();
-		lore.add("");
-		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "This armor harnesses the security of ");
-		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "840 Cobblestone");
-		lore.add("");
-		lore.add(ChatColor.GOLD + "Set Bonus:");
-		lore.add(ChatColor.GRAY + "Lucky I");
-		meta.setLore(lore);
-		meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
-
-		item.setItemMeta(meta);
-		item.addUnsafeEnchantment(CustomEnchants.LUCKY, 1);
-
-		return item;
-	}
-	
-	public ItemStack c2p5Chestplate() {
-		ItemStack item = new ItemStack(Material.IRON_CHESTPLATE);
-		ItemMeta meta = item.getItemMeta();
-		
-		meta.setDisplayName(ChatColor.GOLD + "T5 Shiny Stone Chestplate");
-		meta.addEnchant(Enchantment.PROTECTION_ENVIRONMENTAL, 3, true);
-		meta.addEnchant(Enchantment.DURABILITY, 3, true);
-		meta.addEnchant(Enchantment.THORNS, 1, true);
-
-		List<String> lore = new ArrayList<String>();
-		lore.add("");
-		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "This armor harnesses the security of ");
-		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "2,541 Cobblestone");
-		lore.add("");
-		lore.add(ChatColor.GOLD + "Set Bonus:");
-		lore.add(ChatColor.GRAY + "Lucky I");
-		lore.add(ChatColor.GRAY + "Resistance I");
-		meta.setLore(lore);
-		meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
-
-		item.setItemMeta(meta);
-		item.addUnsafeEnchantment(CustomEnchants.LUCKY, 1);
-		item.addUnsafeEnchantment(CustomEnchants.RESISTANCE, 1);
-
-		return item;
-	}
-	
-	public ItemStack c3Chestplate() {
-		ItemStack item = new ItemStack(Material.DIAMOND_CHESTPLATE);
-		ItemMeta meta = item.getItemMeta();
-		
-		meta.setDisplayName(ChatColor.DARK_RED + "T6 Blazing Stone Chestplate");
-		meta.addEnchant(Enchantment.DURABILITY, 5, true);
-		meta.addEnchant(Enchantment.PROTECTION_ENVIRONMENTAL, 3, true);
-		meta.addEnchant(Enchantment.THORNS, 2, true);
-
-		List<String> lore = new ArrayList<String>();
-		lore.add(ChatColor.GRAY + "Haste I");
-		lore.add("");
-		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "This armor harnesses the security of ");
-		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "7,644 Cobblestone");
-		lore.add("");
-		lore.add(ChatColor.GOLD + "Set Bonus:");
-		lore.add(ChatColor.GRAY + "Lucky II");
-		lore.add(ChatColor.GRAY + "Resistance I");
-		lore.add(ChatColor.GRAY + "Strength I");
-		meta.setLore(lore);
-		meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
-
-		item.setItemMeta(meta);
-		item.addUnsafeEnchantment(CustomEnchants.HASTE, 1);
-		item.addUnsafeEnchantment(CustomEnchants.LUCKY, 2);
-		item.addUnsafeEnchantment(CustomEnchants.RESISTANCE, 1);
-		item.addUnsafeEnchantment(CustomEnchants.STRENGTH, 1);
-
-		return item;
-	}
-	
-	public ItemStack c3p5Chestplate() {
-		ItemStack item = new ItemStack(Material.DIAMOND_CHESTPLATE);
-		ItemMeta meta = item.getItemMeta();
-		
-		meta.setDisplayName(ChatColor.DARK_RED + "T7 Mystical Stone Chestplate");
-		meta.addEnchant(Enchantment.DURABILITY, 7, true);
-		meta.addEnchant(Enchantment.PROTECTION_ENVIRONMENTAL, 4, true);
-		meta.addEnchant(Enchantment.THORNS, 3, true);
-		meta.addEnchant(Enchantment.MENDING, 1, true);
-
-		List<String> lore = new ArrayList<String>();
-		lore.add(ChatColor.GRAY + "Unbreaking VII");
-		lore.add(ChatColor.GRAY + "Protection IV");
-		lore.add(ChatColor.GRAY + "Thorns III");
-		lore.add(ChatColor.GRAY + "Haste I");
-		lore.add(ChatColor.GRAY + "Mending");
-		lore.add("");
-		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "This armor harnesses the security of ");
-		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "22,953 Cobblestone");
-		lore.add("");
-		lore.add(ChatColor.GOLD + "Set Bonus:");
-		lore.add(ChatColor.GRAY + "Lucky II");
-		lore.add(ChatColor.GRAY + "Resistance I");
-		lore.add(ChatColor.GRAY + "Strength I");
-		lore.add(ChatColor.GRAY + "Absorption I");
-		meta.setLore(lore);
-		meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
-		meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
-
-		item.setItemMeta(meta);
-		item.addUnsafeEnchantment(CustomEnchants.HASTE, 1);
-		item.addUnsafeEnchantment(CustomEnchants.LUCKY, 2);
-		item.addUnsafeEnchantment(CustomEnchants.RESISTANCE, 1);
-		item.addUnsafeEnchantment(CustomEnchants.STRENGTH, 1);
-		item.addUnsafeEnchantment(CustomEnchants.ABSORPTION, 1);
-
-		return item;
-	}
-	
-	public ItemStack c4Chestplate() {
-		ItemStack item = new ItemStack(Material.NETHERITE_CHESTPLATE);
-		ItemMeta meta = item.getItemMeta();
-		
-		meta.setDisplayName(ChatColor.RED + "T8 Draconian Stone Chestplate");
-		meta.addEnchant(Enchantment.DURABILITY, 10, true);
-		meta.addEnchant(Enchantment.PROTECTION_ENVIRONMENTAL, 4, true);
-		meta.addEnchant(Enchantment.THORNS, 4, true);
-		meta.addEnchant(Enchantment.MENDING, 1, true);
-
-		List<String> lore = new ArrayList<String>();
-		lore.add(ChatColor.GRAY + "Unbreaking X");
-		lore.add(ChatColor.GRAY + "Protection IV");
-		lore.add(ChatColor.GRAY + "Thorns IV");
-		lore.add(ChatColor.GRAY + "Haste II");
-		lore.add(ChatColor.GRAY + "Mending");
-		lore.add("");
-		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "This armor harnesses the security of ");
-		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "68,880 Cobblestone");
-		lore.add("");
-		lore.add(ChatColor.GOLD + "Set Bonus:");
-		lore.add(ChatColor.GRAY + "Lucky III");
-		lore.add(ChatColor.GRAY + "Strength II");
-		lore.add(ChatColor.GRAY + "Absorption II");
-		lore.add(ChatColor.GRAY + "Resistance I");
-		lore.add(ChatColor.GRAY + "Vulcan I");
-		meta.setLore(lore);
-		meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
-		meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
-
-		item.setItemMeta(meta);
-		item.addUnsafeEnchantment(CustomEnchants.HASTE, 2);
-		item.addUnsafeEnchantment(CustomEnchants.LUCKY, 3);
-		item.addUnsafeEnchantment(CustomEnchants.RESISTANCE, 1);
-		item.addUnsafeEnchantment(CustomEnchants.ABSORPTION, 2);
-		item.addUnsafeEnchantment(CustomEnchants.STRENGTH, 2);
-		item.addUnsafeEnchantment(CustomEnchants.VULCAN, 1);
-
-		return item;
-	}
-	
-	public ItemStack c4p5Chestplate() {
-		ItemStack item = new ItemStack(Material.NETHERITE_CHESTPLATE);
-		ItemMeta meta = item.getItemMeta();
-		
-		meta.setDisplayName(ChatColor.RED + "" + ChatColor.BOLD + "T9 Impossible Stone Chestplate");
-		meta.addEnchant(Enchantment.DURABILITY, 15, true);
-		meta.addEnchant(Enchantment.PROTECTION_ENVIRONMENTAL, 5, true);
-		meta.addEnchant(Enchantment.THORNS, 5, true);
-		meta.addEnchant(Enchantment.MENDING, 1, true);
-
-		List<String> lore = new ArrayList<String>();
-		lore.add(ChatColor.GRAY + "Unbreaking XV");
-		lore.add(ChatColor.GRAY + "Protection V");
-		lore.add(ChatColor.GRAY + "Thorns V");
-		lore.add(ChatColor.GRAY + "Haste II");
-		lore.add(ChatColor.GRAY + "Mending");
-		lore.add("");
-		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "This armor harnesses the security of ");
-		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "206,661 Cobblestone");
-		lore.add("");
-		lore.add(ChatColor.GOLD + "Set Bonus:");
-		lore.add(ChatColor.GRAY + "Lucky IV");
-		lore.add(ChatColor.GRAY + "Absorption IV");
-		lore.add(ChatColor.GRAY + "Strength III");
-		lore.add(ChatColor.GRAY + "Hero II");
-		lore.add(ChatColor.GRAY + "Resistance I");
-		lore.add(ChatColor.GRAY + "Vulcan I");
-		meta.setLore(lore);
-		meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
-		meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
-
-		item.setItemMeta(meta);
-		item.addUnsafeEnchantment(CustomEnchants.HASTE, 2);
-		item.addUnsafeEnchantment(CustomEnchants.LUCKY, 4);
-		item.addUnsafeEnchantment(CustomEnchants.ABSORPTION, 4);
-		item.addUnsafeEnchantment(CustomEnchants.RESISTANCE, 1);
-		item.addUnsafeEnchantment(CustomEnchants.HERO, 2);
-		item.addUnsafeEnchantment(CustomEnchants.STRENGTH, 3);
-		item.addUnsafeEnchantment(CustomEnchants.VULCAN, 1);
-
-		return item;
-	}
-	
-	public ItemStack c5Chestplate() {
-		ItemStack item = new ItemStack(Material.NETHERITE_CHESTPLATE);
-		ItemMeta meta = item.getItemMeta();
-		
-		meta.setDisplayName(ChatColor.LIGHT_PURPLE + "" + ChatColor.BOLD + "T10 Terminal Stone Chestplate");
-		meta.addEnchant(Enchantment.THORNS, 7, true);
-		meta.addEnchant(Enchantment.PROTECTION_ENVIRONMENTAL, 5, true);
-		meta.setUnbreakable(true);
-
-		List<String> lore = new ArrayList<String>();
-		lore.add(ChatColor.GRAY + "Haste II");
-		lore.add("");
-		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "This armor harnesses the security of ");
-		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "620,004 Cobblestone");
-		lore.add("");
-		lore.add(ChatColor.GOLD + "Set Bonus:");
-		lore.add(ChatColor.GRAY + "Lucky V");
-		lore.add(ChatColor.GRAY + "Hero V");
-		lore.add(ChatColor.GRAY + "Strength IV");
-		lore.add(ChatColor.GRAY + "Resistance II");
-		lore.add(ChatColor.GRAY + "Vulcan II");
-		lore.add(ChatColor.GRAY + "Healthy");
-		lore.add("");
-		meta.setLore(lore);
-		meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
-
-		item.setItemMeta(meta);
-		item.addUnsafeEnchantment(CustomEnchants.HASTE, 2);
-		item.addUnsafeEnchantment(CustomEnchants.LUCKY, 5);
-		item.addUnsafeEnchantment(CustomEnchants.HERO, 5);
-		item.addUnsafeEnchantment(CustomEnchants.HEALTHY, 1);
-		item.addUnsafeEnchantment(CustomEnchants.RESISTANCE, 2);
-		item.addUnsafeEnchantment(CustomEnchants.STRENGTH, 4);
-		item.addUnsafeEnchantment(CustomEnchants.VULCAN, 2);
-
-		return item;
-	}
-	
-//	Leggings
-	public ItemStack c0p5Leggings() {
-		ItemStack item = new ItemStack(Material.LEATHER_LEGGINGS);
-		LeatherArmorMeta meta = (LeatherArmorMeta) item.getItemMeta();
-		
-		meta.setDisplayName(ChatColor.WHITE + "T1 Durable Stone Leggings");
-		meta.addEnchant(Enchantment.PROTECTION_ENVIRONMENTAL, 1, true);
-		
-		List<String> lore = new ArrayList<String>();
-		lore.add("");
-		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "This armor harnesses the security of ");
-		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "18 Cobblestone");
-		meta.setLore(lore);
-		meta.setColor(Color.GRAY);
-		meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
-
-		item.setItemMeta(meta);
-		
-		return item;
-	}
-	
-	public ItemStack c1Leggings() {
-		ItemStack item = new ItemStack(Material.CHAINMAIL_LEGGINGS);
-		ItemMeta meta = item.getItemMeta();
-		
-		meta.setDisplayName(ChatColor.YELLOW + "T2 Resilient Stone Leggings");
-		meta.addEnchant(Enchantment.PROTECTION_ENVIRONMENTAL, 1, true);
-		meta.addEnchant(Enchantment.DURABILITY, 1, true);
-
-		List<String> lore = new ArrayList<String>();
-		lore.add("");
-		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "This armor harnesses the security of ");
-		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "72 Cobblestone");
-		meta.setLore(lore);
-		meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
-
-		item.setItemMeta(meta);
-		
-		return item;
-	}
-	
-	public ItemStack c1p5Leggings() {
-		ItemStack item = new ItemStack(Material.CHAINMAIL_LEGGINGS);
-		ItemMeta meta = item.getItemMeta();
-		
-		meta.setDisplayName(ChatColor.YELLOW + "T3 Metallic Stone Leggings");
-		meta.addEnchant(Enchantment.PROTECTION_ENVIRONMENTAL, 2, true);
-		meta.addEnchant(Enchantment.DURABILITY, 2, true);
-
-		List<String> lore = new ArrayList<String>();
-		lore.add("");
-		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "This armor harnesses the security of ");
-		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "234 Cobblestone");
-		meta.setLore(lore);
-		meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
-
-		item.setItemMeta(meta);
-		
-		return item;
-	}
-	
-	public ItemStack c2Leggings() {
-		ItemStack item = new ItemStack(Material.IRON_LEGGINGS);
-		ItemMeta meta = item.getItemMeta();
-		
-		meta.setDisplayName(ChatColor.GOLD + "T4 Gilded Stone Leggings");
-		meta.addEnchant(Enchantment.PROTECTION_ENVIRONMENTAL, 2, true);
-		meta.addEnchant(Enchantment.DURABILITY, 2, true);
-		meta.addEnchant(Enchantment.THORNS, 1, true);
-
-		List<String> lore = new ArrayList<String>();
-		lore.add("");
-		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "This armor harnesses the security of ");
-		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "720 Cobblestone");
-		lore.add("");
-		lore.add(ChatColor.GOLD + "Set Bonus:");
-		lore.add(ChatColor.GRAY + "Lucky I");
-		meta.setLore(lore);
-		meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
-
-		item.setItemMeta(meta);
-		item.addUnsafeEnchantment(CustomEnchants.LUCKY, 1);
-		
-		return item;
-	}
-	
-	public ItemStack c2p5Leggings() {
-		ItemStack item = new ItemStack(Material.IRON_LEGGINGS);
-		ItemMeta meta = item.getItemMeta();
-		
-		meta.setDisplayName(ChatColor.GOLD + "T5 Shiny Stone Leggings");
-		meta.addEnchant(Enchantment.PROTECTION_ENVIRONMENTAL, 3, true);
-		meta.addEnchant(Enchantment.DURABILITY, 3, true);
-		meta.addEnchant(Enchantment.THORNS, 1, true);
-
-		List<String> lore = new ArrayList<String>();
-		lore.add("");
-		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "This armor harnesses the security of ");
-		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "2,178 Cobblestone");
-		lore.add("");
-		lore.add(ChatColor.GOLD + "Set Bonus:");
-		lore.add(ChatColor.GRAY + "Lucky I");
-		lore.add(ChatColor.GRAY + "Resistance I");
-		meta.setLore(lore);
-		meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
-
-		item.setItemMeta(meta);
-		item.addUnsafeEnchantment(CustomEnchants.LUCKY, 1);
-		item.addUnsafeEnchantment(CustomEnchants.RESISTANCE, 1);
-
-		return item;
-	}
-	
-	public ItemStack c3Leggings() {
-		ItemStack item = new ItemStack(Material.DIAMOND_LEGGINGS);
-		ItemMeta meta = item.getItemMeta();
-		
-		meta.setDisplayName(ChatColor.DARK_RED + "T6 Blazing Stone Leggings");
-		meta.addEnchant(Enchantment.DURABILITY, 5, true);
-		meta.addEnchant(Enchantment.PROTECTION_ENVIRONMENTAL, 3, true);
-		meta.addEnchant(Enchantment.THORNS, 2, true);
-
-		List<String> lore = new ArrayList<String>();
-		lore.add("");
-		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "This armor harnesses the security of ");
-		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "6,552 Cobblestone");
-		lore.add("");
-		lore.add(ChatColor.GOLD + "Set Bonus:");
-		lore.add(ChatColor.GRAY + "Lucky II");
-		lore.add(ChatColor.GRAY + "Resistance I");
-		lore.add(ChatColor.GRAY + "Strength I");
-		meta.setLore(lore);
-		meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
-
-		item.setItemMeta(meta);
-		item.addUnsafeEnchantment(CustomEnchants.LUCKY, 2);
-		item.addUnsafeEnchantment(CustomEnchants.RESISTANCE, 1);
-		item.addUnsafeEnchantment(CustomEnchants.STRENGTH, 1);
-
-		return item;
-	}
-	
-	public ItemStack c3p5Leggings() {
-		ItemStack item = new ItemStack(Material.DIAMOND_LEGGINGS);
-		ItemMeta meta = item.getItemMeta();
-		
-		meta.setDisplayName(ChatColor.DARK_RED + "T7 Mystical Stone Leggings");
-		meta.addEnchant(Enchantment.DURABILITY, 7, true);
-		meta.addEnchant(Enchantment.PROTECTION_ENVIRONMENTAL, 4, true);
-		meta.addEnchant(Enchantment.THORNS, 3, true);
-		meta.addEnchant(Enchantment.MENDING, 1, true);
-
-		List<String> lore = new ArrayList<String>();
-		lore.add("");
-		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "This armor harnesses the security of ");
-		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "19,674 Cobblestone");
-		lore.add("");
-		lore.add(ChatColor.GOLD + "Set Bonus:");
-		lore.add(ChatColor.GRAY + "Lucky II");
-		lore.add(ChatColor.GRAY + "Resistance I");
-		lore.add(ChatColor.GRAY + "Strength I");
-		lore.add(ChatColor.GRAY + "Absorption I");
-		meta.setLore(lore);
-		meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
-
-		item.setItemMeta(meta);
-		item.addUnsafeEnchantment(CustomEnchants.LUCKY, 2);
-		item.addUnsafeEnchantment(CustomEnchants.RESISTANCE, 1);
-		item.addUnsafeEnchantment(CustomEnchants.STRENGTH, 1);
-		item.addUnsafeEnchantment(CustomEnchants.ABSORPTION, 1);
-
-		return item;
-	}
-	
-	public ItemStack c4Leggings() {
-		ItemStack item = new ItemStack(Material.NETHERITE_LEGGINGS);
-		ItemMeta meta = item.getItemMeta();
-		
-		meta.setDisplayName(ChatColor.RED + "T8 Draconian Stone Leggings");
-		meta.addEnchant(Enchantment.DURABILITY, 10, true);
-		meta.addEnchant(Enchantment.PROTECTION_ENVIRONMENTAL, 4, true);
-		meta.addEnchant(Enchantment.THORNS, 4, true);
-		meta.addEnchant(Enchantment.MENDING, 1, true);
-
-		List<String> lore = new ArrayList<String>();
-		lore.add(ChatColor.GRAY + "Unbreaking X");
-		lore.add(ChatColor.GRAY + "Protection IV");
-		lore.add(ChatColor.GRAY + "Thorns IV");
-		lore.add(ChatColor.GRAY + "Mending");
-		lore.add("");
-		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "This armor harnesses the security of ");
-		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "59,040 Cobblestone");
-		lore.add("");
-		lore.add(ChatColor.GOLD + "Set Bonus:");
-		lore.add(ChatColor.GRAY + "Lucky III");
-		lore.add(ChatColor.GRAY + "Strength II");
-		lore.add(ChatColor.GRAY + "Absorption II");
-		lore.add(ChatColor.GRAY + "Resistance I");
-		lore.add(ChatColor.GRAY + "Vulcan I");
-		meta.setLore(lore);
-		meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
-		meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
-
-		item.setItemMeta(meta);
-		item.addUnsafeEnchantment(CustomEnchants.LUCKY, 3);
-		item.addUnsafeEnchantment(CustomEnchants.RESISTANCE, 1);
-		item.addUnsafeEnchantment(CustomEnchants.ABSORPTION, 2);
-		item.addUnsafeEnchantment(CustomEnchants.STRENGTH, 2);
-		item.addUnsafeEnchantment(CustomEnchants.VULCAN, 1);
-
-		return item;
-	}
-	
-	public ItemStack c4p5Leggings() {
-		ItemStack item = new ItemStack(Material.NETHERITE_LEGGINGS);
-		ItemMeta meta = item.getItemMeta();
-		
-		meta.setDisplayName(ChatColor.RED + "" + ChatColor.BOLD + "T9 Impossible Stone Leggings");
-		meta.addEnchant(Enchantment.DURABILITY, 15, true);
-		meta.addEnchant(Enchantment.PROTECTION_ENVIRONMENTAL, 5, true);
-		meta.addEnchant(Enchantment.THORNS, 5, true);
-		meta.addEnchant(Enchantment.MENDING, 1, true);
-
-		List<String> lore = new ArrayList<String>();
-		lore.add(ChatColor.GRAY + "Unbreaking XV");
-		lore.add(ChatColor.GRAY + "Protection V");
-		lore.add(ChatColor.GRAY + "Thorns V");
-		lore.add(ChatColor.GRAY + "Mending");
-		lore.add(ChatColor.GRAY + "Dolphin");
-		lore.add("");
-		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "This armor harnesses the security of ");
-		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "177,138 Cobblestone");
-		lore.add("");
-		lore.add(ChatColor.GOLD + "Set Bonus:");
-		lore.add(ChatColor.GRAY + "Lucky IV");
-		lore.add(ChatColor.GRAY + "Absorption IV");
-		lore.add(ChatColor.GRAY + "Strength III");
-		lore.add(ChatColor.GRAY + "Hero II");
-		lore.add(ChatColor.GRAY + "Resistance I");
-		lore.add(ChatColor.GRAY + "Vulcan I");
-		meta.setLore(lore);
-		meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
-		meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
-
-		item.setItemMeta(meta);
-		item.addUnsafeEnchantment(CustomEnchants.DOLPHIN, 1);
-		item.addUnsafeEnchantment(CustomEnchants.LUCKY, 4);
-		item.addUnsafeEnchantment(CustomEnchants.ABSORPTION, 4);
-		item.addUnsafeEnchantment(CustomEnchants.RESISTANCE, 1);
-		item.addUnsafeEnchantment(CustomEnchants.HERO, 2);
-		item.addUnsafeEnchantment(CustomEnchants.STRENGTH, 3);
-		item.addUnsafeEnchantment(CustomEnchants.VULCAN, 1);
-		
-		return item;
-	}
-	
-	public ItemStack c5Leggings() {
-		ItemStack item = new ItemStack(Material.NETHERITE_LEGGINGS);
-		ItemMeta meta = item.getItemMeta();
-		
-		meta.setDisplayName(ChatColor.LIGHT_PURPLE + "" + ChatColor.BOLD + "T10 Terminal Stone Leggings");
-		meta.addEnchant(Enchantment.THORNS, 7, true);
-		meta.addEnchant(Enchantment.PROTECTION_ENVIRONMENTAL, 5, true);
-		meta.setUnbreakable(true);
-
-		List<String> lore = new ArrayList<String>();
-		lore.add(ChatColor.GRAY + "Dolphin");
-		lore.add(ChatColor.GRAY + "Saturation");
-		lore.add("");
-		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "This armor harnesses the security of ");
-		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "531,432 Cobblestone");
-		lore.add("");
-		lore.add(ChatColor.GOLD + "Set Bonus:");
-		lore.add(ChatColor.GRAY + "Lucky V");
-		lore.add(ChatColor.GRAY + "Hero V");
-		lore.add(ChatColor.GRAY + "Strength IV");
-		lore.add(ChatColor.GRAY + "Resistance II");
-		lore.add(ChatColor.GRAY + "Vulcan II");
-		lore.add(ChatColor.GRAY + "Healthy");
-		lore.add("");
-		meta.setLore(lore);
-		meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
-
-		item.setItemMeta(meta);
-		item.addUnsafeEnchantment(CustomEnchants.DOLPHIN, 1);
-		item.addUnsafeEnchantment(CustomEnchants.SATURATION, 1);
-		item.addUnsafeEnchantment(CustomEnchants.LUCKY, 5);
-		item.addUnsafeEnchantment(CustomEnchants.HERO, 5);
-		item.addUnsafeEnchantment(CustomEnchants.HEALTHY, 1);
-		item.addUnsafeEnchantment(CustomEnchants.RESISTANCE, 2);
-		item.addUnsafeEnchantment(CustomEnchants.STRENGTH, 4);
-		item.addUnsafeEnchantment(CustomEnchants.VULCAN, 2);
-
-		return item;
-	}
-	
-//	Boots
-	public ItemStack c0p5Boots() {
-		ItemStack item = new ItemStack(Material.LEATHER_BOOTS);
-		LeatherArmorMeta meta = (LeatherArmorMeta) item.getItemMeta();
-		
-		meta.setDisplayName(ChatColor.WHITE + "T1 Durable Stone Boots");
-		meta.addEnchant(Enchantment.PROTECTION_ENVIRONMENTAL, 1, true);
-		
-		List<String> lore = new ArrayList<String>();
-		lore.add("");
-		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "This armor harnesses the security of ");
-		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "9 Cobblestone");
-		meta.setLore(lore);
-		meta.setColor(Color.GRAY);
-		meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
-
-		item.setItemMeta(meta);
-		
-		return item;
-	}
-	
-	public ItemStack c1Boots() {
-		ItemStack item = new ItemStack(Material.CHAINMAIL_BOOTS);
-		ItemMeta meta = item.getItemMeta();
-		
-		meta.setDisplayName(ChatColor.YELLOW + "T2 Resilient Stone Boots");
-		meta.addEnchant(Enchantment.PROTECTION_ENVIRONMENTAL, 1, true);
-		meta.addEnchant(Enchantment.DURABILITY, 1, true);
-
-		List<String> lore = new ArrayList<String>();
-		lore.add("");
-		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "This armor harnesses the security of ");
-		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "36 Cobblestone");
-		meta.setLore(lore);
-		meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
-
-		item.setItemMeta(meta);
-		
-		return item;
-	}
-	
-	public ItemStack c1p5Boots() {
-		ItemStack item = new ItemStack(Material.CHAINMAIL_BOOTS);
-		ItemMeta meta = item.getItemMeta();
-		
-		meta.setDisplayName(ChatColor.YELLOW + "T3 Metallic Stone Boots");
-		meta.addEnchant(Enchantment.PROTECTION_ENVIRONMENTAL, 2, true);
-		meta.addEnchant(Enchantment.DURABILITY, 2, true);
-
-		List<String> lore = new ArrayList<String>();
-		lore.add(ChatColor.GRAY + "Speedy I");
-		lore.add("");
-		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "This armor harnesses the security of ");
-		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "117 Cobblestone");
-		meta.setLore(lore);
-		meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
-
-		item.setItemMeta(meta);
-		item.addUnsafeEnchantment(CustomEnchants.SPEEDY, 1);
-
-		return item;
-	}
-	
-	public ItemStack c2Boots() {
-		ItemStack item = new ItemStack(Material.IRON_BOOTS);
-		ItemMeta meta = item.getItemMeta();
-		
-		meta.setDisplayName(ChatColor.GOLD + "T4 Gilded Stone Boots");
-		meta.addEnchant(Enchantment.PROTECTION_ENVIRONMENTAL, 2, true);
-		meta.addEnchant(Enchantment.DURABILITY, 2, true);
-		meta.addEnchant(Enchantment.THORNS, 1, true);
-		meta.addEnchant(Enchantment.PROTECTION_FALL, 1, true);
-
-		List<String> lore = new ArrayList<String>();
-		lore.add(ChatColor.GRAY + "Protection II");
-		lore.add(ChatColor.GRAY + "Unbreaking II");
-		lore.add(ChatColor.GRAY + "Speedy I");
-		lore.add(ChatColor.GRAY + "Thorns I");
-		lore.add(ChatColor.GRAY + "Feather Falling I");
-		lore.add("");
-		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "This armor harnesses the security of ");
-		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "360 Cobblestone");
-		lore.add("");
-		lore.add(ChatColor.GOLD + "Set Bonus:");
-		lore.add(ChatColor.GRAY + "Lucky I");
-		meta.setLore(lore);
-		meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
-		meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
-
-		item.setItemMeta(meta);
-		item.addUnsafeEnchantment(CustomEnchants.SPEEDY, 1);
-		item.addUnsafeEnchantment(CustomEnchants.LUCKY, 1);
-		
-		return item;
-	}
-	
-	public ItemStack c2p5Boots() {
-		ItemStack item = new ItemStack(Material.IRON_BOOTS);
-		ItemMeta meta = item.getItemMeta();
-		
-		meta.setDisplayName(ChatColor.GOLD + "T5 Shiny Stone Boots");
-		meta.addEnchant(Enchantment.PROTECTION_ENVIRONMENTAL, 3, true);
-		meta.addEnchant(Enchantment.DURABILITY, 3, true);
-		meta.addEnchant(Enchantment.THORNS, 1, true);
-		meta.addEnchant(Enchantment.PROTECTION_FALL, 1, true);
-
-		List<String> lore = new ArrayList<String>();
-		lore.add(ChatColor.GRAY + "Protection III");
-		lore.add(ChatColor.GRAY + "Unbreaking III");
-		lore.add(ChatColor.GRAY + "Speedy I");
-		lore.add(ChatColor.GRAY + "Thorns I");
-		lore.add(ChatColor.GRAY + "Feather Falling I");
-		lore.add("");
-		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "This armor harnesses the security of ");
-		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "1,089 Cobblestone");
-		lore.add("");
-		lore.add(ChatColor.GOLD + "Set Bonus:");
-		lore.add(ChatColor.GRAY + "Lucky I");
-		lore.add(ChatColor.GRAY + "Resistance I");
-		meta.setLore(lore);
-		meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
-		meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
-
-		item.setItemMeta(meta);
-		item.addUnsafeEnchantment(CustomEnchants.SPEEDY, 1);
-		item.addUnsafeEnchantment(CustomEnchants.LUCKY, 1);
-		item.addUnsafeEnchantment(CustomEnchants.RESISTANCE, 1);
-
-		return item;
-	}
-	
-	public ItemStack c3Boots() {
-		ItemStack item = new ItemStack(Material.DIAMOND_BOOTS);
-		ItemMeta meta = item.getItemMeta();
-		
-		meta.setDisplayName(ChatColor.DARK_RED + "T6 Blazing Stone Boots");
-		meta.addEnchant(Enchantment.DURABILITY, 5, true);
-		meta.addEnchant(Enchantment.PROTECTION_ENVIRONMENTAL, 3, true);
-		meta.addEnchant(Enchantment.THORNS, 2, true);
-		meta.addEnchant(Enchantment.PROTECTION_FALL, 2, true);
-		meta.addEnchant(Enchantment.SOUL_SPEED, 1, true);
-
-		List<String> lore = new ArrayList<String>();
-		lore.add(ChatColor.GRAY + "Unbreaking V");
-		lore.add(ChatColor.GRAY + "Protection III");
-		lore.add(ChatColor.GRAY + "Thorns II");
-		lore.add(ChatColor.GRAY + "Feather Falling II");
-		lore.add(ChatColor.GRAY + "Speedy I");
-		lore.add(ChatColor.GRAY + "Soul Speed I");
-		lore.add("");
-		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "This armor harnesses the security of ");
-		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "3,276 Cobblestone");
-		lore.add("");
-		lore.add(ChatColor.GOLD + "Set Bonus:");
-		lore.add(ChatColor.GRAY + "Lucky II");
-		lore.add(ChatColor.GRAY + "Resistance I");
-		lore.add(ChatColor.GRAY + "Strength I");
-		meta.setLore(lore);
-		meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
-		meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
-
-		item.setItemMeta(meta);
-		item.addUnsafeEnchantment(CustomEnchants.SPEEDY, 1);
-		item.addUnsafeEnchantment(CustomEnchants.LUCKY, 2);
-		item.addUnsafeEnchantment(CustomEnchants.RESISTANCE, 1);
-		item.addUnsafeEnchantment(CustomEnchants.STRENGTH, 1);
-
-		return item;
-	}
-	
-	public ItemStack c3p5Boots() {
-		ItemStack item = new ItemStack(Material.DIAMOND_BOOTS);
-		ItemMeta meta = item.getItemMeta();
-		
-		meta.setDisplayName(ChatColor.DARK_RED + "T7 Mystical Stone Boots");
-		meta.addEnchant(Enchantment.DURABILITY, 7, true);
-		meta.addEnchant(Enchantment.PROTECTION_ENVIRONMENTAL, 4, true);
-		meta.addEnchant(Enchantment.THORNS, 3, true);
-		meta.addEnchant(Enchantment.PROTECTION_FALL, 2, true);
-		meta.addEnchant(Enchantment.SOUL_SPEED, 1, true);
-		meta.addEnchant(Enchantment.MENDING, 1, true);
-
-		List<String> lore = new ArrayList<String>();
-		lore.add(ChatColor.GRAY + "Unbreaking VII");
-		lore.add(ChatColor.GRAY + "Protection IV");
-		lore.add(ChatColor.GRAY + "Thorns III");
-		lore.add(ChatColor.GRAY + "Feather Falling II");
-		lore.add(ChatColor.GRAY + "Speedy II");
-		lore.add(ChatColor.GRAY + "Soul Speed I");
-		lore.add(ChatColor.GRAY + "Mending");
-		lore.add("");
-		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "This armor harnesses the security of ");
-		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "9,837 Cobblestone");
-		lore.add("");
-		lore.add(ChatColor.GOLD + "Set Bonus:");
-		lore.add(ChatColor.GRAY + "Lucky II");
-		lore.add(ChatColor.GRAY + "Resistance I");
-		lore.add(ChatColor.GRAY + "Strength I");
-		lore.add(ChatColor.GRAY + "Absorption I");
-		meta.setLore(lore);
-		meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
-		meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
-
-		item.setItemMeta(meta);
-		item.addUnsafeEnchantment(CustomEnchants.SPEEDY, 2);
-		item.addUnsafeEnchantment(CustomEnchants.LUCKY, 2);
-		item.addUnsafeEnchantment(CustomEnchants.RESISTANCE, 1);
-		item.addUnsafeEnchantment(CustomEnchants.STRENGTH, 1);
-		item.addUnsafeEnchantment(CustomEnchants.ABSORPTION, 1);
-
-		return item;
-	}
-	
-	public ItemStack c4Boots() {
-		ItemStack item = new ItemStack(Material.NETHERITE_BOOTS);
-		ItemMeta meta = item.getItemMeta();
-		
-		meta.setDisplayName(ChatColor.RED + "T8 Draconian Stone Boots");
-		meta.addEnchant(Enchantment.DURABILITY, 10, true);
-		meta.addEnchant(Enchantment.PROTECTION_ENVIRONMENTAL, 4, true);
-		meta.addEnchant(Enchantment.THORNS, 4, true);
-		meta.addEnchant(Enchantment.PROTECTION_FALL, 3, true);
-		meta.addEnchant(Enchantment.SOUL_SPEED, 2, true);
-		meta.addEnchant(Enchantment.MENDING, 1, true);
-
-		List<String> lore = new ArrayList<String>();
-		lore.add(ChatColor.GRAY + "Unbreaking X");
-		lore.add(ChatColor.GRAY + "Protection IV");
-		lore.add(ChatColor.GRAY + "Thorns IV");
-		lore.add(ChatColor.GRAY + "Feather Falling III");
-		lore.add(ChatColor.GRAY + "Speedy II");
-		lore.add(ChatColor.GRAY + "Soul Speed II");
-		lore.add(ChatColor.GRAY + "Jump I");
-		lore.add(ChatColor.GRAY + "Mending");
-		lore.add("");
-		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "This armor harnesses the security of ");
-		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "29,520 Cobblestone");
-		lore.add("");
-		lore.add(ChatColor.GOLD + "Set Bonus:");
-		lore.add(ChatColor.GRAY + "Lucky III");
-		lore.add(ChatColor.GRAY + "Strength II");
-		lore.add(ChatColor.GRAY + "Absorption II");
-		lore.add(ChatColor.GRAY + "Resistance I");
-		lore.add(ChatColor.GRAY + "Vulcan I");
-		meta.setLore(lore);
-		meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
-		meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
-
-		item.setItemMeta(meta);
-		item.addUnsafeEnchantment(CustomEnchants.SPEEDY, 2);
-		item.addUnsafeEnchantment(CustomEnchants.LUCKY, 3);
-		item.addUnsafeEnchantment(CustomEnchants.RESISTANCE, 1);
-		item.addUnsafeEnchantment(CustomEnchants.ABSORPTION, 2);
-		item.addUnsafeEnchantment(CustomEnchants.STRENGTH, 2);
-		item.addUnsafeEnchantment(CustomEnchants.JUMP, 1);
-		item.addUnsafeEnchantment(CustomEnchants.VULCAN, 1);
-
-		return item;
-	}
-	
-	public ItemStack c4p5Boots() {
-		ItemStack item = new ItemStack(Material.NETHERITE_BOOTS);
-		ItemMeta meta = item.getItemMeta();
-		
-		meta.setDisplayName(ChatColor.RED + "" + ChatColor.BOLD + "T9 Impossible Stone Boots");
-		meta.addEnchant(Enchantment.DURABILITY, 15, true);
-		meta.addEnchant(Enchantment.PROTECTION_ENVIRONMENTAL, 5, true);
-		meta.addEnchant(Enchantment.THORNS, 5, true);
-		meta.addEnchant(Enchantment.PROTECTION_FALL, 5, true);
-		meta.addEnchant(Enchantment.SOUL_SPEED, 3, true);
-		meta.addEnchant(Enchantment.MENDING, 1, true);
-
-		List<String> lore = new ArrayList<String>();
-		lore.add(ChatColor.GRAY + "Unbreaking XV");
-		lore.add(ChatColor.GRAY + "Protection V");
-		lore.add(ChatColor.GRAY + "Thorns V");
-		lore.add(ChatColor.GRAY + "Feather Falling V");
-		lore.add(ChatColor.GRAY + "Soul Speed III");
-		lore.add(ChatColor.GRAY + "Speedy II");
-		lore.add(ChatColor.GRAY + "Jump II");
-		lore.add(ChatColor.GRAY + "Mending");
-		lore.add("");
-		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "This armor harnesses the security of ");
-		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "88,569 Cobblestone");
-		lore.add("");
-		lore.add(ChatColor.GOLD + "Set Bonus:");
-		lore.add(ChatColor.GRAY + "Lucky IV");
-		lore.add(ChatColor.GRAY + "Absorption IV");
-		lore.add(ChatColor.GRAY + "Strength III");
-		lore.add(ChatColor.GRAY + "Hero II");
-		lore.add(ChatColor.GRAY + "Resistance I");
-		lore.add(ChatColor.GRAY + "Vulcan I");
-		meta.setLore(lore);
-		meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
-		meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
-
-		item.setItemMeta(meta);
-		item.addUnsafeEnchantment(CustomEnchants.SPEEDY, 2);
-		item.addUnsafeEnchantment(CustomEnchants.LUCKY, 4);
-		item.addUnsafeEnchantment(CustomEnchants.ABSORPTION, 4);
-		item.addUnsafeEnchantment(CustomEnchants.RESISTANCE, 1);
-		item.addUnsafeEnchantment(CustomEnchants.HERO, 2);
-		item.addUnsafeEnchantment(CustomEnchants.STRENGTH, 3);
-		item.addUnsafeEnchantment(CustomEnchants.JUMP, 2);
-		item.addUnsafeEnchantment(CustomEnchants.VULCAN, 1);
-
-		return item;
-	}
-	
-	public ItemStack c5Boots() {
-		ItemStack item = new ItemStack(Material.NETHERITE_BOOTS);
-		ItemMeta meta = item.getItemMeta();
-		
-		meta.setDisplayName(ChatColor.LIGHT_PURPLE + "" + ChatColor.BOLD + "T10 Terminal Stone Boots");
-		meta.addEnchant(Enchantment.THORNS, 7, true);
-		meta.addEnchant(Enchantment.PROTECTION_ENVIRONMENTAL, 5, true);
-		meta.addEnchant(Enchantment.SOUL_SPEED, 3, true);
-		meta.setUnbreakable(true);
-
-		List<String> lore = new ArrayList<String>();
-		lore.add(ChatColor.GRAY + "Speedy III");
-		lore.add(ChatColor.GRAY + "Jump II");
-		lore.add(ChatColor.GRAY + "Soft Landing");
-		lore.add("");
-		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "This armor harnesses the security of ");
-		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "265,716 Cobblestone");
-		lore.add("");
-		lore.add(ChatColor.GOLD + "Set Bonus:");
-		lore.add(ChatColor.GRAY + "Lucky V");
-		lore.add(ChatColor.GRAY + "Hero V");
-		lore.add(ChatColor.GRAY + "Strength IV");
-		lore.add(ChatColor.GRAY + "Resistance II");
-		lore.add(ChatColor.GRAY + "Vulcan II");
-		lore.add(ChatColor.GRAY + "Healthy");
-		lore.add("");
-		meta.setLore(lore);
-		meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
-
-		item.setItemMeta(meta);
-		item.addUnsafeEnchantment(CustomEnchants.SPEEDY, 3);
-		item.addUnsafeEnchantment(CustomEnchants.SOFT_LANDING, 1);
-		item.addUnsafeEnchantment(CustomEnchants.LUCKY, 5);
-		item.addUnsafeEnchantment(CustomEnchants.HERO, 5);
-		item.addUnsafeEnchantment(CustomEnchants.HEALTHY, 1);
-		item.addUnsafeEnchantment(CustomEnchants.RESISTANCE, 2);
-		item.addUnsafeEnchantment(CustomEnchants.STRENGTH, 4);
-		item.addUnsafeEnchantment(CustomEnchants.JUMP, 2);
-		item.addUnsafeEnchantment(CustomEnchants.VULCAN, 2);
-
-		return item;
-	}
-	
 //	Shields
-	public ItemStack c2p5Shield() {
+	public ItemStack t5Shield() {
 		ItemStack item = new ItemStack(Material.SHIELD);
 		ItemMeta meta = item.getItemMeta();
 		
@@ -2952,7 +1682,7 @@ public class Tools {
 		return item;
 	}
 	
-	public ItemStack c4Shield() {
+	public ItemStack t8Shield() {
 		ItemStack item = new ItemStack(Material.SHIELD);
 		ItemMeta meta = item.getItemMeta();
 		
@@ -2976,7 +1706,7 @@ public class Tools {
 		return item;
 	}
 	
-	public ItemStack c5Shield() {
+	public ItemStack t10Shield() {
 		ItemStack item = new ItemStack(Material.SHIELD);
 		ItemMeta meta = item.getItemMeta();
 		
@@ -2998,82 +1728,141 @@ public class Tools {
 		return item;
 	}
 	
-//	Elytra
-	public ItemStack c4p5Elytra() {
-		ItemStack item = new ItemStack(Material.ELYTRA);
-		ItemMeta meta = item.getItemMeta();
-		
-		meta.setDisplayName(ChatColor.RED + "" + ChatColor.BOLD + "T9 Impossible Stone Elytra");
-		meta.addEnchant(Enchantment.DURABILITY, 15, true);
-		meta.addEnchant(Enchantment.THORNS, 5, true);
-		meta.addEnchant(Enchantment.MENDING, 1, true);
+//	Tiers
+	public Collection<ItemStack> t0s() {
+		Collection<ItemStack> items = new HashSet<>();
+		items.add(new ItemStack(Material.STONE_PICKAXE));
+		items.add(new ItemStack(Material.STONE_AXE));
+		items.add(new ItemStack(Material.STONE_SHOVEL));
+		items.add(new ItemStack(Material.STONE_HOE));
+		items.add(new ItemStack(Material.STONE_SWORD));
+		items.add(new ItemStack(Material.BOW));
+		items.add(new ItemStack(Material.SHIELD));
 
-		List<String> lore = new ArrayList<String>();
-		lore.add(ChatColor.GRAY + "Unbreaking XV");
-		lore.add(ChatColor.GRAY + "Thorns V");
-		lore.add(ChatColor.GRAY + "Haste II");
-		lore.add(ChatColor.GRAY + "Mending");
-		lore.add("");
-		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "These wings mobilize the power of ");
-		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "157,464 Cobblestone");
-		lore.add("");
-		lore.add(ChatColor.GOLD + "Set Bonus:");
-		lore.add(ChatColor.GRAY + "Lucky IV");
-		lore.add(ChatColor.GRAY + "Absorption IV");
-		lore.add(ChatColor.GRAY + "Strength III");
-		lore.add(ChatColor.GRAY + "Hero II");
-		lore.add(ChatColor.GRAY + "Resistance I");
-		lore.add(ChatColor.GRAY + "Vulcan I");
-		meta.setLore(lore);
-		meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
-		meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
-
-		item.setItemMeta(meta);
-		item.addUnsafeEnchantment(CustomEnchants.HASTE, 2);
-		item.addUnsafeEnchantment(CustomEnchants.LUCKY, 4);
-		item.addUnsafeEnchantment(CustomEnchants.ABSORPTION, 4);
-		item.addUnsafeEnchantment(CustomEnchants.RESISTANCE, 1);
-		item.addUnsafeEnchantment(CustomEnchants.HERO, 2);
-		item.addUnsafeEnchantment(CustomEnchants.STRENGTH, 3);
-		item.addUnsafeEnchantment(CustomEnchants.VULCAN, 1);
-
-		return item;
+		return items;
 	}
 	
-	public ItemStack c5Elytra() {
-		ItemStack item = new ItemStack(Material.ELYTRA);
-		ItemMeta meta = item.getItemMeta();
+	public Collection<ItemStack> t1s() {
+		Collection<ItemStack> items = new HashSet<>();
+		items.add(t1Pick());
+		items.add(t1Axe());
+		items.add(t1Spade());
+		items.add(t1Hoe());
+		items.add(t1Sword());
+		items.add(t1Range());
+
+		return items;
+	}
+	
+	public Collection<ItemStack> t2s() {
+		Collection<ItemStack> items = new HashSet<>();
+		items.add(t2Pick());
+		items.add(t2Axe());
+		items.add(t2Spade());
+		items.add(t2Hoe());
+		items.add(t2Sword());
+		items.add(t2Range());
+
+		return items;
+	}
+
+	public Collection<ItemStack> t3s() {
+		Collection<ItemStack> items = new HashSet<>();
+		items.add(t3Pick());
+		items.add(t3Axe());
+		items.add(t3Spade());
+		items.add(t3Hoe());
+		items.add(t3Sword());
+		items.add(t3Range());
+
+		return items;
+	}
+
+	public Collection<ItemStack> t4s() {
+		Collection<ItemStack> items = new HashSet<>();
+		items.add(t4Pick());
+		items.add(t4Axe());
+		items.add(t4Spade());
+		items.add(t4Hoe());
+		items.add(t4Sword());
+		items.add(t4Range());
+
+		return items;
+	}
+
+	public Collection<ItemStack> t5s() {
+		Collection<ItemStack> items = new HashSet<>();
+		items.add(t5Pick());
+		items.add(t5Axe());
+		items.add(t5Spade());
+		items.add(t5Hoe());
+		items.add(t5Sword());
+		items.add(t5Range());
+		items.add(t5Shield());
+
+		return items;
+	}
+
+	public Collection<ItemStack> t6s() {
+		Collection<ItemStack> items = new HashSet<>();
+		items.add(t6Pick());
+		items.add(t6Axe());
+		items.add(t6Spade());
+		items.add(t6Hoe());
+		items.add(t6Sword());
+		items.add(t6Range());
+
+		return items;
+	}
+
+	public Collection<ItemStack> t7s() {
+		Collection<ItemStack> items = new HashSet<>();
+		items.add(t7Pick());
+		items.add(t7Axe());
+		items.add(t7Spade());
+		items.add(t7Hoe());
+		items.add(t7Sword());
+		items.add(t7Range());
+
+		return items;
+	}
+
+	public Collection<ItemStack> t8s() {
+		Collection<ItemStack> items = new HashSet<>();
+		items.add(t8Pick());
+		items.add(t8Axe());
+		items.add(t8Spade());
+		items.add(t8Hoe());
+		items.add(t8Sword());
+		items.add(t8Range());
+		items.add(t8Shield());
+
+		return items;
+	}
+
+	public Collection<ItemStack> t9s() {
+		Collection<ItemStack> items = new HashSet<>();
+		items.add(t9Pick());
+		items.add(t9Axe());
+		items.add(t9Spade());
+		items.add(t9Hoe());
+		items.add(t9Sword());
+		items.add(t9Range());
+
+		return items;
+	}
+
+	public Collection<ItemStack> t10s() {
+		Collection<ItemStack> items = new HashSet<>();
 		
-		meta.setDisplayName(ChatColor.LIGHT_PURPLE + "" + ChatColor.BOLD + "T10 Terminal Stone Elytra");
-		meta.addEnchant(Enchantment.THORNS, 7, true);
-		meta.setUnbreakable(true);
+		items.add(t10Pick());
+		items.add(t10Axe());
+		items.add(t10Spade());
+		items.add(t10Hoe());
+		items.add(t10Sword());
+		items.add(t10Range());
+		items.add(t10Shield());
 
-		List<String> lore = new ArrayList<String>();
-		lore.add(ChatColor.GRAY + "Haste II");
-		lore.add("");
-		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "These wings mobilize the power of ");
-		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "629,856 Cobblestone");
-		lore.add("");
-		lore.add(ChatColor.GOLD + "Set Bonus:");
-		lore.add(ChatColor.GRAY + "Lucky V");
-		lore.add(ChatColor.GRAY + "Hero V");
-		lore.add(ChatColor.GRAY + "Strength IV");
-		lore.add(ChatColor.GRAY + "Resistance II");
-		lore.add(ChatColor.GRAY + "Vulcan II");
-		lore.add(ChatColor.GRAY + "Healthy");
-		lore.add("");
-		meta.setLore(lore);
-		meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
-
-		item.setItemMeta(meta);
-		item.addUnsafeEnchantment(CustomEnchants.HASTE, 2);
-		item.addUnsafeEnchantment(CustomEnchants.LUCKY, 5);
-		item.addUnsafeEnchantment(CustomEnchants.HERO, 5);
-		item.addUnsafeEnchantment(CustomEnchants.HEALTHY, 1);
-		item.addUnsafeEnchantment(CustomEnchants.RESISTANCE, 2);
-		item.addUnsafeEnchantment(CustomEnchants.STRENGTH, 4);
-		item.addUnsafeEnchantment(CustomEnchants.VULCAN, 2);
-
-		return item;
+		return items;
 	}
 }

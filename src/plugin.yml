@@ -1,11 +1,23 @@
 main: me.Theguyhere.CompressedCobble.Main
 name: CompressedCobble
-version: 1.4.1
+version: 1.4.2
 author: Theguyhere
 api-version: 1.16
 
 commands:
   ccmaterials:
+    description: Gives the player one of all custom materials
+    usage: /ccmaterials
+    permission: ccmaterials.use
   cctools:
+    description: Gives the player a full set of T10 armor and tools, a not stone crown, and an anti-stone crown
+    usage: /cctools
+    permission: cctools.use
   cccraft:
+    description: Converts all cobblestone in inventory into the highest tiers possible
+    usage: /cccraft
+    permission:
   cchelp:
+    description: Redirects players to the Compressed Cobblestone wiki
+    usage: /cchelpt
+    permission:
