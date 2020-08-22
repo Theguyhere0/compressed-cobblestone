@@ -6,15 +6,16 @@ import org.bukkit.event.Listener;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.ShapedRecipe;
 import org.bukkit.inventory.ShapelessRecipe;
-import org.bukkit.plugin.Plugin;
 
 import me.Theguyhere.CompressedCobble.Main;
 
 public class ResourceRecipes implements Listener {
-	private Plugin plugin;
+	private Main plugin;
+	private Resources r;
 	
-	public ResourceRecipes(Main plugin) {
+	public ResourceRecipes(Main plugin, Resources r) {
 		this.plugin = plugin;
+		this.r = r;
 	}
 	
 	public ShapelessRecipe fleshConversion() {
@@ -56,7 +57,7 @@ public class ResourceRecipes implements Listener {
 	}
 	
 	public ShapelessRecipe coalConversion() {
-		ItemStack item = new Resources().t5();
+		ItemStack item = r.t5();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t5_coal");
 		
@@ -68,7 +69,7 @@ public class ResourceRecipes implements Listener {
 	}
 	
 	public ShapelessRecipe redstoneConversion() {
-		ItemStack item = new Resources().t5();
+		ItemStack item = r.t5();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t5_redstone");
 		
@@ -80,7 +81,7 @@ public class ResourceRecipes implements Listener {
 	}
 	
 	public ShapelessRecipe quartzConversion() {
-		ItemStack item = new Resources().t5();
+		ItemStack item = r.t5();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t5_quartz");
 		
@@ -92,7 +93,7 @@ public class ResourceRecipes implements Listener {
 	}
 	
 	public ShapelessRecipe lapisConversion() {
-		ItemStack item = new Resources().t6();
+		ItemStack item = r.t6();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t6_lapis");
 		
@@ -104,7 +105,7 @@ public class ResourceRecipes implements Listener {
 	}
 	
 	public ShapelessRecipe ironConversion() {
-		ItemStack item = new Resources().t6();
+		ItemStack item = r.t6();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t6_iron");
 		
@@ -116,7 +117,7 @@ public class ResourceRecipes implements Listener {
 	}
 
 	public ShapelessRecipe goldConversion() {
-		ItemStack item = new Resources().t7();
+		ItemStack item = r.t7();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t7_gold");
 		
@@ -128,7 +129,7 @@ public class ResourceRecipes implements Listener {
 	}
 
 	public ShapelessRecipe emeraldConversion() {
-		ItemStack item = new Resources().t8();
+		ItemStack item = r.t8();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t8_emerald");
 		
@@ -140,7 +141,7 @@ public class ResourceRecipes implements Listener {
 	}
 
 	public ShapelessRecipe diamondConversion() {
-		ItemStack item = new Resources().t9();
+		ItemStack item = r.t9();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t9_diamond");
 		
@@ -152,7 +153,7 @@ public class ResourceRecipes implements Listener {
 	}
 	
 	public ShapelessRecipe netheriteConversion() {
-		ItemStack item = new Resources().t10();
+		ItemStack item = r.t10();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t10_netherite");
 		
@@ -164,7 +165,7 @@ public class ResourceRecipes implements Listener {
 	}
 	
 	public ShapedRecipe t1Recipe() {
-		ItemStack item = new Resources().t1();
+		ItemStack item = r.t1();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "c0.5_cobblestone");
 		
@@ -190,7 +191,7 @@ public class ResourceRecipes implements Listener {
 	}
 	
 	public ShapedRecipe t2Recipe() {
-		ItemStack item = new Resources().t2();
+		ItemStack item = r.t2();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t2_cobblestone");
 		
@@ -204,7 +205,7 @@ public class ResourceRecipes implements Listener {
 	}
 	
 	public ShapelessRecipe t2AltRecipe() {
-		ItemStack item = new Resources().t2();
+		ItemStack item = r.t2();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t2_cobblestone_alt");
 		
@@ -228,7 +229,7 @@ public class ResourceRecipes implements Listener {
 	}
 	
 	public ShapedRecipe t3Recipe() {
-		ItemStack item = new Resources().t3();
+		ItemStack item = r.t3();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t3_cobblestone");
 		
@@ -242,7 +243,7 @@ public class ResourceRecipes implements Listener {
 	}
 	
 	public ShapelessRecipe t3AltRecipe() {
-		ItemStack item = new Resources().t3();
+		ItemStack item = r.t3();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t3_cobblestone_alt");
 		
@@ -254,7 +255,7 @@ public class ResourceRecipes implements Listener {
 	}
 	
 	public ShapelessRecipe t3BackRecipe() {
-		ItemStack item = new Resources().t2();
+		ItemStack item = r.t2();
 		item.setAmount(3);
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t2_cobblestone_x3");
@@ -267,7 +268,7 @@ public class ResourceRecipes implements Listener {
 	}
 	
 	public ShapedRecipe t4Recipe() {
-		ItemStack item = new Resources().t4();
+		ItemStack item = r.t4();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t4_cobblestone");
 		
@@ -281,7 +282,7 @@ public class ResourceRecipes implements Listener {
 	}
 	
 	public ShapelessRecipe t4AltRecipe() {
-		ItemStack item = new Resources().t4();
+		ItemStack item = r.t4();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t4_cobblestone_alt");
 		
@@ -293,7 +294,7 @@ public class ResourceRecipes implements Listener {
 	}
 	
 	public ShapelessRecipe t4BackRecipe() {
-		ItemStack item = new Resources().t2();
+		ItemStack item = r.t2();
 		item.setAmount(9);
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t2_cobblestone_x9");
@@ -306,7 +307,7 @@ public class ResourceRecipes implements Listener {
 	}
 	
 	public ShapedRecipe t5Recipe() {
-		ItemStack item = new Resources().t5();
+		ItemStack item = r.t5();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t5_cobblestone");
 		
@@ -320,7 +321,7 @@ public class ResourceRecipes implements Listener {
 	}
 	
 	public ShapelessRecipe t5AltRecipe() {
-		ItemStack item = new Resources().t5();
+		ItemStack item = r.t5();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t5_cobblestone_alt");
 		
@@ -332,7 +333,7 @@ public class ResourceRecipes implements Listener {
 	}
 	
 	public ShapelessRecipe t5BackRecipe() {
-		ItemStack item = new Resources().t4();
+		ItemStack item = r.t4();
 		item.setAmount(3);
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t4_cobblestone_x3");
@@ -345,7 +346,7 @@ public class ResourceRecipes implements Listener {
 	}
 	
 	public ShapedRecipe t6Recipe() {
-		ItemStack item = new Resources().t6();
+		ItemStack item = r.t6();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t6_cobblestone");
 		
@@ -359,7 +360,7 @@ public class ResourceRecipes implements Listener {
 	}
 	
 	public ShapelessRecipe t6AltRecipe() {
-		ItemStack item = new Resources().t6();
+		ItemStack item = r.t6();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t6_cobblestone_alt");
 		
@@ -371,7 +372,7 @@ public class ResourceRecipes implements Listener {
 	}
 	
 	public ShapelessRecipe t6BackRecipe() {
-		ItemStack item = new Resources().t4();
+		ItemStack item = r.t4();
 		item.setAmount(9);
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t4_cobblestone_x9");
@@ -384,7 +385,7 @@ public class ResourceRecipes implements Listener {
 	}
 	
 	public ShapedRecipe t7Recipe() {
-		ItemStack item = new Resources().t7();
+		ItemStack item = r.t7();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t7_cobblestone");
 		
@@ -398,7 +399,7 @@ public class ResourceRecipes implements Listener {
 	}
 	
 	public ShapelessRecipe t7AltRecipe() {
-		ItemStack item = new Resources().t7();
+		ItemStack item = r.t7();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t7_cobblestone_alt");
 		
@@ -410,7 +411,7 @@ public class ResourceRecipes implements Listener {
 	}
 	
 	public ShapelessRecipe t7BackRecipe() {
-		ItemStack item = new Resources().t6();
+		ItemStack item = r.t6();
 		item.setAmount(3);
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t6_cobblestone_x3");
@@ -423,7 +424,7 @@ public class ResourceRecipes implements Listener {
 	}
 	
 	public ShapedRecipe t8Recipe() {
-		ItemStack item = new Resources().t8();
+		ItemStack item = r.t8();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t8_cobblestone");
 		
@@ -437,7 +438,7 @@ public class ResourceRecipes implements Listener {
 	}
 	
 	public ShapelessRecipe t8AltRecipe() {
-		ItemStack item = new Resources().t8();
+		ItemStack item = r.t8();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t8_cobblestone_alt");
 		
@@ -449,7 +450,7 @@ public class ResourceRecipes implements Listener {
 	}
 	
 	public ShapelessRecipe t8BackRecipe() {
-		ItemStack item = new Resources().t6();
+		ItemStack item = r.t6();
 		item.setAmount(9);
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t6_cobblestone_x9");
@@ -462,7 +463,7 @@ public class ResourceRecipes implements Listener {
 	}
 	
 	public ShapedRecipe t9Recipe() {
-		ItemStack item = new Resources().t9();
+		ItemStack item = r.t9();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t9_cobblestone");
 		
@@ -476,7 +477,7 @@ public class ResourceRecipes implements Listener {
 	}
 	
 	public ShapelessRecipe t9AltRecipe() {
-		ItemStack item = new Resources().t9();
+		ItemStack item = r.t9();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t9_cobblestone_alt");
 		
@@ -488,7 +489,7 @@ public class ResourceRecipes implements Listener {
 	}
 	
 	public ShapelessRecipe t9BackRecipe() {
-		ItemStack item = new Resources().t8();
+		ItemStack item = r.t8();
 		item.setAmount(3);
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t8_cobblestone_x3");
@@ -501,7 +502,7 @@ public class ResourceRecipes implements Listener {
 	}
 	
 	public ShapedRecipe t10Recipe() {
-		ItemStack item = new Resources().t10();
+		ItemStack item = r.t10();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t10_cobblestone");
 		
@@ -515,7 +516,7 @@ public class ResourceRecipes implements Listener {
 	}
 	
 	public ShapelessRecipe t10AltRecipe() {
-		ItemStack item = new Resources().t10();
+		ItemStack item = r.t10();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t10_cobblestone_alt");
 		
@@ -527,7 +528,7 @@ public class ResourceRecipes implements Listener {
 	}
 	
 	public ShapelessRecipe t10BackRecipe() {
-		ItemStack item = new Resources().t8();
+		ItemStack item = r.t8();
 		item.setAmount(9);
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t8_cobblestone_x9");
@@ -540,7 +541,7 @@ public class ResourceRecipes implements Listener {
 	}
 	
 	public ShapedRecipe notRecipe() {
-		ItemStack item = new Resources().not();
+		ItemStack item = r.not();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "not_cobblestone");
 		
@@ -554,7 +555,7 @@ public class ResourceRecipes implements Listener {
 	}
 	
 	public ShapelessRecipe notAltRecipe() {
-		ItemStack item = new Resources().not();
+		ItemStack item = r.not();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "not_cobblestone_alt");
 		
@@ -566,7 +567,7 @@ public class ResourceRecipes implements Listener {
 	}
 	
 	public ShapelessRecipe notBackRecipe() {
-		ItemStack item = new Resources().t10();
+		ItemStack item = r.t10();
 		item.setAmount(3);
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t10_cobblestone_x3");
@@ -579,7 +580,7 @@ public class ResourceRecipes implements Listener {
 	}
 	
 	public ShapedRecipe aRecipe() {
-		ItemStack item = new Resources().a();
+		ItemStack item = r.a();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "a_cobblestone");
 		
@@ -593,7 +594,7 @@ public class ResourceRecipes implements Listener {
 	}
 	
 	public ShapelessRecipe aAltRecipe() {
-		ItemStack item = new Resources().a();
+		ItemStack item = r.a();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "a_cobblestone_alt");
 		
@@ -605,7 +606,7 @@ public class ResourceRecipes implements Listener {
 	}
 	
 	public ShapelessRecipe aBackRecipe() {
-		ItemStack item = new Resources().t10();
+		ItemStack item = r.t10();
 		item.setAmount(9);
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t10_cobblestone_x9");

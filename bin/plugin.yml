@@ -1,23 +1,73 @@
 main: me.Theguyhere.CompressedCobble.Main
 name: CompressedCobble
-version: 1.4.3
+version: 1.4.4
 author: Theguyhere
 api-version: 1.16
 
 commands:
-  ccmaterials:
-    description: Gives the player one of all custom materials
-    usage: /ccmaterials
-    permission: ccmaterials.use
-  cctools:
-    description: Gives the player a full set of T10 armor and tools, a not stone crown, and an anti-stone crown
-    usage: /cctools
-    permission: cctools.use
-  cccraft:
-    description: Converts all cobblestone in inventory into the highest tiers possible
-    usage: /cccraft
-    permission:
-  cchelp:
-    description: Redirects players to the Compressed Cobblestone wiki
-    usage: /cchelpt
-    permission:
+  cc:
+    materials:
+      description: Gives the player one of all custom materials
+      usage: /cc materials
+      permission: cc.materials.use
+    tools:
+      t0:
+        description: Gives the player a full set of normal stone tools and leather armor
+        usage: /cc tools t0
+        permission: cc.tools.use
+      t1:
+        description: Gives the player a full set of T1 armor and tools
+        usage: /cc tools t1
+        permission: cc.tools.use
+      t2:
+        description: Gives the player a full set of T2 armor and tools
+        usage: /cc tools t2
+        permission: cc.tools.use
+      t3:
+        description: Gives the player a full set of T3 armor and tools
+        usage: /cc tools t3
+        permission: cc.tools.use
+      t4:
+        description: Gives the player a full set of T4 armor and tools
+        usage: /cc tools t4
+        permission: cc.tools.use
+      t5:
+        description: Gives the player a full set of T5 armor and tools
+        usage: /cc tools t5
+        permission: cc.tools.use
+      t6:
+        description: Gives the player a full set of T6 armor and tools
+        usage: /cc tools t6
+        permission: cc.tools.use
+      t7:
+        description: Gives the player a full set of T7 armor and tools
+        usage: /cc tools t7
+        permission: cc.tools.use
+      t8:
+        description: Gives the player a full set of T8 armor and tools
+        usage: /cc tools t8
+        permission: cc.tools.use
+      t9:
+        description: Gives the player a full set of T9 armor and tools
+        usage: /cc tools t9
+        permission: cc.tools.use
+      t10:
+        description: Gives the player a full set of T10 armor and tools
+        usage: /cc tools t10
+        permission: cc.tools.use
+      not:
+        description: Gives the player a Not Stone Crown
+        usage: /cc tools not
+        permission: cc.tools.use
+      anti:
+        description: Gives the player an Anti-Stone Crown
+        usage: /cc tools anti
+        permission: cc.tools.use
+    craft:
+      description: Converts all cobblestone in inventory into the highest tiers possible
+      usage: /cc craft
+      permission:
+    help:
+      description: Redirects players to the Compressed Cobblestone wiki
+      usage: /cc helpt
+      permission:

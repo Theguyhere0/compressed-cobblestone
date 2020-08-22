@@ -6,20 +6,21 @@ import org.bukkit.event.Listener;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.ShapedRecipe;
 import org.bukkit.inventory.ShapelessRecipe;
-import org.bukkit.plugin.Plugin;
 
 import me.Theguyhere.CompressedCobble.Main;
 
 public class ArmorRecipes implements Listener {
-	private Plugin plugin;
+	private Main plugin;
+	private Armor a;
 	
-	public ArmorRecipes(Main plugin) {
+	public ArmorRecipes(Main plugin, Armor a) {
 		this.plugin = plugin;
+		this.a = a;
 	}
 
 //	Helmets
 	public ShapedRecipe t1HelmetRecipe() {
-		ItemStack item = new Armor().t1Helmet();
+		ItemStack item = a.t1Helmet();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t1Helmet");
 		
@@ -34,7 +35,7 @@ public class ArmorRecipes implements Listener {
 	}
 	
 	public ShapedRecipe t2HelmetRecipe() {
-		ItemStack item = new Armor().t2Helmet();
+		ItemStack item = a.t2Helmet();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t2Helmet");
 		
@@ -49,7 +50,7 @@ public class ArmorRecipes implements Listener {
 	}
 	
 	public ShapedRecipe t3HelmetRecipe() {
-		ItemStack item = new Armor().t3Helmet();
+		ItemStack item = a.t3Helmet();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t3Helmet");
 		
@@ -64,7 +65,7 @@ public class ArmorRecipes implements Listener {
 	}
 	
 	public ShapedRecipe t4HelmetRecipe() {
-		ItemStack item = new Armor().t4Helmet();
+		ItemStack item = a.t4Helmet();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t4Helmet");
 		
@@ -79,7 +80,7 @@ public class ArmorRecipes implements Listener {
 	}
 	
 	public ShapedRecipe t5HelmetRecipe() {
-		ItemStack item = new Armor().t5Helmet();
+		ItemStack item = a.t5Helmet();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t5Helmet");
 		
@@ -94,7 +95,7 @@ public class ArmorRecipes implements Listener {
 	}
 	
 	public ShapedRecipe t6HelmetRecipe() {
-		ItemStack item = new Armor().t6Helmet();
+		ItemStack item = a.t6Helmet();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t6Helmet");
 		
@@ -110,7 +111,7 @@ public class ArmorRecipes implements Listener {
 	}
 	
 	public ShapedRecipe t7HelmetRecipe() {
-		ItemStack item = new Armor().t7Helmet();
+		ItemStack item = a.t7Helmet();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t7Helmet");
 		
@@ -126,7 +127,7 @@ public class ArmorRecipes implements Listener {
 	}
 	
 	public ShapedRecipe t8HelmetRecipe() {
-		ItemStack item = new Armor().t8Helmet();
+		ItemStack item = a.t8Helmet();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t8Helmet");
 		
@@ -142,7 +143,7 @@ public class ArmorRecipes implements Listener {
 	}
 	
 	public ShapedRecipe t9HelmetRecipe() {
-		ItemStack item = new Armor().t9Helmet();
+		ItemStack item = a.t9Helmet();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t9Helmet");
 		
@@ -158,7 +159,7 @@ public class ArmorRecipes implements Listener {
 	}
 	
 	public ShapedRecipe t10HelmetRecipe() {
-		ItemStack item = new Armor().t10Helmet();
+		ItemStack item = a.t10Helmet();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t10Helmet");
 		
@@ -174,7 +175,7 @@ public class ArmorRecipes implements Listener {
 	}
 	
 	public ShapedRecipe notHelmetRecipe() {
-		ItemStack item = new Armor().notHelmet();
+		ItemStack item = a.notHelmet();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "cNotHelmet");
 		
@@ -190,7 +191,7 @@ public class ArmorRecipes implements Listener {
 	}
 	
 	public ShapedRecipe aHelmetRecipe() {
-		ItemStack item = new Armor().aHelmet();
+		ItemStack item = a.aHelmet();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "cAHelmet");
 		
@@ -219,7 +220,7 @@ public class ArmorRecipes implements Listener {
 	}
 	
 	public ShapelessRecipe t1HelmetFixRecipe() {
-		ItemStack item = new Armor().t1Helmet();
+		ItemStack item = a.t1Helmet();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t1HelmetFix");
 		
@@ -232,7 +233,7 @@ public class ArmorRecipes implements Listener {
 	}
 	
 	public ShapelessRecipe t2HelmetFixRecipe() {
-		ItemStack item = new Armor().t2Helmet();
+		ItemStack item = a.t2Helmet();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t2HelmetFix");
 		
@@ -245,7 +246,7 @@ public class ArmorRecipes implements Listener {
 	}
 
 	public ShapelessRecipe t3HelmetFixRecipe() {
-		ItemStack item = new Armor().t3Helmet();
+		ItemStack item = a.t3Helmet();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t3HelmetFix");
 		
@@ -258,7 +259,7 @@ public class ArmorRecipes implements Listener {
 	}
 	
 	public ShapelessRecipe t4HelmetFixRecipe() {
-		ItemStack item = new Armor().t4Helmet();
+		ItemStack item = a.t4Helmet();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t4HelmetFix");
 		
@@ -271,7 +272,7 @@ public class ArmorRecipes implements Listener {
 	}
 
 	public ShapelessRecipe t5HelmetFixRecipe() {
-		ItemStack item = new Armor().t5Helmet();
+		ItemStack item = a.t5Helmet();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t5HelmetFix");
 		
@@ -284,7 +285,7 @@ public class ArmorRecipes implements Listener {
 	}
 
 	public ShapelessRecipe t6HelmetFixRecipe() {
-		ItemStack item = new Armor().t6Helmet();
+		ItemStack item = a.t6Helmet();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t6HelmetFix");
 		
@@ -297,7 +298,7 @@ public class ArmorRecipes implements Listener {
 	}
 
 	public ShapelessRecipe t7HelmetFixRecipe() {
-		ItemStack item = new Armor().t7Helmet();
+		ItemStack item = a.t7Helmet();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t7HelmetFix");
 		
@@ -310,7 +311,7 @@ public class ArmorRecipes implements Listener {
 	}
 
 	public ShapelessRecipe t8HelmetFixRecipe() {
-		ItemStack item = new Armor().t8Helmet();
+		ItemStack item = a.t8Helmet();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t8HelmetFix");
 		
@@ -323,7 +324,7 @@ public class ArmorRecipes implements Listener {
 	}
 
 	public ShapelessRecipe t9HelmetFixRecipe() {
-		ItemStack item = new Armor().t9Helmet();
+		ItemStack item = a.t9Helmet();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t9HelmetFix");
 		
@@ -337,7 +338,7 @@ public class ArmorRecipes implements Listener {
 
 //	Helmet Alts
 	public ShapedRecipe t1HelmetAltRecipe() {
-		ItemStack item = new Armor().t1Helmet();
+		ItemStack item = a.t1Helmet();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t1HelmetAlt");
 		
@@ -352,7 +353,7 @@ public class ArmorRecipes implements Listener {
 	}
 	
 	public ShapedRecipe t2HelmetAltRecipe() {
-		ItemStack item = new Armor().t2Helmet();
+		ItemStack item = a.t2Helmet();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t2HelmetAlt");
 		
@@ -367,7 +368,7 @@ public class ArmorRecipes implements Listener {
 	}
 	
 	public ShapedRecipe t3HelmetAltRecipe() {
-		ItemStack item = new Armor().t3Helmet();
+		ItemStack item = a.t3Helmet();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t3HelmetAlt");
 		
@@ -382,7 +383,7 @@ public class ArmorRecipes implements Listener {
 	}
 	
 	public ShapedRecipe t4HelmetAltRecipe() {
-		ItemStack item = new Armor().t4Helmet();
+		ItemStack item = a.t4Helmet();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t4HelmetAlt");
 		
@@ -397,7 +398,7 @@ public class ArmorRecipes implements Listener {
 	}
 	
 	public ShapedRecipe t5HelmetAltRecipe() {
-		ItemStack item = new Armor().t5Helmet();
+		ItemStack item = a.t5Helmet();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t5HelmetAlt");
 		
@@ -412,7 +413,7 @@ public class ArmorRecipes implements Listener {
 	}
 	
 	public ShapedRecipe t6HelmetAltRecipe() {
-		ItemStack item = new Armor().t6Helmet();
+		ItemStack item = a.t6Helmet();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t6HelmetAlt");
 		
@@ -428,7 +429,7 @@ public class ArmorRecipes implements Listener {
 	}
 	
 	public ShapedRecipe t7HelmetAltRecipe() {
-		ItemStack item = new Armor().t7Helmet();
+		ItemStack item = a.t7Helmet();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t7HelmetAlt");
 		
@@ -444,7 +445,7 @@ public class ArmorRecipes implements Listener {
 	}
 	
 	public ShapedRecipe t8HelmetAltRecipe() {
-		ItemStack item = new Armor().t8Helmet();
+		ItemStack item = a.t8Helmet();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t8HelmetAlt");
 		
@@ -460,7 +461,7 @@ public class ArmorRecipes implements Listener {
 	}
 	
 	public ShapedRecipe t9HelmetAltRecipe() {
-		ItemStack item = new Armor().t9Helmet();
+		ItemStack item = a.t9Helmet();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t9HelmetAlt");
 		
@@ -476,7 +477,7 @@ public class ArmorRecipes implements Listener {
 	}
 	
 	public ShapedRecipe t10HelmetAltRecipe() {
-		ItemStack item = new Armor().t10Helmet();
+		ItemStack item = a.t10Helmet();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t10HelmetAlt");
 		
@@ -492,7 +493,7 @@ public class ArmorRecipes implements Listener {
 	}
 	
 	public ShapedRecipe notHelmetAltRecipe() {
-		ItemStack item = new Armor().notHelmet();
+		ItemStack item = a.notHelmet();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "cNotHelmetAlt");
 		
@@ -508,7 +509,7 @@ public class ArmorRecipes implements Listener {
 	}
 	
 	public ShapedRecipe aHelmetAltRecipe() {
-		ItemStack item = new Armor().aHelmet();
+		ItemStack item = a.aHelmet();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "cAHelmetAlt");
 		
@@ -525,7 +526,7 @@ public class ArmorRecipes implements Listener {
 
 //	Chestplates
 	public ShapedRecipe t1ChestplateRecipe() {
-		ItemStack item = new Armor().t1Chestplate();
+		ItemStack item = a.t1Chestplate();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t1Chestplate");
 		
@@ -540,7 +541,7 @@ public class ArmorRecipes implements Listener {
 	}
 	
 	public ShapedRecipe t2ChestplateRecipe() {
-		ItemStack item = new Armor().t2Chestplate();
+		ItemStack item = a.t2Chestplate();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t2Chestplate");
 		
@@ -555,7 +556,7 @@ public class ArmorRecipes implements Listener {
 	}
 	
 	public ShapedRecipe t3ChestplateRecipe() {
-		ItemStack item = new Armor().t3Chestplate();
+		ItemStack item = a.t3Chestplate();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t3Chestplate");
 		
@@ -570,7 +571,7 @@ public class ArmorRecipes implements Listener {
 	}
 	
 	public ShapedRecipe t4ChestplateRecipe() {
-		ItemStack item = new Armor().t4Chestplate();
+		ItemStack item = a.t4Chestplate();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t4Chestplate");
 		
@@ -585,7 +586,7 @@ public class ArmorRecipes implements Listener {
 	}
 	
 	public ShapedRecipe t5ChestplateRecipe() {
-		ItemStack item = new Armor().t5Chestplate();
+		ItemStack item = a.t5Chestplate();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t5Chestplate");
 		
@@ -600,7 +601,7 @@ public class ArmorRecipes implements Listener {
 	}
 	
 	public ShapedRecipe t6ChestplateRecipe() {
-		ItemStack item = new Armor().t6Chestplate();
+		ItemStack item = a.t6Chestplate();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t6Chestplate");
 		
@@ -616,7 +617,7 @@ public class ArmorRecipes implements Listener {
 	}
 	
 	public ShapedRecipe t7ChestplateRecipe() {
-		ItemStack item = new Armor().t7Chestplate();
+		ItemStack item = a.t7Chestplate();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t7Chestplate");
 		
@@ -632,7 +633,7 @@ public class ArmorRecipes implements Listener {
 	}
 	
 	public ShapedRecipe t8ChestplateRecipe() {
-		ItemStack item = new Armor().t8Chestplate();
+		ItemStack item = a.t8Chestplate();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t8Chestplate");
 		
@@ -648,7 +649,7 @@ public class ArmorRecipes implements Listener {
 	}
 	
 	public ShapedRecipe t9ChestplateRecipe() {
-		ItemStack item = new Armor().t9Chestplate();
+		ItemStack item = a.t9Chestplate();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t9Chestplate");
 		
@@ -664,7 +665,7 @@ public class ArmorRecipes implements Listener {
 	}
 	
 	public ShapedRecipe t10ChestplateRecipe() {
-		ItemStack item = new Armor().t10Chestplate();
+		ItemStack item = a.t10Chestplate();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t10Chestplate");
 		
@@ -693,7 +694,7 @@ public class ArmorRecipes implements Listener {
 	}
 	
 	public ShapelessRecipe t1ChestplateFixRecipe() {
-		ItemStack item = new Armor().t1Chestplate();
+		ItemStack item = a.t1Chestplate();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t1ChestplateFix");
 		
@@ -706,7 +707,7 @@ public class ArmorRecipes implements Listener {
 	}
 	
 	public ShapelessRecipe t2ChestplateFixRecipe() {
-		ItemStack item = new Armor().t2Chestplate();
+		ItemStack item = a.t2Chestplate();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t2ChestplateFix");
 		
@@ -719,7 +720,7 @@ public class ArmorRecipes implements Listener {
 	}
 
 	public ShapelessRecipe t3ChestplateFixRecipe() {
-		ItemStack item = new Armor().t3Chestplate();
+		ItemStack item = a.t3Chestplate();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t3ChestplateFix");
 		
@@ -732,7 +733,7 @@ public class ArmorRecipes implements Listener {
 	}
 	
 	public ShapelessRecipe t4ChestplateFixRecipe() {
-		ItemStack item = new Armor().t4Chestplate();
+		ItemStack item = a.t4Chestplate();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t4ChestplateFix");
 		
@@ -745,7 +746,7 @@ public class ArmorRecipes implements Listener {
 	}
 
 	public ShapelessRecipe t5ChestplateFixRecipe() {
-		ItemStack item = new Armor().t5Chestplate();
+		ItemStack item = a.t5Chestplate();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t5ChestplateFix");
 		
@@ -758,7 +759,7 @@ public class ArmorRecipes implements Listener {
 	}
 
 	public ShapelessRecipe t6ChestplateFixRecipe() {
-		ItemStack item = new Armor().t6Chestplate();
+		ItemStack item = a.t6Chestplate();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t6ChestplateFix");
 		
@@ -771,7 +772,7 @@ public class ArmorRecipes implements Listener {
 	}
 
 	public ShapelessRecipe t7ChestplateFixRecipe() {
-		ItemStack item = new Armor().t7Chestplate();
+		ItemStack item = a.t7Chestplate();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t7ChestplateFix");
 		
@@ -784,7 +785,7 @@ public class ArmorRecipes implements Listener {
 	}
 
 	public ShapelessRecipe t8ChestplateFixRecipe() {
-		ItemStack item = new Armor().t8Chestplate();
+		ItemStack item = a.t8Chestplate();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t8ChestplateFix");
 		
@@ -797,7 +798,7 @@ public class ArmorRecipes implements Listener {
 	}
 
 	public ShapelessRecipe t9ChestplateFixRecipe() {
-		ItemStack item = new Armor().t9Chestplate();
+		ItemStack item = a.t9Chestplate();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t9ChestplateFix");
 		
@@ -811,7 +812,7 @@ public class ArmorRecipes implements Listener {
 
 //	Leggings
 	public ShapedRecipe t1LeggingsRecipe() {
-		ItemStack item = new Armor().t1Leggings();
+		ItemStack item = a.t1Leggings();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t1Leggings");
 		
@@ -826,7 +827,7 @@ public class ArmorRecipes implements Listener {
 	}
 	
 	public ShapedRecipe t2LeggingsRecipe() {
-		ItemStack item = new Armor().t2Leggings();
+		ItemStack item = a.t2Leggings();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t2Leggings");
 		
@@ -841,7 +842,7 @@ public class ArmorRecipes implements Listener {
 	}
 	
 	public ShapedRecipe t3LeggingsRecipe() {
-		ItemStack item = new Armor().t3Leggings();
+		ItemStack item = a.t3Leggings();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t3Leggings");
 		
@@ -856,7 +857,7 @@ public class ArmorRecipes implements Listener {
 	}
 	
 	public ShapedRecipe t4LeggingsRecipe() {
-		ItemStack item = new Armor().t4Leggings();
+		ItemStack item = a.t4Leggings();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t4Leggings");
 		
@@ -871,7 +872,7 @@ public class ArmorRecipes implements Listener {
 	}
 	
 	public ShapedRecipe t5LeggingsRecipe() {
-		ItemStack item = new Armor().t5Leggings();
+		ItemStack item = a.t5Leggings();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t5Leggings");
 		
@@ -886,7 +887,7 @@ public class ArmorRecipes implements Listener {
 	}
 	
 	public ShapedRecipe t6LeggingsRecipe() {
-		ItemStack item = new Armor().t6Leggings();
+		ItemStack item = a.t6Leggings();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t6Leggings");
 		
@@ -902,7 +903,7 @@ public class ArmorRecipes implements Listener {
 	}
 	
 	public ShapedRecipe t7LeggingsRecipe() {
-		ItemStack item = new Armor().t7Leggings();
+		ItemStack item = a.t7Leggings();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t7Leggings");
 		
@@ -918,7 +919,7 @@ public class ArmorRecipes implements Listener {
 	}
 	
 	public ShapedRecipe t8LeggingsRecipe() {
-		ItemStack item = new Armor().t8Leggings();
+		ItemStack item = a.t8Leggings();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t8Leggings");
 		
@@ -934,7 +935,7 @@ public class ArmorRecipes implements Listener {
 	}
 	
 	public ShapedRecipe t9LeggingsRecipe() {
-		ItemStack item = new Armor().t9Leggings();
+		ItemStack item = a.t9Leggings();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t9Leggings");
 		
@@ -950,7 +951,7 @@ public class ArmorRecipes implements Listener {
 	}
 	
 	public ShapedRecipe t10LeggingsRecipe() {
-		ItemStack item = new Armor().t10Leggings();
+		ItemStack item = a.t10Leggings();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t10Leggings");
 		
@@ -979,7 +980,7 @@ public class ArmorRecipes implements Listener {
 	}
 	
 	public ShapelessRecipe t1LeggingsFixRecipe() {
-		ItemStack item = new Armor().t1Leggings();
+		ItemStack item = a.t1Leggings();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t1LeggingsFix");
 		
@@ -992,7 +993,7 @@ public class ArmorRecipes implements Listener {
 	}
 	
 	public ShapelessRecipe t2LeggingsFixRecipe() {
-		ItemStack item = new Armor().t2Leggings();
+		ItemStack item = a.t2Leggings();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t2LeggingsFix");
 		
@@ -1005,7 +1006,7 @@ public class ArmorRecipes implements Listener {
 	}
 
 	public ShapelessRecipe t3LeggingsFixRecipe() {
-		ItemStack item = new Armor().t3Leggings();
+		ItemStack item = a.t3Leggings();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t3LeggingsFix");
 		
@@ -1018,7 +1019,7 @@ public class ArmorRecipes implements Listener {
 	}
 	
 	public ShapelessRecipe t4LeggingsFixRecipe() {
-		ItemStack item = new Armor().t4Leggings();
+		ItemStack item = a.t4Leggings();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t4LeggingsFix");
 		
@@ -1031,7 +1032,7 @@ public class ArmorRecipes implements Listener {
 	}
 
 	public ShapelessRecipe t5LeggingsFixRecipe() {
-		ItemStack item = new Armor().t5Leggings();
+		ItemStack item = a.t5Leggings();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t5LeggingsFix");
 		
@@ -1044,7 +1045,7 @@ public class ArmorRecipes implements Listener {
 	}
 
 	public ShapelessRecipe t6LeggingsFixRecipe() {
-		ItemStack item = new Armor().t6Leggings();
+		ItemStack item = a.t6Leggings();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t6LeggingsFix");
 		
@@ -1057,7 +1058,7 @@ public class ArmorRecipes implements Listener {
 	}
 
 	public ShapelessRecipe t7LeggingsFixRecipe() {
-		ItemStack item = new Armor().t7Leggings();
+		ItemStack item = a.t7Leggings();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t7LeggingsFix");
 		
@@ -1070,7 +1071,7 @@ public class ArmorRecipes implements Listener {
 	}
 
 	public ShapelessRecipe t8LeggingsFixRecipe() {
-		ItemStack item = new Armor().t8Leggings();
+		ItemStack item = a.t8Leggings();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t8LeggingsFix");
 		
@@ -1083,7 +1084,7 @@ public class ArmorRecipes implements Listener {
 	}
 
 	public ShapelessRecipe t9LeggingsFixRecipe() {
-		ItemStack item = new Armor().t9Leggings();
+		ItemStack item = a.t9Leggings();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t9LeggingsFix");
 		
@@ -1097,7 +1098,7 @@ public class ArmorRecipes implements Listener {
 
 //	Boots
 	public ShapedRecipe t1BootsRecipe() {
-		ItemStack item = new Armor().t1Boots();
+		ItemStack item = a.t1Boots();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t1Boots");
 		
@@ -1112,7 +1113,7 @@ public class ArmorRecipes implements Listener {
 	}
 	
 	public ShapedRecipe t2BootsRecipe() {
-		ItemStack item = new Armor().t2Boots();
+		ItemStack item = a.t2Boots();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t2Boots");
 		
@@ -1127,7 +1128,7 @@ public class ArmorRecipes implements Listener {
 	}
 	
 	public ShapedRecipe t3BootsRecipe() {
-		ItemStack item = new Armor().t3Boots();
+		ItemStack item = a.t3Boots();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t3Boots");
 		
@@ -1142,7 +1143,7 @@ public class ArmorRecipes implements Listener {
 	}
 	
 	public ShapedRecipe t4BootsRecipe() {
-		ItemStack item = new Armor().t4Boots();
+		ItemStack item = a.t4Boots();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t4Boots");
 		
@@ -1157,7 +1158,7 @@ public class ArmorRecipes implements Listener {
 	}
 	
 	public ShapedRecipe t5BootsRecipe() {
-		ItemStack item = new Armor().t5Boots();
+		ItemStack item = a.t5Boots();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t5Boots");
 		
@@ -1172,7 +1173,7 @@ public class ArmorRecipes implements Listener {
 	}
 	
 	public ShapedRecipe t6BootsRecipe() {
-		ItemStack item = new Armor().t6Boots();
+		ItemStack item = a.t6Boots();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t6Boots");
 		
@@ -1188,7 +1189,7 @@ public class ArmorRecipes implements Listener {
 	}
 	
 	public ShapedRecipe t7BootsRecipe() {
-		ItemStack item = new Armor().t7Boots();
+		ItemStack item = a.t7Boots();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t7Boots");
 		
@@ -1204,7 +1205,7 @@ public class ArmorRecipes implements Listener {
 	}
 	
 	public ShapedRecipe t8BootsRecipe() {
-		ItemStack item = new Armor().t8Boots();
+		ItemStack item = a.t8Boots();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t8Boots");
 		
@@ -1220,7 +1221,7 @@ public class ArmorRecipes implements Listener {
 	}
 	
 	public ShapedRecipe t9BootsRecipe() {
-		ItemStack item = new Armor().t9Boots();
+		ItemStack item = a.t9Boots();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t9Boots");
 		
@@ -1236,7 +1237,7 @@ public class ArmorRecipes implements Listener {
 	}
 	
 	public ShapedRecipe t10BootsRecipe() {
-		ItemStack item = new Armor().t10Boots();
+		ItemStack item = a.t10Boots();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t10Boots");
 		
@@ -1265,7 +1266,7 @@ public class ArmorRecipes implements Listener {
 	}
 	
 	public ShapelessRecipe t1BootsFixRecipe() {
-		ItemStack item = new Armor().t1Boots();
+		ItemStack item = a.t1Boots();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t1BootsFix");
 		
@@ -1278,7 +1279,7 @@ public class ArmorRecipes implements Listener {
 	}
 	
 	public ShapelessRecipe t2BootsFixRecipe() {
-		ItemStack item = new Armor().t2Boots();
+		ItemStack item = a.t2Boots();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t2BootsFix");
 		
@@ -1291,7 +1292,7 @@ public class ArmorRecipes implements Listener {
 	}
 
 	public ShapelessRecipe t3BootsFixRecipe() {
-		ItemStack item = new Armor().t3Boots();
+		ItemStack item = a.t3Boots();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t3BootsFix");
 		
@@ -1304,7 +1305,7 @@ public class ArmorRecipes implements Listener {
 	}
 	
 	public ShapelessRecipe t4BootsFixRecipe() {
-		ItemStack item = new Armor().t4Boots();
+		ItemStack item = a.t4Boots();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t4BootsFix");
 		
@@ -1317,7 +1318,7 @@ public class ArmorRecipes implements Listener {
 	}
 
 	public ShapelessRecipe t5BootsFixRecipe() {
-		ItemStack item = new Armor().t5Boots();
+		ItemStack item = a.t5Boots();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t5BootsFix");
 		
@@ -1330,7 +1331,7 @@ public class ArmorRecipes implements Listener {
 	}
 
 	public ShapelessRecipe t6BootsFixRecipe() {
-		ItemStack item = new Armor().t6Boots();
+		ItemStack item = a.t6Boots();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t6BootsFix");
 		
@@ -1343,7 +1344,7 @@ public class ArmorRecipes implements Listener {
 	}
 
 	public ShapelessRecipe t7BootsFixRecipe() {
-		ItemStack item = new Armor().t7Boots();
+		ItemStack item = a.t7Boots();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t7BootsFix");
 		
@@ -1356,7 +1357,7 @@ public class ArmorRecipes implements Listener {
 	}
 
 	public ShapelessRecipe t8BootsFixRecipe() {
-		ItemStack item = new Armor().t8Boots();
+		ItemStack item = a.t8Boots();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t8BootsFix");
 		
@@ -1369,7 +1370,7 @@ public class ArmorRecipes implements Listener {
 	}
 
 	public ShapelessRecipe t9BootsFixRecipe() {
-		ItemStack item = new Armor().t9Boots();
+		ItemStack item = a.t9Boots();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t9BootsFix");
 		
@@ -1383,7 +1384,7 @@ public class ArmorRecipes implements Listener {
 
 //	Boots Alts
 	public ShapedRecipe t1BootsAltRecipe() {
-		ItemStack item = new Armor().t1Boots();
+		ItemStack item = a.t1Boots();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t1BootsAlt");
 		
@@ -1398,7 +1399,7 @@ public class ArmorRecipes implements Listener {
 	}
 	
 	public ShapedRecipe t2BootsAltRecipe() {
-		ItemStack item = new Armor().t2Boots();
+		ItemStack item = a.t2Boots();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t2BootsAlt");
 		
@@ -1413,7 +1414,7 @@ public class ArmorRecipes implements Listener {
 	}
 	
 	public ShapedRecipe t3BootsAltRecipe() {
-		ItemStack item = new Armor().t3Boots();
+		ItemStack item = a.t3Boots();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t3BootsAlt");
 		
@@ -1428,7 +1429,7 @@ public class ArmorRecipes implements Listener {
 	}
 	
 	public ShapedRecipe t4BootsAltRecipe() {
-		ItemStack item = new Armor().t4Boots();
+		ItemStack item = a.t4Boots();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t4BootsAlt");
 		
@@ -1443,7 +1444,7 @@ public class ArmorRecipes implements Listener {
 	}
 	
 	public ShapedRecipe t5BootsAltRecipe() {
-		ItemStack item = new Armor().t5Boots();
+		ItemStack item = a.t5Boots();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t5BootsAlt");
 		
@@ -1458,7 +1459,7 @@ public class ArmorRecipes implements Listener {
 	}
 	
 	public ShapedRecipe t6BootsAltRecipe() {
-		ItemStack item = new Armor().t6Boots();
+		ItemStack item = a.t6Boots();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t6BootsAlt");
 		
@@ -1474,7 +1475,7 @@ public class ArmorRecipes implements Listener {
 	}
 	
 	public ShapedRecipe t7BootsAltRecipe() {
-		ItemStack item = new Armor().t7Boots();
+		ItemStack item = a.t7Boots();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t7BootsAlt");
 		
@@ -1490,7 +1491,7 @@ public class ArmorRecipes implements Listener {
 	}
 	
 	public ShapedRecipe t8BootsAltRecipe() {
-		ItemStack item = new Armor().t8Boots();
+		ItemStack item = a.t8Boots();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t8BootsAlt");
 		
@@ -1506,7 +1507,7 @@ public class ArmorRecipes implements Listener {
 	}
 	
 	public ShapedRecipe t9BootsAltRecipe() {
-		ItemStack item = new Armor().t9Boots();
+		ItemStack item = a.t9Boots();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t9BootsAlt");
 		
@@ -1522,7 +1523,7 @@ public class ArmorRecipes implements Listener {
 	}
 	
 	public ShapedRecipe t10BootsAltRecipe() {
-		ItemStack item = new Armor().t10Boots();
+		ItemStack item = a.t10Boots();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t10BootsAlt");
 		
@@ -1539,7 +1540,7 @@ public class ArmorRecipes implements Listener {
 	
 //	Elytra
 	public ShapedRecipe t9ElytraRecipe() {
-		ItemStack item = new Armor().t9Elytra();
+		ItemStack item = a.t9Elytra();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t9Elytra");
 		
@@ -1554,7 +1555,7 @@ public class ArmorRecipes implements Listener {
 	}
 
 	public ShapedRecipe t10ElytraRecipe() {
-		ItemStack item = new Armor().t10Elytra();
+		ItemStack item = a.t10Elytra();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t10Elytra");
 		
@@ -1569,7 +1570,7 @@ public class ArmorRecipes implements Listener {
 	}
 	
 	public ShapelessRecipe t9ElytraFixRecipe() {
-		ItemStack item = new Armor().t9Elytra();
+		ItemStack item = a.t9Elytra();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t9ElytraFix");
 		

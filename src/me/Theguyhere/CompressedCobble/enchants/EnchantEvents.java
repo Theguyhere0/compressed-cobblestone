@@ -37,7 +37,6 @@ import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerStatisticIncrementEvent;
 import org.bukkit.inventory.EntityEquipment;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.plugin.Plugin;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
@@ -48,10 +47,16 @@ import me.Theguyhere.CompressedCobble.items.Tools;
 import net.md_5.bungee.api.ChatColor;
 
 public class EnchantEvents implements Listener {
-	private Plugin plugin;
+	private Main plugin;
+	private Resources resources;
+	private Tools t;
+	private Armor a;
 	
-	public EnchantEvents(Main plugin) {
+	public EnchantEvents(Main plugin, Resources r, Tools t, Armor a) {
 		this.plugin = plugin;
+		this.resources = r;
+		this.t = t;
+		this.a = a;
 	}
 	
 	EntityType[] fighter = {EntityType.DROWNED, EntityType.GIANT, EntityType.HOGLIN, EntityType.HUSK, EntityType.PIGLIN, EntityType.PILLAGER, EntityType.SKELETON,
@@ -61,45 +66,212 @@ public class EnchantEvents implements Listener {
 	
 //	Tools
 	@EventHandler()
-	public void telepathy(BlockBreakEvent event) {
-		if (event.getPlayer().getInventory().getItemInMainHand() == null)
+	public void onBlockBreak(BlockBreakEvent event) {
+		Player player = event.getPlayer();
+		Block block = event.getBlock();
+		Material type = block.getType();
+
+		if (player.getInventory().getItemInMainHand() == null)
 			return;
-		if (!event.getPlayer().getInventory().getItemInMainHand().hasItemMeta())
+		if (!player.getInventory().getItemInMainHand().hasItemMeta())
 			return;
-		if (event.getPlayer().getInventory().getItemInMainHand().getItemMeta().hasEnchant(CustomEnchants.STONY)) {
-			int lvl = event.getPlayer().getInventory().getItemInMainHand().getItemMeta().getEnchantLevel(CustomEnchants.STONY);
-			if ((event.getBlock().getType().equals(Material.STONE) || event.getBlock().getType().equals(Material.DIORITE) && lvl > 2 ||
-					event.getBlock().getType().equals(Material.GRANITE) && lvl > 2 || event.getBlock().getType().equals(Material.ANDESITE) && lvl > 2))
-				return;
+		if (player.getGameMode() == GameMode.CREATIVE || player.getGameMode() == GameMode.SPECTATOR)
+			return;
+		if (player.getInventory().getItemInMainHand().getItemMeta().hasEnchant(CustomEnchants.STONY)) {
+			int lvl = player.getInventory().getItemInMainHand().getItemMeta().getEnchantLevel(CustomEnchants.STONY);
+			if ((type.equals(Material.STONE) || type.equals(Material.DIORITE) && lvl > 2 || type.equals(Material.GRANITE) && lvl > 2 ||
+					type.equals(Material.ANDESITE) && lvl > 2)) {
+				Location loc = player.getLocation();
+				World world = player.getWorld();
+				Collection<ItemStack> drops = block.getDrops(player.getInventory().getItemInMainHand());
+				
+				if (drops.isEmpty())
+					return;
+				
+				ItemStack result = giveLoot(lvl, drops.iterator().next());
+				
+				event.setDropItems(false);
+				if (player.getInventory().getItemInMainHand().getItemMeta().hasEnchant(CustomEnchants.TELEPATHY)) {
+					Main.giveItem(player, world, loc, result);
+				}
+				else {
+					world.dropItemNaturally(block.getLocation(), result);
+				}
+			}
+			return;
 		}
-		if ((event.getBlock().getType().equals(Material.GOLD_ORE) || event.getBlock().getType().equals(Material.IRON_ORE) ||
-				event.getBlock().getType().equals(Material.NETHER_GOLD_ORE) || event.getBlock().getType().equals(Material.ANCIENT_DEBRIS)) &&
-				event.getPlayer().getInventory().getItemInMainHand().getItemMeta().hasEnchant(CustomEnchants.FIERY))
-			return;
-		if ((event.getBlock().getType().equals(Material.ACACIA_LOG) || event.getBlock().getType().equals(Material.BIRCH_LOG) || 
-				event.getBlock().getType().equals(Material.DARK_OAK_LOG) || event.getBlock().getType().equals(Material.JUNGLE_LOG) ||
-				event.getBlock().getType().equals(Material.OAK_LOG) || event.getBlock().getType().equals(Material.SPRUCE_LOG) ||
-				event.getBlock().getType().equals(Material.CRIMSON_STEM) || event.getBlock().getType().equals(Material.WARPED_STEM)) &&
-				event.getPlayer().getInventory().getItemInMainHand().getItemMeta().hasEnchant(CustomEnchants.PETRIFYING))
-			return;
-		if ((event.getBlock().getType().equals(Material.DIRT) || event.getBlock().getType().equals(Material.SAND) || 
-				event.getBlock().getType().equals(Material.GRAVEL) || event.getBlock().getType().equals(Material.GRASS_BLOCK) ||
-				event.getBlock().getType().equals(Material.COARSE_DIRT) || event.getBlock().getType().equals(Material.PODZOL) ||
-				event.getBlock().getType().equals(Material.SOUL_SAND) || event.getBlock().getType().equals(Material.SOUL_SOIL) ||
-				event.getBlock().getType().equals(Material.RED_SAND)) && event.getPlayer().getInventory().getItemInMainHand().getItemMeta().hasEnchant(CustomEnchants.ROCKY))
-			return;
-		if ((event.getBlock().getType().equals(Material.WHEAT) || event.getBlock().getType().equals(Material.CARROTS) || 
-				event.getBlock().getType().equals(Material.POTATOES) || event.getBlock().getType().equals(Material.BEETROOT) ||
-				event.getBlock().getType().equals(Material.NETHER_WART)) && event.getPlayer().getInventory().getItemInMainHand().getItemMeta().hasEnchant(CustomEnchants.PEBBLY))
-			return;
-		if (event.getPlayer().getInventory().getItemInMainHand().getItemMeta().hasEnchant(CustomEnchants.TELEPATHY)) {
-			if (event.getPlayer().getGameMode() == GameMode.CREATIVE || event.getPlayer().getGameMode() == GameMode.SPECTATOR)
+		if ((type.equals(Material.GOLD_ORE) || type.equals(Material.IRON_ORE) || type.equals(Material.NETHER_GOLD_ORE) ||
+				type.equals(Material.ANCIENT_DEBRIS)) && player.getInventory().getItemInMainHand().getItemMeta().hasEnchant(CustomEnchants.FIERY)) {
+			event.setDropItems(false);
+			
+			ItemStack result = null;
+			Location loc = player.getLocation();
+			World world = player.getWorld();
+			int luck = 0;
+			
+			if (player.getInventory().getItemInMainHand().getItemMeta().hasEnchant(Enchantment.LOOT_BONUS_BLOCKS))
+				luck = player.getInventory().getItemInMainHand().getItemMeta().getEnchantLevel(Enchantment.LOOT_BONUS_BLOCKS);
+			
+			int r = 1 + new Random().nextInt(luck);
+			
+			Collection<ItemStack> drops = block.getDrops(player.getInventory().getItemInMainHand());
+			
+			if (drops.isEmpty())
 				return;
-			if (event.getBlock().getState() instanceof Container)
+			if (type.equals(Material.GOLD_ORE))
+				result = new ItemStack(Material.GOLD_INGOT, r);
+			if (type.equals(Material.IRON_ORE))
+				result = new ItemStack(Material.IRON_INGOT, r);
+			if (type.equals(Material.NETHER_GOLD_ORE))
+				result = new ItemStack(Material.GOLD_INGOT, r);
+			if (type.equals(Material.ANCIENT_DEBRIS))
+				result = new ItemStack(Material.NETHERITE_SCRAP, r);
+			if (player.getInventory().getItemInMainHand().getItemMeta().hasEnchant(CustomEnchants.TELEPATHY)) {
+				Main.giveItem(player, world, loc, result);
+			}
+			else {
+				world.dropItemNaturally(block.getLocation(), result);
+			}
+			return;
+		}
+		if ((type.equals(Material.ACACIA_LOG) || type.equals(Material.BIRCH_LOG) || type.equals(Material.DARK_OAK_LOG) || type.equals(Material.JUNGLE_LOG) ||
+				type.equals(Material.OAK_LOG) || type.equals(Material.SPRUCE_LOG) || type.equals(Material.CRIMSON_STEM) || type.equals(Material.WARPED_STEM)) &&
+				player.getInventory().getItemInMainHand().getItemMeta().hasEnchant(CustomEnchants.PETRIFYING)) {
+			int lvl = player.getInventory().getItemInMainHand().getItemMeta().getEnchantLevel(CustomEnchants.PETRIFYING);
+			Location loc = player.getLocation();
+			World world = player.getWorld();
+			Collection<ItemStack> drops = block.getDrops(player.getInventory().getItemInMainHand());
+			
+			if (drops.isEmpty())
+				return;
+			
+			ItemStack result = giveLoot(lvl, drops.iterator().next());
+			
+			event.setDropItems(false);
+			if (player.getInventory().getItemInMainHand().getItemMeta().hasEnchant(CustomEnchants.TELEPATHY)) {
+				Main.giveItem(player, world, loc, result);
+			}
+			else {
+				world.dropItemNaturally(block.getLocation(), result);
+			}
+			return;
+		}
+		if ((type.equals(Material.DIRT) || type.equals(Material.SAND) || type.equals(Material.GRAVEL) || type.equals(Material.GRASS_BLOCK) ||
+				type.equals(Material.COARSE_DIRT) || type.equals(Material.PODZOL) || type.equals(Material.SOUL_SAND) || type.equals(Material.SOUL_SOIL) ||
+				type.equals(Material.RED_SAND)) && player.getInventory().getItemInMainHand().getItemMeta().hasEnchant(CustomEnchants.ROCKY)) {
+			int lvl = player.getInventory().getItemInMainHand().getItemMeta().getEnchantLevel(CustomEnchants.ROCKY);
+			Location loc = player.getLocation();
+			World world = player.getWorld();
+			Collection<ItemStack> drops = block.getDrops(player.getInventory().getItemInMainHand());
+			
+			if (drops.isEmpty())
+				return;
+
+			ItemStack result = giveLoot(lvl, drops.iterator().next());
+			
+			event.setDropItems(false);
+			if (player.getInventory().getItemInMainHand().getItemMeta().hasEnchant(CustomEnchants.TELEPATHY)) {
+				Main.giveItem(player, world, loc, result);
+			}
+			else {
+				world.dropItemNaturally(block.getLocation(), result);
+			}
+			return;
+		}
+		if ((type.equals(Material.WHEAT) || type.equals(Material.CARROTS) || type.equals(Material.POTATOES) || type.equals(Material.BEETROOT) ||
+				type.equals(Material.NETHER_WART)) && player.getInventory().getItemInMainHand().getItemMeta().hasEnchant(CustomEnchants.PEBBLY)) {
+			int lvl = player.getInventory().getItemInMainHand().getItemMeta().getEnchantLevel(CustomEnchants.PEBBLY);
+			Collection<ItemStack> drops = block.getDrops(player.getInventory().getItemInMainHand());
+			Location loc = player.getLocation();
+			World world = player.getWorld();
+			
+			if ((type.equals(Material.WHEAT)))
+				if (!block.getBlockData().getAsString().equals("minecraft:wheat[age=7]")) {
+					if (player.getInventory().getItemInMainHand().getItemMeta().hasEnchant(CustomEnchants.TELEPATHY)) {
+						event.setDropItems(false);
+						Main.giveItem(player, world, loc, drops.iterator().next());
+					}
+					return;
+				}
+			if ((type.equals(Material.CARROTS)))
+				if (!block.getBlockData().getAsString().equals("minecraft:carrots[age=7]")) {
+					if (player.getInventory().getItemInMainHand().getItemMeta().hasEnchant(CustomEnchants.TELEPATHY)) {
+						event.setDropItems(false);
+						if (player.getInventory().firstEmpty() == -1 && (player.getInventory().first(drops.iterator().next().getType()) == -1 ||
+								(player.getInventory().all(new ItemStack(drops.iterator().next().getType(), drops.iterator().next().getMaxStackSize())).size() ==
+								player.getInventory().all(drops.iterator().next().getType()).size()) && player.getInventory().all(drops.iterator().next().getType()).size() != 0)) {
+//							inventory is full				
+							world.dropItemNaturally(loc, drops.iterator().next());
+							player.sendMessage(ChatColor.RED + "Your inventory is full!");
+							return;
+						}
+						else {
+							player.getInventory().addItem(drops.iterator().next());
+							//System.out.print("Pebbly-immature");
+						}
+					}
+					return;
+				}
+			if ((type.equals(Material.POTATOES)))
+				if (!block.getBlockData().getAsString().equals("minecraft:potatoes[age=7]")) {
+					if (player.getInventory().getItemInMainHand().getItemMeta().hasEnchant(CustomEnchants.TELEPATHY)) {
+						event.setDropItems(false);
+						Main.giveItem(player, world, loc, drops.iterator().next());
+					}
+					return;
+				}
+			if ((type.equals(Material.BEETROOT)))
+				if (!block.getBlockData().getAsString().equals("minecraft:beetroots[age=3]")) {
+					if (player.getInventory().getItemInMainHand().getItemMeta().hasEnchant(CustomEnchants.TELEPATHY)) {
+						event.setDropItems(false);
+						Main.giveItem(player, world, loc, drops.iterator().next());
+					}
+					return;
+				}
+			if ((type.equals(Material.NETHER_WART)))
+				if (!block.getBlockData().getAsString().equals("minecraft:nether_warts[age=3]")) {
+					if (player.getInventory().getItemInMainHand().getItemMeta().hasEnchant(CustomEnchants.TELEPATHY)) {
+						event.setDropItems(false);
+						Main.giveItem(player, world, loc, drops.iterator().next());
+					}
+					return;
+				}
+
+			ItemStack first = drops.iterator().next();
+			Collection<ItemStack> rest = new HashSet<>();
+			
+			for (ItemStack i : drops) {
+				if (drops.iterator().hasNext()) {
+					rest.add(i);
+				}
+			}
+
+			ItemStack result = giveLoot(lvl, new ItemStack(first));
+			
+			event.setDropItems(false);
+			if (result.equals(first)) {
+				if (player.getInventory().getItemInMainHand().getItemMeta().hasEnchant(CustomEnchants.TELEPATHY)) {
+					for (ItemStack i : rest) {
+						Main.giveItem(player, world, loc, i);
+					}
+				}
+				else 
+					for (ItemStack i : rest) {
+						world.dropItemNaturally(block.getLocation(), i);
+					}
+				return;
+			}
+			if (player.getInventory().getItemInMainHand().getItemMeta().hasEnchant(CustomEnchants.TELEPATHY)) {
+				Main.giveItem(player, world, loc, result);
+				return;
+			}
+			else world.dropItemNaturally(block.getLocation(), result);
+			return;
+		}
+		if (player.getInventory().getItemInMainHand().getItemMeta().hasEnchant(CustomEnchants.TELEPATHY)) {
+			if (block.getState() instanceof Container)
 				return;	
 			event.setDropItems(false);
-			Player player = event.getPlayer();
-			Block block = event.getBlock();
 			Location loc = player.getLocation();
 			World world = player.getWorld();
 			
@@ -112,51 +284,76 @@ public class EnchantEvents implements Listener {
 					loot.add(i);
 			}
 			for (ItemStack i : loot) {
-				if (player.getInventory().firstEmpty() == -1 && (player.getInventory().first(i.getType()) == -1 ||
-						(player.getInventory().all(new ItemStack(i.getType(), i.getMaxStackSize())).size() ==
-						player.getInventory().all(i.getType()).size()) && player.getInventory().all(i.getType()).size() != 0)) {
-//					inventory is full				
-					world.dropItemNaturally(loc, i);
-					player.sendMessage(ChatColor.RED + "Your inventory is full!");
-				}
-				else {
-					player.getInventory().addItem(i);
-					//System.out.print("Telepathy-block");
-				}
+				Main.giveItem(player, world, loc, i);
 			}
 		}
 		return;
 	}
 	
 	@EventHandler()
-	public void telepathy(EntityDeathEvent event) {
+	public void onMobKill(EntityDeathEvent event) {
 		if (event.getEntity().getKiller() == null)
 			return;
 		if (event.getEntity().getKiller().getInventory().getItemInMainHand() == null)
 			return;
 		if (!event.getEntity().getKiller().getInventory().getItemInMainHand().hasItemMeta())
 			return;
-		
+		if (event.getEntity().getKiller().getGameMode() == GameMode.CREATIVE || event.getEntity().getKiller().getGameMode() == GameMode.SPECTATOR)
+			return;
+
 		EntityType[] entities = {EntityType.BLAZE, EntityType.CAVE_SPIDER, EntityType.CREEPER, EntityType.DROWNED, EntityType.ENDERMAN, EntityType.ENDERMITE,
 				EntityType.EVOKER, EntityType.GHAST, EntityType.GIANT, EntityType.GUARDIAN, EntityType.HOGLIN, EntityType.HUSK, EntityType.ILLUSIONER,
 				EntityType.MAGMA_CUBE, EntityType.PHANTOM, EntityType.PIGLIN, EntityType.PILLAGER, EntityType.RAVAGER, EntityType.SKELETON, EntityType.SKELETON_HORSE,
 				EntityType.SILVERFISH, EntityType.SLIME, EntityType.SPIDER, EntityType.STRAY, EntityType.VEX, EntityType.VINDICATOR, EntityType.WITCH,
 				EntityType.WITHER_SKELETON, EntityType.ZOGLIN, EntityType.ZOMBIE, EntityType.ZOMBIE_HORSE, EntityType.ZOMBIE_VILLAGER, EntityType.ZOMBIFIED_PIGLIN};
 		Collection<EntityType> mobs = Arrays.asList(entities);
-		if (mobs.contains(event.getEntityType()) && event.getEntity().getKiller().getInventory().getItemInMainHand().getItemMeta().hasEnchant(CustomEnchants.MEDUSA))
+		Player player = event.getEntity().getKiller();
+		Location loc = player.getLocation();
+		World world = player.getWorld();
+		Collection<ItemStack> drops = event.getDrops();
+		
+		if (drops.isEmpty()) {
 			return;
-
-		if (event.getEntity().getKiller().getInventory().getItemInMainHand().getItemMeta().hasEnchant(CustomEnchants.TELEPATHY)) {
-			if (event.getEntity().getKiller().getGameMode() == GameMode.CREATIVE || event.getEntity().getKiller().getGameMode() == GameMode.SPECTATOR)
-				return;
-			Player player = event.getEntity().getKiller();
-			Location loc = player.getLocation();
-			World world = player.getWorld();
+		}
+		if (mobs.contains(event.getEntityType()) &&
+				event.getEntity().getKiller().getInventory().getItemInMainHand().getItemMeta().hasEnchant(CustomEnchants.MEDUSA)) {
+			ItemStack first = drops.iterator().next();
 			
-			Collection<ItemStack> drops = event.getDrops();
-			if (drops.isEmpty()) {
+			drops.remove(drops.iterator().next());
+			
+			Collection<ItemStack> rest = new HashSet<>();
+			
+			for (ItemStack i : drops) {
+				if (drops.iterator().hasNext()) {
+					rest.add(i);
+				}
+			}
+			drops.clear();
+			int lvl = event.getEntity().getKiller().getInventory().getItemInMainHand().getItemMeta().getEnchantLevel(CustomEnchants.MEDUSA);
+			ItemStack result = giveLoot(lvl, new ItemStack(first));
+			
+			if (result.equals(first)) {
+				rest.add(first);
+				if (event.getEntity().getKiller().getInventory().getItemInMainHand().getItemMeta().hasEnchant(CustomEnchants.TELEPATHY)) {
+					for (ItemStack i : rest) {
+						Main.giveItem(player, world, loc, i);
+					}
+				}
+				else
+					for (ItemStack i : rest) {
+						world.dropItemNaturally(event.getEntity().getLocation(), i);
+					}
 				return;
 			}
+			if (event.getEntity().getKiller().getInventory().getItemInMainHand().getItemMeta().hasEnchant(CustomEnchants.TELEPATHY)) {
+				Main.giveItem(player, world, loc, result);
+			}
+			else {
+					world.dropItemNaturally(event.getEntity().getLocation(), result);
+			}
+			return;
+		}
+		if (event.getEntity().getKiller().getInventory().getItemInMainHand().getItemMeta().hasEnchant(CustomEnchants.TELEPATHY)) {
 			Collection<ItemStack> loot = new HashSet<>();
 			for (ItemStack i : drops) {
 				if (drops.iterator().hasNext())
@@ -164,589 +361,16 @@ public class EnchantEvents implements Listener {
 			}
 			event.getDrops().clear();
 			for (ItemStack i : loot) {
-				if (player.getInventory().firstEmpty() == -1 && (player.getInventory().first(i.getType()) == -1 ||
-						(player.getInventory().all(new ItemStack(i.getType(), i.getMaxStackSize())).size() ==
-						player.getInventory().all(i.getType()).size()) && player.getInventory().all(i.getType()).size() != 0)) {
-//					inventory is full				
-					world.dropItemNaturally(loc, i);
-					player.sendMessage(ChatColor.RED + "Your inventory is full!");
-				}
-				else {
-					player.getInventory().addItem(i);
-					//System.out.print("Telepathy-mob");
-				}
+				Main.giveItem(player, world, loc, i);
 			}
 		}
 		return;
 	}
-
-	@EventHandler()
-	public void stony(BlockBreakEvent event) {
-		if (event.getPlayer().getInventory().getItemInMainHand() == null)
-			return;
-		if (!event.getPlayer().getInventory().getItemInMainHand().hasItemMeta())
-			return;
-		if (event.getPlayer().getInventory().getItemInMainHand().getItemMeta().hasEnchant(CustomEnchants.STONY)) {
-			if (event.getPlayer().getGameMode() == GameMode.CREATIVE || event.getPlayer().getGameMode() == GameMode.SPECTATOR)
-				return;
-			int lvl = event.getPlayer().getInventory().getItemInMainHand().getItemMeta().getEnchantLevel(CustomEnchants.STONY);
-			if (!(event.getBlock().getType().equals(Material.STONE) || event.getBlock().getType().equals(Material.DIORITE) && lvl > 2 ||
-					event.getBlock().getType().equals(Material.GRANITE) && lvl > 2 || event.getBlock().getType().equals(Material.ANDESITE) && lvl > 2))
-				return;
-
-			plugin.getConfig().getConfigurationSection("stony" + lvl).getKeys(false).forEach(key -> {
-				ItemStack[] items = new ItemStack[plugin.getConfig().getStringList("stony" + lvl + ".loot").size()];
-				ItemStack item = null;
-				Random r = new Random();
-				int position = 0;
-				Player player = event.getPlayer();
-				Block block = event.getBlock();
-				Location loc = player.getLocation();
-				World world = player.getWorld();
-				Collection<ItemStack> drops = block.getDrops(player.getInventory().getItemInMainHand());
-				if (drops.isEmpty())
-					return;
-				for (String i : plugin.getConfig().getStringList("stony" + lvl + ".loot")) {
-					if (i.equals("c"))
-						item = drops.iterator().next();
-					if (i.equals("c0p5"))
-						item = new Resources().t1();
-					if (i.equals("c1"))
-						item = new Resources().t2();
-					if (i.equals("c1p5"))
-						item = new Resources().t3();
-					if (i.equals("c2"))
-						item = new Resources().t4();
-					if (i.equals("c2p5"))
-						item = new Resources().t5();
-					items[position] = item;
-					position++;
-				}
-				int num = r.nextInt(items.length);
-				ItemStack result = items[num];
-				event.setDropItems(false);
-				if (event.getPlayer().getInventory().getItemInMainHand().getItemMeta().hasEnchant(CustomEnchants.TELEPATHY)) {
-					if (player.getInventory().firstEmpty() == -1 && (player.getInventory().first(result.getType()) == -1 ||
-							(player.getInventory().all(new ItemStack(result.getType(), result.getMaxStackSize())).size() ==
-							player.getInventory().all(result.getType()).size()) && player.getInventory().all(result.getType()).size() != 0)) {
-//						inventory is full				
-						world.dropItemNaturally(loc, result);
-						player.sendMessage(ChatColor.RED + "Your inventory is full!");
-						return;
-					}
-					else player.getInventory().addItem(result);
-					//System.out.print("Stony-telepathy");
-				}
-				else {
-					world.dropItemNaturally(block.getLocation(), result);
-					//System.out.print("Stony");
-				}
-			});
-		}
-		return;
-	}
-	
-	@EventHandler()
-	public void fiery(BlockBreakEvent event) {
-		if (event.getPlayer().getInventory().getItemInMainHand() == null)
-			return;
-		if (!event.getPlayer().getInventory().getItemInMainHand().hasItemMeta())
-			return;
-		if (!(event.getBlock().getType().equals(Material.GOLD_ORE) || event.getBlock().getType().equals(Material.IRON_ORE) ||
-				event.getBlock().getType().equals(Material.NETHER_GOLD_ORE) || event.getBlock().getType().equals(Material.ANCIENT_DEBRIS)))
-			return;
-		if (event.getPlayer().getInventory().getItemInMainHand().getItemMeta().hasEnchant(CustomEnchants.FIERY)) {
-			if (event.getPlayer().getGameMode() == GameMode.CREATIVE || event.getPlayer().getGameMode() == GameMode.SPECTATOR)
-				return;
-			event.setDropItems(false);
-			ItemStack result = null;
-			event.setDropItems(false);
-			Player player = event.getPlayer();
-			Block block = event.getBlock();
-			Location loc = player.getLocation();
-			World world = player.getWorld();
-			int luck = 0;
-			if (player.getInventory().getItemInMainHand().getItemMeta().hasEnchant(Enchantment.LOOT_BONUS_BLOCKS))
-				luck = player.getInventory().getItemInMainHand().getItemMeta().getEnchantLevel(Enchantment.LOOT_BONUS_BLOCKS);
-			int r = 1 + new Random().nextInt(luck);
-			Collection<ItemStack> drops = block.getDrops(player.getInventory().getItemInMainHand());
-			if (drops.isEmpty())
-				return;
-			if (event.getBlock().getType().equals(Material.GOLD_ORE))
-				result = new ItemStack(Material.GOLD_INGOT, r);
-			if (event.getBlock().getType().equals(Material.IRON_ORE))
-				result = new ItemStack(Material.IRON_INGOT, r);
-			if (event.getBlock().getType().equals(Material.NETHER_GOLD_ORE))
-				result = new ItemStack(Material.GOLD_INGOT, r);
-			if (event.getBlock().getType().equals(Material.ANCIENT_DEBRIS))
-				result = new ItemStack(Material.NETHERITE_SCRAP, r);
-			if (event.getPlayer().getInventory().getItemInMainHand().getItemMeta().hasEnchant(CustomEnchants.TELEPATHY)) {
-				if (player.getInventory().firstEmpty() == -1 && (player.getInventory().first(result.getType()) == -1 ||
-						(player.getInventory().all(new ItemStack(result.getType(), result.getMaxStackSize())).size() ==
-						player.getInventory().all(result.getType()).size()) && player.getInventory().all(result.getType()).size() != 0)) {
-//					inventory is full				
-					world.dropItemNaturally(loc, result);
-					player.sendMessage(ChatColor.RED + "Your inventory is full!");
-					return;
-				}
-				player.getInventory().addItem(result);
-				//System.out.print("Fiery-telepathy");
-			}
-			else {
-				world.dropItemNaturally(block.getLocation(), result);
-				//System.out.print("Fiery");
-			}
-		}
-		return;
-	}
-	
-	@EventHandler()
-	public void petrifying(BlockBreakEvent event) {
-		if (event.getPlayer().getInventory().getItemInMainHand() == null)
-			return;
-		if (!event.getPlayer().getInventory().getItemInMainHand().hasItemMeta())
-			return;
-		if (event.getPlayer().getInventory().getItemInMainHand().getItemMeta().hasEnchant(CustomEnchants.PETRIFYING)) {
-			if (event.getPlayer().getGameMode() == GameMode.CREATIVE || event.getPlayer().getGameMode() == GameMode.SPECTATOR)
-				return;
-			if (!(event.getBlock().getType().equals(Material.ACACIA_LOG) || event.getBlock().getType().equals(Material.BIRCH_LOG) || 
-					event.getBlock().getType().equals(Material.DARK_OAK_LOG) || event.getBlock().getType().equals(Material.JUNGLE_LOG) ||
-					event.getBlock().getType().equals(Material.OAK_LOG) || event.getBlock().getType().equals(Material.SPRUCE_LOG) ||
-					event.getBlock().getType().equals(Material.CRIMSON_STEM) || event.getBlock().getType().equals(Material.WARPED_STEM)))
-				return;
-
-			int lvl = event.getPlayer().getInventory().getItemInMainHand().getItemMeta().getEnchantLevel(CustomEnchants.PETRIFYING);
-			plugin.getConfig().getConfigurationSection("stony" + lvl).getKeys(false).forEach(key -> {
-				ItemStack[] items = new ItemStack[plugin.getConfig().getStringList("stony" + lvl + ".loot").size()];
-				ItemStack item = null;
-				Random r = new Random();
-				int position = 0;
-				for (String i : plugin.getConfig().getStringList("stony" + lvl + ".loot")) {
-					if (i.equals("c"))
-						item = new ItemStack(event.getBlock().getType());
-					if (i.equals("c0p5"))
-						item = new Resources().t1();
-					if (i.equals("c1"))
-						item = new Resources().t2();
-					if (i.equals("c1p5"))
-						item = new Resources().t3();
-					if (i.equals("c2"))
-						item = new Resources().t4();
-					if (i.equals("c2p5"))
-						item = new Resources().t5();
-					if (i.equals("c3"))
-						item = new Resources().t6();
-					items[position] = item;
-					position++;
-				}
-				int num = r.nextInt(items.length);
-				ItemStack result = items[num];
-				event.setDropItems(false);
-				Player player = event.getPlayer();
-				Block block = event.getBlock();
-				Location loc = player.getLocation();
-				World world = player.getWorld();
-				if (event.getPlayer().getInventory().getItemInMainHand().getItemMeta().hasEnchant(CustomEnchants.TELEPATHY)) {
-					if (player.getInventory().firstEmpty() == -1 && (player.getInventory().first(result.getType()) == -1 ||
-							(player.getInventory().all(new ItemStack(result.getType(), result.getMaxStackSize())).size() ==
-							player.getInventory().all(result.getType()).size()) && player.getInventory().all(result.getType()).size() != 0)) {
-//						inventory is full				
-						world.dropItemNaturally(loc, result);
-						player.sendMessage(ChatColor.RED + "Your inventory is full!");
-						return;
-					}
-					player.getInventory().addItem(result);
-					//System.out.print("Petrifying-telepathy");
-				}
-				else {
-					world.dropItemNaturally(block.getLocation(), result);
-					//System.out.print("Petrifying");
-				}
-			});
-		}
-		return;
-	}
-	
-	@EventHandler()
-	public void rocky(BlockBreakEvent event) {
-		if (event.getPlayer().getInventory().getItemInMainHand() == null)
-			return;
-		if (!event.getPlayer().getInventory().getItemInMainHand().hasItemMeta())
-			return;
-		if (event.getPlayer().getInventory().getItemInMainHand().getItemMeta().hasEnchant(CustomEnchants.ROCKY)) {
-			if (event.getPlayer().getGameMode() == GameMode.CREATIVE || event.getPlayer().getGameMode() == GameMode.SPECTATOR)
-				return;
-			if (!(event.getBlock().getType().equals(Material.DIRT) || event.getBlock().getType().equals(Material.SAND) || 
-					event.getBlock().getType().equals(Material.GRAVEL) || event.getBlock().getType().equals(Material.GRASS_BLOCK) ||
-					event.getBlock().getType().equals(Material.COARSE_DIRT) || event.getBlock().getType().equals(Material.PODZOL) ||
-					event.getBlock().getType().equals(Material.SOUL_SAND) || event.getBlock().getType().equals(Material.SOUL_SOIL) ||
-					event.getBlock().getType().equals(Material.RED_SAND)))
-				return;
-
-			int lvl = event.getPlayer().getInventory().getItemInMainHand().getItemMeta().getEnchantLevel(CustomEnchants.ROCKY);
-			plugin.getConfig().getConfigurationSection("stony" + lvl).getKeys(false).forEach(key -> {
-				ItemStack[] items = new ItemStack[plugin.getConfig().getStringList("stony" + lvl + ".loot").size()];
-				ItemStack item = null;
-				Random r = new Random();
-				int position = 0;
-				Player player = event.getPlayer();
-				Block block = event.getBlock();
-				Collection<ItemStack> drops = block.getDrops(player.getInventory().getItemInMainHand());
-
-				for (String i : plugin.getConfig().getStringList("stony" + lvl + ".loot")) {
-					if (i.equals("c"))
-						item = new ItemStack(drops.iterator().next());
-					if (i.equals("c0p5"))
-						item = new Resources().t1();
-					if (i.equals("c1"))
-						item = new Resources().t2();
-					if (i.equals("c1p5"))
-						item = new Resources().t3();
-					if (i.equals("c2"))
-						item = new Resources().t4();
-					if (i.equals("c2p5"))
-						item = new Resources().t5();
-					items[position] = item;
-					position++;
-				}
-				int num = r.nextInt(items.length);
-				ItemStack result = items[num];
-				event.setDropItems(false);
-				Location loc = player.getLocation();
-				World world = player.getWorld();
-				if (event.getPlayer().getInventory().getItemInMainHand().getItemMeta().hasEnchant(CustomEnchants.TELEPATHY)) {
-					if (player.getInventory().firstEmpty() == -1 && (player.getInventory().first(result.getType()) == -1 ||
-							(player.getInventory().all(new ItemStack(result.getType(), result.getMaxStackSize())).size() ==
-							player.getInventory().all(result.getType()).size()) && player.getInventory().all(result.getType()).size() != 0)) {
-//						inventory is full				
-						world.dropItemNaturally(loc, result);
-						player.sendMessage(ChatColor.RED + "Your inventory is full!");
-						return;
-					}
-					player.getInventory().addItem(result);
-					//System.out.print("Rocky-telepathy");
-				}
-				else {
-					world.dropItemNaturally(block.getLocation(), result);
-					//System.out.print("Rocky");
-				}
-			});
-		}
-		return;
-	}
-			
-	@EventHandler()
-	public void pebbly(BlockBreakEvent event) {
-		if (event.getPlayer().getInventory().getItemInMainHand() == null)
-			return;
-		if (!event.getPlayer().getInventory().getItemInMainHand().hasItemMeta())
-			return;
-		if (event.getPlayer().getInventory().getItemInMainHand().getItemMeta().hasEnchant(CustomEnchants.PEBBLY)) {
-			if (event.getPlayer().getGameMode() == GameMode.CREATIVE || event.getPlayer().getGameMode() == GameMode.SPECTATOR)
-				return;
-			if (!(event.getBlock().getType().equals(Material.WHEAT) || event.getBlock().getType().equals(Material.CARROTS) || 
-					event.getBlock().getType().equals(Material.POTATOES) || event.getBlock().getType().equals(Material.BEETROOT) ||
-					event.getBlock().getType().equals(Material.NETHER_WART)))
-				return;
-
-			int lvl = event.getPlayer().getInventory().getItemInMainHand().getItemMeta().getEnchantLevel(CustomEnchants.PEBBLY);
-			Player player = event.getPlayer();
-			Block block = event.getBlock();
-			Collection<ItemStack> drops = block.getDrops(player.getInventory().getItemInMainHand());
-			Location loc = player.getLocation();
-			World world = player.getWorld();
-			
-			if ((event.getBlock().getType().equals(Material.WHEAT)))
-				if (!event.getBlock().getBlockData().getAsString().equals("minecraft:wheat[age=7]")) {
-					if (event.getPlayer().getInventory().getItemInMainHand().getItemMeta().hasEnchant(CustomEnchants.TELEPATHY)) {
-						event.setDropItems(false);
-						if (player.getInventory().firstEmpty() == -1 && (player.getInventory().first(drops.iterator().next().getType()) == -1 ||
-								(player.getInventory().all(new ItemStack(drops.iterator().next().getType(), drops.iterator().next().getMaxStackSize())).size() ==
-								player.getInventory().all(drops.iterator().next().getType()).size()) && player.getInventory().all(drops.iterator().next().getType()).size() != 0)) {
-//							inventory is full				
-							world.dropItemNaturally(loc, drops.iterator().next());
-							player.sendMessage(ChatColor.RED + "Your inventory is full!");
-							return;
-						}
-						else {
-							player.getInventory().addItem(drops.iterator().next());
-							//System.out.print("Pebbly-immature");
-						}
-					}
-					return;
-				}
-			if ((event.getBlock().getType().equals(Material.CARROTS)))
-				if (!event.getBlock().getBlockData().getAsString().equals("minecraft:carrots[age=7]")) {
-					if (event.getPlayer().getInventory().getItemInMainHand().getItemMeta().hasEnchant(CustomEnchants.TELEPATHY)) {
-						event.setDropItems(false);
-						if (player.getInventory().firstEmpty() == -1 && (player.getInventory().first(drops.iterator().next().getType()) == -1 ||
-								(player.getInventory().all(new ItemStack(drops.iterator().next().getType(), drops.iterator().next().getMaxStackSize())).size() ==
-								player.getInventory().all(drops.iterator().next().getType()).size()) && player.getInventory().all(drops.iterator().next().getType()).size() != 0)) {
-//							inventory is full				
-							world.dropItemNaturally(loc, drops.iterator().next());
-							player.sendMessage(ChatColor.RED + "Your inventory is full!");
-							return;
-						}
-						else {
-							player.getInventory().addItem(drops.iterator().next());
-							//System.out.print("Pebbly-immature");
-						}
-					}
-					return;
-				}
-			if ((event.getBlock().getType().equals(Material.POTATOES)))
-				if (!event.getBlock().getBlockData().getAsString().equals("minecraft:potatoes[age=7]")) {
-					if (event.getPlayer().getInventory().getItemInMainHand().getItemMeta().hasEnchant(CustomEnchants.TELEPATHY)) {
-						event.setDropItems(false);
-						if (player.getInventory().firstEmpty() == -1 && (player.getInventory().first(drops.iterator().next().getType()) == -1 ||
-								(player.getInventory().all(new ItemStack(drops.iterator().next().getType(), drops.iterator().next().getMaxStackSize())).size() ==
-								player.getInventory().all(drops.iterator().next().getType()).size()) && player.getInventory().all(drops.iterator().next().getType()).size() != 0)) {
-//							inventory is full				
-							world.dropItemNaturally(loc, drops.iterator().next());
-							player.sendMessage(ChatColor.RED + "Your inventory is full!");
-							return;
-						}
-						else {
-							player.getInventory().addItem(drops.iterator().next());
-							//System.out.print("Pebbly-immature");
-						}
-					}
-					return;
-				}
-			if ((event.getBlock().getType().equals(Material.BEETROOT)))
-				if (!event.getBlock().getBlockData().getAsString().equals("minecraft:beetroots[age=3]")) {
-					if (event.getPlayer().getInventory().getItemInMainHand().getItemMeta().hasEnchant(CustomEnchants.TELEPATHY)) {
-						event.setDropItems(false);
-						if (player.getInventory().firstEmpty() == -1 && (player.getInventory().first(drops.iterator().next().getType()) == -1 ||
-								(player.getInventory().all(new ItemStack(drops.iterator().next().getType(), drops.iterator().next().getMaxStackSize())).size() ==
-								player.getInventory().all(drops.iterator().next().getType()).size()) && player.getInventory().all(drops.iterator().next().getType()).size() != 0)) {
-//							inventory is full				
-							world.dropItemNaturally(loc, drops.iterator().next());
-							player.sendMessage(ChatColor.RED + "Your inventory is full!");
-							return;
-						}
-						else {
-							player.getInventory().addItem(drops.iterator().next());
-							//System.out.print("Pebbly-immature");
-						}
-					}
-					return;
-				}
-			if ((event.getBlock().getType().equals(Material.NETHER_WART)))
-				if (!event.getBlock().getBlockData().getAsString().equals("minecraft:nether_warts[age=3]")) {
-					if (event.getPlayer().getInventory().getItemInMainHand().getItemMeta().hasEnchant(CustomEnchants.TELEPATHY)) {
-						event.setDropItems(false);
-						if (player.getInventory().firstEmpty() == -1 && (player.getInventory().first(drops.iterator().next().getType()) == -1 ||
-								(player.getInventory().all(new ItemStack(drops.iterator().next().getType(), drops.iterator().next().getMaxStackSize())).size() ==
-								player.getInventory().all(drops.iterator().next().getType()).size()) && player.getInventory().all(drops.iterator().next().getType()).size() != 0)) {
-//							inventory is full				
-							world.dropItemNaturally(loc, drops.iterator().next());
-							player.sendMessage(ChatColor.RED + "Your inventory is full!");
-							return;
-						}
-						else {
-							player.getInventory().addItem(drops.iterator().next());
-							//System.out.print("Pebbly-immature");
-						}
-					}
-					return;
-				}
-
-			plugin.getConfig().getConfigurationSection("stony" + lvl).getKeys(false).forEach(key -> {
-				ItemStack[] items = new ItemStack[plugin.getConfig().getStringList("stony" + lvl + ".loot").size()];
-				ItemStack item = null;
-				Random r = new Random();
-				int position = 0;
-				ItemStack first = drops.iterator().next();
-				Collection<ItemStack> rest = new HashSet<>();
-				for (ItemStack i : drops) {
-					if (drops.iterator().hasNext()) {
-						rest.add(i);
-					}
-				}
-
-				for (String i : plugin.getConfig().getStringList("stony" + lvl + ".loot")) {
-					if (i.equals("c"))
-						item = new ItemStack(first);
-					if (i.equals("c0p5"))
-						item = new Resources().t1();
-					if (i.equals("c1"))
-						item = new Resources().t2();
-					if (i.equals("c1p5"))
-						item = new Resources().t3();
-					if (i.equals("c2"))
-						item = new Resources().t4();
-					if (i.equals("c2p5"))
-						item = new Resources().t5();
-					if (i.equals("c3"))
-						item = new Resources().t6();
-					items[position] = item;
-					position++;
-				}
-				int num = r.nextInt(items.length);
-				ItemStack result = items[num];
-				event.setDropItems(false);
-				if (result.equals(first)) {
-					if (event.getPlayer().getInventory().getItemInMainHand().getItemMeta().hasEnchant(CustomEnchants.TELEPATHY)) {
-						for (ItemStack i : rest) {
-							if (player.getInventory().firstEmpty() == -1 && (player.getInventory().first(i.getType()) == -1 ||
-									(player.getInventory().all(new ItemStack(i.getType(), i.getMaxStackSize())).size() ==
-									player.getInventory().all(i.getType()).size()) && player.getInventory().all(i.getType()).size() != 0)) {
-//								inventory is full				
-								world.dropItemNaturally(loc, i);
-								player.sendMessage(ChatColor.RED + "Your inventory is full!");
-							}
-							else {
-								player.getInventory().addItem(i);
-								//System.out.print("Pebbly-mature-telepathy");
-							}
-						}
-					}
-					else 
-						for (ItemStack i : rest) {
-							world.dropItemNaturally(block.getLocation(), i);
-							//System.out.print("Pebbly-mature");
-						}
-					return;
-				}
-				if (event.getPlayer().getInventory().getItemInMainHand().getItemMeta().hasEnchant(CustomEnchants.TELEPATHY)) {
-					if (player.getInventory().firstEmpty() == -1 && (player.getInventory().first(result.getType()) == -1 ||
-							(player.getInventory().all(new ItemStack(result.getType(), result.getMaxStackSize())).size() ==
-							player.getInventory().all(result.getType()).size()) && player.getInventory().all(result.getType()).size() != 0)) {
-//						inventory is full				
-						world.dropItemNaturally(loc, result);
-						player.sendMessage(ChatColor.RED + "Your inventory is full!");
-						return;
-					}
-					else player.getInventory().addItem(result);
-					//System.out.print("Pebbly-mature-telepathy");
-					return;
-				}
-				else world.dropItemNaturally(block.getLocation(), result);
-				//System.out.print("Pebbly-mature");
-			});
-		}
-		return;
-	}
-	
-	@EventHandler()
-	public void medusa(EntityDeathEvent event) {
-		if (event.getEntity().getKiller() == null)
-			return;
-		if (event.getEntity().getKiller().getInventory().getItemInMainHand() == null)
-			return;
-		if (!event.getEntity().getKiller().getInventory().getItemInMainHand().hasItemMeta())
-			return;
-
-		if (event.getEntity().getKiller().getInventory().getItemInMainHand().getItemMeta().hasEnchant(CustomEnchants.MEDUSA)) {
-			if (event.getEntity().getKiller().getGameMode() == GameMode.CREATIVE || event.getEntity().getKiller().getGameMode() == GameMode.SPECTATOR)
-				return;
-			
-			EntityType[] entities = {EntityType.BLAZE, EntityType.CAVE_SPIDER, EntityType.CREEPER, EntityType.DROWNED, EntityType.ENDERMAN, EntityType.ENDERMITE,
-					EntityType.EVOKER, EntityType.GHAST, EntityType.GIANT, EntityType.GUARDIAN, EntityType.HOGLIN, EntityType.HUSK, EntityType.ILLUSIONER,
-					EntityType.MAGMA_CUBE, EntityType.PHANTOM, EntityType.PIGLIN, EntityType.PILLAGER, EntityType.RAVAGER, EntityType.SKELETON, EntityType.SKELETON_HORSE,
-					EntityType.SILVERFISH, EntityType.SLIME, EntityType.SPIDER, EntityType.STRAY, EntityType.VEX, EntityType.VINDICATOR, EntityType.WITCH,
-					EntityType.WITHER_SKELETON, EntityType.ZOGLIN, EntityType.ZOMBIE, EntityType.ZOMBIE_HORSE, EntityType.ZOMBIE_VILLAGER, EntityType.ZOMBIFIED_PIGLIN};
-			Collection<EntityType> mobs = Arrays.asList(entities);
-			if (!mobs.contains(event.getEntityType()))
-				return;
-			
-			Player player = event.getEntity().getKiller();
-			Location loc = player.getLocation();
-			World world = player.getWorld();
-			
-			Collection<ItemStack> drops = event.getDrops();
-			if (drops.isEmpty())
-				return;
-			ItemStack first = drops.iterator().next();
-			drops.remove(drops.iterator().next());
-			Collection<ItemStack> rest = new HashSet<>();
-			for (ItemStack i : drops) {
-				if (drops.iterator().hasNext()) {
-					rest.add(i);
-				}
-			}
-			int lvl = event.getEntity().getKiller().getInventory().getItemInMainHand().getItemMeta().getEnchantLevel(CustomEnchants.MEDUSA);
-			plugin.getConfig().getConfigurationSection("stony" + lvl).getKeys(false).forEach(key -> {
-				ItemStack[] items = new ItemStack[plugin.getConfig().getStringList("stony" + lvl + ".loot").size()];
-				ItemStack item = null;
-				Random r = new Random();
-				int position = 0;
-
-				for (String i : plugin.getConfig().getStringList("stony" + lvl + ".loot")) {
-					if (i.equals("c"))
-						item = new ItemStack(first);
-					if (i.equals("c0p5"))
-						item = new Resources().t1();
-					if (i.equals("c1"))
-						item = new Resources().t2();
-					if (i.equals("c1p5"))
-						item = new Resources().t3();
-					if (i.equals("c2"))
-						item = new Resources().t4();
-					if (i.equals("c2p5"))
-						item = new Resources().t5();
-					if (i.equals("c3"))
-						item = new Resources().t6();
-					if (i.equals("c3p5"))
-						item = new Resources().t7();
-					if (i.equals("c4"))
-						item = new Resources().t8();
-					items[position] = item;
-					position++;
-				}
-				event.getDrops().clear();
-				int num = r.nextInt(items.length);
-				ItemStack result = items[num];
-				if (result.equals(first)) {
-					rest.add(first);
-					if (event.getEntity().getKiller().getInventory().getItemInMainHand().getItemMeta().hasEnchant(CustomEnchants.TELEPATHY)) {
-						for (ItemStack i : rest) {
-							if (player.getInventory().firstEmpty() == -1 && (player.getInventory().first(i.getType()) == -1 ||
-									(player.getInventory().all(new ItemStack(i.getType(), i.getMaxStackSize())).size() ==
-									player.getInventory().all(i.getType()).size()) && player.getInventory().all(i.getType()).size() != 0)) {
-	//							inventory is full				
-								world.dropItemNaturally(loc, i);
-								player.sendMessage(ChatColor.RED + "Your inventory is full!");
-							}
-							else {
-								player.getInventory().addItem(i);
-//								System.out.print("Medusa-telepathy");
-							}
-						}
-					}
-					else
-						for (ItemStack i : rest) {
-							world.dropItemNaturally(event.getEntity().getLocation(), i);
-//							System.out.print("Medusa");
-						}
-					return;
-				}
-				if (event.getEntity().getKiller().getInventory().getItemInMainHand().getItemMeta().hasEnchant(CustomEnchants.TELEPATHY)) {
-					if (player.getInventory().firstEmpty() == -1 && (player.getInventory().first(result.getType()) == -1 ||
-								(player.getInventory().all(new ItemStack(result.getType(), result.getMaxStackSize())).size() ==
-								player.getInventory().all(result.getType()).size()) && player.getInventory().all(result.getType()).size() != 0)) {
-//							inventory is full				
-							world.dropItemNaturally(loc, result);
-							player.sendMessage(ChatColor.RED + "Your inventory is full!");
-						}
-						else {
-							player.getInventory().addItem(result);
-//							System.out.print("Medusa-telepathy");
-					}
-				}
-				else {
-						world.dropItemNaturally(event.getEntity().getLocation(), result);
-//						System.out.print("Medusa");
-				}
-			});
-		}
-		return;
-	}
+							
 	
 //	Armor
 	@EventHandler()
-	public void radar(PlayerStatisticIncrementEvent e) {
+	public void helmet(PlayerStatisticIncrementEvent e) {
 		if (!e.getStatistic().equals(Statistic.TIME_SINCE_REST))
 			return;
 		Player player = e.getPlayer();
@@ -756,21 +380,11 @@ public class EnchantEvents implements Listener {
 			return;
 		if (player.getInventory().getHelmet().getItemMeta().hasEnchant(CustomEnchants.RADAR))
 			player.addPotionEffect(new PotionEffect(PotionEffectType.NIGHT_VISION, 205, 0));
-	}
-	
-	@EventHandler()
-	public void water(PlayerStatisticIncrementEvent e) {
-		if (!e.getStatistic().equals(Statistic.TIME_SINCE_REST))
-			return;
-		Player player = e.getPlayer();
-		if (player.getGameMode() == GameMode.CREATIVE || player.getGameMode() == GameMode.SPECTATOR)
-			return;
-		if (player.getInventory().getHelmet() == null)
-			return;
 		if (player.getInventory().getHelmet().getItemMeta().hasEnchant(CustomEnchants.WATER_BREATHING))
 			player.addPotionEffect(new PotionEffect(PotionEffectType.WATER_BREATHING, 205, 0));
+		return;
 	}
-	
+		
 	@EventHandler()
 	public void haste(PlayerStatisticIncrementEvent e) {
 		if (!e.getStatistic().equals(Statistic.TIME_SINCE_REST))
@@ -784,33 +398,35 @@ public class EnchantEvents implements Listener {
 			int lvl = player.getInventory().getChestplate().getItemMeta().getEnchantLevel(CustomEnchants.HASTE) - 1;
 			player.addPotionEffect(new PotionEffect(PotionEffectType.FAST_DIGGING, 205, lvl));
 		}
+		return;
 	}
 			
 	public int satCounter = 200;
 	
 	@EventHandler()
-	public void saturation(PlayerStatisticIncrementEvent e) {
+	public void leggings(PlayerStatisticIncrementEvent e) {
 		if (!e.getStatistic().equals(Statistic.TIME_SINCE_REST))
 			return;
 		Player player = e.getPlayer();
 		if (player.getGameMode() == GameMode.CREATIVE || player.getGameMode() == GameMode.SPECTATOR)
 			return;
 		if (player.getInventory().getLeggings() == null) {
-			player.removePotionEffect(PotionEffectType.SATURATION);
 			return;
 		}
 		if (player.getInventory().getLeggings().getItemMeta().hasEnchant(CustomEnchants.SATURATION))
 			if (satCounter == 0) {
 				player.addPotionEffect(new PotionEffect(PotionEffectType.SATURATION, 1, 0));
-//				System.out.print(satCounter);
 				satCounter = 200;
 			}
 			else satCounter--;
 		else player.removePotionEffect(PotionEffectType.SATURATION);
+		if (player.getInventory().getLeggings().getItemMeta().hasEnchant(CustomEnchants.DOLPHIN))
+			player.addPotionEffect(new PotionEffect(PotionEffectType.DOLPHINS_GRACE, 205, 0));
+		return;
 	}
 		
 	@EventHandler()
-	public void speedy(PlayerStatisticIncrementEvent e) {
+	public void boots(PlayerStatisticIncrementEvent e) {
 		if (!e.getStatistic().equals(Statistic.TIME_SINCE_REST))
 			return;
 		Player player = e.getPlayer();
@@ -821,8 +437,12 @@ public class EnchantEvents implements Listener {
 		if (player.getInventory().getBoots().getItemMeta().hasEnchant(CustomEnchants.SPEEDY)) {
 			int lvl = player.getInventory().getBoots().getItemMeta().getEnchantLevel(CustomEnchants.SPEEDY) - 1;
 			player.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, 205, lvl));
-			return;
 		}
+		if (player.getInventory().getBoots().getItemMeta().hasEnchant(CustomEnchants.JUMP)) {
+			int lvl = player.getInventory().getBoots().getItemMeta().getEnchantLevel(CustomEnchants.JUMP) - 1;
+			player.addPotionEffect(new PotionEffect(PotionEffectType.JUMP, 205, lvl));
+		}
+		return;
 	}
 	
 	@EventHandler()
@@ -861,10 +481,11 @@ public class EnchantEvents implements Listener {
 					if (equip.getBoots().getItemMeta().hasEnchant(CustomEnchants.SOFT_LANDING))
 							event.setCancelled(true);
 		}
+		return;
 	}
 		
 	@EventHandler()
-	public void lucky(PlayerStatisticIncrementEvent e) {
+	public void full(PlayerStatisticIncrementEvent e) {
 		if (!e.getStatistic().equals(Statistic.TIME_SINCE_REST))
 			return;
 		Player player = e.getPlayer();
@@ -877,38 +498,66 @@ public class EnchantEvents implements Listener {
 				player.getInventory().getLeggings().getItemMeta().hasEnchant(CustomEnchants.LUCKY) && player.getInventory().getBoots().getItemMeta().hasEnchant(CustomEnchants.LUCKY)) {
 			int lvl = player.getInventory().getBoots().getItemMeta().getEnchantLevel(CustomEnchants.LUCKY) - 1;
 			if ((player.getInventory().getHelmet().getItemMeta().getDisplayName().substring(0, 4).equals(player.getInventory().getChestplate().getItemMeta().getDisplayName().substring(0, 4)) ||
-					player.getInventory().getHelmet().equals(new Armor().notHelmet()) || player.getInventory().getHelmet().equals(new Armor().aHelmet())) &&
+					player.getInventory().getHelmet().equals(a.notHelmet()) || player.getInventory().getHelmet().equals(a.aHelmet())) &&
 					player.getInventory().getChestplate().getItemMeta().getDisplayName().substring(0, 4).equals(player.getInventory().getLeggings().getItemMeta().getDisplayName().substring(0, 4)) &&
 					player.getInventory().getChestplate().getItemMeta().getDisplayName().substring(0, 4).equals(player.getInventory().getBoots().getItemMeta().getDisplayName().substring(0, 4))) {
 				player.addPotionEffect(new PotionEffect(PotionEffectType.LUCK, 205, lvl));
-				return;
 				}
 		}
-	}
-	
-	@EventHandler()
-	public void resistance(PlayerStatisticIncrementEvent e) {
-		if (!e.getStatistic().equals(Statistic.TIME_SINCE_REST))
-			return;
-		Player player = e.getPlayer();
-		if (player.getGameMode() == GameMode.CREATIVE || player.getGameMode() == GameMode.SPECTATOR)
-			return;
-		if (player.getInventory().getHelmet() == null || player.getInventory().getChestplate() == null ||
-				player.getInventory().getLeggings() == null || player.getInventory().getBoots() == null)
-			return;
 		if (player.getInventory().getHelmet().getItemMeta().hasEnchant(CustomEnchants.RESISTANCE) && player.getInventory().getChestplate().getItemMeta().hasEnchant(CustomEnchants.RESISTANCE) &&
 				player.getInventory().getLeggings().getItemMeta().hasEnchant(CustomEnchants.RESISTANCE) && player.getInventory().getBoots().getItemMeta().hasEnchant(CustomEnchants.RESISTANCE)) {
 			int lvl = player.getInventory().getBoots().getItemMeta().getEnchantLevel(CustomEnchants.RESISTANCE) - 1;
 			if ((player.getInventory().getHelmet().getItemMeta().getDisplayName().substring(0, 4).equals(player.getInventory().getChestplate().getItemMeta().getDisplayName().substring(0, 4)) ||
-					player.getInventory().getHelmet().equals(new Armor().notHelmet()) || player.getInventory().getHelmet().equals(new Armor().aHelmet())) &&
+					player.getInventory().getHelmet().equals(a.notHelmet()) || player.getInventory().getHelmet().equals(a.aHelmet())) &&
 					player.getInventory().getChestplate().getItemMeta().getDisplayName().substring(0, 4).equals(player.getInventory().getLeggings().getItemMeta().getDisplayName().substring(0, 4)) &&
 					player.getInventory().getChestplate().getItemMeta().getDisplayName().substring(0, 4).equals(player.getInventory().getBoots().getItemMeta().getDisplayName().substring(0, 4))) {
 					player.addPotionEffect(new PotionEffect(PotionEffectType.DAMAGE_RESISTANCE, 205, lvl));
-					return;
 				}
 		}
+		if (player.getInventory().getHelmet().getItemMeta().hasEnchant(CustomEnchants.STRENGTH) && player.getInventory().getChestplate().getItemMeta().hasEnchant(CustomEnchants.STRENGTH) &&
+				player.getInventory().getLeggings().getItemMeta().hasEnchant(CustomEnchants.STRENGTH) && player.getInventory().getBoots().getItemMeta().hasEnchant(CustomEnchants.STRENGTH)) {
+			int lvl = player.getInventory().getBoots().getItemMeta().getEnchantLevel(CustomEnchants.STRENGTH) - 1;
+			if ((player.getInventory().getHelmet().getItemMeta().getDisplayName().substring(0, 4).equals(player.getInventory().getChestplate().getItemMeta().getDisplayName().substring(0, 4)) ||
+					player.getInventory().getHelmet().equals(a.notHelmet()) || player.getInventory().getHelmet().equals(a.aHelmet())) &&
+					player.getInventory().getChestplate().getItemMeta().getDisplayName().substring(0, 4).equals(player.getInventory().getLeggings().getItemMeta().getDisplayName().substring(0, 4)) &&
+					player.getInventory().getChestplate().getItemMeta().getDisplayName().substring(0, 4).equals(player.getInventory().getBoots().getItemMeta().getDisplayName().substring(0, 4))) {
+					player.addPotionEffect(new PotionEffect(PotionEffectType.INCREASE_DAMAGE, 205, lvl));
+				}
+		}
+		if (player.getInventory().getHelmet().getItemMeta().hasEnchant(CustomEnchants.ABSORPTION) && player.getInventory().getChestplate().getItemMeta().hasEnchant(CustomEnchants.ABSORPTION) &&
+				player.getInventory().getLeggings().getItemMeta().hasEnchant(CustomEnchants.ABSORPTION) && player.getInventory().getBoots().getItemMeta().hasEnchant(CustomEnchants.ABSORPTION)) {
+			int lvl = player.getInventory().getBoots().getItemMeta().getEnchantLevel(CustomEnchants.ABSORPTION) - 1;
+			if (player.getInventory().getHelmet().getItemMeta().getDisplayName().substring(0, 4).equals(player.getInventory().getChestplate().getItemMeta().getDisplayName().substring(0, 4)) &&
+					player.getInventory().getHelmet().getItemMeta().getDisplayName().substring(0, 4).equals(player.getInventory().getLeggings().getItemMeta().getDisplayName().substring(0, 4)) &&
+					player.getInventory().getHelmet().getItemMeta().getDisplayName().substring(0, 4).equals(player.getInventory().getBoots().getItemMeta().getDisplayName().substring(0, 4)))
+				if (!(player.hasPotionEffect(PotionEffectType.ABSORPTION))) {
+					player.addPotionEffect(new PotionEffect(PotionEffectType.ABSORPTION, 1200 + 2400 * (lvl + 1), lvl));
+				}
+		}
+		if (player.getInventory().getHelmet().getItemMeta().hasEnchant(CustomEnchants.HERO) && player.getInventory().getChestplate().getItemMeta().hasEnchant(CustomEnchants.HERO) &&
+				player.getInventory().getLeggings().getItemMeta().hasEnchant(CustomEnchants.HERO) && player.getInventory().getBoots().getItemMeta().hasEnchant(CustomEnchants.HERO)) {
+			int lvl = player.getInventory().getBoots().getItemMeta().getEnchantLevel(CustomEnchants.HERO) - 1;
+			if ((player.getInventory().getHelmet().getItemMeta().getDisplayName().substring(0, 4).equals(player.getInventory().getChestplate().getItemMeta().getDisplayName().substring(0, 4)) ||
+					player.getInventory().getHelmet().equals(a.notHelmet()) || player.getInventory().getHelmet().equals(a.aHelmet())) &&
+					player.getInventory().getChestplate().getItemMeta().getDisplayName().substring(0, 4).equals(player.getInventory().getLeggings().getItemMeta().getDisplayName().substring(0, 4)) &&
+					player.getInventory().getChestplate().getItemMeta().getDisplayName().substring(0, 4).equals(player.getInventory().getBoots().getItemMeta().getDisplayName().substring(0, 4))) {
+					player.addPotionEffect(new PotionEffect(PotionEffectType.HERO_OF_THE_VILLAGE, 205, lvl));
+				}
+		}
+		if (player.getInventory().getHelmet().getItemMeta().hasEnchant(CustomEnchants.VULCAN) && player.getInventory().getChestplate().getItemMeta().hasEnchant(CustomEnchants.VULCAN) &&
+				player.getInventory().getLeggings().getItemMeta().hasEnchant(CustomEnchants.VULCAN) && player.getInventory().getBoots().getItemMeta().hasEnchant(CustomEnchants.VULCAN)) {
+			if ((player.getInventory().getHelmet().getItemMeta().getDisplayName().substring(0, 4).equals(player.getInventory().getChestplate().getItemMeta().getDisplayName().substring(0, 4)) ||
+					player.getInventory().getHelmet().equals(a.notHelmet()) || player.getInventory().getHelmet().equals(a.aHelmet())) &&
+					player.getInventory().getChestplate().getItemMeta().getDisplayName().substring(0, 4).equals(player.getInventory().getLeggings().getItemMeta().getDisplayName().substring(0, 4)) &&
+					player.getInventory().getChestplate().getItemMeta().getDisplayName().substring(0, 4).equals(player.getInventory().getBoots().getItemMeta().getDisplayName().substring(0, 4))) {
+				player.addPotionEffect(new PotionEffect(PotionEffectType.FIRE_RESISTANCE, 205, 0));
+				if (player.getInventory().getBoots().getItemMeta().getEnchantLevel(CustomEnchants.VULCAN) == 2)
+					player.setFireTicks(0);
+			}
+		}
+		return;
 	}
-	
+		
 	@EventHandler()
 	public void resistance(EntityDamageEvent e) {
 		if (fighters.contains(e.getEntityType())) {
@@ -928,29 +577,6 @@ public class EnchantEvents implements Listener {
 				}
 			}
 			return;
-		}
-	}
-
-	@EventHandler()
-	public void strength(PlayerStatisticIncrementEvent e) {
-		if (!e.getStatistic().equals(Statistic.TIME_SINCE_REST))
-			return;
-		Player player = e.getPlayer();
-		if (player.getGameMode() == GameMode.CREATIVE || player.getGameMode() == GameMode.SPECTATOR)
-			return;
-		if (player.getInventory().getHelmet() == null || player.getInventory().getChestplate() == null ||
-				player.getInventory().getLeggings() == null || player.getInventory().getBoots() == null)
-			return;
-		if (player.getInventory().getHelmet().getItemMeta().hasEnchant(CustomEnchants.STRENGTH) && player.getInventory().getChestplate().getItemMeta().hasEnchant(CustomEnchants.STRENGTH) &&
-				player.getInventory().getLeggings().getItemMeta().hasEnchant(CustomEnchants.STRENGTH) && player.getInventory().getBoots().getItemMeta().hasEnchant(CustomEnchants.STRENGTH)) {
-			int lvl = player.getInventory().getBoots().getItemMeta().getEnchantLevel(CustomEnchants.STRENGTH) - 1;
-			if ((player.getInventory().getHelmet().getItemMeta().getDisplayName().substring(0, 4).equals(player.getInventory().getChestplate().getItemMeta().getDisplayName().substring(0, 4)) ||
-					player.getInventory().getHelmet().equals(new Armor().notHelmet()) || player.getInventory().getHelmet().equals(new Armor().aHelmet())) &&
-					player.getInventory().getChestplate().getItemMeta().getDisplayName().substring(0, 4).equals(player.getInventory().getLeggings().getItemMeta().getDisplayName().substring(0, 4)) &&
-					player.getInventory().getChestplate().getItemMeta().getDisplayName().substring(0, 4).equals(player.getInventory().getBoots().getItemMeta().getDisplayName().substring(0, 4))) {
-					player.addPotionEffect(new PotionEffect(PotionEffectType.INCREASE_DAMAGE, 205, lvl));
-					return;
-				}
 		}
 	}
 	
@@ -977,32 +603,7 @@ public class EnchantEvents implements Listener {
 			return;
 		}
 	}
-	
-	@EventHandler()
-	public void absorption(PlayerStatisticIncrementEvent e) {
-		if (!e.getStatistic().equals(Statistic.TIME_SINCE_REST))
-			return;
-		Player player = e.getPlayer();
-		if (player.getGameMode() == GameMode.CREATIVE || player.getGameMode() == GameMode.SPECTATOR)
-			return;
-		if (player.getInventory().getHelmet() == null || player.getInventory().getChestplate() == null ||
-				player.getInventory().getLeggings() == null || player.getInventory().getBoots() == null) {
-			return;
-		}
-		if (player.getInventory().getHelmet().getItemMeta().hasEnchant(CustomEnchants.ABSORPTION) && player.getInventory().getChestplate().getItemMeta().hasEnchant(CustomEnchants.ABSORPTION) &&
-				player.getInventory().getLeggings().getItemMeta().hasEnchant(CustomEnchants.ABSORPTION) && player.getInventory().getBoots().getItemMeta().hasEnchant(CustomEnchants.ABSORPTION)) {
-			int lvl = player.getInventory().getBoots().getItemMeta().getEnchantLevel(CustomEnchants.ABSORPTION) - 1;
-			if (player.getInventory().getHelmet().getItemMeta().getDisplayName().substring(0, 4).equals(player.getInventory().getChestplate().getItemMeta().getDisplayName().substring(0, 4)) &&
-					player.getInventory().getHelmet().getItemMeta().getDisplayName().substring(0, 4).equals(player.getInventory().getLeggings().getItemMeta().getDisplayName().substring(0, 4)) &&
-					player.getInventory().getHelmet().getItemMeta().getDisplayName().substring(0, 4).equals(player.getInventory().getBoots().getItemMeta().getDisplayName().substring(0, 4)))
-				if (!(player.hasPotionEffect(PotionEffectType.ABSORPTION))) {
-					player.addPotionEffect(new PotionEffect(PotionEffectType.ABSORPTION, 1200 + 2400 * (lvl + 1), lvl));
-					return;
-				}
-		}
-		return;
-	}
-	
+		
 	@EventHandler()
 	public void absorption(EntityDamageEvent e) {
 		if (fighters.contains(e.getEntityType())) {
@@ -1030,29 +631,6 @@ public class EnchantEvents implements Listener {
 	}
 	
 	@EventHandler()
-	public void hero(PlayerStatisticIncrementEvent e) {
-		if (!e.getStatistic().equals(Statistic.TIME_SINCE_REST))
-			return;
-		Player player = e.getPlayer();
-		if (player.getGameMode() == GameMode.CREATIVE || player.getGameMode() == GameMode.SPECTATOR)
-			return;
-		if (player.getInventory().getHelmet() == null || player.getInventory().getChestplate() == null ||
-				player.getInventory().getLeggings() == null || player.getInventory().getBoots() == null)
-			return;
-		if (player.getInventory().getHelmet().getItemMeta().hasEnchant(CustomEnchants.HERO) && player.getInventory().getChestplate().getItemMeta().hasEnchant(CustomEnchants.HERO) &&
-				player.getInventory().getLeggings().getItemMeta().hasEnchant(CustomEnchants.HERO) && player.getInventory().getBoots().getItemMeta().hasEnchant(CustomEnchants.HERO)) {
-			int lvl = player.getInventory().getBoots().getItemMeta().getEnchantLevel(CustomEnchants.HERO) - 1;
-			if ((player.getInventory().getHelmet().getItemMeta().getDisplayName().substring(0, 4).equals(player.getInventory().getChestplate().getItemMeta().getDisplayName().substring(0, 4)) ||
-					player.getInventory().getHelmet().equals(new Armor().notHelmet()) || player.getInventory().getHelmet().equals(new Armor().aHelmet())) &&
-					player.getInventory().getChestplate().getItemMeta().getDisplayName().substring(0, 4).equals(player.getInventory().getLeggings().getItemMeta().getDisplayName().substring(0, 4)) &&
-					player.getInventory().getChestplate().getItemMeta().getDisplayName().substring(0, 4).equals(player.getInventory().getBoots().getItemMeta().getDisplayName().substring(0, 4))) {
-					player.addPotionEffect(new PotionEffect(PotionEffectType.HERO_OF_THE_VILLAGE, 205, lvl));
-					return;
-				}
-		}
-	}
-	
-	@EventHandler()
 	public void health(PlayerStatisticIncrementEvent e) {
 		if (!e.getStatistic().equals(Statistic.TIME_SINCE_REST))
 			return;
@@ -1069,7 +647,7 @@ public class EnchantEvents implements Listener {
 		if (player.getInventory().getHelmet().getItemMeta().hasEnchant(CustomEnchants.HEALTHY) && player.getInventory().getChestplate().getItemMeta().hasEnchant(CustomEnchants.HEALTHY) &&
 				player.getInventory().getLeggings().getItemMeta().hasEnchant(CustomEnchants.HEALTHY) && player.getInventory().getBoots().getItemMeta().hasEnchant(CustomEnchants.HEALTHY)) {
 			if ((player.getInventory().getHelmet().getItemMeta().getDisplayName().substring(0, 4).equals(player.getInventory().getChestplate().getItemMeta().getDisplayName().substring(0, 4)) ||
-					player.getInventory().getHelmet().equals(new Armor().notHelmet()) || player.getInventory().getHelmet().equals(new Armor().aHelmet())) &&
+					player.getInventory().getHelmet().equals(a.notHelmet()) || player.getInventory().getHelmet().equals(a.aHelmet())) &&
 					player.getInventory().getChestplate().getItemMeta().getDisplayName().substring(0, 4).equals(player.getInventory().getLeggings().getItemMeta().getDisplayName().substring(0, 4)) &&
 					player.getInventory().getChestplate().getItemMeta().getDisplayName().substring(0, 4).equals(player.getInventory().getBoots().getItemMeta().getDisplayName().substring(0, 4)))
 				if (player.getAttribute(Attribute.GENERIC_MAX_HEALTH).getModifiers().isEmpty()) {
@@ -1107,62 +685,7 @@ public class EnchantEvents implements Listener {
 			return;
 		}
 	}
-	
-	@EventHandler()
-	public void dolphin(PlayerStatisticIncrementEvent e) {
-		if (!e.getStatistic().equals(Statistic.TIME_SINCE_REST))
-			return;
-		Player player = e.getPlayer();
-		if (player.getGameMode() == GameMode.CREATIVE || player.getGameMode() == GameMode.SPECTATOR)
-			return;
-		if (player.getInventory().getLeggings() == null)
-			return;
-		if (player.getInventory().getLeggings().getItemMeta().hasEnchant(CustomEnchants.DOLPHIN)) {
-			player.addPotionEffect(new PotionEffect(PotionEffectType.DOLPHINS_GRACE, 205, 0));
-			return;
-		}
-	}
-	
-	@EventHandler()
-	public void jump(PlayerStatisticIncrementEvent e) {
-		if (!e.getStatistic().equals(Statistic.TIME_SINCE_REST))
-			return;
-		Player player = e.getPlayer();
-		if (player.getGameMode() == GameMode.CREATIVE || player.getGameMode() == GameMode.SPECTATOR)
-			return;
-		if (player.getInventory().getBoots() == null)
-			return;
-		if (player.getInventory().getBoots().getItemMeta().hasEnchant(CustomEnchants.JUMP)) {
-			int lvl = player.getInventory().getBoots().getItemMeta().getEnchantLevel(CustomEnchants.JUMP) - 1;
-			player.addPotionEffect(new PotionEffect(PotionEffectType.JUMP, 205, lvl));
-			return;
-		}
-	}
-	
-	@EventHandler()
-	public void vulcan(PlayerStatisticIncrementEvent e) {
-		if (!e.getStatistic().equals(Statistic.TIME_SINCE_REST))
-			return;
-		Player player = e.getPlayer();
-		if (player.getGameMode() == GameMode.CREATIVE || player.getGameMode() == GameMode.SPECTATOR)
-			return;
-		if (player.getInventory().getHelmet() == null || player.getInventory().getChestplate() == null ||
-				player.getInventory().getLeggings() == null || player.getInventory().getBoots() == null)
-			return;
-		if (player.getInventory().getHelmet().getItemMeta().hasEnchant(CustomEnchants.VULCAN) && player.getInventory().getChestplate().getItemMeta().hasEnchant(CustomEnchants.VULCAN) &&
-				player.getInventory().getLeggings().getItemMeta().hasEnchant(CustomEnchants.VULCAN) && player.getInventory().getBoots().getItemMeta().hasEnchant(CustomEnchants.VULCAN)) {
-			if ((player.getInventory().getHelmet().getItemMeta().getDisplayName().substring(0, 4).equals(player.getInventory().getChestplate().getItemMeta().getDisplayName().substring(0, 4)) ||
-					player.getInventory().getHelmet().equals(new Armor().notHelmet()) || player.getInventory().getHelmet().equals(new Armor().aHelmet())) &&
-					player.getInventory().getChestplate().getItemMeta().getDisplayName().substring(0, 4).equals(player.getInventory().getLeggings().getItemMeta().getDisplayName().substring(0, 4)) &&
-					player.getInventory().getChestplate().getItemMeta().getDisplayName().substring(0, 4).equals(player.getInventory().getBoots().getItemMeta().getDisplayName().substring(0, 4))) {
-				player.addPotionEffect(new PotionEffect(PotionEffectType.FIRE_RESISTANCE, 205, 0));
-				if (player.getInventory().getBoots().getItemMeta().getEnchantLevel(CustomEnchants.VULCAN) == 2)
-					player.setFireTicks(0);
-			}
-			return;
-		}
-	}
-	
+			
 	@EventHandler()
 	public void vulcan(EntityDamageEvent event) {
 		if (fighters.contains(event.getEntityType())) {
@@ -1246,10 +769,10 @@ public class EnchantEvents implements Listener {
 		int lvl = player.getLevel();
 		int req = 0;
 
-		if (Main.equals(item, new Tools().t9Range())) {
+		if (Main.equals(item, t.t9Range())) {
 			req = 45;
 		}
-		else if (Main.equals(item, new Tools().t10Range())) {
+		else if (Main.equals(item, t.t10Range())) {
 			req = 50;
 		}
 		else return;
@@ -1321,10 +844,7 @@ public class EnchantEvents implements Listener {
 		int lvl = player.getLevel();
 		int req = 0;
 
-		if (Main.equals(item, new Tools().t9Range())) {
-			req = 45;
-		}
-		else if (Main.equals(item, new Tools().t10Range())) {
+		if (Main.equals(item, t.t10Range())) {
 			req = 50;
 		}
 		else return;
@@ -1349,5 +869,48 @@ public class EnchantEvents implements Listener {
 			rocketCooldowns.put(player.getName(), System.currentTimeMillis() + (1.5 * 1000));
 			e.setCancelled(true);
 		}
+	}
+	
+	private ItemStack giveLoot(int lvl, ItemStack firstItem) {
+		ItemStack[] items = new ItemStack[plugin.getConfig().getStringList("loot.lvl" + lvl).size()];
+		ItemStack item = null;
+		Random r = new Random();
+		int position = 0;
+		
+		for (String i : plugin.getConfig().getStringList("loot.lvl" + lvl)) {
+			if (i.equals("0"))
+				item = firstItem;
+			if (i.equals("1"))
+				item = resources.t1();
+			if (i.equals("2"))
+				item = resources.t2();
+			if (i.equals("3"))
+				item = resources.t3();
+			if (i.equals("4"))
+				item = resources.t4();
+			if (i.equals("5"))
+				item = resources.t5();
+			if (i.equals("6"))
+				item = resources.t6();
+			if (i.equals("7"))
+				item = resources.t7();
+			if (i.equals("8"))
+				item = resources.t8();
+			if (i.equals("9"))
+				item = resources.t9();
+			if (i.equals("10"))
+				item = resources.t10();
+			if (i.equals("11"))
+				item = resources.not();
+			if (i.equals("12"))
+				item = resources.a();
+
+			items[position] = item;
+			position++;
+		}
+		
+		int num = r.nextInt(items.length);
+		ItemStack result = items[num];
+		return result;
 	}
 }

@@ -1,303 +1,338 @@
-stony1:
-  loot:
-    - c
-    - c
-    - c
-    - c
-    - c
-    - c
-    - c
-    - c
-    - c
-    - c
-    - c
-    - c
-    - c
-    - c
-    - c
-    - c
-    - c
-    - c
-    - c
-    - c0p5
-    
-stony2:
-  loot:
-    - c
-    - c
-    - c
-    - c
-    - c
-    - c
-    - c
-    - c
-    - c
-    - c
-    - c
-    - c
-    - c
-    - c
-    - c
-    - c
-    - c
-    - c0p5
-    - c0p5
-    - c1
-    
-stony3:
-  loot:
-    - c
-    - c
-    - c
-    - c
-    - c
-    - c
-    - c
-    - c
-    - c
-    - c
-    - c
-    - c
-    - c
-    - c
-    - c0p5
-    - c0p5
-    - c0p5
-    - c1
-    - c1
-    - c1p5
+# This determines whether the resource conversion recipes NOT involving custom resources is enabled.
+# Setting the value to FALSE will remove recipes such as iron blocks to T6 Blazing Cobblestone and rotten flesh to leather.
+resourceConversion: true
 
-stony4:
-  loot:
-    - c
-    - c
-    - c
-    - c
-    - c
-    - c
-    - c
-    - c
-    - c
-    - c
-    - c0p5
-    - c0p5
-    - c0p5
-    - c0p5
-    - c1
-    - c1
-    - c1
-    - c1p5
-    - c1p5
-    - c2
+# This determines whether the cobblestone conversion recipes involving custom resources is enabled.
+# Setting the value to FALSE will remove recipes such as T5 Shiny Cobblestone to T6 Blazing Cobblestone.
+cobbleConversion: true
+
+# This determines whether the crafting recipes involving custom items is enabled.
+# Setting the value to FALSE will remove recipes for items such as T6 Blazing Stone Helmet.
+itemRecipes: true
+
+# This determines whether the crafting recipe for shields will use an iron block instead of an iron ingot.
+# Setting the value to FALSE will revert the recipe back to using an iron ingot.
+# If itemRecipes is FALSE, then the recipe will be reverted back anyways.
+shieldChange: true
+
+# This is the message that a player will recieve upon joining the server.
+playerWelcome: "This server has Compressed Cobblestone installed. Do /cc help to visit the wiki for help."
+
+# This determines whether mobs will spawn buffed and with gear depending on what players have in their inventory.
+# Setting the value to FALSE will revert mob spawning to their normal spawn generation, not affected by Compressed Cobblestone items in a player's inventory.
+mobBuff: true
+
+# This determines whether a player's level will affect their use of vanilla items.
+# Setting the value to FALSE will allow players to use any vanilla item regardless of their level.
+vanillaLevelRestrict: true
+
+# This determines whether a player's level will affect their use of any items.
+# Setting the value to FALSE will allow players to use any item regardless of their level.
+levelRestrict: true
+
+# This is the loot table for the Stony, Rocky, Pebbly, Petrifying, and Medusa.
+# The possible values are 0-12 inclusive, each representing the tier of cobblestone that will drop. 0 represents normal drops, 11 represents Not Cobblestone,
+# and 12 represents Anti-Cobblestone.
+loot:
+  lvl1:
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 1
     
-stony5:
-  loot:
-    - c
-    - c
-    - c
-    - c
-    - c
-    - c0p5
-    - c0p5
-    - c0p5
-    - c0p5
-    - c0p5
-    - c1
-    - c1
-    - c1
-    - c1
-    - c1p5
-    - c1p5
-    - c1p5
-    - c2
-    - c2
-    - c2p5
+  lvl2:
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 1
+    - 1
+    - 2
     
-stony6:
-  loot:
-    - c
-    - c0p5
-    - c0p5
-    - c0p5
-    - c0p5
-    - c1
-    - c1
-    - c1
-    - c1
-    - c1
-    - c1p5
-    - c1p5
-    - c1p5
-    - c1p5
-    - c2
-    - c2
-    - c2
-    - c2p5
-    - c2p5
-    - c3
+  lvl3:
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 1
+    - 1
+    - 1
+    - 2
+    - 2
+    - 3
 
-stony7:
-  loot:
-    - c
-    - c1
-    - c1
-    - c1
-    - c1
-    - c1p5
-    - c1p5
-    - c1p5
-    - c1p5
-    - c1p5
-    - c2
-    - c2
-    - c2
-    - c2
-    - c2p5
-    - c2p5
-    - c2p5
-    - c3
-    - c3
-    - c3p5
-
-stony8:
-  loot:
-    - c
-    - c1p5
-    - c1p5
-    - c1p5
-    - c1p5
-    - c2
-    - c2
-    - c2
-    - c2
-    - c2
-    - c2p5
-    - c2p5
-    - c2p5
-    - c2p5
-    - c3
-    - c3
-    - c3
-    - c3p5
-    - c3p5
-    - c4
+  lvl4:
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 1
+    - 1
+    - 1
+    - 1
+    - 2
+    - 2
+    - 2
+    - 3
+    - 3
+    - 4
     
-tier1:
-  - 0
-  - 0
-  - 0
-  - 0
-  - 1
-  - 1
-  - 1
-  - 1
-  - 1
-  - 2
+  lvl5:
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 1
+    - 1
+    - 1
+    - 1
+    - 1
+    - 2
+    - 2
+    - 2
+    - 2
+    - 3
+    - 3
+    - 3
+    - 4
+    - 4
+    - 5
+    
+  lvl6:
+    - 1
+    - 1
+    - 1
+    - 1
+    - 1
+    - 2
+    - 2
+    - 2
+    - 2
+    - 2
+    - 3
+    - 3
+    - 3
+    - 3
+    - 4
+    - 4
+    - 4
+    - 5
+    - 5
+    - 6
 
-tier2:
-  - 1
-  - 1
-  - 1
-  - 1
-  - 2
-  - 2
-  - 2
-  - 2
-  - 2
-  - 3
+  lvl7:
+    - 2
+    - 2
+    - 2
+    - 2
+    - 2
+    - 3
+    - 3
+    - 3
+    - 3
+    - 3
+    - 4
+    - 4
+    - 4
+    - 4
+    - 5
+    - 5
+    - 5
+    - 6
+    - 6
+    - 7
 
-tier3:
-  - 2
-  - 2
-  - 2
-  - 2
-  - 3
-  - 3
-  - 3
-  - 3
-  - 3
-  - 4
+  lvl8:
+    - 3
+    - 3
+    - 3
+    - 3
+    - 3
+    - 4
+    - 4
+    - 4
+    - 4
+    - 4
+    - 5
+    - 5
+    - 5
+    - 5
+    - 6
+    - 6
+    - 6
+    - 7
+    - 7
+    - 8
+
+# This is the spawn table for buffing mobs.
+# The possible values are 0-10 inclusive, each representing the level of cobblestone gear that the mobs will spawn with.
+spawn:
+  lvl1:
+    - 0
+    - 0
+    - 0
+    - 0
+    - 1
+    - 1
+    - 1
+    - 1
+    - 1
+    - 2
+
+  lvl2:
+    - 1
+    - 1
+    - 1
+    - 1
+    - 2
+    - 2
+    - 2
+    - 2
+    - 2
+    - 3
+
+  lvl3:
+    - 2
+    - 2
+    - 2
+    - 2
+    - 3
+    - 3
+    - 3
+    - 3
+    - 3
+    - 4
   
-tier4:
-  - 3
-  - 3
-  - 3
-  - 3
-  - 4
-  - 4
-  - 4
-  - 4
-  - 4
-  - 5
+  lvl4:
+    - 3
+    - 3
+    - 3
+    - 3
+    - 4
+    - 4
+    - 4
+    - 4
+    - 4
+    - 5
   
-tier5:
-  - 4
-  - 4
-  - 4
-  - 4
-  - 5
-  - 5
-  - 5
-  - 5
-  - 5
-  - 6
+  lvl5:
+    - 4
+    - 4
+    - 4
+    - 4
+    - 5
+    - 5
+    - 5
+    - 5
+    - 5
+    - 6
   
-tier6:
-  - 5
-  - 5
-  - 5
-  - 5
-  - 6
-  - 6
-  - 6
-  - 6
-  - 6
-  - 7
+  lvl6:
+    - 5
+    - 5
+    - 5
+    - 5
+    - 6
+    - 6
+    - 6
+    - 6
+    - 6
+    - 7
   
-tier7:
-  - 6
-  - 6
-  - 6
-  - 6
-  - 7
-  - 7
-  - 7
-  - 7
-  - 7
-  - 8
+  lvl7:
+    - 6
+    - 6
+    - 6
+    - 6
+    - 7
+    - 7
+    - 7
+    - 7
+    - 7
+    - 8
   
-tier8:
-  - 7
-  - 7
-  - 7
-  - 7
-  - 8
-  - 8
-  - 8
-  - 8
-  - 8
-  - 9
+  lvl8:
+    - 7
+    - 7
+    - 7
+    - 7
+    - 8
+    - 8
+    - 8
+    - 8
+    - 8
+    - 9
   
-tier9:
-  - 8
-  - 8
-  - 8
-  - 8
-  - 9
-  - 9
-  - 9
-  - 9
-  - 9
-  - 10
+  lvl9:
+    - 8
+    - 8
+    - 8
+    - 8
+    - 9
+    - 9
+    - 9
+    - 9
+    - 9
+    - 10
   
-tier10:
-  - 9
-  - 9
-  - 10
-  - 10
-  - 10
-  - 10
-  - 10
-  - 10
-  - 10
-  - 10
+  lvl10:
+    - 9
+    - 9
+    - 10
+    - 10
+    - 10
+    - 10
+    - 10
+    - 10
+    - 10
+    - 10
+
+# This is the config version for reference.
+# DO NOT EDIT VALUE.
+version: 2.0

@@ -8,6 +8,12 @@ import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;
 
 public class ResourceEvents implements Listener {
+	private Resources r;
+	
+	public ResourceEvents(Resources r) {
+		this.r = r;
+	}
+	
 	@EventHandler()
 	public void destroy(PlayerInteractEvent e) {
 		Player player = e.getPlayer();
@@ -20,7 +26,7 @@ public class ResourceEvents implements Listener {
 			int amount = player.getInventory().getItemInMainHand().getAmount();
 			if (amount > 1)
 				player.getInventory().getItemInMainHand().setAmount(amount - 1);
-			else player.getInventory().remove(new Resources().a());
+			else player.getInventory().remove(r.a());
 		}
 		return;
 	}

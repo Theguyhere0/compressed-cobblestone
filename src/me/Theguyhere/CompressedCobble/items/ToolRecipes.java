@@ -7,20 +7,21 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.RecipeChoice;
 import org.bukkit.inventory.ShapedRecipe;
 import org.bukkit.inventory.ShapelessRecipe;
-import org.bukkit.plugin.Plugin;
 
 import me.Theguyhere.CompressedCobble.Main;
 
 public class ToolRecipes implements Listener {	
-	private Plugin plugin;
+	private Main plugin;
+	private Tools t;
 	
-	public ToolRecipes(Main plugin) {
+	public ToolRecipes(Main plugin, Tools t) {
 		this.plugin = plugin;
+		this.t = t;
 	}
 
 	//	Pickaxes
 	public ShapedRecipe t1PickRecipe() {
-		ItemStack item = new Tools().t1Pick();
+		ItemStack item = t.t1Pick();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t1Pick");
 		
@@ -36,7 +37,7 @@ public class ToolRecipes implements Listener {
 	}
 	
 	public ShapedRecipe t2PickRecipe() {
-		ItemStack item = new Tools().t2Pick();
+		ItemStack item = t.t2Pick();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t2Pick");
 		
@@ -52,7 +53,7 @@ public class ToolRecipes implements Listener {
 	}
 	
 	public ShapedRecipe t3PickRecipe() {
-		ItemStack item = new Tools().t3Pick();
+		ItemStack item = t.t3Pick();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t3Pick");
 		
@@ -68,7 +69,7 @@ public class ToolRecipes implements Listener {
 	}
 	
 	public ShapedRecipe t4PickRecipe() {
-		ItemStack item = new Tools().t4Pick();
+		ItemStack item = t.t4Pick();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t4Pick");
 		
@@ -84,7 +85,7 @@ public class ToolRecipes implements Listener {
 	}
 	
 	public ShapedRecipe t5PickRecipe() {
-		ItemStack item = new Tools().t5Pick();
+		ItemStack item = t.t5Pick();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t5Pick");
 		
@@ -100,7 +101,7 @@ public class ToolRecipes implements Listener {
 	}
 	
 	public ShapedRecipe t6PickRecipe() {
-		ItemStack item = new Tools().t6Pick();
+		ItemStack item = t.t6Pick();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t6Pick");
 		
@@ -116,7 +117,7 @@ public class ToolRecipes implements Listener {
 	}
 	
 	public ShapedRecipe t7PickRecipe() {
-		ItemStack item = new Tools().t7Pick();
+		ItemStack item = t.t7Pick();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t7Pick");
 		
@@ -132,7 +133,7 @@ public class ToolRecipes implements Listener {
 	}
 	
 	public ShapedRecipe t8PickRecipe() {
-		ItemStack item = new Tools().t8Pick();
+		ItemStack item = t.t8Pick();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t8Pick");
 		
@@ -148,7 +149,7 @@ public class ToolRecipes implements Listener {
 	}
 	
 	public ShapedRecipe t9PickRecipe() {
-		ItemStack item = new Tools().t9Pick();
+		ItemStack item = t.t9Pick();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t9Pick");
 		
@@ -164,7 +165,7 @@ public class ToolRecipes implements Listener {
 	}
 	
 	public ShapedRecipe t10PickRecipe() {
-		ItemStack item = new Tools().t10Pick();
+		ItemStack item = t.t10Pick();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t10Pick");
 		
@@ -193,7 +194,7 @@ public class ToolRecipes implements Listener {
 	}
 	
 	public ShapelessRecipe t1PickFixRecipe() {
-		ItemStack item = new Tools().t1Pick();
+		ItemStack item = t.t1Pick();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t1PickFix");
 		
@@ -206,7 +207,7 @@ public class ToolRecipes implements Listener {
 	}
 	
 	public ShapelessRecipe t2PickFixRecipe() {
-		ItemStack item = new Tools().t2Pick();
+		ItemStack item = t.t2Pick();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t2PickFix");
 		
@@ -219,7 +220,7 @@ public class ToolRecipes implements Listener {
 	}
 	
 	public ShapelessRecipe t3PickFixRecipe() {
-		ItemStack item = new Tools().t3Pick();
+		ItemStack item = t.t3Pick();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t3PickFix");
 		
@@ -232,7 +233,7 @@ public class ToolRecipes implements Listener {
 	}
 	
 	public ShapelessRecipe t4PickFixRecipe() {
-		ItemStack item = new Tools().t4Pick();
+		ItemStack item = t.t4Pick();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t4PickFix");
 		
@@ -245,7 +246,7 @@ public class ToolRecipes implements Listener {
 	}
 	
 	public ShapelessRecipe t5PickFixRecipe() {
-		ItemStack item = new Tools().t5Pick();
+		ItemStack item = t.t5Pick();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t5PickFix");
 		
@@ -258,7 +259,7 @@ public class ToolRecipes implements Listener {
 	}
 	
 	public ShapelessRecipe t6PickFixRecipe() {
-		ItemStack item = new Tools().t6Pick();
+		ItemStack item = t.t6Pick();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t6PickFix");
 		
@@ -271,7 +272,7 @@ public class ToolRecipes implements Listener {
 	}
 	
 	public ShapelessRecipe t7PickFixRecipe() {
-		ItemStack item = new Tools().t7Pick();
+		ItemStack item = t.t7Pick();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t7PickFix");
 		
@@ -284,7 +285,7 @@ public class ToolRecipes implements Listener {
 	}
 	
 	public ShapelessRecipe t8PickFixRecipe() {
-		ItemStack item = new Tools().t8Pick();
+		ItemStack item = t.t8Pick();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t8PickFix");
 		
@@ -297,7 +298,7 @@ public class ToolRecipes implements Listener {
 	}
 	
 	public ShapelessRecipe t9PickFixRecipe() {
-		ItemStack item = new Tools().t9Pick();
+		ItemStack item = t.t9Pick();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t9PickFix");
 		
@@ -311,7 +312,7 @@ public class ToolRecipes implements Listener {
 	
 	//Axes
 	public ShapedRecipe t1AxeRecipe() {
-		ItemStack item = new Tools().t1Axe();
+		ItemStack item = t.t1Axe();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t1Axe");
 		
@@ -327,7 +328,7 @@ public class ToolRecipes implements Listener {
 	}
 	
 	public ShapedRecipe t2AxeRecipe() {
-		ItemStack item = new Tools().t2Axe();
+		ItemStack item = t.t2Axe();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t2Axe");
 		
@@ -343,7 +344,7 @@ public class ToolRecipes implements Listener {
 	}
 	
 	public ShapedRecipe t3AxeRecipe() {
-		ItemStack item = new Tools().t3Axe();
+		ItemStack item = t.t3Axe();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t3Axe");
 		
@@ -359,7 +360,7 @@ public class ToolRecipes implements Listener {
 	}
 	
 	public ShapedRecipe t4AxeRecipe() {
-		ItemStack item = new Tools().t4Axe();
+		ItemStack item = t.t4Axe();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t4Axe");
 		
@@ -375,7 +376,7 @@ public class ToolRecipes implements Listener {
 	}
 	
 	public ShapedRecipe t5AxeRecipe() {
-		ItemStack item = new Tools().t5Axe();
+		ItemStack item = t.t5Axe();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t5Axe");
 		
@@ -391,7 +392,7 @@ public class ToolRecipes implements Listener {
 	}
 	
 	public ShapedRecipe t6AxeRecipe() {
-		ItemStack item = new Tools().t6Axe();
+		ItemStack item = t.t6Axe();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t6Axe");
 		
@@ -407,7 +408,7 @@ public class ToolRecipes implements Listener {
 	}
 	
 	public ShapedRecipe t7AxeRecipe() {
-		ItemStack item = new Tools().t7Axe();
+		ItemStack item = t.t7Axe();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t7Axe");
 		
@@ -423,7 +424,7 @@ public class ToolRecipes implements Listener {
 	}
 	
 	public ShapedRecipe t8AxeRecipe() {
-		ItemStack item = new Tools().t8Axe();
+		ItemStack item = t.t8Axe();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t8Axe");
 		
@@ -439,7 +440,7 @@ public class ToolRecipes implements Listener {
 	}
 	
 	public ShapedRecipe t9AxeRecipe() {
-		ItemStack item = new Tools().t9Axe();
+		ItemStack item = t.t9Axe();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t9Axe");
 		
@@ -455,7 +456,7 @@ public class ToolRecipes implements Listener {
 	}
 	
 	public ShapedRecipe t10AxeRecipe() {
-		ItemStack item = new Tools().t10Axe();
+		ItemStack item = t.t10Axe();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t10Axe");
 		
@@ -484,7 +485,7 @@ public class ToolRecipes implements Listener {
 	}
 	
 	public ShapelessRecipe t1AxeFixRecipe() {
-		ItemStack item = new Tools().t1Axe();
+		ItemStack item = t.t1Axe();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t1AxeFix");
 		
@@ -497,7 +498,7 @@ public class ToolRecipes implements Listener {
 	}
 	
 	public ShapelessRecipe t2AxeFixRecipe() {
-		ItemStack item = new Tools().t2Axe();
+		ItemStack item = t.t2Axe();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t2AxeFix");
 		
@@ -510,7 +511,7 @@ public class ToolRecipes implements Listener {
 	}
 	
 	public ShapelessRecipe t3AxeFixRecipe() {
-		ItemStack item = new Tools().t3Axe();
+		ItemStack item = t.t3Axe();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t3AxeFix");
 		
@@ -523,7 +524,7 @@ public class ToolRecipes implements Listener {
 	}
 	
 	public ShapelessRecipe t4AxeFixRecipe() {
-		ItemStack item = new Tools().t4Axe();
+		ItemStack item = t.t4Axe();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t4AxeFix");
 		
@@ -536,7 +537,7 @@ public class ToolRecipes implements Listener {
 	}
 	
 	public ShapelessRecipe t5AxeFixRecipe() {
-		ItemStack item = new Tools().t5Axe();
+		ItemStack item = t.t5Axe();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t5AxeFix");
 		
@@ -549,7 +550,7 @@ public class ToolRecipes implements Listener {
 	}
 	
 	public ShapelessRecipe t6AxeFixRecipe() {
-		ItemStack item = new Tools().t6Axe();
+		ItemStack item = t.t6Axe();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t6AxeFix");
 		
@@ -562,7 +563,7 @@ public class ToolRecipes implements Listener {
 	}
 	
 	public ShapelessRecipe t7AxeFixRecipe() {
-		ItemStack item = new Tools().t7Axe();
+		ItemStack item = t.t7Axe();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t7AxeFix");
 		
@@ -575,7 +576,7 @@ public class ToolRecipes implements Listener {
 	}
 	
 	public ShapelessRecipe t8AxeFixRecipe() {
-		ItemStack item = new Tools().t8Axe();
+		ItemStack item = t.t8Axe();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t8AxeFix");
 		
@@ -588,7 +589,7 @@ public class ToolRecipes implements Listener {
 	}
 	
 	public ShapelessRecipe t9AxeFixRecipe() {
-		ItemStack item = new Tools().t9Axe();
+		ItemStack item = t.t9Axe();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t9AxeFix");
 		
@@ -602,7 +603,7 @@ public class ToolRecipes implements Listener {
 	
 	//Shovels
 	public ShapedRecipe t1SpadeRecipe() {
-		ItemStack item = new Tools().t1Spade();
+		ItemStack item = t.t1Spade();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t1Spade");
 		
@@ -618,7 +619,7 @@ public class ToolRecipes implements Listener {
 	}
 	
 	public ShapedRecipe t2SpadeRecipe() {
-		ItemStack item = new Tools().t2Spade();
+		ItemStack item = t.t2Spade();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t2Spade");
 		
@@ -634,7 +635,7 @@ public class ToolRecipes implements Listener {
 	}
 	
 	public ShapedRecipe t3SpadeRecipe() {
-		ItemStack item = new Tools().t3Spade();
+		ItemStack item = t.t3Spade();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t3Spade");
 		
@@ -650,7 +651,7 @@ public class ToolRecipes implements Listener {
 	}
 	
 	public ShapedRecipe t4SpadeRecipe() {
-		ItemStack item = new Tools().t4Spade();
+		ItemStack item = t.t4Spade();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t4Spade");
 		
@@ -666,7 +667,7 @@ public class ToolRecipes implements Listener {
 	}
 	
 	public ShapedRecipe t5SpadeRecipe() {
-		ItemStack item = new Tools().t5Spade();
+		ItemStack item = t.t5Spade();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t5Spade");
 		
@@ -682,7 +683,7 @@ public class ToolRecipes implements Listener {
 	}
 	
 	public ShapedRecipe t6SpadeRecipe() {
-		ItemStack item = new Tools().t6Spade();
+		ItemStack item = t.t6Spade();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t6Spade");
 		
@@ -698,7 +699,7 @@ public class ToolRecipes implements Listener {
 	}
 	
 	public ShapedRecipe t7SpadeRecipe() {
-		ItemStack item = new Tools().t7Spade();
+		ItemStack item = t.t7Spade();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t7Spade");
 		
@@ -714,7 +715,7 @@ public class ToolRecipes implements Listener {
 	}
 	
 	public ShapedRecipe t8SpadeRecipe() {
-		ItemStack item = new Tools().t8Spade();
+		ItemStack item = t.t8Spade();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t8Spade");
 		
@@ -730,7 +731,7 @@ public class ToolRecipes implements Listener {
 	}
 	
 	public ShapedRecipe t9SpadeRecipe() {
-		ItemStack item = new Tools().t9Spade();
+		ItemStack item = t.t9Spade();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t9Spade");
 		
@@ -746,7 +747,7 @@ public class ToolRecipes implements Listener {
 	}
 	
 	public ShapedRecipe t10SpadeRecipe() {
-		ItemStack item = new Tools().t10Spade();
+		ItemStack item = t.t10Spade();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t10Spade");
 		
@@ -775,7 +776,7 @@ public class ToolRecipes implements Listener {
 	}
 	
 	public ShapelessRecipe t1SpadeFixRecipe() {
-		ItemStack item = new Tools().t1Spade();
+		ItemStack item = t.t1Spade();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t1SpadeFix");
 		
@@ -788,7 +789,7 @@ public class ToolRecipes implements Listener {
 	}
 	
 	public ShapelessRecipe t2SpadeFixRecipe() {
-		ItemStack item = new Tools().t2Spade();
+		ItemStack item = t.t2Spade();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t2SpadeFix");
 		
@@ -801,7 +802,7 @@ public class ToolRecipes implements Listener {
 	}
 	
 	public ShapelessRecipe t3SpadeFixRecipe() {
-		ItemStack item = new Tools().t3Spade();
+		ItemStack item = t.t3Spade();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t3SpadeFix");
 		
@@ -814,7 +815,7 @@ public class ToolRecipes implements Listener {
 	}
 	
 	public ShapelessRecipe t4SpadeFixRecipe() {
-		ItemStack item = new Tools().t4Spade();
+		ItemStack item = t.t4Spade();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t4SpadeFix");
 		
@@ -827,7 +828,7 @@ public class ToolRecipes implements Listener {
 	}
 	
 	public ShapelessRecipe t5SpadeFixRecipe() {
-		ItemStack item = new Tools().t5Spade();
+		ItemStack item = t.t5Spade();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t5SpadeFix");
 		
@@ -840,7 +841,7 @@ public class ToolRecipes implements Listener {
 	}
 	
 	public ShapelessRecipe t6SpadeFixRecipe() {
-		ItemStack item = new Tools().t6Spade();
+		ItemStack item = t.t6Spade();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t6SpadeFix");
 		
@@ -853,7 +854,7 @@ public class ToolRecipes implements Listener {
 	}
 	
 	public ShapelessRecipe t7SpadeFixRecipe() {
-		ItemStack item = new Tools().t7Spade();
+		ItemStack item = t.t7Spade();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t7SpadeFix");
 		
@@ -866,7 +867,7 @@ public class ToolRecipes implements Listener {
 	}
 	
 	public ShapelessRecipe t8SpadeFixRecipe() {
-		ItemStack item = new Tools().t8Spade();
+		ItemStack item = t.t8Spade();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t8SpadeFix");
 		
@@ -879,7 +880,7 @@ public class ToolRecipes implements Listener {
 	}
 	
 	public ShapelessRecipe t9SpadeFixRecipe() {
-		ItemStack item = new Tools().t9Spade();
+		ItemStack item = t.t9Spade();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t9SpadeFix");
 		
@@ -893,7 +894,7 @@ public class ToolRecipes implements Listener {
 	
 	//Hoes
 	public ShapedRecipe t1HoeRecipe() {
-		ItemStack item = new Tools().t1Hoe();
+		ItemStack item = t.t1Hoe();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t1Hoe");
 		
@@ -909,7 +910,7 @@ public class ToolRecipes implements Listener {
 	}
 	
 	public ShapedRecipe t2HoeRecipe() {
-		ItemStack item = new Tools().t2Hoe();
+		ItemStack item = t.t2Hoe();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t2Hoe");
 		
@@ -925,7 +926,7 @@ public class ToolRecipes implements Listener {
 	}
 	
 	public ShapedRecipe t3HoeRecipe() {
-		ItemStack item = new Tools().t3Hoe();
+		ItemStack item = t.t3Hoe();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t3Hoe");
 		
@@ -941,7 +942,7 @@ public class ToolRecipes implements Listener {
 	}
 	
 	public ShapedRecipe t4HoeRecipe() {
-		ItemStack item = new Tools().t4Hoe();
+		ItemStack item = t.t4Hoe();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t4Hoe");
 		
@@ -957,7 +958,7 @@ public class ToolRecipes implements Listener {
 	}
 	
 	public ShapedRecipe t5HoeRecipe() {
-		ItemStack item = new Tools().t5Hoe();
+		ItemStack item = t.t5Hoe();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t5Hoe");
 		
@@ -973,7 +974,7 @@ public class ToolRecipes implements Listener {
 	}
 	
 	public ShapedRecipe t6HoeRecipe() {
-		ItemStack item = new Tools().t6Hoe();
+		ItemStack item = t.t6Hoe();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t6Hoe");
 		
@@ -989,7 +990,7 @@ public class ToolRecipes implements Listener {
 	}
 	
 	public ShapedRecipe t7HoeRecipe() {
-		ItemStack item = new Tools().t7Hoe();
+		ItemStack item = t.t7Hoe();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t7Hoe");
 		
@@ -1005,7 +1006,7 @@ public class ToolRecipes implements Listener {
 	}
 	
 	public ShapedRecipe t8HoeRecipe() {
-		ItemStack item = new Tools().t8Hoe();
+		ItemStack item = t.t8Hoe();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t8Hoe");
 		
@@ -1021,7 +1022,7 @@ public class ToolRecipes implements Listener {
 	}
 	
 	public ShapedRecipe t9HoeRecipe() {
-		ItemStack item = new Tools().t9Hoe();
+		ItemStack item = t.t9Hoe();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t9Hoe");
 		
@@ -1037,7 +1038,7 @@ public class ToolRecipes implements Listener {
 	}
 	
 	public ShapedRecipe t10HoeRecipe() {
-		ItemStack item = new Tools().t10Hoe();
+		ItemStack item = t.t10Hoe();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t10Hoe");
 		
@@ -1066,7 +1067,7 @@ public class ToolRecipes implements Listener {
 	}
 	
 	public ShapelessRecipe t1HoeFixRecipe() {
-		ItemStack item = new Tools().t1Hoe();
+		ItemStack item = t.t1Hoe();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t1HoeFix");
 		
@@ -1079,7 +1080,7 @@ public class ToolRecipes implements Listener {
 	}
 	
 	public ShapelessRecipe t2HoeFixRecipe() {
-		ItemStack item = new Tools().t2Hoe();
+		ItemStack item = t.t2Hoe();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t2HoeFix");
 		
@@ -1092,7 +1093,7 @@ public class ToolRecipes implements Listener {
 	}
 	
 	public ShapelessRecipe t3HoeFixRecipe() {
-		ItemStack item = new Tools().t3Hoe();
+		ItemStack item = t.t3Hoe();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t3HoeFix");
 		
@@ -1105,7 +1106,7 @@ public class ToolRecipes implements Listener {
 	}
 	
 	public ShapelessRecipe t4HoeFixRecipe() {
-		ItemStack item = new Tools().t4Hoe();
+		ItemStack item = t.t4Hoe();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t4HoeFix");
 		
@@ -1118,7 +1119,7 @@ public class ToolRecipes implements Listener {
 	}
 	
 	public ShapelessRecipe t5HoeFixRecipe() {
-		ItemStack item = new Tools().t5Hoe();
+		ItemStack item = t.t5Hoe();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t5HoeFix");
 		
@@ -1131,7 +1132,7 @@ public class ToolRecipes implements Listener {
 	}
 	
 	public ShapelessRecipe t6HoeFixRecipe() {
-		ItemStack item = new Tools().t6Hoe();
+		ItemStack item = t.t6Hoe();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t6HoeFix");
 		
@@ -1144,7 +1145,7 @@ public class ToolRecipes implements Listener {
 	}
 	
 	public ShapelessRecipe t7HoeFixRecipe() {
-		ItemStack item = new Tools().t7Hoe();
+		ItemStack item = t.t7Hoe();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t7HoeFix");
 		
@@ -1157,7 +1158,7 @@ public class ToolRecipes implements Listener {
 	}
 	
 	public ShapelessRecipe t8HoeFixRecipe() {
-		ItemStack item = new Tools().t8Hoe();
+		ItemStack item = t.t8Hoe();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t8HoeFix");
 		
@@ -1170,7 +1171,7 @@ public class ToolRecipes implements Listener {
 	}
 	
 	public ShapelessRecipe t9HoeFixRecipe() {
-		ItemStack item = new Tools().t9Hoe();
+		ItemStack item = t.t9Hoe();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t9HoeFix");
 		
@@ -1184,7 +1185,7 @@ public class ToolRecipes implements Listener {
 	
 	//Swords
 	public ShapedRecipe t1SwordRecipe() {
-		ItemStack item = new Tools().t1Sword();
+		ItemStack item = t.t1Sword();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t1Sword");
 		
@@ -1200,7 +1201,7 @@ public class ToolRecipes implements Listener {
 	}
 	
 	public ShapedRecipe t2SwordRecipe() {
-		ItemStack item = new Tools().t2Sword();
+		ItemStack item = t.t2Sword();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t2Sword");
 		
@@ -1216,7 +1217,7 @@ public class ToolRecipes implements Listener {
 	}
 	
 	public ShapedRecipe t3SwordRecipe() {
-		ItemStack item = new Tools().t3Sword();
+		ItemStack item = t.t3Sword();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t3Sword");
 		
@@ -1232,7 +1233,7 @@ public class ToolRecipes implements Listener {
 	}
 	
 	public ShapedRecipe t4SwordRecipe() {
-		ItemStack item = new Tools().t4Sword();
+		ItemStack item = t.t4Sword();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t4Sword");
 		
@@ -1248,7 +1249,7 @@ public class ToolRecipes implements Listener {
 	}
 	
 	public ShapedRecipe t5SwordRecipe() {
-		ItemStack item = new Tools().t5Sword();
+		ItemStack item = t.t5Sword();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t5Sword");
 		
@@ -1264,7 +1265,7 @@ public class ToolRecipes implements Listener {
 	}
 	
 	public ShapedRecipe t6SwordRecipe() {
-		ItemStack item = new Tools().t6Sword();
+		ItemStack item = t.t6Sword();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t6Sword");
 		
@@ -1280,7 +1281,7 @@ public class ToolRecipes implements Listener {
 	}
 	
 	public ShapedRecipe t7SwordRecipe() {
-		ItemStack item = new Tools().t7Sword();
+		ItemStack item = t.t7Sword();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t7Sword");
 		
@@ -1296,7 +1297,7 @@ public class ToolRecipes implements Listener {
 	}
 	
 	public ShapedRecipe t8SwordRecipe() {
-		ItemStack item = new Tools().t8Sword();
+		ItemStack item = t.t8Sword();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t8Sword");
 		
@@ -1312,7 +1313,7 @@ public class ToolRecipes implements Listener {
 	}
 	
 	public ShapedRecipe t9SwordRecipe() {
-		ItemStack item = new Tools().t9Sword();
+		ItemStack item = t.t9Sword();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t9Sword");
 		
@@ -1328,7 +1329,7 @@ public class ToolRecipes implements Listener {
 	}
 	
 	public ShapedRecipe t10SwordRecipe() {
-		ItemStack item = new Tools().t10Sword();
+		ItemStack item = t.t10Sword();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t10Sword");
 		
@@ -1357,7 +1358,7 @@ public class ToolRecipes implements Listener {
 	}
 	
 	public ShapelessRecipe t1SwordFixRecipe() {
-		ItemStack item = new Tools().t1Sword();
+		ItemStack item = t.t1Sword();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t1SwordFix");
 		
@@ -1370,7 +1371,7 @@ public class ToolRecipes implements Listener {
 	}
 	
 	public ShapelessRecipe t2SwordFixRecipe() {
-		ItemStack item = new Tools().t2Sword();
+		ItemStack item = t.t2Sword();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t2SwordFix");
 		
@@ -1383,7 +1384,7 @@ public class ToolRecipes implements Listener {
 	}
 	
 	public ShapelessRecipe t3SwordFixRecipe() {
-		ItemStack item = new Tools().t3Sword();
+		ItemStack item = t.t3Sword();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t3SwordFix");
 		
@@ -1396,7 +1397,7 @@ public class ToolRecipes implements Listener {
 	}
 	
 	public ShapelessRecipe t4SwordFixRecipe() {
-		ItemStack item = new Tools().t4Sword();
+		ItemStack item = t.t4Sword();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t4SwordFix");
 		
@@ -1409,7 +1410,7 @@ public class ToolRecipes implements Listener {
 	}
 	
 	public ShapelessRecipe t5SwordFixRecipe() {
-		ItemStack item = new Tools().t5Sword();
+		ItemStack item = t.t5Sword();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t5SwordFix");
 		
@@ -1422,7 +1423,7 @@ public class ToolRecipes implements Listener {
 	}
 	
 	public ShapelessRecipe t6SwordFixRecipe() {
-		ItemStack item = new Tools().t6Sword();
+		ItemStack item = t.t6Sword();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t6SwordFix");
 		
@@ -1435,7 +1436,7 @@ public class ToolRecipes implements Listener {
 	}
 	
 	public ShapelessRecipe t7SwordFixRecipe() {
-		ItemStack item = new Tools().t7Sword();
+		ItemStack item = t.t7Sword();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t7SwordFix");
 		
@@ -1448,7 +1449,7 @@ public class ToolRecipes implements Listener {
 	}
 	
 	public ShapelessRecipe t8SwordFixRecipe() {
-		ItemStack item = new Tools().t8Sword();
+		ItemStack item = t.t8Sword();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t8SwordFix");
 		
@@ -1461,7 +1462,7 @@ public class ToolRecipes implements Listener {
 	}
 	
 	public ShapelessRecipe t9SwordFixRecipe() {
-		ItemStack item = new Tools().t9Sword();
+		ItemStack item = t.t9Sword();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t9SwordFix");
 		
@@ -1475,7 +1476,7 @@ public class ToolRecipes implements Listener {
 	
 	//Ranged weapons
 	public ShapedRecipe t1RangeRecipe() {
-		ItemStack item = new Tools().t1Range();
+		ItemStack item = t.t1Range();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t1Range");
 		
@@ -1492,7 +1493,7 @@ public class ToolRecipes implements Listener {
 	}
 	
 	public ShapedRecipe t2RangeRecipe() {
-		ItemStack item = new Tools().t2Range();
+		ItemStack item = t.t2Range();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t2Range");
 		
@@ -1509,7 +1510,7 @@ public class ToolRecipes implements Listener {
 	}
 	
 	public ShapedRecipe t3RangeRecipe() {
-		ItemStack item = new Tools().t3Range();
+		ItemStack item = t.t3Range();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t3Range");
 		
@@ -1526,7 +1527,7 @@ public class ToolRecipes implements Listener {
 	}
 	
 	public ShapedRecipe t4RangeRecipe() {
-		ItemStack item = new Tools().t4Range();
+		ItemStack item = t.t4Range();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t4Range");
 		
@@ -1543,7 +1544,7 @@ public class ToolRecipes implements Listener {
 	}
 	
 	public ShapedRecipe t5RangeRecipe() {
-		ItemStack item = new Tools().t5Range();
+		ItemStack item = t.t5Range();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t5Range");
 		
@@ -1560,7 +1561,7 @@ public class ToolRecipes implements Listener {
 	}
 	
 	public ShapedRecipe t6RangeRecipe() {
-		ItemStack item = new Tools().t6Range();
+		ItemStack item = t.t6Range();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t6Range");
 		
@@ -1577,7 +1578,7 @@ public class ToolRecipes implements Listener {
 	}
 	
 	public ShapedRecipe t7RangeRecipe() {
-		ItemStack item = new Tools().t7Range();
+		ItemStack item = t.t7Range();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t7Range");
 		
@@ -1594,7 +1595,7 @@ public class ToolRecipes implements Listener {
 	}
 	
 	public ShapedRecipe t8RangeRecipe() {
-		ItemStack item = new Tools().t8Range();
+		ItemStack item = t.t8Range();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t8Range");
 		
@@ -1611,7 +1612,7 @@ public class ToolRecipes implements Listener {
 	}
 	
 	public ShapedRecipe t9RangeRecipe() {
-		ItemStack item = new Tools().t9Range();
+		ItemStack item = t.t9Range();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t9Range");
 		
@@ -1628,7 +1629,7 @@ public class ToolRecipes implements Listener {
 	}
 	
 	public ShapedRecipe t10RangeRecipe() {
-		ItemStack item = new Tools().t10Range();
+		ItemStack item = t.t10Range();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t10Range");
 		
@@ -1659,7 +1660,7 @@ public class ToolRecipes implements Listener {
 	}
 	
 	public ShapelessRecipe t1RangeFixRecipe() {
-		ItemStack item = new Tools().t1Range();
+		ItemStack item = t.t1Range();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t1RangeFix");
 		
@@ -1672,7 +1673,7 @@ public class ToolRecipes implements Listener {
 	}
 	
 	public ShapelessRecipe t2RangeFixRecipe() {
-		ItemStack item = new Tools().t2Range();
+		ItemStack item = t.t2Range();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t2RangeFix");
 		
@@ -1685,7 +1686,7 @@ public class ToolRecipes implements Listener {
 	}
 	
 	public ShapelessRecipe t3RangeFixRecipe() {
-		ItemStack item = new Tools().t3Range();
+		ItemStack item = t.t3Range();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t3RangeFix");
 		
@@ -1698,7 +1699,7 @@ public class ToolRecipes implements Listener {
 	}
 	
 	public ShapelessRecipe t4RangeFixRecipe() {
-		ItemStack item = new Tools().t4Range();
+		ItemStack item = t.t4Range();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t4RangeFix");
 		
@@ -1711,7 +1712,7 @@ public class ToolRecipes implements Listener {
 	}
 	
 	public ShapelessRecipe t5RangeFixRecipe() {
-		ItemStack item = new Tools().t5Range();
+		ItemStack item = t.t5Range();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t5RangeFix");
 		
@@ -1724,7 +1725,7 @@ public class ToolRecipes implements Listener {
 	}
 	
 	public ShapelessRecipe t6RangeFixRecipe() {
-		ItemStack item = new Tools().t6Range();
+		ItemStack item = t.t6Range();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t6RangeFix");
 		
@@ -1737,7 +1738,7 @@ public class ToolRecipes implements Listener {
 	}
 	
 	public ShapelessRecipe t7RangeFixRecipe() {
-		ItemStack item = new Tools().t7Range();
+		ItemStack item = t.t7Range();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t7RangeFix");
 		
@@ -1750,7 +1751,7 @@ public class ToolRecipes implements Listener {
 	}
 	
 	public ShapelessRecipe t8RangeFixRecipe() {
-		ItemStack item = new Tools().t8Range();
+		ItemStack item = t.t8Range();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t8RangeFix");
 		
@@ -1763,7 +1764,7 @@ public class ToolRecipes implements Listener {
 	}
 	
 	public ShapelessRecipe t9RangeFixRecipe() {
-		ItemStack item = new Tools().t9Range();
+		ItemStack item = t.t9Range();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t9RangeFix");
 		
@@ -1793,7 +1794,7 @@ public class ToolRecipes implements Listener {
 	}
 	
 	public ShapedRecipe t5ShieldRecipe() {
-		ItemStack item = new Tools().t5Shield();
+		ItemStack item = t.t5Shield();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t5Shield");
 		
@@ -1809,7 +1810,7 @@ public class ToolRecipes implements Listener {
 	}
 
 	public ShapedRecipe t8ShieldRecipe() {
-		ItemStack item = new Tools().t8Shield();
+		ItemStack item = t.t8Shield();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t8Shield");
 		
@@ -1825,7 +1826,7 @@ public class ToolRecipes implements Listener {
 	}
 
 	public ShapedRecipe t10ShieldRecipe() {
-		ItemStack item = new Tools().t10Shield();
+		ItemStack item = t.t10Shield();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t10Shield");
 		
@@ -1855,7 +1856,7 @@ public class ToolRecipes implements Listener {
 	}
 		
 	public ShapelessRecipe t5ShieldFixRecipe() {
-		ItemStack item = new Tools().t5Shield();
+		ItemStack item = t.t5Shield();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t5ShieldFix");
 		
@@ -1868,7 +1869,7 @@ public class ToolRecipes implements Listener {
 	}
 
 	public ShapelessRecipe t8ShieldFixRecipe() {
-		ItemStack item = new Tools().t8Shield();
+		ItemStack item = t.t8Shield();
 		
 		NamespacedKey key = new NamespacedKey(plugin, "t8ShieldFix");
 		

@@ -1,5 +1,8 @@
 package me.Theguyhere.CompressedCobble.items;
 
+import java.util.ArrayList;
+import java.util.Collection;
+
 import org.bukkit.Material;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -11,42 +14,34 @@ import org.bukkit.inventory.meta.ItemMeta;
 import me.Theguyhere.CompressedCobble.Main;
 
 public class ToolArmorRecipeEvents implements Listener {
+	private Resources r;
+	private Tools t;
+	private Armor a;
+	
+	public ToolArmorRecipeEvents(Resources r, Tools t, Armor a) {
+		this.r = r;
+		this.t = t;
+		this.a = a;
+	}
+	
 	@EventHandler
 	public void restrictT0ToolArmorRecipe(PrepareItemCraftEvent e) {
 		if (e.getRecipe() != null) {
 			ItemStack result = e.getRecipe().getResult();
-			if (new Tools().t0s().contains(result) || new Armor().t0s().contains(result)) {
-				boolean found = false;
-				Damageable dam = null;
-				int d = 0;
-				boolean two = false;
-				ItemMeta meta = result.getItemMeta();
-				Damageable mDam = (Damageable) meta;
-				
+			boolean found = false;
+			boolean two = false;
+			
+			if (t.t0s().contains(result) || a.t0s().contains(result)) {
 				for (ItemStack item: e.getInventory().getMatrix())
 					if (item != null) {
 						Material type = item.getType();
 						if (type.equals(Material.BLACKSTONE))
 							found = true;
-						else if (new Tools().picks().contains(type) || new Tools().axes().contains(type)) {
-							if (two)
-								return;
-							if (item.getItemMeta().hasLore())
-								found = true;
-							else {
-								dam = (Damageable) item.getItemMeta();
-								d = dam.getDamage();
-								if (d == 0)
-									found = true;
-								if (d < 44 && d != 0)
-									return;
-								d -= 43;
-								mDam.setDamage(d);
-								result.setItemMeta(meta);
-								two = true;
-							}
-						}
-						else if (new Tools().spades().contains(type)) {
+						found = vanillaCheck(t.picks(), item, result, two, found, 43);
+						found = vanillaCheck(t.axes(), item, result, two, found, 43);
+						if (t.spades().contains(type)) {
+							Damageable dam = null;
+							int d = 0;
 							if (two)
 								return;
 							if (item.getItemMeta().hasLore())
@@ -59,114 +54,14 @@ public class ToolArmorRecipeEvents implements Listener {
 								two = true;
 							}
 						}
-						else if (new Tools().hoes().contains(type) || new Tools().swords().contains(type)) {
-							if (two)
-								return;
-							if (item.getItemMeta().hasLore())
-								found = true;
-							else {
-								dam = (Damageable) item.getItemMeta();
-								d = dam.getDamage();
-								if (d == 0)
-									found = true;
-								if (d < 77 && d != 0)
-									return;
-								d -= 76;
-								mDam.setDamage(d);
-								result.setItemMeta(meta);
-								two = true;
-							}
-						}
-						else if (new Armor().helmets().contains(type) || new Armor().leggings().contains(type)) {
-							if (two)
-								return;
-							if (item.getItemMeta().hasLore())
-								found = true;
-							else {
-								dam = (Damageable) item.getItemMeta();
-								d = dam.getDamage();
-								if (d == 0)
-									found = true;
-								if (d < 12 && d != 0)
-									return;
-								d -= 11;
-								mDam.setDamage(d);
-								result.setItemMeta(meta);
-								two = true;
-							}
-						}
-						else if (new Armor().chestplates().contains(type)) {
-							if (two)
-								return;
-							if (item.getItemMeta().hasLore())
-								found = true;
-							else {
-								dam = (Damageable) item.getItemMeta();
-								d = dam.getDamage();
-								if (d == 0)
-									found = true;
-								if (d < 11 && d != 0)
-									return;
-								d -= 10;
-								mDam.setDamage(d);
-								result.setItemMeta(meta);
-								two = true;
-							}
-						}
-						else if (new Armor().boots().contains(type)) {
-							if (two)
-								return;
-							if (item.getItemMeta().hasLore())
-								found = true;
-							else {
-								dam = (Damageable) item.getItemMeta();
-								d = dam.getDamage();
-								if (d == 0)
-									found = true;
-								if (d < 17 && d != 0)
-									return;
-								d -= 16;
-								mDam.setDamage(d);
-								result.setItemMeta(meta);
-								two = true;
-							}
-						}
-						else if (type.equals(Material.BOW)) {
-							if (two)
-								return;
-							if (item.getItemMeta().hasLore())
-								found = true;
-							else {
-								dam = (Damageable) item.getItemMeta();
-								d = dam.getDamage();
-								if (d == 0)
-									found = true;
-								if (d < 129 && d != 0)
-									return;
-								d -= 128;
-								mDam.setDamage(d);
-								result.setItemMeta(meta);
-								two = true;
-							}
-						}
-						else if (type.equals(Material.SHIELD)) {
-							if (two)
-								return;
-							if (item.getItemMeta().hasLore())
-								found = true;
-							else {
-								dam = (Damageable) item.getItemMeta();
-								d = dam.getDamage();
-								if (d == 0)
-									found = true;
-								if (d < 57 && d != 0)
-									return;
-								d -= 56;
-								mDam.setDamage(d);
-								result.setItemMeta(meta);
-								two = true;
-							}
-						}
+						found = vanillaCheck(t.hoes(), item, result, two, found, 66);
+						found = vanillaCheck(t.swords(), item, result, two, found, 66);
+						found = vanillaCheck(a.helmets(), item, result, two, found, 11);
+						found = vanillaCheck(a.chestplates(), item, result, two, found, 10);
+						found = vanillaCheck(a.leggings(), item, result, two, found, 11);
+						found = vanillaCheck(a.boots(), item, result, two, found, 16);
+						found = standardCheck(Material.BOW, item, result, two, found, 128);
+						found = standardCheck(Material.SHIELD, item, result, two, found, 56);
 					}
 				if (found)
 					e.getInventory().setResult(null);
@@ -179,176 +74,50 @@ public class ToolArmorRecipeEvents implements Listener {
 	public void restrictT1ToolArmorRecipe(PrepareItemCraftEvent e) {
 		if (e.getRecipe() != null) {
 			ItemStack result = e.getRecipe().getResult();
-			if (new Tools().t1s().contains(result) || new Armor().t1s().contains(result)) {
-				boolean found = false;
-				boolean low = false;
-				Damageable dam = null;
-				int d = 0;
-				int c = 0;
-				int s = 0;
-				ItemMeta meta = result.getItemMeta();
-				Damageable mDam = (Damageable) meta;
-				
+			boolean found = false;
+			boolean low = false;
+			int c = 0;
+			int s = 0;
+			
+			if (t.t1s().contains(result) || a.t1s().contains(result)) {
 				for (ItemStack item: e.getInventory().getMatrix())
 					if (item != null) {
 						Material type = item.getType();
-						if (type.equals(Material.BASALT)) {
-							if (!Main.equals(item, new Resources().t1()))
+						if (type.equals(r.t1().getType())) {
+							if (!Main.equals(item, r.t1()))
 								found = true;
 							c++;
 						}
 						if (type.equals(Material.STICK))
 							s++;
-						if (type.equals(Material.STONE_PICKAXE) || type.equals(Material.STONE_AXE)) {
-							if (!item.getItemMeta().hasLore()) {
-								low = true;
-								dam = (Damageable) item.getItemMeta();
-								d = dam.getDamage();
-								if (d != 0)
-									found = true;
-							}
-							else if (Main.equals(item, new Tools().t1Pick()) || Main.equals(item, new Tools().t1Axe())) {
-								dam = (Damageable) item.getItemMeta();
-								d = dam.getDamage();
-								if (d == 0)
-									found = true;
-								if (d > 43) {
-									d -= 43;
-									mDam.setDamage(d);
-									result.setItemMeta(meta);
-								}
-							}
-							else found = true;
-						}
-						if (type.equals(Material.STONE_SHOVEL)) {
-							if (!item.getItemMeta().hasLore()) {
-								low = true;
-								dam = (Damageable) item.getItemMeta();
-								d = dam.getDamage();
-								if (d != 0)
-									found = true;
-							}
-							else if (Main.equals(item, new Tools().t1Spade()) ) {
-								dam = (Damageable) item.getItemMeta();
-								d = dam.getDamage();
-								if (d == 0)
-									found = true;
-							}
-							else found = true;
-						}
-						if (type.equals(Material.STONE_HOE) || type.equals(Material.STONE_SWORD)) {
-							if (!item.getItemMeta().hasLore()) {
-								low = true;
-								dam = (Damageable) item.getItemMeta();
-								d = dam.getDamage();
-								if (d != 0)
-									found = true;
-							}
-							else if (Main.equals(item, new Tools().t1Hoe()) || Main.equals(item, new Tools().t1Sword())) {
-								dam = (Damageable) item.getItemMeta();
-								d = dam.getDamage();
-								if (d == 0)
-									found = true;
-								if (d > 76) {
-									d -= 76;
-									mDam.setDamage(d);
-									result.setItemMeta(meta);
-								}
-							}
-							else found = true;
-						}
-						if (type.equals(Material.LEATHER_HELMET) || type.equals(Material.LEATHER_LEGGINGS)) {
-							if (!item.getItemMeta().hasLore()) {
-								low = true;
-								dam = (Damageable) item.getItemMeta();
-								d = dam.getDamage();
-								if (d != 0)
-									found = true;
-							}
-							else if (Main.equals(item, new Armor().t1Helmet()) || Main.equals(item, new Armor().t1Leggings())) {
-								dam = (Damageable) item.getItemMeta();
-								d = dam.getDamage();
-								if (d == 0)
-									found = true;
-								if (d > 11) {
-									d -= 11;
-									mDam.setDamage(d);
-									result.setItemMeta(meta);
-								}
-							}
-							else found = true;
-						}
-						if (type.equals(Material.LEATHER_CHESTPLATE)) {
-							if (!item.getItemMeta().hasLore()) {
-								low = true;
-								dam = (Damageable) item.getItemMeta();
-								d = dam.getDamage();
-								if (d != 0)
-									found = true;
-							}
-							else if (Main.equals(item, new Armor().t1Chestplate())) {
-								dam = (Damageable) item.getItemMeta();
-								d = dam.getDamage();
-								if (d == 0)
-									found = true;
-								if (d > 10) {
-									d -= 10;
-									mDam.setDamage(d);
-									result.setItemMeta(meta);
-								}
-							}
-							else found = true;
-						}
-						if (type.equals(Material.LEATHER_BOOTS)) {
-							if (!item.getItemMeta().hasLore()) {
-								low = true;
-								dam = (Damageable) item.getItemMeta();
-								d = dam.getDamage();
-								if (d != 0)
-									found = true;
-							}
-							else if (Main.equals(item, new Armor().t1Boots())) {
-								dam = (Damageable) item.getItemMeta();
-								d = dam.getDamage();
-								if (d == 0)
-									found = true;
-								if (d > 16) {
-									d -= 16;
-									mDam.setDamage(d);
-									result.setItemMeta(meta);
-								}
-							}
-							else found = true;
-						}
-						if (type.equals(Material.BOW)) {
-							if (!item.getItemMeta().hasLore()) {
-								low = true;
-								dam = (Damageable) item.getItemMeta();
-								d = dam.getDamage();
-								if (d != 0)
-									found = true;
-							}
-							else if (Main.equals(item, new Tools().t1Range())) {
-								dam = (Damageable) item.getItemMeta();
-								d = dam.getDamage();
-								if (d == 0)
-									found = true;
-								if (d > 128) {
-									d -= 128;
-									mDam.setDamage(d);
-									result.setItemMeta(meta);
-								}
-							}
-							else found = true;
-						}
+						found = itemCheck(item, new ItemStack(Material.STONE_PICKAXE), t.t1Pick(), result, low, found, 43).get(0);
+						low = itemCheck(item, new ItemStack(Material.STONE_PICKAXE), t.t1Pick(), result, low, found, 43).get(1);
+						found = itemCheck(item, new ItemStack(Material.STONE_AXE), t.t1Axe(), result, low, found, 43).get(0);
+						low = itemCheck(item, new ItemStack(Material.STONE_AXE), t.t1Axe(), result, low, found, 43).get(1);
+						found = shovelCheck(item, new ItemStack(Material.STONE_SHOVEL), t.t1Spade(), result, low, found).get(0);
+						low = shovelCheck(item, new ItemStack(Material.STONE_SHOVEL), t.t1Spade(), result, low, found).get(1);
+						found = itemCheck(item, new ItemStack(Material.STONE_HOE), t.t1Hoe(), result, low, found, 66).get(0);
+						low = itemCheck(item, new ItemStack(Material.STONE_HOE), t.t1Hoe(), result, low, found, 66).get(1);
+						found = itemCheck(item, new ItemStack(Material.STONE_SWORD), t.t1Sword(), result, low, found, 66).get(0);
+						low = itemCheck(item, new ItemStack(Material.STONE_SWORD), t.t1Sword(), result, low, found, 66).get(1);
+						found = itemCheck(item, new ItemStack(Material.LEATHER_HELMET), a.t1Helmet(), result, low, found, 11).get(0);
+						low = itemCheck(item, new ItemStack(Material.LEATHER_HELMET), a.t1Helmet(), result, low, found, 11).get(1);
+						found = itemCheck(item, new ItemStack(Material.LEATHER_CHESTPLATE), a.t1Chestplate(), result, low, found, 10).get(0);
+						low = itemCheck(item, new ItemStack(Material.LEATHER_CHESTPLATE), a.t1Chestplate(), result, low, found, 10).get(1);
+						found = itemCheck(item, new ItemStack(Material.LEATHER_LEGGINGS), a.t1Leggings(), result, low, found, 11).get(0);
+						low = itemCheck(item, new ItemStack(Material.LEATHER_LEGGINGS), a.t1Leggings(), result, low, found, 11).get(1);
+						found = itemCheck(item, new ItemStack(Material.LEATHER_BOOTS), a.t1Boots(), result, low, found, 16).get(0);
+						low = itemCheck(item, new ItemStack(Material.LEATHER_BOOTS), a.t1Boots(), result, low, found, 16).get(1);
+						found = itemCheck(item, new ItemStack(Material.BOW), t.t1Range(), result, low, found, 128).get(0);
+						low = itemCheck(item, new ItemStack(Material.BOW), t.t1Range(), result, low, found, 128).get(1);
 					}
-				if (new Tools().t1s().contains(result)) {
+				if (t.t1s().contains(result)) {
 					if (low && s == 0)
 						found = true;
 					if (!low && s != 0)
 						found = true;
 				}
-				if (new Armor().t1s().contains(result)) {
+				if (a.t1s().contains(result)) {
 					if (low && c == 1)
 						found = true;
 					if (!low && c != 1)
@@ -365,173 +134,50 @@ public class ToolArmorRecipeEvents implements Listener {
 	public void restrictT2ToolArmorRecipe(PrepareItemCraftEvent e) {
 		if (e.getRecipe() != null) {
 			ItemStack result = e.getRecipe().getResult();
-			if (new Tools().t2s().contains(result) || new Armor().t2s().contains(result)) {
-				boolean found = false;
-				boolean low = false;
-				Damageable dam = null;
-				int d = 0;
-				int c = 0;
-				int s = 0;
-				ItemMeta meta = result.getItemMeta();
-				Damageable mDam = (Damageable) meta;
-
+			boolean found = false;
+			boolean low = false;
+			int c = 0;
+			int s = 0;
+			
+			if (t.t2s().contains(result) || a.t2s().contains(result)) {
 				for (ItemStack item: e.getInventory().getMatrix())
 					if (item != null) {
 						Material type = item.getType();
-						if (type.equals(Material.BLACKSTONE)) {
-							if (!Main.equals(item, new Resources().t2()))
+						if (type.equals(r.t2().getType())) {
+							if (!Main.equals(item, r.t2()))
 								found = true;
 							c++;
 						}
 						if (type.equals(Material.STICK))
 							s++;
-						if (Main.equals(item, new Tools().t1Pick()) || Main.equals(item, new Tools().t1Axe())) {
-							low = true;
-							dam = (Damageable) item.getItemMeta();
-							d = dam.getDamage();
-							if (d != 0)
-								found = true;
-						}
-						if (Main.equals(item, new Tools().t2Pick()) || Main.equals(item, new Tools().t2Axe())) {
-							dam = (Damageable) item.getItemMeta();
-							d = dam.getDamage();
-							if (d == 0)
-								found = true;
-							if (d > 43) {
-								d -= 43;
-								mDam.setDamage(d);
-								result.setItemMeta(meta);
-							}
-						}
-						if (Main.equals(item, new Tools().t1Spade())) {
-							low = true;
-							dam = (Damageable) item.getItemMeta();
-							d = dam.getDamage();
-							if (d != 0)
-								found = true;
-						}
-						if (Main.equals(item, new Tools().t2Spade())) {
-							dam = (Damageable) item.getItemMeta();
-							d = dam.getDamage();
-							if (d == 0)
-								found = true;
-						}
-						if (Main.equals(item, new Tools().t1Hoe()) || Main.equals(item, new Tools().t1Sword())) {
-							low = true;
-							dam = (Damageable) item.getItemMeta();
-							d = dam.getDamage();
-							if (d != 0)
-								found = true;
-						}
-						if (Main.equals(item, new Tools().t2Hoe()) || Main.equals(item, new Tools().t2Sword())) {
-							dam = (Damageable) item.getItemMeta();
-							d = dam.getDamage();
-							if (d == 0)
-								found = true;
-							if (d > 76) {
-								d -= 76;
-								mDam.setDamage(d);
-								result.setItemMeta(meta);
-							}
-						}
-						if (Main.equals(item, new Armor().t1Helmet())) {
-							low = true;
-							dam = (Damageable) item.getItemMeta();
-							d = dam.getDamage();
-							if (d != 0)
-								found = true;
-						}
-						if (Main.equals(item, new Armor().t2Helmet())) {
-							dam = (Damageable) item.getItemMeta();
-							d = dam.getDamage();
-							if (d == 0)
-								found = true;
-							if (d > 41) {
-								d -= 41;
-								mDam.setDamage(d);
-								result.setItemMeta(meta);
-							}
-						}
-						if (Main.equals(item, new Armor().t1Chestplate())) {
-							low = true;
-							dam = (Damageable) item.getItemMeta();
-							d = dam.getDamage();
-							if (d != 0)
-								found = true;
-						}
-						if (Main.equals(item, new Armor().t2Chestplate())) {
-							dam = (Damageable) item.getItemMeta();
-							d = dam.getDamage();
-							if (d == 0)
-								found = true;
-							if (d > 30) {
-								d -= 30;
-								mDam.setDamage(d);
-								result.setItemMeta(meta);
-							}
-						}
-						if (Main.equals(item, new Armor().t1Leggings())) {
-							low = true;
-							dam = (Damageable) item.getItemMeta();
-							d = dam.getDamage();
-							if (d != 0)
-								found = true;
-						}
-						if (Main.equals(item, new Armor().t2Leggings())) {
-							dam = (Damageable) item.getItemMeta();
-							d = dam.getDamage();
-							if (d == 0)
-								found = true;
-							if (d > 32) {
-								d -= 32;
-								mDam.setDamage(d);
-								result.setItemMeta(meta);
-							}
-						}
-						if (Main.equals(item, new Armor().t1Boots())) {
-							low = true;
-							dam = (Damageable) item.getItemMeta();
-							d = dam.getDamage();
-							if (d != 0)
-								found = true;
-						}
-						if (Main.equals(item, new Armor().t2Boots())) {
-							dam = (Damageable) item.getItemMeta();
-							d = dam.getDamage();
-							if (d == 0)
-								found = true;
-							if (d > 49) {
-								d -= 49;
-								mDam.setDamage(d);
-								result.setItemMeta(meta);
-							}
-						}
-						if (Main.equals(item, new Tools().t1Range())) {
-							low = true;
-							dam = (Damageable) item.getItemMeta();
-							d = dam.getDamage();
-							if (d != 0)
-								found = true;
-						}
-						if (Main.equals(item, new Tools().t2Range())) {
-							dam = (Damageable) item.getItemMeta();
-							d = dam.getDamage();
-							if (d == 0)
-								found = true;
-							if (d > 128) {
-								d -= 128;
-								mDam.setDamage(d);
-								result.setItemMeta(meta);
-							}
-						}
+						found = itemCheck(item, t.t1Pick(), t.t2Pick(), result, low, found, 43).get(0);
+						found = itemCheck(item, t.t1Axe(), t.t2Axe(), result, low, found, 43).get(0);
+						found = shovelCheck(item, t.t1Spade(), t.t2Spade(), result, low, found).get(0);
+						found = itemCheck(item, t.t1Hoe(), t.t2Hoe(), result, low, found, 66).get(0);
+						found = itemCheck(item, t.t1Sword(), t.t2Sword(), result, low, found, 66).get(0);
+						found = itemCheck(item, a.t1Helmet(), a.t2Helmet(), result, low, found, 41).get(0);
+						found = itemCheck(item, a.t1Chestplate(), a.t2Chestplate(), result, low, found, 30).get(0);
+						found = itemCheck(item, a.t1Leggings(), a.t2Leggings(), result, low, found, 32).get(0);
+						found = itemCheck(item, a.t1Boots(), a.t2Boots(), result, low, found, 49).get(0);
+						found = itemCheck(item, t.t1Range(), t.t2Range(), result, low, found, 128).get(0);
+						low = itemCheck(item, t.t1Pick(), t.t2Pick(), result, low, found, 43).get(1);
+						low = itemCheck(item, t.t1Axe(), t.t2Axe(), result, low, found, 43).get(1);
+						low = shovelCheck(item, t.t1Spade(), t.t2Spade(), result, low, found).get(1);
+						low = itemCheck(item, t.t1Hoe(), t.t2Hoe(), result, low, found, 66).get(1);
+						low = itemCheck(item, t.t1Sword(), t.t2Sword(), result, low, found, 66).get(1);
+						low = itemCheck(item, a.t1Helmet(), a.t2Helmet(), result, low, found, 41).get(1);
+						low = itemCheck(item, a.t1Chestplate(), a.t2Chestplate(), result, low, found, 31).get(1);
+						low = itemCheck(item, a.t1Leggings(), a.t2Leggings(), result, low, found, 32).get(1);
+						low = itemCheck(item, a.t1Boots(), a.t2Boots(), result, low, found, 49).get(1);
+						low = itemCheck(item, t.t1Range(), t.t2Range(), result, low, found, 128).get(1);
 					}
-				if (new Tools().t2s().contains(result)) {
+				if (t.t2s().contains(result)) {
 					if (low && s == 0)
 						found = true;
 					if (!low && s != 0)
 						found = true;
 				}
-				if (new Armor().t2s().contains(result)) {
+				if (a.t2s().contains(result)) {
 					if (low && c == 1)
 						found = true;
 					if (!low && c != 1)
@@ -548,173 +194,50 @@ public class ToolArmorRecipeEvents implements Listener {
 	public void restrictT3ToolArmorRecipe(PrepareItemCraftEvent e) {
 		if (e.getRecipe() != null) {
 			ItemStack result = e.getRecipe().getResult();
-			if (new Tools().t3s().contains(result) || new Armor().t3s().contains(result)) {
-				boolean found = false;
-				boolean low = false;
-				Damageable dam = null;
-				int d = 0;
-				int c = 0;
-				int s = 0;
-				ItemMeta meta = result.getItemMeta();
-				Damageable mDam = (Damageable) meta;
+			boolean found = false;
+			boolean low = false;
+			int c = 0;
+			int s = 0;
 
+			if (t.t3s().contains(result) || a.t3s().contains(result)) {
 				for (ItemStack item: e.getInventory().getMatrix())
 					if (item != null) {
 						Material type = item.getType();
-						if (type.equals(Material.OBSIDIAN)) {
-							if (!Main.equals(item, new Resources().t3()))
+						if (type.equals(r.t3().getType())) {
+							if (!Main.equals(item, r.t3()))
 								found = true;
 							c++;
 						}
 						if (type.equals(Material.STICK))
 							s++;
-						if (Main.equals(item, new Tools().t2Pick()) || Main.equals(item, new Tools().t2Axe())) {
-							low = true;
-							dam = (Damageable) item.getItemMeta();
-							d = dam.getDamage();
-							if (d != 0)
-								found = true;
-						}
-						if (Main.equals(item, new Tools().t3Pick()) || Main.equals(item, new Tools().t3Axe())) {
-							dam = (Damageable) item.getItemMeta();
-							d = dam.getDamage();
-							if (d == 0)
-								found = true;
-							if (d > 83) {
-								d -= 83;
-								mDam.setDamage(d);
-								result.setItemMeta(meta);
-							}
-						}
-						if (Main.equals(item, new Tools().t2Spade())) {
-							low = true;
-							dam = (Damageable) item.getItemMeta();
-							d = dam.getDamage();
-							if (d != 0)
-								found = true;
-						}
-						if (Main.equals(item, new Tools().t3Spade())) {
-							dam = (Damageable) item.getItemMeta();
-							d = dam.getDamage();
-							if (d == 0)
-								found = true;
-						}
-						if (Main.equals(item, new Tools().t2Hoe()) || Main.equals(item, new Tools().t2Sword())) {
-							low = true;
-							dam = (Damageable) item.getItemMeta();
-							d = dam.getDamage();
-							if (d != 0)
-								found = true;
-						}
-						if (Main.equals(item, new Tools().t3Hoe()) || Main.equals(item, new Tools().t3Sword())) {
-							dam = (Damageable) item.getItemMeta();
-							d = dam.getDamage();
-							if (d == 0)
-								found = true;
-							if (d > 125) {
-								d -= 125;
-								mDam.setDamage(d);
-								result.setItemMeta(meta);
-							}
-						}
-						if (Main.equals(item, new Armor().t2Helmet())) {
-							low = true;
-							dam = (Damageable) item.getItemMeta();
-							d = dam.getDamage();
-							if (d != 0)
-								found = true;
-						}
-						if (Main.equals(item, new Armor().t3Helmet())) {
-							dam = (Damageable) item.getItemMeta();
-							d = dam.getDamage();
-							if (d == 0)
-								found = true;
-							if (d > 41) {
-								d -= 41;
-								mDam.setDamage(d);
-								result.setItemMeta(meta);
-							}
-						}
-						if (Main.equals(item, new Armor().t2Chestplate())) {
-							low = true;
-							dam = (Damageable) item.getItemMeta();
-							d = dam.getDamage();
-							if (d != 0)
-								found = true;
-						}
-						if (Main.equals(item, new Armor().t3Chestplate())) {
-							dam = (Damageable) item.getItemMeta();
-							d = dam.getDamage();
-							if (d == 0)
-								found = true;
-							if (d > 30) {
-								d -= 30;
-								mDam.setDamage(d);
-								result.setItemMeta(meta);
-							}
-						}
-						if (Main.equals(item, new Armor().t2Leggings())) {
-							low = true;
-							dam = (Damageable) item.getItemMeta();
-							d = dam.getDamage();
-							if (d != 0)
-								found = true;
-						}
-						if (Main.equals(item, new Armor().t3Leggings())) {
-							dam = (Damageable) item.getItemMeta();
-							d = dam.getDamage();
-							if (d == 0)
-								found = true;
-							if (d > 32) {
-								d -= 32;
-								mDam.setDamage(d);
-								result.setItemMeta(meta);
-							}
-						}
-						if (Main.equals(item, new Armor().t2Boots())) {
-							low = true;
-							dam = (Damageable) item.getItemMeta();
-							d = dam.getDamage();
-							if (d != 0)
-								found = true;
-						}
-						if (Main.equals(item, new Armor().t3Boots())) {
-							dam = (Damageable) item.getItemMeta();
-							d = dam.getDamage();
-							if (d == 0)
-								found = true;
-							if (d > 49) {
-								d -= 49;
-								mDam.setDamage(d);
-								result.setItemMeta(meta);
-							}
-						}
-						if (Main.equals(item, new Tools().t2Range())) {
-							low = true;
-							dam = (Damageable) item.getItemMeta();
-							d = dam.getDamage();
-							if (d != 0)
-								found = true;
-						}
-						if (Main.equals(item, new Tools().t3Range())) {
-							dam = (Damageable) item.getItemMeta();
-							d = dam.getDamage();
-							if (d == 0)
-								found = true;
-							if (d > 128) {
-								d -= 128;
-								mDam.setDamage(d);
-								result.setItemMeta(meta);
-							}
-						}
+						found = itemCheck(item, t.t2Pick(), t.t3Pick(), result, low, found, 83).get(0);
+						found = itemCheck(item, t.t2Axe(), t.t3Axe(), result, low, found, 83).get(0);
+						found = shovelCheck(item, t.t2Spade(), t.t3Spade(), result, low, found).get(0);
+						found = itemCheck(item, t.t2Hoe(), t.t3Hoe(), result, low, found, 125).get(0);
+						found = itemCheck(item, t.t2Sword(), t.t3Sword(), result, low, found, 125).get(0);
+						found = itemCheck(item, a.t2Helmet(), a.t3Helmet(), result, low, found, 41).get(0);
+						found = itemCheck(item, a.t2Chestplate(), a.t3Chestplate(), result, low, found, 30).get(0);
+						found = itemCheck(item, a.t2Leggings(), a.t3Leggings(), result, low, found, 32).get(0);
+						found = itemCheck(item, a.t2Boots(), a.t3Boots(), result, low, found, 49).get(0);
+						found = itemCheck(item, t.t2Range(), t.t3Range(), result, low, found, 128).get(0);
+						low = itemCheck(item, t.t2Pick(), t.t3Pick(), result, low, found, 83).get(1);
+						low = itemCheck(item, t.t2Axe(), t.t3Axe(), result, low, found, 83).get(1);
+						low = shovelCheck(item, t.t2Spade(), t.t3Spade(), result, low, found).get(1);
+						low = itemCheck(item, t.t2Hoe(), t.t3Hoe(), result, low, found, 125).get(1);
+						low = itemCheck(item, t.t2Sword(), t.t3Sword(), result, low, found, 125).get(1);
+						low = itemCheck(item, a.t2Helmet(), a.t3Helmet(), result, low, found, 41).get(1);
+						low = itemCheck(item, a.t2Chestplate(), a.t3Chestplate(), result, low, found, 30).get(1);
+						low = itemCheck(item, a.t2Leggings(), a.t3Leggings(), result, low, found, 32).get(1);
+						low = itemCheck(item, a.t2Boots(), a.t3Boots(), result, low, found, 49).get(1);
+						low = itemCheck(item, t.t2Range(), t.t3Range(), result, low, found, 128).get(1);
 					}
-				if (new Tools().t3s().contains(result)) {
+				if (t.t3s().contains(result)) {
 					if (low && s == 0)
 						found = true;
 					if (!low && s != 0)
 						found = true;
 				}
-				if (new Armor().t3s().contains(result)) {
+				if (a.t3s().contains(result)) {
 					if (low && c == 1)
 						found = true;
 					if (!low && c != 1)
@@ -731,173 +254,50 @@ public class ToolArmorRecipeEvents implements Listener {
 	public void restrictT4ToolArmorRecipe(PrepareItemCraftEvent e) {
 		if (e.getRecipe() != null) {
 			ItemStack result = e.getRecipe().getResult();
-			if (new Tools().t4s().contains(result) || new Armor().t4s().contains(result)) {
-				boolean found = false;
-				boolean low = false;
-				Damageable dam = null;
-				int d = 0;
-				int c = 0;
-				int s = 0;
-				ItemMeta meta = result.getItemMeta();
-				Damageable mDam = (Damageable) meta;
+			boolean found = false;
+			boolean low = false;
+			int c = 0;
+			int s = 0;
 
+			if (t.t4s().contains(result) || a.t4s().contains(result)) {
 				for (ItemStack item: e.getInventory().getMatrix())
 					if (item != null) {
 						Material type = item.getType();
-						if (type.equals(Material.GILDED_BLACKSTONE)) {
-							if (!Main.equals(item, new Resources().t4()))
+						if (type.equals(r.t4().getType())) {
+							if (!Main.equals(item, r.t4()))
 								found = true;
 							c++;
 						}
 						if (type.equals(Material.STICK))
 							s++;
-						if (Main.equals(item, new Tools().t3Pick()) || Main.equals(item, new Tools().t3Axe())) {
-							low = true;
-							dam = (Damageable) item.getItemMeta();
-							d = dam.getDamage();
-							if (d != 0)
-								found = true;
-						}
-						if (Main.equals(item, new Tools().t4Pick()) || Main.equals(item, new Tools().t4Axe())) {
-							dam = (Damageable) item.getItemMeta();
-							d = dam.getDamage();
-							if (d == 0)
-								found = true;
-							if (d > 83) {
-								d -= 83;
-								mDam.setDamage(d);
-								result.setItemMeta(meta);
-							}
-						}
-						if (Main.equals(item, new Tools().t3Spade())) {
-							low = true;
-							dam = (Damageable) item.getItemMeta();
-							d = dam.getDamage();
-							if (d != 0)
-								found = true;
-						}
-						if (Main.equals(item, new Tools().t4Spade())) {
-							dam = (Damageable) item.getItemMeta();
-							d = dam.getDamage();
-							if (d == 0)
-								found = true;
-						}
-						if (Main.equals(item, new Tools().t3Hoe()) || Main.equals(item, new Tools().t3Sword())) {
-							low = true;
-							dam = (Damageable) item.getItemMeta();
-							d = dam.getDamage();
-							if (d != 0)
-								found = true;
-						}
-						if (Main.equals(item, new Tools().t4Hoe()) || Main.equals(item, new Tools().t4Sword())) {
-							dam = (Damageable) item.getItemMeta();
-							d = dam.getDamage();
-							if (d == 0)
-								found = true;
-							if (d > 125) {
-								d -= 125;
-								mDam.setDamage(d);
-								result.setItemMeta(meta);
-							}
-						}
-						if (Main.equals(item, new Armor().t3Helmet())) {
-							low = true;
-							dam = (Damageable) item.getItemMeta();
-							d = dam.getDamage();
-							if (d != 0)
-								found = true;
-						}
-						if (Main.equals(item, new Armor().t4Helmet())) {
-							dam = (Damageable) item.getItemMeta();
-							d = dam.getDamage();
-							if (d == 0)
-								found = true;
-							if (d > 41) {
-								d -= 41;
-								mDam.setDamage(d);
-								result.setItemMeta(meta);
-							}
-						}
-						if (Main.equals(item, new Armor().t3Chestplate())) {
-							low = true;
-							dam = (Damageable) item.getItemMeta();
-							d = dam.getDamage();
-							if (d != 0)
-								found = true;
-						}
-						if (Main.equals(item, new Armor().t4Chestplate())) {
-							dam = (Damageable) item.getItemMeta();
-							d = dam.getDamage();
-							if (d == 0)
-								found = true;
-							if (d > 30) {
-								d -= 30;
-								mDam.setDamage(d);
-								result.setItemMeta(meta);
-							}
-						}
-						if (Main.equals(item, new Armor().t3Leggings())) {
-							low = true;
-							dam = (Damageable) item.getItemMeta();
-							d = dam.getDamage();
-							if (d != 0)
-								found = true;
-						}
-						if (Main.equals(item, new Armor().t4Leggings())) {
-							dam = (Damageable) item.getItemMeta();
-							d = dam.getDamage();
-							if (d == 0)
-								found = true;
-							if (d > 32) {
-								d -= 32;
-								mDam.setDamage(d);
-								result.setItemMeta(meta);
-							}
-						}
-						if (Main.equals(item, new Armor().t3Boots())) {
-							low = true;
-							dam = (Damageable) item.getItemMeta();
-							d = dam.getDamage();
-							if (d != 0)
-								found = true;
-						}
-						if (Main.equals(item, new Armor().t4Boots())) {
-							dam = (Damageable) item.getItemMeta();
-							d = dam.getDamage();
-							if (d == 0)
-								found = true;
-							if (d > 49) {
-								d -= 49;
-								mDam.setDamage(d);
-								result.setItemMeta(meta);
-							}
-						}
-						if (Main.equals(item, new Tools().t3Range())) {
-							low = true;
-							dam = (Damageable) item.getItemMeta();
-							d = dam.getDamage();
-							if (d != 0)
-								found = true;
-						}
-						if (Main.equals(item, new Tools().t4Range())) {
-							dam = (Damageable) item.getItemMeta();
-							d = dam.getDamage();
-							if (d == 0)
-								found = true;
-							if (d > 128) {
-								d -= 128;
-								mDam.setDamage(d);
-								result.setItemMeta(meta);
-							}
-						}
+						found = itemCheck(item, t.t3Pick(), t.t4Pick(), result, low, found, 83).get(0);
+						found = itemCheck(item, t.t3Axe(), t.t4Axe(), result, low, found, 83).get(0);
+						found = shovelCheck(item, t.t3Spade(), t.t4Spade(), result, low, found).get(0);
+						found = itemCheck(item, t.t3Hoe(), t.t4Hoe(), result, low, found, 125).get(0);
+						found = itemCheck(item, t.t3Sword(), t.t4Sword(), result, low, found, 125).get(0);
+						found = itemCheck(item, a.t3Helmet(), a.t4Helmet(), result, low, found, 41).get(0);
+						found = itemCheck(item, a.t3Chestplate(), a.t4Chestplate(), result, low, found, 30).get(0);
+						found = itemCheck(item, a.t3Leggings(), a.t4Leggings(), result, low, found, 32).get(0);
+						found = itemCheck(item, a.t3Boots(), a.t4Boots(), result, low, found, 49).get(0);
+						found = itemCheck(item, t.t3Range(), t.t4Range(), result, low, found, 128).get(0);
+						low = itemCheck(item, t.t3Pick(), t.t4Pick(), result, low, found, 83).get(1);
+						low = itemCheck(item, t.t3Axe(), t.t4Axe(), result, low, found, 83).get(1);
+						low = shovelCheck(item, t.t3Spade(), t.t4Spade(), result, low, found).get(1);
+						low = itemCheck(item, t.t3Hoe(), t.t4Hoe(), result, low, found, 125).get(1);
+						low = itemCheck(item, t.t3Sword(), t.t4Sword(), result, low, found, 125).get(1);
+						low = itemCheck(item, a.t3Helmet(), a.t4Helmet(), result, low, found, 41).get(1);
+						low = itemCheck(item, a.t3Chestplate(), a.t4Chestplate(), result, low, found, 30).get(1);
+						low = itemCheck(item, a.t3Leggings(), a.t4Leggings(), result, low, found, 32).get(1);
+						low = itemCheck(item, a.t3Boots(), a.t4Boots(), result, low, found, 49).get(1);
+						low = itemCheck(item, t.t3Range(), t.t4Range(), result, low, found, 128).get(1);
 					}
-				if (new Tools().t4s().contains(result)) {
+				if (t.t4s().contains(result)) {
 					if (low && s == 0)
 						found = true;
 					if (!low && s != 0)
 						found = true;
 				}
-				if (new Armor().t4s().contains(result)) {
+				if (a.t4s().contains(result)) {
 					if (low && c == 1)
 						found = true;
 					if (!low && c != 1)
@@ -914,194 +314,54 @@ public class ToolArmorRecipeEvents implements Listener {
 	public void restrictT5ToolArmorRecipe(PrepareItemCraftEvent e) {
 		if (e.getRecipe() != null) {
 			ItemStack result = e.getRecipe().getResult();
-			if (new Tools().t5s().contains(result) || new Armor().t5s().contains(result)) {
-				boolean found = false;
-				boolean low = false;
-				Damageable dam = null;
-				int d = 0;
-				int c = 0;
-				int s = 0;
-				ItemMeta meta = result.getItemMeta();
-				Damageable mDam = (Damageable) meta;
+			boolean found = false;
+			boolean low = false;
+			int c = 0;
+			int s = 0;
+
+			if (t.t5s().contains(result) || a.t5s().contains(result)) {
 
 				for (ItemStack item: e.getInventory().getMatrix())
 					if (item != null) {
 						Material type = item.getType();
-						if (type.equals(Material.GLOWSTONE)) {
-							if (!Main.equals(item, new Resources().t5()))
+						if (type.equals(r.t5().getType())) {
+							if (!Main.equals(item, r.t5()))
 								found = true;
 							c++;
 						}
 						if (type.equals(Material.STICK))
 							s++;
-						if (Main.equals(item, new Tools().t4Pick()) || Main.equals(item, new Tools().t4Axe())) {
-							low = true;
-							dam = (Damageable) item.getItemMeta();
-							d = dam.getDamage();
-							if (d != 0)
-								found = true;
-						}
-						if (Main.equals(item, new Tools().t5Pick()) || Main.equals(item, new Tools().t5Axe())) {
-							dam = (Damageable) item.getItemMeta();
-							d = dam.getDamage();
-							if (d == 0)
-								found = true;
-							if (d > 520) {
-								d -= 520;
-								mDam.setDamage(d);
-								result.setItemMeta(meta);
-							}
-						}
-						if (Main.equals(item, new Tools().t4Spade())) {
-							low = true;
-							dam = (Damageable) item.getItemMeta();
-							d = dam.getDamage();
-							if (d != 0)
-								found = true;
-						}
-						if (Main.equals(item, new Tools().t5Spade())) {
-							dam = (Damageable) item.getItemMeta();
-							d = dam.getDamage();
-							if (d == 0)
-								found = true;
-						}
-						if (Main.equals(item, new Tools().t4Hoe()) || Main.equals(item, new Tools().t4Sword())) {
-							low = true;
-							dam = (Damageable) item.getItemMeta();
-							d = dam.getDamage();
-							if (d != 0)
-								found = true;
-						}
-						if (Main.equals(item, new Tools().t5Hoe()) || Main.equals(item, new Tools().t5Sword())) {
-							dam = (Damageable) item.getItemMeta();
-							d = dam.getDamage();
-							if (d == 0)
-								found = true;
-							if (d > 789) {
-								d -= 789;
-								mDam.setDamage(d);
-								result.setItemMeta(meta);
-							}
-						}
-						if (Main.equals(item, new Armor().t4Helmet())) {
-							low = true;
-							dam = (Damageable) item.getItemMeta();
-							d = dam.getDamage();
-							if (d != 0)
-								found = true;
-						}
-						if (Main.equals(item, new Armor().t5Helmet())) {
-							dam = (Damageable) item.getItemMeta();
-							d = dam.getDamage();
-							if (d == 0)
-								found = true;
-							if (d > 41) {
-								d -= 41;
-								mDam.setDamage(d);
-								result.setItemMeta(meta);
-							}
-						}
-						if (Main.equals(item, new Armor().t4Chestplate())) {
-							low = true;
-							dam = (Damageable) item.getItemMeta();
-							d = dam.getDamage();
-							if (d != 0)
-								found = true;
-						}
-						if (Main.equals(item, new Armor().t5Chestplate())) {
-							dam = (Damageable) item.getItemMeta();
-							d = dam.getDamage();
-							if (d == 0)
-								found = true;
-							if (d > 30) {
-								d -= 30;
-								mDam.setDamage(d);
-								result.setItemMeta(meta);
-							}
-						}
-						if (Main.equals(item, new Armor().t4Leggings())) {
-							low = true;
-							dam = (Damageable) item.getItemMeta();
-							d = dam.getDamage();
-							if (d != 0)
-								found = true;
-						}
-						if (Main.equals(item, new Armor().t5Leggings())) {
-							dam = (Damageable) item.getItemMeta();
-							d = dam.getDamage();
-							if (d == 0)
-								found = true;
-							if (d > 32) {
-								d -= 32;
-								mDam.setDamage(d);
-								result.setItemMeta(meta);
-							}
-						}
-						if (Main.equals(item, new Armor().t4Boots())) {
-							low = true;
-							dam = (Damageable) item.getItemMeta();
-							d = dam.getDamage();
-							if (d != 0)
-								found = true;
-						}
-						if (Main.equals(item, new Armor().t5Boots())) {
-							dam = (Damageable) item.getItemMeta();
-							d = dam.getDamage();
-							if (d == 0)
-								found = true;
-							if (d > 49) {
-								d -= 49;
-								mDam.setDamage(d);
-								result.setItemMeta(meta);
-							}
-						}
-						if (Main.equals(item, new Tools().t4Range())) {
-							low = true;
-							dam = (Damageable) item.getItemMeta();
-							d = dam.getDamage();
-							if (d != 0)
-								found = true;
-						}
-						if (Main.equals(item, new Tools().t5Range())) {
-							dam = (Damageable) item.getItemMeta();
-							d = dam.getDamage();
-							if (d == 0)
-								found = true;
-							if (d > 128) {
-								d -= 128;
-								mDam.setDamage(d);
-								result.setItemMeta(meta);
-							}
-						}
-						if (type.equals(Material.SHIELD)) {
-							if (!item.getItemMeta().hasLore()) {
-								low = true;
-								dam = (Damageable) item.getItemMeta();
-								d = dam.getDamage();
-								if (d != 0)
-									found = true;
-							}
-							else if (Main.equals(item, new Tools().t5Shield())) {
-								dam = (Damageable) item.getItemMeta();
-								d = dam.getDamage();
-								if (d == 0)
-									found = true;
-								if (d > 56) {
-									d -= 56;
-									mDam.setDamage(d);
-									result.setItemMeta(meta);
-								}
-							}
-							else found = true;
-						}
+						found = itemCheck(item, t.t4Pick(), t.t5Pick(), result, low, found, 520).get(0);
+						found = itemCheck(item, t.t4Axe(), t.t5Axe(), result, low, found, 520).get(0);
+						found = shovelCheck(item, t.t4Spade(), t.t5Spade(), result, low, found).get(0);
+						found = itemCheck(item, t.t4Hoe(), t.t5Hoe(), result, low, found, 789).get(0);
+						found = itemCheck(item, t.t4Sword(), t.t5Sword(), result, low, found, 789).get(0);
+						found = itemCheck(item, a.t4Helmet(), a.t5Helmet(), result, low, found, 41).get(0);
+						found = itemCheck(item, a.t4Chestplate(), a.t5Chestplate(), result, low, found, 30).get(0);
+						found = itemCheck(item, a.t4Leggings(), a.t5Leggings(), result, low, found, 32).get(0);
+						found = itemCheck(item, a.t4Boots(), a.t5Boots(), result, low, found, 49).get(0);
+						found = itemCheck(item, t.t4Range(), t.t5Range(), result, low, found, 128).get(0);
+						found = itemCheck(item, new ItemStack(Material.SHIELD), t.t5Shield(), result, low, found, 56).get(0);
+						low = itemCheck(item, t.t4Pick(), t.t5Pick(), result, low, found, 520).get(1);
+						low = itemCheck(item, t.t4Axe(), t.t5Axe(), result, low, found, 520).get(1);
+						low = shovelCheck(item, t.t4Spade(), t.t5Spade(), result, low, found).get(1);
+						low = itemCheck(item, t.t4Hoe(), t.t5Hoe(), result, low, found, 789).get(1);
+						low = itemCheck(item, t.t4Sword(), t.t5Sword(), result, low, found, 789).get(1);
+						low = itemCheck(item, a.t4Helmet(), a.t5Helmet(), result, low, found, 41).get(1);
+						low = itemCheck(item, a.t4Chestplate(), a.t5Chestplate(), result, low, found, 30).get(1);
+						low = itemCheck(item, a.t4Leggings(), a.t5Leggings(), result, low, found, 32).get(1);
+						low = itemCheck(item, a.t4Boots(), a.t5Boots(), result, low, found, 49).get(1);
+						low = itemCheck(item, t.t4Range(), t.t5Range(), result, low, found, 128).get(1);
+						low = itemCheck(item, new ItemStack(Material.SHIELD), t.t5Shield(), result, low, found, 56).get(1);
 					}
-				if (new Tools().t5s().contains(result)) {
+				if (t.t5s().contains(result)) {
 					if (low && s == 0)
-						found = true;
+						if (!result.getType().equals(Material.SHIELD))
+							found = true;
 					if (!low && s != 0)
 						found = true;
 				}
-				if (new Armor().t5s().contains(result)) {
+				if (a.t5s().contains(result)) {
 					if (low && c == 1)
 						found = true;
 					if (!low && c != 1)
@@ -1118,173 +378,51 @@ public class ToolArmorRecipeEvents implements Listener {
 	public void restrictT6ToolArmorRecipe(PrepareItemCraftEvent e) {
 		if (e.getRecipe() != null) {
 			ItemStack result = e.getRecipe().getResult();
-			if (new Tools().t6s().contains(result) || new Armor().t6s().contains(result)) {
-				boolean found = false;
-				boolean low = false;
-				Damageable dam = null;
-				int d = 0;
-				int c = 0;
-				int s = 0;
-				ItemMeta meta = result.getItemMeta();
-				Damageable mDam = (Damageable) meta;
+			boolean found = false;
+			boolean low = false;
+			int c = 0;
+			int s = 0;
+
+			if (t.t6s().contains(result) || a.t6s().contains(result)) {
 
 				for (ItemStack item: e.getInventory().getMatrix())
 					if (item != null) {
 						Material type = item.getType();
-						if (type.equals(Material.MAGMA_BLOCK)) {
-							if (!Main.equals(item, new Resources().t6()))
+						if (type.equals(r.t6().getType())) {
+							if (!Main.equals(item, r.t6()))
 								found = true;
 							c++;
 						}
 						if (type.equals(Material.BLAZE_ROD))
 							s++;
-						if (Main.equals(item, new Tools().t5Pick()) || Main.equals(item, new Tools().t5Axe())) {
-							low = true;
-							dam = (Damageable) item.getItemMeta();
-							d = dam.getDamage();
-							if (d != 0)
-								found = true;
-						}
-						if (Main.equals(item, new Tools().t6Pick()) || Main.equals(item, new Tools().t6Axe())) {
-							dam = (Damageable) item.getItemMeta();
-							d = dam.getDamage();
-							if (d == 0)
-								found = true;
-							if (d > 520) {
-								d -= 520;
-								mDam.setDamage(d);
-								result.setItemMeta(meta);
-							}
-						}
-						if (Main.equals(item, new Tools().t5Spade())) {
-							low = true;
-							dam = (Damageable) item.getItemMeta();
-							d = dam.getDamage();
-							if (d != 0)
-								found = true;
-						}
-						if (Main.equals(item, new Tools().t6Spade())) {
-							dam = (Damageable) item.getItemMeta();
-							d = dam.getDamage();
-							if (d == 0)
-								found = true;
-						}
-						if (Main.equals(item, new Tools().t5Hoe()) || Main.equals(item, new Tools().t5Sword())) {
-							low = true;
-							dam = (Damageable) item.getItemMeta();
-							d = dam.getDamage();
-							if (d != 0)
-								found = true;
-						}
-						if (Main.equals(item, new Tools().t6Hoe()) || Main.equals(item, new Tools().t6Sword())) {
-							dam = (Damageable) item.getItemMeta();
-							d = dam.getDamage();
-							if (d == 0)
-								found = true;
-							if (d > 789) {
-								d -= 789;
-								mDam.setDamage(d);
-								result.setItemMeta(meta);
-							}
-						}
-						if (Main.equals(item, new Armor().t5Helmet())) {
-							low = true;
-							dam = (Damageable) item.getItemMeta();
-							d = dam.getDamage();
-							if (d != 0)
-								found = true;
-						}
-						if (Main.equals(item, new Armor().t6Helmet())) {
-							dam = (Damageable) item.getItemMeta();
-							d = dam.getDamage();
-							if (d == 0)
-								found = true;
-							if (d > 73) {
-								d -= 73;
-								mDam.setDamage(d);
-								result.setItemMeta(meta);
-							}
-						}
-						if (Main.equals(item, new Armor().t5Chestplate())) {
-							low = true;
-							dam = (Damageable) item.getItemMeta();
-							d = dam.getDamage();
-							if (d != 0)
-								found = true;
-						}
-						if (Main.equals(item, new Armor().t6Chestplate())) {
-							dam = (Damageable) item.getItemMeta();
-							d = dam.getDamage();
-							if (d == 0)
-								found = true;
-							if (d > 66) {
-								d -= 66;
-								mDam.setDamage(d);
-								result.setItemMeta(meta);
-							}
-						}
-						if (Main.equals(item, new Armor().t5Leggings())) {
-							low = true;
-							dam = (Damageable) item.getItemMeta();
-							d = dam.getDamage();
-							if (d != 0)
-								found = true;
-						}
-						if (Main.equals(item, new Armor().t6Leggings())) {
-							dam = (Damageable) item.getItemMeta();
-							d = dam.getDamage();
-							if (d == 0)
-								found = true;
-							if (d > 71) {
-								d -= 71;
-								mDam.setDamage(d);
-								result.setItemMeta(meta);
-							}
-						}
-						if (Main.equals(item, new Armor().t5Boots())) {
-							low = true;
-							dam = (Damageable) item.getItemMeta();
-							d = dam.getDamage();
-							if (d != 0)
-								found = true;
-						}
-						if (Main.equals(item, new Armor().t6Boots())) {
-							dam = (Damageable) item.getItemMeta();
-							d = dam.getDamage();
-							if (d == 0)
-								found = true;
-							if (d > 107) {
-								d -= 107;
-								mDam.setDamage(d);
-								result.setItemMeta(meta);
-							}
-						}
-						if (Main.equals(item, new Tools().t5Range())) {
-							low = true;
-							dam = (Damageable) item.getItemMeta();
-							d = dam.getDamage();
-							if (d != 0)
-								found = true;
-						}
-						if (Main.equals(item, new Tools().t6Range())) {
-							dam = (Damageable) item.getItemMeta();
-							d = dam.getDamage();
-							if (d == 0)
-								found = true;
-							if (d > 128) {
-								d -= 128;
-								mDam.setDamage(d);
-								result.setItemMeta(meta);
-							}
-						}
+						found = itemCheck(item, t.t5Pick(), t.t6Pick(), result, low, found, 520).get(0);
+						found = itemCheck(item, t.t5Axe(), t.t6Axe(), result, low, found, 520).get(0);
+						found = shovelCheck(item, t.t5Spade(), t.t6Spade(), result, low, found).get(0);
+						found = itemCheck(item, t.t5Hoe(), t.t6Hoe(), result, low, found, 789).get(0);
+						found = itemCheck(item, t.t5Sword(), t.t6Sword(), result, low, found, 789).get(0);
+						found = itemCheck(item, a.t5Helmet(), a.t6Helmet(), result, low, found, 73).get(0);
+						found = itemCheck(item, a.t5Chestplate(), a.t6Chestplate(), result, low, found, 66).get(0);
+						found = itemCheck(item, a.t5Leggings(), a.t6Leggings(), result, low, found, 71).get(0);
+						found = itemCheck(item, a.t5Boots(), a.t6Boots(), result, low, found, 107).get(0);
+						found = itemCheck(item, t.t5Range(), t.t6Range(), result, low, found, 128).get(0);
+						low = itemCheck(item, t.t5Pick(), t.t6Pick(), result, low, found, 520).get(1);
+						low = itemCheck(item, t.t5Axe(), t.t6Axe(), result, low, found, 520).get(1);
+						low = shovelCheck(item, t.t5Spade(), t.t6Spade(), result, low, found).get(1);
+						low = itemCheck(item, t.t5Hoe(), t.t6Hoe(), result, low, found, 789).get(1);
+						low = itemCheck(item, t.t5Sword(), t.t6Sword(), result, low, found, 789).get(1);
+						low = itemCheck(item, a.t5Helmet(), a.t6Helmet(), result, low, found, 73).get(1);
+						low = itemCheck(item, a.t5Chestplate(), a.t6Chestplate(), result, low, found, 66).get(1);
+						low = itemCheck(item, a.t5Leggings(), a.t6Leggings(), result, low, found, 71).get(1);
+						low = itemCheck(item, a.t5Boots(), a.t6Boots(), result, low, found, 107).get(1);
+						low = itemCheck(item, t.t5Range(), t.t6Range(), result, low, found, 128).get(1);
 					}
-				if (new Tools().t6s().contains(result)) {
+				if (t.t6s().contains(result)) {
 					if (low && s == 0)
 						found = true;
 					if (!low && s != 0)
 						found = true;
 				}
-				if (new Armor().t6s().contains(result)) {
+				if (a.t6s().contains(result)) {
 					if (low && c == 1)
 						found = true;
 					if (!low && c != 1)
@@ -1301,173 +439,51 @@ public class ToolArmorRecipeEvents implements Listener {
 	public void restrictT7ToolArmorRecipe(PrepareItemCraftEvent e) {
 		if (e.getRecipe() != null) {
 			ItemStack result = e.getRecipe().getResult();
-			if (new Tools().t7s().contains(result) || new Armor().t7s().contains(result)) {
-				boolean found = false;
-				boolean low = false;
-				Damageable dam = null;
-				int d = 0;
-				int c = 0;
-				int s = 0;
-				ItemMeta meta = result.getItemMeta();
-				Damageable mDam = (Damageable) meta;
+			boolean found = false;
+			boolean low = false;
+			int c = 0;
+			int s = 0;
+
+			if (t.t7s().contains(result) || a.t7s().contains(result)) {
 
 				for (ItemStack item: e.getInventory().getMatrix())
 					if (item != null) {
 						Material type = item.getType();
-						if (type.equals(Material.CRYING_OBSIDIAN)) {
-							if (!Main.equals(item, new Resources().t7()))
+						if (type.equals(r.t7().getType())) {
+							if (!Main.equals(item, r.t7()))
 								found = true;
 							c++;
 						}
 						if (type.equals(Material.BLAZE_ROD))
 							s++;
-						if (Main.equals(item, new Tools().t6Pick()) || Main.equals(item, new Tools().t6Axe())) {
-							low = true;
-							dam = (Damageable) item.getItemMeta();
-							d = dam.getDamage();
-							if (d != 0)
-								found = true;
-						}
-						if (Main.equals(item, new Tools().t7Pick()) || Main.equals(item, new Tools().t7Axe())) {
-							dam = (Damageable) item.getItemMeta();
-							d = dam.getDamage();
-							if (d == 0)
-								found = true;
-							if (d > 677) {
-								d -= 677;
-								mDam.setDamage(d);
-								result.setItemMeta(meta);
-							}
-						}
-						if (Main.equals(item, new Tools().t6Spade())) {
-							low = true;
-							dam = (Damageable) item.getItemMeta();
-							d = dam.getDamage();
-							if (d != 0)
-								found = true;
-						}
-						if (Main.equals(item, new Tools().t7Spade())) {
-							dam = (Damageable) item.getItemMeta();
-							d = dam.getDamage();
-							if (d == 0)
-								found = true;
-						}
-						if (Main.equals(item, new Tools().t6Hoe()) || Main.equals(item, new Tools().t6Sword())) {
-							low = true;
-							dam = (Damageable) item.getItemMeta();
-							d = dam.getDamage();
-							if (d != 0)
-								found = true;
-						}
-						if (Main.equals(item, new Tools().t7Hoe()) || Main.equals(item, new Tools().t7Sword())) {
-							dam = (Damageable) item.getItemMeta();
-							d = dam.getDamage();
-							if (d == 0)
-								found = true;
-							if (d > 1016) {
-								d -= 1016;
-								mDam.setDamage(d);
-								result.setItemMeta(meta);
-							}
-						}
-						if (Main.equals(item, new Armor().t6Helmet())) {
-							low = true;
-							dam = (Damageable) item.getItemMeta();
-							d = dam.getDamage();
-							if (d != 0)
-								found = true;
-						}
-						if (Main.equals(item, new Armor().t7Helmet())) {
-							dam = (Damageable) item.getItemMeta();
-							d = dam.getDamage();
-							if (d == 0)
-								found = true;
-							if (d > 73) {
-								d -= 73;
-								mDam.setDamage(d);
-								result.setItemMeta(meta);
-							}
-						}
-						if (Main.equals(item, new Armor().t6Chestplate())) {
-							low = true;
-							dam = (Damageable) item.getItemMeta();
-							d = dam.getDamage();
-							if (d != 0)
-								found = true;
-						}
-						if (Main.equals(item, new Armor().t7Chestplate())) {
-							dam = (Damageable) item.getItemMeta();
-							d = dam.getDamage();
-							if (d == 0)
-								found = true;
-							if (d > 66) {
-								d -= 66;
-								mDam.setDamage(d);
-								result.setItemMeta(meta);
-							}
-						}
-						if (Main.equals(item, new Armor().t6Leggings())) {
-							low = true;
-							dam = (Damageable) item.getItemMeta();
-							d = dam.getDamage();
-							if (d != 0)
-								found = true;
-						}
-						if (Main.equals(item, new Armor().t7Leggings())) {
-							dam = (Damageable) item.getItemMeta();
-							d = dam.getDamage();
-							if (d == 0)
-								found = true;
-							if (d > 71) {
-								d -= 71;
-								mDam.setDamage(d);
-								result.setItemMeta(meta);
-							}
-						}
-						if (Main.equals(item, new Armor().t6Boots())) {
-							low = true;
-							dam = (Damageable) item.getItemMeta();
-							d = dam.getDamage();
-							if (d != 0)
-								found = true;
-						}
-						if (Main.equals(item, new Armor().t7Boots())) {
-							dam = (Damageable) item.getItemMeta();
-							d = dam.getDamage();
-							if (d == 0)
-								found = true;
-							if (d > 107) {
-								d -= 107;
-								mDam.setDamage(d);
-								result.setItemMeta(meta);
-							}
-						}
-						if (Main.equals(item, new Tools().t6Range())) {
-							low = true;
-							dam = (Damageable) item.getItemMeta();
-							d = dam.getDamage();
-							if (d != 0)
-								found = true;
-						}
-						if (Main.equals(item, new Tools().t7Range())) {
-							dam = (Damageable) item.getItemMeta();
-							d = dam.getDamage();
-							if (d == 0)
-								found = true;
-							if (d > 109) {
-								d -= 109;
-								mDam.setDamage(d);
-								result.setItemMeta(meta);
-							}
-						}
+						found = itemCheck(item, t.t6Pick(), t.t7Pick(), result, low, found, 677).get(0);
+						found = itemCheck(item, t.t6Axe(), t.t7Axe(), result, low, found, 677).get(0);
+						found = shovelCheck(item, t.t6Spade(), t.t7Spade(), result, low, found).get(0);
+						found = itemCheck(item, t.t6Hoe(), t.t7Hoe(), result, low, found, 1016).get(0);
+						found = itemCheck(item, t.t6Sword(), t.t7Sword(), result, low, found, 1016).get(0);
+						found = itemCheck(item, a.t6Helmet(), a.t7Helmet(), result, low, found, 73).get(0);
+						found = itemCheck(item, a.t6Chestplate(), a.t7Chestplate(), result, low, found, 66).get(0);
+						found = itemCheck(item, a.t6Leggings(), a.t7Leggings(), result, low, found, 71).get(0);
+						found = itemCheck(item, a.t6Boots(), a.t7Boots(), result, low, found, 107).get(0);
+						found = itemCheck(item, t.t6Range(), t.t7Range(), result, low, found, 109).get(0);
+						low = itemCheck(item, t.t6Pick(), t.t7Pick(), result, low, found, 677).get(1);
+						low = itemCheck(item, t.t6Axe(), t.t7Axe(), result, low, found, 677).get(1);
+						low = shovelCheck(item, t.t6Spade(), t.t7Spade(), result, low, found).get(1);
+						low = itemCheck(item, t.t6Hoe(), t.t7Hoe(), result, low, found, 1016).get(1);
+						low = itemCheck(item, t.t6Sword(), t.t7Sword(), result, low, found, 1016).get(1);
+						low = itemCheck(item, a.t6Helmet(), a.t7Helmet(), result, low, found, 73).get(1);
+						low = itemCheck(item, a.t6Chestplate(), a.t7Chestplate(), result, low, found, 66).get(1);
+						low = itemCheck(item, a.t6Leggings(), a.t7Leggings(), result, low, found, 71).get(1);
+						low = itemCheck(item, a.t6Boots(), a.t7Boots(), result, low, found, 107).get(1);
+						low = itemCheck(item, t.t6Range(), t.t7Range(), result, low, found, 109).get(1);
 					}
-				if (new Tools().t7s().contains(result)) {
+				if (t.t7s().contains(result)) {
 					if (low && s == 0)
 						found = true;
 					if (!low && s != 0)
 						found = true;
 				}
-				if (new Armor().t7s().contains(result)) {
+				if (a.t7s().contains(result)) {
 					if (low && c == 1)
 						found = true;
 					if (!low && c != 1)
@@ -1484,191 +500,54 @@ public class ToolArmorRecipeEvents implements Listener {
 	public void restrictT8ToolArmorRecipe(PrepareItemCraftEvent e) {
 		if (e.getRecipe() != null) {
 			ItemStack result = e.getRecipe().getResult();
-			if (new Tools().t8s().contains(result) || new Armor().t8s().contains(result)) {
-				boolean found = false;
-				boolean low = false;
-				Damageable dam = null;
-				int d = 0;
-				int c = 0;
-				int s = 0;
-				ItemMeta meta = result.getItemMeta();
-				Damageable mDam = (Damageable) meta;
+			boolean found = false;
+			boolean low = false;
+			int c = 0;
+			int s = 0;
+
+			if (t.t8s().contains(result) || a.t8s().contains(result)) {
 
 				for (ItemStack item: e.getInventory().getMatrix())
 					if (item != null) {
 						Material type = item.getType();
-						if (type.equals(Material.ANCIENT_DEBRIS)) {
-							if (!Main.equals(item, new Resources().t8()))
+						if (type.equals(r.t8().getType())) {
+							if (!Main.equals(item, r.t8()))
 								found = true;
 							c++;
 						}
 						if (type.equals(Material.BLAZE_ROD))
 							s++;
-						if (Main.equals(item, new Tools().t7Pick()) || Main.equals(item, new Tools().t7Axe())) {
-							low = true;
-							dam = (Damageable) item.getItemMeta();
-							d = dam.getDamage();
-							if (d != 0)
-								found = true;
-						}
-						if (Main.equals(item, new Tools().t8Pick()) || Main.equals(item, new Tools().t8Axe())) {
-							dam = (Damageable) item.getItemMeta();
-							d = dam.getDamage();
-							if (d == 0)
-								found = true;
-							if (d > 677) {
-								d -= 677;
-								mDam.setDamage(d);
-								result.setItemMeta(meta);
-							}
-						}
-						if (Main.equals(item, new Tools().t7Spade())) {
-							low = true;
-							dam = (Damageable) item.getItemMeta();
-							d = dam.getDamage();
-							if (d != 0)
-								found = true;
-						}
-						if (Main.equals(item, new Tools().t8Spade())) {
-							dam = (Damageable) item.getItemMeta();
-							d = dam.getDamage();
-							if (d == 0)
-								found = true;
-						}
-						if (Main.equals(item, new Tools().t7Hoe()) || Main.equals(item, new Tools().t7Sword())) {
-							low = true;
-							dam = (Damageable) item.getItemMeta();
-							d = dam.getDamage();
-							if (d != 0)
-								found = true;
-						}
-						if (Main.equals(item, new Tools().t8Hoe()) || Main.equals(item, new Tools().t8Sword())) {
-							dam = (Damageable) item.getItemMeta();
-							d = dam.getDamage();
-							if (d == 0)
-								found = true;
-							if (d > 1016) {
-								d -= 1016;
-								mDam.setDamage(d);
-								result.setItemMeta(meta);
-							}
-						}
-						if (Main.equals(item, new Armor().t7Helmet())) {
-							low = true;
-							dam = (Damageable) item.getItemMeta();
-							d = dam.getDamage();
-							if (d != 0)
-								found = true;
-						}
-						if (Main.equals(item, new Armor().t8Helmet())) {
-							dam = (Damageable) item.getItemMeta();
-							d = dam.getDamage();
-							if (d == 0)
-								found = true;
-							if (d > 81) {
-								d -= 81;
-								mDam.setDamage(d);
-								result.setItemMeta(meta);
-							}
-						}
-						if (Main.equals(item, new Armor().t7Chestplate())) {
-							low = true;
-							dam = (Damageable) item.getItemMeta();
-							d = dam.getDamage();
-							if (d != 0)
-								found = true;
-						}
-						if (Main.equals(item, new Armor().t8Chestplate())) {
-							dam = (Damageable) item.getItemMeta();
-							d = dam.getDamage();
-							if (d == 0)
-								found = true;
-							if (d > 74) {
-								d -= 74;
-								mDam.setDamage(d);
-								result.setItemMeta(meta);
-							}
-						}
-						if (Main.equals(item, new Armor().t7Leggings())) {
-							low = true;
-							dam = (Damageable) item.getItemMeta();
-							d = dam.getDamage();
-							if (d != 0)
-								found = true;
-						}
-						if (Main.equals(item, new Armor().t8Leggings())) {
-							dam = (Damageable) item.getItemMeta();
-							d = dam.getDamage();
-							if (d == 0)
-								found = true;
-							if (d > 79) {
-								d -= 79;
-								mDam.setDamage(d);
-								result.setItemMeta(meta);
-							}
-						}
-						if (Main.equals(item, new Armor().t7Boots())) {
-							low = true;
-							dam = (Damageable) item.getItemMeta();
-							d = dam.getDamage();
-							if (d != 0)
-								found = true;
-						}
-						if (Main.equals(item, new Armor().t8Boots())) {
-							dam = (Damageable) item.getItemMeta();
-							d = dam.getDamage();
-							if (d == 0)
-								found = true;
-							if (d > 120) {
-								d -= 120;
-								mDam.setDamage(d);
-								result.setItemMeta(meta);
-							}
-						}
-						if (Main.equals(item, new Tools().t7Range())) {
-							low = true;
-							dam = (Damageable) item.getItemMeta();
-							d = dam.getDamage();
-							if (d != 0)
-								found = true;
-						}
-						if (Main.equals(item, new Tools().t8Range())) {
-							dam = (Damageable) item.getItemMeta();
-							d = dam.getDamage();
-							if (d == 0)
-								found = true;
-							if (d > 109) {
-								d -= 109;
-								mDam.setDamage(d);
-								result.setItemMeta(meta);
-							}
-						}
-						if (Main.equals(item, new Tools().t5Shield())) {
-							low = true;
-							dam = (Damageable) item.getItemMeta();
-							d = dam.getDamage();
-							if (d != 0)
-								found = true;
-						}
-						if (Main.equals(item, new Tools().t8Shield())) {
-							dam = (Damageable) item.getItemMeta();
-							d = dam.getDamage();
-							if (d == 0)
-								found = true;
-							if (d > 56) {
-								d -= 56;
-								mDam.setDamage(d);
-								result.setItemMeta(meta);
-							}
-						}
+						found = itemCheck(item, t.t7Pick(), t.t8Pick(), result, low, found, 677).get(0);
+						found = itemCheck(item, t.t7Axe(), t.t8Axe(), result, low, found, 677).get(0);
+						found = shovelCheck(item, t.t7Spade(), t.t8Spade(), result, low, found).get(0);
+						found = itemCheck(item, t.t7Hoe(), t.t8Hoe(), result, low, found, 1016).get(0);
+						found = itemCheck(item, t.t7Sword(), t.t8Sword(), result, low, found, 1016).get(0);
+						found = itemCheck(item, a.t7Helmet(), a.t8Helmet(), result, low, found, 81).get(0);
+						found = itemCheck(item, a.t7Chestplate(), a.t8Chestplate(), result, low, found, 74).get(0);
+						found = itemCheck(item, a.t7Leggings(), a.t8Leggings(), result, low, found, 79).get(0);
+						found = itemCheck(item, a.t7Boots(), a.t8Boots(), result, low, found, 120).get(0);
+						found = itemCheck(item, t.t7Range(), t.t8Range(), result, low, found, 109).get(0);
+						found = itemCheck(item, t.t5Shield(), t.t8Shield(), result, low, found, 56).get(0);
+						low = itemCheck(item, t.t7Pick(), t.t8Pick(), result, low, found, 677).get(1);
+						low = itemCheck(item, t.t7Axe(), t.t8Axe(), result, low, found, 677).get(1);
+						low = shovelCheck(item, t.t7Spade(), t.t8Spade(), result, low, found).get(1);
+						low = itemCheck(item, t.t7Hoe(), t.t8Hoe(), result, low, found, 1016).get(1);
+						low = itemCheck(item, t.t7Sword(), t.t8Sword(), result, low, found, 1016).get(1);
+						low = itemCheck(item, a.t7Helmet(), a.t8Helmet(), result, low, found, 81).get(1);
+						low = itemCheck(item, a.t7Chestplate(), a.t8Chestplate(), result, low, found, 74).get(1);
+						low = itemCheck(item, a.t7Leggings(), a.t8Leggings(), result, low, found, 79).get(1);
+						low = itemCheck(item, a.t7Boots(), a.t8Boots(), result, low, found, 120).get(1);
+						low = itemCheck(item, t.t7Range(), t.t8Range(), result, low, found, 109).get(1);
+						low = itemCheck(item, t.t5Shield(), t.t8Shield(), result, low, found, 56).get(1);
 					}
-				if (new Tools().t8s().contains(result)) {
+				if (t.t8s().contains(result)) {
 					if (low && s == 0)
-						found = true;
+						if (!result.getType().equals(Material.SHIELD))
+							found = true;
 					if (!low && s != 0)
 						found = true;
 				}
-				if (new Armor().t8s().contains(result)) {
+				if (a.t8s().contains(result)) {
 					if (low && c == 1)
 						found = true;
 					if (!low && c != 1)
@@ -1685,194 +564,53 @@ public class ToolArmorRecipeEvents implements Listener {
 	public void restrictT9ToolArmorRecipe(PrepareItemCraftEvent e) {
 		if (e.getRecipe() != null) {
 			ItemStack result = e.getRecipe().getResult();
-			if (new Tools().t9s().contains(result) || new Armor().t9s().contains(result)) {
-				boolean found = false;
-				boolean low = false;
-				Damageable dam = null;
-				int d = 0;
-				int c = 0;
-				int s = 0;
-				ItemMeta meta = result.getItemMeta();
-				Damageable mDam = (Damageable) meta;
+			boolean found = false;
+			boolean low = false;
+			int c = 0;
+			int s = 0;
+
+			if (t.t9s().contains(result) || a.t9s().contains(result)) {
 
 				for (ItemStack item: e.getInventory().getMatrix())
 					if (item != null) {
 						Material type = item.getType();
-						if (type.equals(Material.BEDROCK)) {
-							if (!Main.equals(item, new Resources().t9()))
+						if (type.equals(r.t9().getType())) {
+							if (!Main.equals(item, r.t9()))
 								found = true;
 							c++;
 						}
 						if (type.equals(Material.END_ROD))
 							s++;
-						if (Main.equals(item, new Tools().t8Pick()) || Main.equals(item, new Tools().t8Axe())) {
-							low = true;
-							dam = (Damageable) item.getItemMeta();
-							d = dam.getDamage();
-							if (d != 0)
-								found = true;
-						}
-						if (Main.equals(item, new Tools().t9Pick()) || Main.equals(item, new Tools().t9Axe())) {
-							dam = (Damageable) item.getItemMeta();
-							d = dam.getDamage();
-							if (d == 0)
-								found = true;
-							if (d > 677) {
-								d -= 677;
-								mDam.setDamage(d);
-								result.setItemMeta(meta);
-							}
-						}
-						if (Main.equals(item, new Tools().t8Spade())) {
-							low = true;
-							dam = (Damageable) item.getItemMeta();
-							d = dam.getDamage();
-							if (d != 0)
-								found = true;
-						}
-						if (Main.equals(item, new Tools().t9Spade())) {
-							dam = (Damageable) item.getItemMeta();
-							d = dam.getDamage();
-							if (d == 0)
-								found = true;
-						}
-						if (Main.equals(item, new Tools().t8Hoe()) || Main.equals(item, new Tools().t8Sword())) {
-							low = true;
-							dam = (Damageable) item.getItemMeta();
-							d = dam.getDamage();
-							if (d != 0)
-								found = true;
-						}
-						if (Main.equals(item, new Tools().t9Hoe()) || Main.equals(item, new Tools().t9Sword())) {
-							dam = (Damageable) item.getItemMeta();
-							d = dam.getDamage();
-							if (d == 0)
-								found = true;
-							if (d > 1016) {
-								d -= 1016;
-								mDam.setDamage(d);
-								result.setItemMeta(meta);
-							}
-						}
-						if (Main.equals(item, new Armor().t8Helmet())) {
-							low = true;
-							dam = (Damageable) item.getItemMeta();
-							d = dam.getDamage();
-							if (d != 0)
-								found = true;
-						}
-						if (Main.equals(item, new Armor().t9Helmet())) {
-							dam = (Damageable) item.getItemMeta();
-							d = dam.getDamage();
-							if (d == 0)
-								found = true;
-							if (d > 81) {
-								d -= 81;
-								mDam.setDamage(d);
-								result.setItemMeta(meta);
-							}
-						}
-						if (Main.equals(item, new Armor().t8Chestplate())) {
-							low = true;
-							dam = (Damageable) item.getItemMeta();
-							d = dam.getDamage();
-							if (d != 0)
-								found = true;
-						}
-						if (Main.equals(item, new Armor().t9Chestplate())) {
-							dam = (Damageable) item.getItemMeta();
-							d = dam.getDamage();
-							if (d == 0)
-								found = true;
-							if (d > 74) {
-								d -= 74;
-								mDam.setDamage(d);
-								result.setItemMeta(meta);
-							}
-						}
-						if (Main.equals(item, new Armor().t8Leggings())) {
-							low = true;
-							dam = (Damageable) item.getItemMeta();
-							d = dam.getDamage();
-							if (d != 0)
-								found = true;
-						}
-						if (Main.equals(item, new Armor().t9Leggings())) {
-							dam = (Damageable) item.getItemMeta();
-							d = dam.getDamage();
-							if (d == 0)
-								found = true;
-							if (d > 79) {
-								d -= 79;
-								mDam.setDamage(d);
-								result.setItemMeta(meta);
-							}
-						}
-						if (Main.equals(item, new Armor().t8Boots())) {
-							low = true;
-							dam = (Damageable) item.getItemMeta();
-							d = dam.getDamage();
-							if (d != 0)
-								found = true;
-						}
-						if (Main.equals(item, new Armor().t9Boots())) {
-							dam = (Damageable) item.getItemMeta();
-							d = dam.getDamage();
-							if (d == 0)
-								found = true;
-							if (d > 120) {
-								d -= 120;
-								mDam.setDamage(d);
-								result.setItemMeta(meta);
-							}
-						}
-						if (Main.equals(item, new Tools().t8Range())) {
-							low = true;
-							dam = (Damageable) item.getItemMeta();
-							d = dam.getDamage();
-							if (d != 0)
-								found = true;
-						}
-						if (Main.equals(item, new Tools().t9Range())) {
-							dam = (Damageable) item.getItemMeta();
-							d = dam.getDamage();
-							if (d == 0)
-								found = true;
-							if (d > 83) {
-								d -= 83;
-								mDam.setDamage(d);
-								result.setItemMeta(meta);
-							}
-						}
-						if (type.equals(Material.ELYTRA)) {
-							if (!item.getItemMeta().hasLore()) {
-								low = true;
-								dam = (Damageable) item.getItemMeta();
-								d = dam.getDamage();
-								if (d != 0)
-									found = true;
-							}
-							else if (Main.equals(item, new Armor().t9Elytra())) {
-								dam = (Damageable) item.getItemMeta();
-								d = dam.getDamage();
-								if (d == 0)
-									found = true;
-								if (d > 108) {
-									d -= 108;
-									mDam.setDamage(d);
-									result.setItemMeta(meta);
-								}
-							}
-							else found = true;
-						}
+						found = itemCheck(item, t.t8Pick(), t.t9Pick(), result, low, found, 677).get(0);
+						found = itemCheck(item, t.t8Axe(), t.t9Axe(), result, low, found, 677).get(0);
+						found = shovelCheck(item, t.t8Spade(), t.t9Spade(), result, low, found).get(0);
+						found = itemCheck(item, t.t8Hoe(), t.t9Hoe(), result, low, found, 1016).get(0);
+						found = itemCheck(item, t.t8Sword(), t.t9Sword(), result, low, found, 1016).get(0);
+						found = itemCheck(item, a.t8Helmet(), a.t9Helmet(), result, low, found, 81).get(0);
+						found = itemCheck(item, a.t8Chestplate(), a.t9Chestplate(), result, low, found, 74).get(0);
+						found = itemCheck(item, a.t8Leggings(), a.t9Leggings(), result, low, found, 79).get(0);
+						found = itemCheck(item, a.t8Boots(), a.t9Boots(), result, low, found, 120).get(0);
+						found = itemCheck(item, t.t8Range(), t.t9Range(), result, low, found, 83).get(0);
+						found = itemCheck(item, new ItemStack(Material.ELYTRA), a.t9Elytra(), result, low, found, 108).get(0);
+						low = itemCheck(item, t.t8Pick(), t.t9Pick(), result, low, found, 677).get(1);
+						low = itemCheck(item, t.t8Axe(), t.t9Axe(), result, low, found, 677).get(1);
+						low = shovelCheck(item, t.t8Spade(), t.t9Spade(), result, low, found).get(1);
+						low = itemCheck(item, t.t8Hoe(), t.t9Hoe(), result, low, found, 1016).get(1);
+						low = itemCheck(item, t.t8Sword(), t.t9Sword(), result, low, found, 1016).get(1);
+						low = itemCheck(item, a.t8Helmet(), a.t9Helmet(), result, low, found, 81).get(1);
+						low = itemCheck(item, a.t8Chestplate(), a.t9Chestplate(), result, low, found, 74).get(1);
+						low = itemCheck(item, a.t8Leggings(), a.t9Leggings(), result, low, found, 79).get(1);
+						low = itemCheck(item, a.t8Boots(), a.t9Boots(), result, low, found, 120).get(1);
+						low = itemCheck(item, t.t8Range(), t.t9Range(), result, low, found, 83).get(1);
+						low = itemCheck(item, new ItemStack(Material.ELYTRA), a.t9Elytra(), result, low, found, 108).get(1);
 					}
-				if (new Tools().t9s().contains(result)) {
+				if (t.t9s().contains(result)) {
 					if (low && s == 0)
 						found = true;
 					if (!low && s != 0)
 						found = true;
 				}
-				if (new Armor().t9s().contains(result)) {
+				if (a.t9s().contains(result)) {
 					if (low && c == 1)
 						found = true;
 					if (!low && c != 1)
@@ -1889,14 +627,14 @@ public class ToolArmorRecipeEvents implements Listener {
 	public void restrictT10ToolArmorRecipe(PrepareItemCraftEvent e) {
 		if (e.getRecipe() != null) {
 			ItemStack result = e.getRecipe().getResult();
-			if (new Tools().t10s().contains(result) || new Armor().t10s().contains(result)) {
-				boolean found = false;
+			boolean found = false;
 
+			if (t.t10s().contains(result) || a.t10s().contains(result)) {
 				for (ItemStack item: e.getInventory().getMatrix())
 					if (item != null) {
 						Material type = item.getType();
-						if (type.equals(Material.END_PORTAL_FRAME))
-							if (!Main.equals(item, new Resources().t10()))
+						if (type.equals(r.t10().getType()))
+							if (!Main.equals(item, r.t10()))
 								found = true;
 						if (type.equals(Material.NETHERITE_PICKAXE) || type.equals(Material.NETHERITE_AXE) ||
 								type.equals(Material.NETHERITE_SHOVEL) || type.equals(Material.NETHERITE_HOE) ||
@@ -1904,11 +642,11 @@ public class ToolArmorRecipeEvents implements Listener {
 								type.equals(Material.NETHERITE_CHESTPLATE) || type.equals(Material.NETHERITE_LEGGINGS) ||
 								type.equals(Material.NETHERITE_BOOTS) || type.equals(Material.ELYTRA) ||
 								type.equals(Material.TRIDENT) || type.equals(Material.SHIELD))
-							if (!(Main.equals(item, new Tools().t9Pick()) || Main.equals(item, new Tools().t9Axe()) || Main.equals(item, new Tools().t9Spade()) ||
-									Main.equals(item, new Tools().t9Hoe()) || Main.equals(item, new Tools().t9Sword()) || Main.equals(item, new Armor().t9Helmet()) ||
-									Main.equals(item, new Armor().t9Chestplate()) || Main.equals(item, new Armor().t9Leggings()) ||
-									Main.equals(item, new Armor().t9Boots()) || Main.equals(item, new Tools().t9Range()) || Main.equals(item, new Armor().t9Elytra()) ||
-									Main.equals(item, new Tools().t8Shield())))
+							if (!(Main.equals(item, t.t9Pick()) || Main.equals(item, t.t9Axe()) || Main.equals(item, t.t9Spade()) ||
+									Main.equals(item, t.t9Hoe()) || Main.equals(item, t.t9Sword()) || Main.equals(item, a.t9Helmet()) ||
+									Main.equals(item, a.t9Chestplate()) || Main.equals(item, a.t9Leggings()) ||
+									Main.equals(item, a.t9Boots()) || Main.equals(item, t.t9Range()) || Main.equals(item, a.t9Elytra()) ||
+									Main.equals(item, t.t8Shield())))
 								found = true;
 					}
 				if (found)
@@ -1921,14 +659,14 @@ public class ToolArmorRecipeEvents implements Listener {
 	public void restrictNotToolArmorRecipe(PrepareItemCraftEvent e) {
 		if (e.getRecipe() != null) {
 			ItemStack result = e.getRecipe().getResult();
-			if (new Armor().nots().contains(result)) {
-				boolean found = false;
+			boolean found = false;
 
+			if (a.nots().contains(result)) {
 				for (ItemStack item: e.getInventory().getMatrix())
 					if (item != null) {
 						Material type = item.getType();
-						if (type.equals(Material.BARRIER))
-							if (!Main.equals(item, new Resources().not()))
+						if (type.equals(r.not().getType()))
+							if (!Main.equals(item, r.not()))
 								found = true;
 					}
 				if (found)
@@ -1941,22 +679,130 @@ public class ToolArmorRecipeEvents implements Listener {
 	public void restrictAntiToolArmorRecipe(PrepareItemCraftEvent e) {
 		if (e.getRecipe() != null) {
 			ItemStack result = e.getRecipe().getResult();
-			if (new Armor().antis().contains(result)) {
-				boolean found = false;
+			boolean found = false;
 
+			if (a.antis().contains(result)) {
 				for (ItemStack item: e.getInventory().getMatrix())
 					if (item != null) {
 						Material type = item.getType();
-						if (type.equals(Material.COMMAND_BLOCK))
-							if (!Main.equals(item, new Resources().a()))
+						if (type.equals(r.a().getType()))
+							if (!Main.equals(item, r.a()))
 								found = true;
-						if (type.equals(Material.GOLDEN_HELMET))
-							if (!(Main.equals(item, new Armor().aHelmet())))
+						if (type.equals(a.notHelmet().getType()))
+							if (!(Main.equals(item, a.notHelmet())))
 								found = true;
 					}
 				if (found)
 					e.getInventory().setResult(null);
 			}
 		}
+	}
+	
+	private ArrayList<Boolean> itemCheck(ItemStack item, ItemStack lower, ItemStack higher, ItemStack result, boolean low, boolean found, int amount) {
+		ItemMeta meta = result.getItemMeta();
+		Damageable dam = null;
+		Damageable mDam = (Damageable) meta;
+		int d = 0;
+		ArrayList<Boolean> set = new ArrayList<Boolean>();
+		
+		if (Main.equals(item, lower)) {
+			low = true;
+			dam = (Damageable) item.getItemMeta();
+			d = dam.getDamage();
+			if (d != 0)
+				found = true;
+		}
+		if (Main.equals(item, higher)) {
+			dam = (Damageable) item.getItemMeta();
+			d = dam.getDamage();
+			if (d == 0)
+				found = true;
+			if (d > amount) {
+				d -= amount;
+				mDam.setDamage(d);
+				result.setItemMeta(meta);
+			}
+		}
+		set.add(found);
+		set.add(low);
+		return set;
+	}
+	
+	private ArrayList<Boolean> shovelCheck(ItemStack item, ItemStack lower, ItemStack higher, ItemStack result, boolean low, boolean found) {
+		Damageable dam = null;
+		int d = 0;
+		ArrayList<Boolean> set = new ArrayList<Boolean>();
+		if (Main.equals(item, lower)) {
+			low = true;
+			dam = (Damageable) item.getItemMeta();
+			d = dam.getDamage();
+			if (d != 0)
+				found = true;
+		}
+		if (Main.equals(item, higher)) {
+			dam = (Damageable) item.getItemMeta();
+			d = dam.getDamage();
+			if (d == 0)
+				found = true;
+		}
+		set.add(found);
+		set.add(low);
+		return set;
+	}
+	
+	private boolean vanillaCheck(Collection<Material> items, ItemStack item, ItemStack result, boolean two, boolean found, int amount) {
+		Material type = item.getType();
+		ItemMeta meta = result.getItemMeta();
+		Damageable dam = null;
+		Damageable mDam = (Damageable) meta;
+		int d = 0;
+
+		if (items.contains(type)) {
+			if (two)
+				found = true;
+			if (item.getItemMeta().hasLore())
+				found = true;
+			else {
+				dam = (Damageable) item.getItemMeta();
+				d = dam.getDamage();
+				if (d == 0)
+					found = true;
+				if (d > amount) {
+					d -= amount;
+					mDam.setDamage(d);
+					result.setItemMeta(meta);
+					two = true;
+				}
+			}
+		}
+		return found;
+	}
+	
+	private boolean standardCheck(Material check, ItemStack item, ItemStack result, boolean two, boolean found, int amount) {
+		Material type = item.getType();
+		ItemMeta meta = result.getItemMeta();
+		Damageable dam = null;
+		Damageable mDam = (Damageable) meta;
+		int d = 0;
+
+		if (type.equals(check)) {
+			if (two)
+				found = true;
+			if (item.getItemMeta().hasLore())
+				found = true;
+			else {
+				dam = (Damageable) item.getItemMeta();
+				d = dam.getDamage();
+				if (d == 0)
+					found = true;
+				if (d > amount) {
+					d -= amount;
+					mDam.setDamage(d);
+					result.setItemMeta(meta);
+					two = true;
+				}
+			}
+		}
+		return found;
 	}
 }

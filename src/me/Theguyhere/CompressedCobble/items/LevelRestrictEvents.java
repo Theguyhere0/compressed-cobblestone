@@ -25,6 +25,16 @@ import me.Theguyhere.CompressedCobble.Main;
 import me.Theguyhere.CompressedCobble.enchants.CustomEnchants;
 
 public class LevelRestrictEvents implements Listener {
+	private Main plugin;
+	private Tools t;
+	private Armor a;
+	
+	public LevelRestrictEvents(Main plugin, Tools t, Armor a) {
+		this.plugin = plugin;
+		this.t = t;
+		this.a = a;
+	}
+	
 	Material[] chainmails = {Material.CHAINMAIL_HELMET, Material.CHAINMAIL_CHESTPLATE, Material.CHAINMAIL_LEGGINGS,
 			Material.CHAINMAIL_BOOTS};
 	Material[] irons = {Material.IRON_HELMET, Material.IRON_CHESTPLATE, Material.IRON_LEGGINGS, Material.IRON_BOOTS,
@@ -44,8 +54,11 @@ public class LevelRestrictEvents implements Listener {
 
 	@EventHandler()
 	public void checkAttack(EntityDamageByEntityEvent e) {
+		if (!plugin.getConfig().getBoolean("levelRestrict"))
+			return;
 		if (!(e.getDamager() instanceof Player))
 			return;
+		
 		Player player = (Player) e.getDamager();
 		int lvl = player.getLevel();
 		int req = 0;
@@ -53,47 +66,13 @@ public class LevelRestrictEvents implements Listener {
 		
 		if (item == null || item.getType() == Material.AIR)
 			return;
-		Material type = item.getType();
-		
 		if (!item.getItemMeta().hasLore()) {
-			if (iron.contains(type))
-				req = 10;
-			if (diamond.contains(type))
-				req = 20;
-			if (netherite.contains(type))
-				req = 30;
+			if (!plugin.getConfig().getBoolean("vanillaLevelRestrict"))
+				return;
+			req = checkVanillaLevel(item.getType());
 		}
 		else {
-			for (ItemStack j : new Tools().t1s())
-				if (Main.equals(item, j))
-					req = 5;
-			for (ItemStack j : new Tools().t2s())
-				if (Main.equals(item, j))
-					req = 10;
-			for (ItemStack j : new Tools().t3s())
-				if (Main.equals(item, j))
-					req = 15;
-			for (ItemStack j : new Tools().t4s())
-				if (Main.equals(item, j))
-					req = 20;
-			for (ItemStack j : new Tools().t5s())
-				if (Main.equals(item, j))
-					req = 25;
-			for (ItemStack j : new Tools().t6s())
-				if (Main.equals(item, j))
-					req = 30;
-			for (ItemStack j : new Tools().t7s())
-				if (Main.equals(item, j))
-					req = 35;
-			for (ItemStack j : new Tools().t8s())
-				if (Main.equals(item, j))
-					req = 40;
-			for (ItemStack j : new Tools().t9s())
-				if (Main.equals(item, j))
-					req = 45;
-			for (ItemStack j : new Tools().t10s())
-				if (Main.equals(item, j))
-					req = 50;
+			req = checkToolLevel(item);
 		}
 		if (lvl < req) {
 			e.setCancelled(true);
@@ -104,55 +83,25 @@ public class LevelRestrictEvents implements Listener {
 	
 	@EventHandler()
 	public void checkInteract(PlayerInteractEvent e) {
+		if (!plugin.getConfig().getBoolean("levelRestrict"))
+			return;
+
 		Player player = (Player) e.getPlayer();
 		int lvl = player.getLevel();
 		int req = 0;
 		ItemStack item = e.getItem();
+		
 		if (item == null || item.getType() == Material.AIR)
 			return;
-		Material type = item.getType();
-		
 		if (e.getAction() != Action.LEFT_CLICK_BLOCK)
 			return;
 		if (!item.getItemMeta().hasLore()) {
-			if (iron.contains(type))
-				req = 10;
-			if (diamond.contains(type))
-				req = 20;
-			if (netherite.contains(type))
-				req = 30;
+			if (!plugin.getConfig().getBoolean("vanillaLevelRestrict"))
+				return;
+			req = checkVanillaLevel(item.getType());
 		}
 		else {
-			for (ItemStack j : new Tools().t1s())
-				if (Main.equals(item, j))
-					req = 5;
-			for (ItemStack j : new Tools().t2s())
-				if (Main.equals(item, j))
-					req = 10;
-			for (ItemStack j : new Tools().t3s())
-				if (Main.equals(item, j))
-					req = 15;
-			for (ItemStack j : new Tools().t4s())
-				if (Main.equals(item, j))
-					req = 20;
-			for (ItemStack j : new Tools().t5s())
-				if (Main.equals(item, j))
-					req = 25;
-			for (ItemStack j : new Tools().t6s())
-				if (Main.equals(item, j))
-					req = 30;
-			for (ItemStack j : new Tools().t7s())
-				if (Main.equals(item, j))
-					req = 35;
-			for (ItemStack j : new Tools().t8s())
-				if (Main.equals(item, j))
-					req = 40;
-			for (ItemStack j : new Tools().t9s())
-				if (Main.equals(item, j))
-					req = 45;
-			for (ItemStack j : new Tools().t10s())
-				if (Main.equals(item, j))
-					req = 50;
+			req = checkToolLevel(item);
 		}
 		if (lvl < req) {
 			e.setCancelled(true);
@@ -163,6 +112,9 @@ public class LevelRestrictEvents implements Listener {
 	
 	@EventHandler()
 	public void checkRightclick(BlockPlaceEvent e) {
+		if (!plugin.getConfig().getBoolean("levelRestrict"))
+			return;
+		
 		Player player = (Player) e.getPlayer();
 		int lvl = player.getLevel();
 		int req = 0;
@@ -170,47 +122,13 @@ public class LevelRestrictEvents implements Listener {
 		
 		if (item == null || item.getType() == Material.AIR)
 			return;
-		Material type = item.getType();
-
 		if (!item.getItemMeta().hasLore()) {
-			if (iron.contains(type))
-				req = 10;
-			if (diamond.contains(type))
-				req = 20;
-			if (netherite.contains(type))
-				req = 30;
+			if (!plugin.getConfig().getBoolean("vanillaLevelRestrict"))
+				return;
+			req = checkVanillaLevel(item.getType());
 		}
 		else {
-			for (ItemStack j : new Tools().t1s())
-				if (Main.equals(item, j))
-					req = 5;
-			for (ItemStack j : new Tools().t2s())
-				if (Main.equals(item, j))
-					req = 10;
-			for (ItemStack j : new Tools().t3s())
-				if (Main.equals(item, j))
-					req = 15;
-			for (ItemStack j : new Tools().t4s())
-				if (Main.equals(item, j))
-					req = 20;
-			for (ItemStack j : new Tools().t5s())
-				if (Main.equals(item, j))
-					req = 25;
-			for (ItemStack j : new Tools().t6s())
-				if (Main.equals(item, j))
-					req = 30;
-			for (ItemStack j : new Tools().t7s())
-				if (Main.equals(item, j))
-					req = 35;
-			for (ItemStack j : new Tools().t8s())
-				if (Main.equals(item, j))
-					req = 40;
-			for (ItemStack j : new Tools().t9s())
-				if (Main.equals(item, j))
-					req = 45;
-			for (ItemStack j : new Tools().t10s())
-				if (Main.equals(item, j))
-					req = 50;
+			req = checkToolLevel(item);
 		}
 		if (lvl < req) {
 			e.setCancelled(true);
@@ -221,8 +139,11 @@ public class LevelRestrictEvents implements Listener {
 	
 	@EventHandler()
 	public void checkRanged(EntityShootBowEvent e) {
+		if (!plugin.getConfig().getBoolean("levelRestrict"))
+			return;
 		if (!(e.getEntity() instanceof Player))
 			return;
+		
 		Player player = (Player) e.getEntity();
 		int lvl = player.getLevel();
 		int req = 0;
@@ -232,36 +153,7 @@ public class LevelRestrictEvents implements Listener {
 			return;
 		if (item == null || item.getType() == Material.AIR)
 			return;
-		for (ItemStack j : new Tools().t1s())
-			if (Main.equals(item, j))
-				req = 5;
-		for (ItemStack j : new Tools().t2s())
-			if (Main.equals(item, j))
-				req = 10;
-		for (ItemStack j : new Tools().t3s())
-			if (Main.equals(item, j))
-				req = 15;
-		for (ItemStack j : new Tools().t4s())
-			if (Main.equals(item, j))
-				req = 20;
-		for (ItemStack j : new Tools().t5s())
-			if (Main.equals(item, j))
-				req = 25;
-		for (ItemStack j : new Tools().t6s())
-			if (Main.equals(item, j))
-				req = 30;
-		for (ItemStack j : new Tools().t7s())
-			if (Main.equals(item, j))
-				req = 35;
-		for (ItemStack j : new Tools().t8s())
-			if (Main.equals(item, j))
-				req = 40;
-		for (ItemStack j : new Tools().t9s())
-			if (Main.equals(item, j))
-				req = 45;
-		for (ItemStack j : new Tools().t10s())
-			if (Main.equals(item, j))
-				req = 50;
+		req = checkToolLevel(item);
 		if (lvl < req) {
 			e.setCancelled(true);
 			player.sendMessage(ChatColor.RED + "Your level is not high enough to use this!");
@@ -271,6 +163,8 @@ public class LevelRestrictEvents implements Listener {
 	
 	@EventHandler()
 	public void checkArmor(PlayerStatisticIncrementEvent e) {
+		if (!plugin.getConfig().getBoolean("levelRestrict"))
+			return;
 		if (!e.getStatistic().equals(Statistic.TIME_SINCE_REST))
 			return;
 		
@@ -289,224 +183,62 @@ public class LevelRestrictEvents implements Listener {
 		World world = player.getWorld();
 
 		if (!(helmet == null || helmet.getType() == Material.AIR)) {
-			Material type = helmet.getType();
-			
 			if (!helmet.getItemMeta().hasLore()) {
-				if (iron.contains(type))
-					req = 10;
-				if (diamond.contains(type))
-					req = 20;
-				if (netherite.contains(type))
-					req = 30;
+				if (!plugin.getConfig().getBoolean("vanillaLevelRestrict"))
+					return;
+				req = checkVanillaLevel(helmet.getType());
 			}
 			else {
-				for (ItemStack j : new Armor().t1s())
-					if (Main.equals(helmet, j))
-						req = 5;
-				for (ItemStack j : new Armor().t2s())
-					if (Main.equals(helmet, j))
-						req = 10;
-				for (ItemStack j : new Armor().t3s())
-					if (Main.equals(helmet, j))
-						req = 15;
-				for (ItemStack j : new Armor().t4s())
-					if (Main.equals(helmet, j))
-						req = 20;
-				for (ItemStack j : new Armor().t5s())
-					if (Main.equals(helmet, j))
-						req = 25;
-				for (ItemStack j : new Armor().t6s())
-					if (Main.equals(helmet, j))
-						req = 30;
-				for (ItemStack j : new Armor().t7s())
-					if (Main.equals(helmet, j))
-						req = 35;
-				for (ItemStack j : new Armor().t8s())
-					if (Main.equals(helmet, j))
-						req = 40;
-				for (ItemStack j : new Armor().t9s())
-					if (Main.equals(helmet, j))
-						req = 45;
-				for (ItemStack j : new Armor().t10s())
-					if (Main.equals(helmet, j))
-						req = 50;
-				for (ItemStack j : new Armor().nots())
-					if (Main.equals(helmet, j))
-						req = 55;
-				for (ItemStack j : new Armor().antis())
-					if (Main.equals(helmet, j))
-						req = 60;
+				req = checkArmorLevel(helmet);
 			}
 			if (lvl < req) {
-					if (player.getInventory().firstEmpty() == -1) {
-//						inventory is full				
-						world.dropItemNaturally(loc, helmet);
-						player.sendMessage(ChatColor.RED + "Your inventory is full!");
-					}
-					else player.getInventory().addItem(helmet);
-					player.getInventory().setHelmet(null);
+				Main.giveItem(player, world, loc, helmet);
+				player.getInventory().setHelmet(null);
 				player.sendMessage(ChatColor.RED + "Your level is not high enough to use this!");
 			}
 		}
 		if (!(chestplate == null || chestplate.getType() == Material.AIR)) {
-			Material type = chestplate.getType();
-			
 			if (!chestplate.getItemMeta().hasLore()) {
-				if (iron.contains(type))
-					req = 10;
-				if (diamond.contains(type))
-					req = 20;
-				if (netherite.contains(type))
-					req = 30;
+				if (!plugin.getConfig().getBoolean("vanillaLevelRestrict"))
+					return;
+				req = checkVanillaLevel(chestplate.getType());
 			}
 			else {
-				for (ItemStack j : new Armor().t1s())
-					if (Main.equals(chestplate, j))
-						req = 5;
-				for (ItemStack j : new Armor().t2s())
-					if (Main.equals(chestplate, j))
-						req = 10;
-				for (ItemStack j : new Armor().t3s())
-					if (Main.equals(chestplate, j))
-						req = 15;
-				for (ItemStack j : new Armor().t4s())
-					if (Main.equals(chestplate, j))
-						req = 20;
-				for (ItemStack j : new Armor().t5s())
-					if (Main.equals(chestplate, j))
-						req = 25;
-				for (ItemStack j : new Armor().t6s())
-					if (Main.equals(chestplate, j))
-						req = 30;
-				for (ItemStack j : new Armor().t7s())
-					if (Main.equals(chestplate, j))
-						req = 35;
-				for (ItemStack j : new Armor().t8s())
-					if (Main.equals(chestplate, j))
-						req = 40;
-				for (ItemStack j : new Armor().t9s())
-					if (Main.equals(chestplate, j))
-						req = 45;
-				for (ItemStack j : new Armor().t10s())
-					if (Main.equals(chestplate, j))
-						req = 50;
+				req = checkArmorLevel(chestplate);
 			}
 			if (lvl < req) {
-					if (player.getInventory().firstEmpty() == -1) {
-//						inventory is full				
-						world.dropItemNaturally(loc, chestplate);
-						player.sendMessage(ChatColor.RED + "Your inventory is full!");
-					}
-					else player.getInventory().addItem(chestplate);
-					player.getInventory().setChestplate(null);
+				Main.giveItem(player, world, loc, chestplate);
+				player.getInventory().setChestplate(null);
 				player.sendMessage(ChatColor.RED + "Your level is not high enough to use this!");
 			}
 		}
 		if (!(leggings == null || leggings.getType() == Material.AIR)) {
-			Material type = leggings.getType();
-			
 			if (!leggings.getItemMeta().hasLore()) {
-				if (iron.contains(type))
-					req = 10;
-				if (diamond.contains(type))
-					req = 20;
-				if (netherite.contains(type))
-					req = 30;
+				if (!plugin.getConfig().getBoolean("vanillaLevelRestrict"))
+					return;
+				req = checkVanillaLevel(leggings.getType());
 			}
 			else {
-				for (ItemStack j : new Armor().t1s())
-					if (Main.equals(leggings, j))
-						req = 5;
-				for (ItemStack j : new Armor().t2s())
-					if (Main.equals(leggings, j))
-						req = 10;
-				for (ItemStack j : new Armor().t3s())
-					if (Main.equals(leggings, j))
-						req = 15;
-				for (ItemStack j : new Armor().t4s())
-					if (Main.equals(leggings, j))
-						req = 20;
-				for (ItemStack j : new Armor().t5s())
-					if (Main.equals(leggings, j))
-						req = 25;
-				for (ItemStack j : new Armor().t6s())
-					if (Main.equals(leggings, j))
-						req = 30;
-				for (ItemStack j : new Armor().t7s())
-					if (Main.equals(leggings, j))
-						req = 35;
-				for (ItemStack j : new Armor().t8s())
-					if (Main.equals(leggings, j))
-						req = 40;
-				for (ItemStack j : new Armor().t9s())
-					if (Main.equals(leggings, j))
-						req = 45;
-				for (ItemStack j : new Armor().t10s())
-					if (Main.equals(leggings, j))
-						req = 50;
+				req = checkArmorLevel(leggings);
 			}
 			if (lvl < req) {
-					if (player.getInventory().firstEmpty() == -1) {
-//						inventory is full				
-						world.dropItemNaturally(loc, leggings);
-						player.sendMessage(ChatColor.RED + "Your inventory is full!");
-					}
-					else player.getInventory().addItem(leggings);
-					player.getInventory().setLeggings(null);
+				Main.giveItem(player, world, loc, leggings);
+				player.getInventory().setLeggings(null);
 				player.sendMessage(ChatColor.RED + "Your level is not high enough to use this!");
 			}
 		}
 		if (!(boots == null || boots.getType() == Material.AIR)) {
-			Material type = boots.getType();
-
 			if (!boots.getItemMeta().hasLore()) {
-				if (iron.contains(type))
-					req = 10;
-				if (diamond.contains(type))
-					req = 20;
-				if (netherite.contains(type))
-					req = 30;
+				if (!plugin.getConfig().getBoolean("vanillaLevelRestrict"))
+					return;
+				req = checkVanillaLevel(boots.getType());
 			}
 			else {
-				for (ItemStack j : new Armor().t1s())
-					if (Main.equals(boots, j))
-						req = 5;
-				for (ItemStack j : new Armor().t2s())
-					if (Main.equals(boots, j))
-						req = 10;
-				for (ItemStack j : new Armor().t3s())
-					if (Main.equals(boots, j))
-						req = 15;
-				for (ItemStack j : new Armor().t4s())
-					if (Main.equals(boots, j))
-						req = 20;
-				for (ItemStack j : new Armor().t5s())
-					if (Main.equals(boots, j))
-						req = 25;
-				for (ItemStack j : new Armor().t6s())
-					if (Main.equals(boots, j))
-						req = 30;
-				for (ItemStack j : new Armor().t7s())
-					if (Main.equals(boots, j))
-						req = 35;
-				for (ItemStack j : new Armor().t8s())
-					if (Main.equals(boots, j))
-						req = 40;
-				for (ItemStack j : new Armor().t9s())
-					if (Main.equals(boots, j))
-						req = 45;
-				for (ItemStack j : new Armor().t10s())
-					if (Main.equals(boots, j))
-						req = 50;
+				req = checkArmorLevel(boots);
 			}
 			if (lvl < req) {
-					if (player.getInventory().firstEmpty() == -1) {
-//						inventory is full				
-						world.dropItemNaturally(loc, boots);
-						player.sendMessage(ChatColor.RED + "Your inventory is full!");
-					}
-					else player.getInventory().addItem(boots);
-					player.getInventory().setBoots(null);
+				Main.giveItem(player, world, loc, boots);
+				player.getInventory().setBoots(null);
 				player.sendMessage(ChatColor.RED + "Your level is not high enough to use this!");
 			}
 		}
@@ -514,6 +246,8 @@ public class LevelRestrictEvents implements Listener {
 	
 	@EventHandler()
 	public void checkOffHand(PlayerStatisticIncrementEvent e) {
+		if (!plugin.getConfig().getBoolean("levelRestrict"))
+			return;
 		if (!e.getStatistic().equals(Statistic.TIME_SINCE_REST))
 			return;
 		
@@ -530,100 +264,25 @@ public class LevelRestrictEvents implements Listener {
 
 		if (!(off == null || off.getType() == Material.AIR)) {
 			if (!off.getItemMeta().hasLore()) {
-				if (iron.contains(off.getType()))
-					req = 10;
-				if (diamond.contains(off.getType()))
-					req = 20;
-				if (netherite.contains(off.getType()))
-					req = 30;
+				if (!plugin.getConfig().getBoolean("vanillaLevelRestrict"))
+					return;
+				req = checkVanillaLevel(off.getType());
 			}
 			else {
-				for (ItemStack j : new Tools().t1s())
-					if (Main.equals(off, j))
-						req = 5;
-				for (ItemStack j : new Tools().t2s())
-					if (Main.equals(off, j))
-						req = 10;
-				for (ItemStack j : new Tools().t3s())
-					if (Main.equals(off, j))
-						req = 15;
-				for (ItemStack j : new Tools().t4s())
-					if (Main.equals(off, j))
-						req = 20;
-				for (ItemStack j : new Tools().t5s())
-					if (Main.equals(off, j))
-						req = 25;
-				for (ItemStack j : new Tools().t6s())
-					if (Main.equals(off, j))
-						req = 30;
-				for (ItemStack j : new Tools().t7s())
-					if (Main.equals(off, j))
-						req = 35;
-				for (ItemStack j : new Tools().t8s())
-					if (Main.equals(off, j))
-						req = 40;
-				for (ItemStack j : new Tools().t9s())
-					if (Main.equals(off, j))
-						req = 45;
-				for (ItemStack j : new Tools().t10s())
-					if (Main.equals(off, j))
-						req = 50;
-				for (ItemStack j : new Armor().t1s())
-					if (Main.equals(off, j))
-						req = 5;
-				for (ItemStack j : new Armor().t2s())
-					if (Main.equals(off, j))
-						req = 10;
-				for (ItemStack j : new Armor().t3s())
-					if (Main.equals(off, j))
-						req = 15;
-				for (ItemStack j : new Armor().t4s())
-					if (Main.equals(off, j))
-						req = 20;
-				for (ItemStack j : new Armor().t5s())
-					if (Main.equals(off, j))
-						req = 25;
-				for (ItemStack j : new Armor().t6s())
-					if (Main.equals(off, j))
-						req = 30;
-				for (ItemStack j : new Armor().t7s())
-					if (Main.equals(off, j))
-						req = 35;
-				for (ItemStack j : new Armor().t8s())
-					if (Main.equals(off, j))
-						req = 40;
-				for (ItemStack j : new Armor().t9s())
-					if (Main.equals(off, j))
-						req = 45;
-				for (ItemStack j : new Armor().t10s())
-					if (Main.equals(off, j))
-						req = 50;
-				for (ItemStack j : new Armor().nots())
-					if (Main.equals(off, j))
-						req = 55;
-				for (ItemStack j : new Armor().antis())
-					if (Main.equals(off, j))
-						req = 60;
+				req = checkToolLevel(off);
+				int req2 = checkArmorLevel(off);
+				if (req2 > req)
+					req = req2;
 			}
 			if (lvl < req) {
-				if (player.getInventory().firstEmpty() == -1) {
-//						inventory is full				
-					world.dropItemNaturally(loc, off);
-					player.sendMessage(ChatColor.RED + "Your inventory is full!");
-				}
-				else player.getInventory().addItem(off);
+				Main.giveItem(player, world, loc, off);
 				player.getInventory().setItemInOffHand(null);
 				player.sendMessage(ChatColor.RED + "Your level is not high enough to use this!");
 			}
 		}
 		if (player.getInventory().getItemInOffHand().getType().equals(Material.TRIDENT) && player.getInventory().getItemInOffHand().getItemMeta().hasLore())
 			if (player.getInventory().getItemInOffHand().getItemMeta().hasEnchant(CustomEnchants.ROCKET)) {
-				if (player.getInventory().firstEmpty() == -1) {
-//					inventory is full				
-					world.dropItemNaturally(loc, off);
-					player.sendMessage(ChatColor.RED + "Your inventory is full!");
-				}
-				else player.getInventory().addItem(off);
+				Main.giveItem(player, world, loc, off);
 				player.getInventory().setItemInOffHand(null);
 				player.sendMessage(ChatColor.RED + "You can't hold this in your off hand!!");
 			}
@@ -631,6 +290,9 @@ public class LevelRestrictEvents implements Listener {
 	
 	@EventHandler()
 	public void checkShieldInteract(PlayerInteractEvent e) {
+		if (!plugin.getConfig().getBoolean("levelRestrict"))
+			return;
+
 		Player player = (Player) e.getPlayer();
 		int lvl = player.getLevel();
 		int req = 0;
@@ -641,11 +303,11 @@ public class LevelRestrictEvents implements Listener {
 		if (!(e.getAction() == Action.RIGHT_CLICK_BLOCK || e.getAction() == Action.RIGHT_CLICK_AIR))
 			return;
 		if (shield.getItemMeta().hasLore()) {
-			if (Main.equals(shield, new Tools().t5Shield()))
+			if (Main.equals(shield, t.t5Shield()))
 				req = 25;
-			if (Main.equals(shield, new Tools().t8Shield()))
-				req = 50;
-			if (Main.equals(shield, new Tools().t10Shield()))
+			if (Main.equals(shield, t.t8Shield()))
+				req = 40;
+			if (Main.equals(shield, t.t10Shield()))
 				req = 50;
 		}
 		if (lvl < req) {
@@ -657,6 +319,9 @@ public class LevelRestrictEvents implements Listener {
 	
 	@EventHandler()
 	public void checkRiptide(PlayerMoveEvent e) {
+		if (!plugin.getConfig().getBoolean("levelRestrict"))
+			return;
+		
 		Player player = (Player) e.getPlayer();
 		int lvl = player.getLevel();
 		int req = 0;
@@ -664,13 +329,100 @@ public class LevelRestrictEvents implements Listener {
 		
 		if (!player.isRiptiding())
 			return;
-		if (Main.equals(item, new Tools().t9Range()))
+		if (Main.equals(item, t.t9Range()))
 				req = 45;
-		if (Main.equals(item, new Tools().t10Range()))
+		if (Main.equals(item, t.t10Range()))
 				req = 50;
 		if (lvl < req) {
 			e.setCancelled(true);
 			player.sendMessage(ChatColor.RED + "Your level is not high enough to use this!");
 		}
+	}
+	
+	private int checkVanillaLevel(Material m) {
+		int req = 0;
+		if (iron.contains(m))
+			req = 10;
+		if (diamond.contains(m))
+			req = 20;
+		if (netherite.contains(m))
+			req = 30;
+		return req;
+	}
+	
+	private int checkToolLevel(ItemStack i) {
+		int req = 0;
+		for (ItemStack j : t.t1s())
+			if (Main.equals(i, j))
+				req = 5;
+		for (ItemStack j : t.t2s())
+			if (Main.equals(i, j))
+				req = 10;
+		for (ItemStack j : t.t3s())
+			if (Main.equals(i, j))
+				req = 15;
+		for (ItemStack j : t.t4s())
+			if (Main.equals(i, j))
+				req = 20;
+		for (ItemStack j : t.t5s())
+			if (Main.equals(i, j))
+				req = 25;
+		for (ItemStack j : t.t6s())
+			if (Main.equals(i, j))
+				req = 30;
+		for (ItemStack j : t.t7s())
+			if (Main.equals(i, j))
+				req = 35;
+		for (ItemStack j : t.t8s())
+			if (Main.equals(i, j))
+				req = 40;
+		for (ItemStack j : t.t9s())
+			if (Main.equals(i, j))
+				req = 45;
+		for (ItemStack j : t.t10s())
+			if (Main.equals(i, j))
+				req = 50;
+		return req;
+	}
+	
+	private int checkArmorLevel(ItemStack i) {
+		int req = 0;
+		for (ItemStack j : a.t1s())
+			if (Main.equals(i, j))
+				req = 5;
+		for (ItemStack j : a.t2s())
+			if (Main.equals(i, j))
+				req = 10;
+		for (ItemStack j : a.t3s())
+			if (Main.equals(i, j))
+				req = 15;
+		for (ItemStack j : a.t4s())
+			if (Main.equals(i, j))
+				req = 20;
+		for (ItemStack j : a.t5s())
+			if (Main.equals(i, j))
+				req = 25;
+		for (ItemStack j : a.t6s())
+			if (Main.equals(i, j))
+				req = 30;
+		for (ItemStack j : a.t7s())
+			if (Main.equals(i, j))
+				req = 35;
+		for (ItemStack j : a.t8s())
+			if (Main.equals(i, j))
+				req = 40;
+		for (ItemStack j : a.t9s())
+			if (Main.equals(i, j))
+				req = 45;
+		for (ItemStack j : a.t10s())
+			if (Main.equals(i, j))
+				req = 50;
+		for (ItemStack j : a.nots())
+			if (Main.equals(i, j))
+				req = 55;
+		for (ItemStack j : a.antis())
+			if (Main.equals(i, j))
+				req = 60;
+		return req;
 	}
 }
