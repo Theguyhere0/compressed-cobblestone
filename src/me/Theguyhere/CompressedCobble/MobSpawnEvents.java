@@ -37,9 +37,9 @@ import me.Theguyhere.CompressedCobble.items.Armor;
 import me.Theguyhere.CompressedCobble.items.Tools;
 
 public class MobSpawnEvents implements Listener {
-	private Main plugin;
-	private Tools t;
-	private Armor a;
+	private final Main plugin;
+	private final Tools t;
+	private final Armor a;
 	
 	public MobSpawnEvents(Main p, Tools t, Armor a) {
 		this.plugin = p;
@@ -72,7 +72,7 @@ public class MobSpawnEvents implements Listener {
 		
 		Location loc = e.getLocation();
 		int lvl = 0;
-		ArrayList<Integer> nums = new ArrayList<Integer>();
+		ArrayList<Integer> nums = new ArrayList<>();
 		
 		try {
 			plugin.getData().getConfigurationSection("data").getKeys(false).forEach(key -> {
@@ -103,9 +103,9 @@ public class MobSpawnEvents implements Listener {
 			return;
 		
 		if (basicMobs.contains(type)) {
-			LivingEntity basic = (LivingEntity) e.getEntity();	
+			LivingEntity basic = e.getEntity();
 			Integer[] items = new Integer[plugin.getConfig().getStringList(config).size()];
-			int item = 0;
+			int item;
 			Random r = new Random();
 			int position = 0;
 			for (String i : plugin.getConfig().getStringList(config)) {
@@ -130,9 +130,9 @@ public class MobSpawnEvents implements Listener {
 		}
 				
 		if (fullMobs.contains(type)) {
-			LivingEntity full = (LivingEntity) e.getEntity();	
+			LivingEntity full = e.getEntity();
 			Integer[] items = new Integer[plugin.getConfig().getStringList(config).size()];
-			int item = 0;
+			int item;
 			Random r = new Random();
 			int position = 0;
 			for (String i : plugin.getConfig().getStringList(config)) {
@@ -277,9 +277,9 @@ public class MobSpawnEvents implements Listener {
 		}
 		
 		if (type == EntityType.SKELETON || type == EntityType.STRAY) {
-			LivingEntity full = (LivingEntity) e.getEntity();
+			LivingEntity full = e.getEntity();
 			Integer[] items = new Integer[plugin.getConfig().getStringList(config).size()];
-			int item = 0;
+			int item;
 			Random r = new Random();
 			int position = 0;
 			for (String i : plugin.getConfig().getStringList(config)) {
@@ -430,9 +430,9 @@ public class MobSpawnEvents implements Listener {
 		}
 		
 		if (type == EntityType.PILLAGER) {
-			LivingEntity full = (LivingEntity) e.getEntity();	
+			LivingEntity full = e.getEntity();
 			Integer[] items = new Integer[plugin.getConfig().getStringList(config).size()];
-			int item = 0;
+			int item;
 			Random r = new Random();
 			int position = 0;
 			for (String i : plugin.getConfig().getStringList(config)) {
@@ -563,7 +563,7 @@ public class MobSpawnEvents implements Listener {
 		if (type == EntityType.GHAST) {
 			Ghast ghast = (Ghast) e.getEntity();	
 			Integer[] items = new Integer[plugin.getConfig().getStringList(config).size()];
-			int item = 0;
+			int item;
 			Random r = new Random();
 			int position = 0;
 			for (String i : plugin.getConfig().getStringList(config)) {
@@ -584,7 +584,7 @@ public class MobSpawnEvents implements Listener {
 		if (type == EntityType.CREEPER) {
 			Creeper creeper = (Creeper) e.getEntity();
 			Integer[] items = new Integer[plugin.getConfig().getStringList(config).size()];
-			int item = 0;
+			int item;
 			Random r = new Random();
 			int position = 0;
 			for (String i : plugin.getConfig().getStringList(config)) {
@@ -602,7 +602,7 @@ public class MobSpawnEvents implements Listener {
 		if (type == EntityType.VILLAGER) {
 			Villager villager = (Villager) e.getEntity();
 			Integer[] items = new Integer[plugin.getConfig().getStringList(config).size()];
-			int item = 0;
+			int item;
 			Random r = new Random();
 			int position = 0;
 			for (String i : plugin.getConfig().getStringList(config)) {
@@ -620,7 +620,6 @@ public class MobSpawnEvents implements Listener {
 			villager.getAttribute(Attribute.GENERIC_MAX_HEALTH).addModifier(boostH);
 			villager.setHealth(origH + origH * .2 * result);
 			villager.getAttribute(Attribute.GENERIC_MOVEMENT_SPEED).addModifier(boost);
-			return;
 		}
 	}
 	
@@ -654,12 +653,10 @@ public class MobSpawnEvents implements Listener {
 		if (Main.equals(skelly.getEquipment().getBoots(), a.t10Boots())) {
 			arrow.setDamage(arrow.getDamage() + 12);
 			arrow.setKnockbackStrength(arrow.getKnockbackStrength() + 3);
-			return;
-		}	
-		return;
+		}
 	}
 	
-	Map<String, Double> statCheckCooldowns = new HashMap<String, Double>();
+	Map<String, Double> statCheckCooldowns = new HashMap<>();
 	
 	@EventHandler()
 	public void playerStat(PlayerStatisticIncrementEvent e) {
@@ -741,7 +738,7 @@ public class MobSpawnEvents implements Listener {
 		}
 		
 		ItemStack item = player.getInventory().getItemInOffHand();
-		if (!(item == null || item.getType() == Material.AIR))	
+		if (!(item.getType() == Material.AIR))
 			if (item.getItemMeta().hasLore())
 				keyItems.add(item);
 				
@@ -837,15 +834,14 @@ public class MobSpawnEvents implements Listener {
 		if (player.getInventory().getHelmet().equals(a.notHelmet()) || player.getInventory().getHelmet().equals(a.aHelmet()))
 			disarming = player.getInventory().getHelmet().getItemMeta().getEnchantLevel(CustomEnchants.DISARMING);
 		highestTier += disarming;
-		plugin.getData().set("data." + player.getName().toString() + ".location", player.getLocation());
-		plugin.getData().set("data." + player.getName().toString() + ".tier", highestTier);
-		plugin.getData().set("data." + player.getName().toString() + ".disarming", disarming);
+		plugin.getData().set("data." + player.getName() + ".location", player.getLocation());
+		plugin.getData().set("data." + player.getName() + ".tier", highestTier);
+		plugin.getData().set("data." + player.getName() + ".disarming", disarming);
 		plugin.saveData();
-		return;
 	}
 	
 	private void removePlayer(Player player) {
-		plugin.getData().set("data." + player.getName().toString(), null);
+		plugin.getData().set("data." + player.getName(), null);
 		plugin.saveData();
 	}
 }

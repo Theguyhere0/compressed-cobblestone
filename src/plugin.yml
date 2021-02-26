@@ -1,16 +1,22 @@
 main: me.Theguyhere.CompressedCobble.Main
 name: CompressedCobble
-version: 1.4.4
+version: 1.4.5
 author: Theguyhere
 api-version: 1.16
 
 commands:
   cc:
+    description: For all things compressed cobble
     materials:
-      description: Gives the player one of all custom materials
+      description: Gives the player one of all materials needed for custom crafting
       usage: /cc materials
       permission: cc.materials.use
+    cobble:
+      description: Gives the player one of all cobblestone types
+      usage: /cc cobble
+      permission: cc.materials.use
     tools:
+      description: For giving out tool and armor sets
       t0:
         description: Gives the player a full set of normal stone tools and leather armor
         usage: /cc tools t0
@@ -66,8 +72,6 @@ commands:
     craft:
       description: Converts all cobblestone in inventory into the highest tiers possible
       usage: /cc craft
-      permission:
     help:
       description: Redirects players to the Compressed Cobblestone wiki
-      usage: /cc helpt
-      permission:
+      usage: /cc help

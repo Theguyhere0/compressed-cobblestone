@@ -14,6 +14,7 @@ import org.bukkit.inventory.meta.ItemMeta;
 
 import me.Theguyhere.CompressedCobble.enchants.CustomEnchants;
 
+@SuppressWarnings("SpellCheckingInspection")
 public class Tools {
 //	Pickaxes
 	public ItemStack t1Pick() {
@@ -21,7 +22,7 @@ public class Tools {
 		ItemMeta meta = item.getItemMeta();
 		
 		meta.setDisplayName(ChatColor.WHITE + "T1 Durable Stone Pickaxe");
-		List<String> lore = new ArrayList<String>();
+		List<String> lore = new ArrayList<>();
 		lore.add("");
 		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "This tool holds the might of ");
 		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "9 Cobblestone");
@@ -42,7 +43,7 @@ public class Tools {
 		meta.addEnchant(Enchantment.DIG_SPEED, 2, true);
 		meta.addEnchant(Enchantment.DURABILITY, 2, true);
 
-		List<String> lore = new ArrayList<String>();
+		List<String> lore = new ArrayList<>();
 		lore.add(ChatColor.GRAY + "Stony I");
 		lore.add("");
 		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "This tool holds the might of ");
@@ -63,7 +64,7 @@ public class Tools {
 		meta.addEnchant(Enchantment.DIG_SPEED, 3, true);
 		meta.addEnchant(Enchantment.DURABILITY, 2, true);
 
-		List<String> lore = new ArrayList<String>();
+		List<String> lore = new ArrayList<>();
 		lore.add(ChatColor.GRAY + "Stony I");
 		lore.add("");
 		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "This tool holds the might of ");
@@ -85,7 +86,7 @@ public class Tools {
 		meta.addEnchant(Enchantment.DURABILITY, 3, true);
 		meta.addEnchant(Enchantment.LOOT_BONUS_BLOCKS, 1, true);
 
-		List<String> lore = new ArrayList<String>();
+		List<String> lore = new ArrayList<>();
 		lore.add(ChatColor.GRAY + "Efficiency IV");
 		lore.add(ChatColor.GRAY + "Unbreaking III");
 		lore.add(ChatColor.GRAY + "Stony II");
@@ -111,7 +112,7 @@ public class Tools {
 		meta.addEnchant(Enchantment.DURABILITY, 4, true);
 		meta.addEnchant(Enchantment.LOOT_BONUS_BLOCKS, 3, true);
 
-		List<String> lore = new ArrayList<String>();
+		List<String> lore = new ArrayList<>();
 		lore.add(ChatColor.GRAY + "Stony II");
 		lore.add("");
 		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "This tool holds the might of ");
@@ -133,7 +134,7 @@ public class Tools {
 		meta.addEnchant(Enchantment.DURABILITY, 5, true);
 		meta.addEnchant(Enchantment.LOOT_BONUS_BLOCKS, 5, true);
 
-		List<String> lore = new ArrayList<String>();
+		List<String> lore = new ArrayList<>();
 		lore.add(ChatColor.GRAY + "Stony III");
 		lore.add(ChatColor.GRAY + "Fiery");
 		lore.add("");
@@ -158,7 +159,7 @@ public class Tools {
 		meta.addEnchant(Enchantment.LOOT_BONUS_BLOCKS, 6, true);
 		meta.addEnchant(Enchantment.MENDING, 1, true);
 
-		List<String> lore = new ArrayList<String>();
+		List<String> lore = new ArrayList<>();
 		lore.add(ChatColor.GRAY + "Efficiency VIII");
 		lore.add(ChatColor.GRAY + "Unbreaking VI");
 		lore.add(ChatColor.GRAY + "Fortune VI");
@@ -189,7 +190,7 @@ public class Tools {
 		meta.addEnchant(Enchantment.LOOT_BONUS_BLOCKS, 8, true);
 		meta.addEnchant(Enchantment.MENDING, 1, true);
 
-		List<String> lore = new ArrayList<String>();
+		List<String> lore = new ArrayList<>();
 		lore.add(ChatColor.GRAY + "Efficiency X");
 		lore.add(ChatColor.GRAY + "Unbreaking VIII");
 		lore.add(ChatColor.GRAY + "Fortune VIII");
@@ -219,7 +220,7 @@ public class Tools {
 		meta.addEnchant(Enchantment.LOOT_BONUS_BLOCKS, 10, true);
 		meta.addEnchant(Enchantment.MENDING, 1, true);
 
-		List<String> lore = new ArrayList<String>();
+		List<String> lore = new ArrayList<>();
 		lore.add(ChatColor.GRAY + "Efficiency XV");
 		lore.add(ChatColor.GRAY + "Unbreaking X");
 		lore.add(ChatColor.GRAY + "Fortune X");
@@ -250,7 +251,7 @@ public class Tools {
 		meta.addEnchant(Enchantment.LOOT_BONUS_BLOCKS, 15, true);
 		meta.setUnbreakable(true);
 
-		List<String> lore = new ArrayList<String>();
+		List<String> lore = new ArrayList<>();
 		lore.add(ChatColor.GRAY + "Efficiency XX");
 		lore.add(ChatColor.GRAY + "Fortune XV");
 		lore.add(ChatColor.GRAY + "Stony V");
@@ -288,7 +289,7 @@ public class Tools {
 		ItemMeta meta = item.getItemMeta();
 		
 		meta.setDisplayName(ChatColor.WHITE + "T1 Durable Stone Axe");
-		List<String> lore = new ArrayList<String>();
+		List<String> lore = new ArrayList<>();
 		lore.add("");
 		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "This tool holds the might of ");
 		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "9 Cobblestone");
@@ -309,7 +310,7 @@ public class Tools {
 		meta.addEnchant(Enchantment.DIG_SPEED, 2, true);
 		meta.addEnchant(Enchantment.DURABILITY, 2, true);
 
-		List<String> lore = new ArrayList<String>();
+		List<String> lore = new ArrayList<>();
 		lore.add(ChatColor.GRAY + "Petrifying I");
 		lore.add("");
 		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "This tool holds the might of ");
@@ -331,7 +332,7 @@ public class Tools {
 		meta.addEnchant(Enchantment.DURABILITY, 2, true);
 		meta.addEnchant(Enchantment.DAMAGE_ALL, 1, true);
 
-		List<String> lore = new ArrayList<String>();
+		List<String> lore = new ArrayList<>();
 		lore.add(ChatColor.GRAY + "Efficiency III");
 		lore.add(ChatColor.GRAY + "Unbreaking II");
 		lore.add(ChatColor.GRAY + "Petrifying I");
@@ -359,7 +360,7 @@ public class Tools {
 		meta.addEnchant(Enchantment.DAMAGE_ALL, 3, true);
 		meta.addEnchant(Enchantment.LOOT_BONUS_MOBS, 1, true);
 
-		List<String> lore = new ArrayList<String>();
+		List<String> lore = new ArrayList<>();
 		lore.add(ChatColor.GRAY + "Efficiency IV");
 		lore.add(ChatColor.GRAY + "Unbreaking III");
 		lore.add(ChatColor.GRAY + "Sharpness III");
@@ -389,7 +390,7 @@ public class Tools {
 		meta.addEnchant(Enchantment.LOOT_BONUS_BLOCKS, 3, true);
 		meta.addEnchant(Enchantment.LOOT_BONUS_MOBS, 3, true);
 
-		List<String> lore = new ArrayList<String>();
+		List<String> lore = new ArrayList<>();
 		lore.add(ChatColor.GRAY + "Petrifying II");
 		lore.add("");
 		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "This tool holds the might of ");
@@ -415,7 +416,7 @@ public class Tools {
 		meta.addEnchant(Enchantment.DAMAGE_ALL, 8, true);
 		meta.addEnchant(Enchantment.FIRE_ASPECT, 1, true);
 
-		List<String> lore = new ArrayList<String>();
+		List<String> lore = new ArrayList<>();
 		lore.add(ChatColor.GRAY + "Sharpness VIII");
 		lore.add(ChatColor.GRAY + "Efficiency VI");
 		lore.add(ChatColor.GRAY + "Unbreaking V");
@@ -448,7 +449,7 @@ public class Tools {
 		meta.addEnchant(Enchantment.FIRE_ASPECT, 2, true);
 		meta.addEnchant(Enchantment.MENDING, 1, true);
 
-		List<String> lore = new ArrayList<String>();
+		List<String> lore = new ArrayList<>();
 		lore.add(ChatColor.GRAY + "Sharpness XII");
 		lore.add(ChatColor.GRAY + "Efficiency VIII");
 		lore.add(ChatColor.GRAY + "Unbreaking VI");
@@ -482,7 +483,7 @@ public class Tools {
 		meta.addEnchant(Enchantment.FIRE_ASPECT, 3, true);
 		meta.addEnchant(Enchantment.MENDING, 1, true);
 
-		List<String> lore = new ArrayList<String>();
+		List<String> lore = new ArrayList<>();
 		lore.add(ChatColor.GRAY + "Sharpness XVII");
 		lore.add(ChatColor.GRAY + "Efficiency X");
 		lore.add(ChatColor.GRAY + "Unbreaking VIII");
@@ -516,7 +517,7 @@ public class Tools {
 		meta.addEnchant(Enchantment.FIRE_ASPECT, 4, true);
 		meta.addEnchant(Enchantment.MENDING, 1, true);
 
-		List<String> lore = new ArrayList<String>();
+		List<String> lore = new ArrayList<>();
 		lore.add(ChatColor.GRAY + "Sharpness XXV");
 		lore.add(ChatColor.GRAY + "Efficiency XV");
 		lore.add(ChatColor.GRAY + "Unbreaking X");
@@ -551,7 +552,7 @@ public class Tools {
 		meta.addEnchant(Enchantment.FIRE_ASPECT, 5, true);
 		meta.setUnbreakable(true);
 
-		List<String> lore = new ArrayList<String>();
+		List<String> lore = new ArrayList<>();
 		lore.add(ChatColor.GRAY + "Sharpness XL");
 		lore.add(ChatColor.GRAY + "Efficiency XX");
 		lore.add(ChatColor.GRAY + "Fortune XV");
@@ -590,7 +591,7 @@ public class Tools {
 		ItemMeta meta = item.getItemMeta();
 		
 		meta.setDisplayName(ChatColor.WHITE + "T1 Durable Stone Shovel");
-		List<String> lore = new ArrayList<String>();
+		List<String> lore = new ArrayList<>();
 		lore.add("");
 		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "This tool holds the might of ");
 		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "4 Cobblestone");
@@ -611,7 +612,7 @@ public class Tools {
 		meta.addEnchant(Enchantment.DIG_SPEED, 2, true);
 		meta.addEnchant(Enchantment.DURABILITY, 2, true);
 
-		List<String> lore = new ArrayList<String>();
+		List<String> lore = new ArrayList<>();
 		lore.add(ChatColor.GRAY + "Rocky I");
 		lore.add("");
 		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "This tool holds the might of ");
@@ -632,7 +633,7 @@ public class Tools {
 		meta.addEnchant(Enchantment.DIG_SPEED, 3, true);
 		meta.addEnchant(Enchantment.DURABILITY, 2, true);
 
-		List<String> lore = new ArrayList<String>();
+		List<String> lore = new ArrayList<>();
 		lore.add(ChatColor.GRAY + "Rocky I");
 		lore.add("");
 		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "This tool holds the might of ");
@@ -654,7 +655,7 @@ public class Tools {
 		meta.addEnchant(Enchantment.DIG_SPEED, 4, true);
 		meta.addEnchant(Enchantment.DURABILITY, 3, true);
 
-		List<String> lore = new ArrayList<String>();
+		List<String> lore = new ArrayList<>();
 		lore.add(ChatColor.GRAY + "Rocky II");
 		lore.add("");
 		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "This tool holds the might of ");
@@ -675,7 +676,7 @@ public class Tools {
 		meta.addEnchant(Enchantment.DIG_SPEED, 5, true);
 		meta.addEnchant(Enchantment.DURABILITY, 4, true);
 
-		List<String> lore = new ArrayList<String>();
+		List<String> lore = new ArrayList<>();
 		lore.add(ChatColor.GRAY + "Rocky II");
 		lore.add("");
 		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "This tool holds the might of ");
@@ -696,7 +697,7 @@ public class Tools {
 		meta.addEnchant(Enchantment.DIG_SPEED, 6, true);
 		meta.addEnchant(Enchantment.DURABILITY, 5, true);
 
-		List<String> lore = new ArrayList<String>();
+		List<String> lore = new ArrayList<>();
 		lore.add(ChatColor.GRAY + "Rocky III");
 		lore.add("");
 		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "This tool holds the might of ");
@@ -718,7 +719,7 @@ public class Tools {
 		meta.addEnchant(Enchantment.DURABILITY, 6, true);
 		meta.addEnchant(Enchantment.MENDING, 1, true);
 
-		List<String> lore = new ArrayList<String>();
+		List<String> lore = new ArrayList<>();
 		lore.add(ChatColor.GRAY + "Efficiency VIII");
 		lore.add(ChatColor.GRAY + "Unbreaking VI");
 		lore.add(ChatColor.GRAY + "Rocky III");
@@ -744,7 +745,7 @@ public class Tools {
 		meta.addEnchant(Enchantment.DURABILITY, 8, true);
 		meta.addEnchant(Enchantment.MENDING, 1, true);
 
-		List<String> lore = new ArrayList<String>();
+		List<String> lore = new ArrayList<>();
 		lore.add(ChatColor.GRAY + "Efficiency X");
 		lore.add(ChatColor.GRAY + "Unbreaking VIII");
 		lore.add(ChatColor.GRAY + "Rocky IV");
@@ -770,7 +771,7 @@ public class Tools {
 		meta.addEnchant(Enchantment.DURABILITY, 10, true);
 		meta.addEnchant(Enchantment.MENDING, 1, true);
 
-		List<String> lore = new ArrayList<String>();
+		List<String> lore = new ArrayList<>();
 		lore.add(ChatColor.GRAY + "Efficiency XV");
 		lore.add(ChatColor.GRAY + "Unbreaking X");
 		lore.add(ChatColor.GRAY + "Rocky IV");
@@ -797,7 +798,7 @@ public class Tools {
 		meta.addEnchant(Enchantment.DIG_SPEED, 20, true);
 		meta.setUnbreakable(true);
 
-		List<String> lore = new ArrayList<String>();
+		List<String> lore = new ArrayList<>();
 		lore.add(ChatColor.GRAY + "Efficiency XX");
 		lore.add(ChatColor.GRAY + "Rocky V");
 		lore.add(ChatColor.GRAY + "Telepathy");
@@ -832,7 +833,7 @@ public class Tools {
 		ItemMeta meta = item.getItemMeta();
 		
 		meta.setDisplayName(ChatColor.WHITE + "T1 Durable Stone Scythe");
-		List<String> lore = new ArrayList<String>();
+		List<String> lore = new ArrayList<>();
 		lore.add("");
 		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "This tool holds the might of ");
 		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "5 Cobblestone");
@@ -853,7 +854,7 @@ public class Tools {
 		meta.addEnchant(Enchantment.DIG_SPEED, 2, true);
 		meta.addEnchant(Enchantment.DURABILITY, 2, true);
 
-		List<String> lore = new ArrayList<String>();
+		List<String> lore = new ArrayList<>();
 		lore.add(ChatColor.GRAY + "Pebbly I");
 		lore.add("");
 		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "This tool holds the might of ");
@@ -875,7 +876,7 @@ public class Tools {
 		meta.addEnchant(Enchantment.DURABILITY, 2, true);
 		meta.addEnchant(Enchantment.DAMAGE_ALL, 1, true);
 
-		List<String> lore = new ArrayList<String>();
+		List<String> lore = new ArrayList<>();
 		lore.add(ChatColor.GRAY + "Efficiency III");
 		lore.add(ChatColor.GRAY + "Unbreaking II");
 		lore.add(ChatColor.GRAY + "Pebbly I");
@@ -903,7 +904,7 @@ public class Tools {
 		meta.addEnchant(Enchantment.LOOT_BONUS_BLOCKS, 1, true);
 		meta.addEnchant(Enchantment.LOOT_BONUS_MOBS, 1, true);
 
-		List<String> lore = new ArrayList<String>();
+		List<String> lore = new ArrayList<>();
 		lore.add(ChatColor.GRAY + "Efficiency IV");
 		lore.add(ChatColor.GRAY + "Unbreaking III");
 		lore.add(ChatColor.GRAY + "Pebbly II");
@@ -933,7 +934,7 @@ public class Tools {
 		meta.addEnchant(Enchantment.LOOT_BONUS_BLOCKS, 3, true);
 		meta.addEnchant(Enchantment.LOOT_BONUS_MOBS, 1, true);
 
-		List<String> lore = new ArrayList<String>();
+		List<String> lore = new ArrayList<>();
 		lore.add(ChatColor.GRAY + "Efficiency V");
 		lore.add(ChatColor.GRAY + "Unbreaking IV");
 		lore.add(ChatColor.GRAY + "Sharpness III");
@@ -964,7 +965,7 @@ public class Tools {
 		meta.addEnchant(Enchantment.LOOT_BONUS_MOBS, 2, true);
 		meta.addEnchant(Enchantment.FIRE_ASPECT, 1, true);
 
-		List<String> lore = new ArrayList<String>();
+		List<String> lore = new ArrayList<>();
 		lore.add(ChatColor.GRAY + "Efficiency VI");
 		lore.add(ChatColor.GRAY + "Unbreaking V");
 		lore.add(ChatColor.GRAY + "Fortune V");
@@ -997,7 +998,7 @@ public class Tools {
 		meta.addEnchant(Enchantment.FIRE_ASPECT, 2, true);
 		meta.addEnchant(Enchantment.MENDING, 1, true);
 
-		List<String> lore = new ArrayList<String>();
+		List<String> lore = new ArrayList<>();
 		lore.add(ChatColor.GRAY + "Efficiency VIII");
 		lore.add(ChatColor.GRAY + "Unbreaking VI");
 		lore.add(ChatColor.GRAY + "Fortune VI");
@@ -1031,7 +1032,7 @@ public class Tools {
 		meta.addEnchant(Enchantment.FIRE_ASPECT, 3, true);
 		meta.addEnchant(Enchantment.MENDING, 1, true);
 
-		List<String> lore = new ArrayList<String>();
+		List<String> lore = new ArrayList<>();
 		lore.add(ChatColor.GRAY + "Efficiency X");
 		lore.add(ChatColor.GRAY + "Unbreaking VIII");
 		lore.add(ChatColor.GRAY + "Fortune VIII");
@@ -1065,7 +1066,7 @@ public class Tools {
 		meta.addEnchant(Enchantment.LOOT_BONUS_MOBS, 3, true);
 		meta.addEnchant(Enchantment.MENDING, 1, true);
 
-		List<String> lore = new ArrayList<String>();
+		List<String> lore = new ArrayList<>();
 		lore.add(ChatColor.GRAY + "Efficiency XV");
 		lore.add(ChatColor.GRAY + "Unbreaking X");
 		lore.add(ChatColor.GRAY + "Fortune X");
@@ -1100,7 +1101,7 @@ public class Tools {
 		meta.addEnchant(Enchantment.LOOT_BONUS_MOBS, 4, true);
 		meta.setUnbreakable(true);
 
-		List<String> lore = new ArrayList<String>();
+		List<String> lore = new ArrayList<>();
 		lore.add(ChatColor.GRAY + "Efficiency XX");
 		lore.add(ChatColor.GRAY + "Fortune XV");
 		lore.add(ChatColor.GRAY + "Sharpness XII");
@@ -1142,7 +1143,7 @@ public class Tools {
 		meta.addEnchant(Enchantment.DAMAGE_ALL, 1, true);
 		meta.addEnchant(Enchantment.DURABILITY, 1, true);
 
-		List<String> lore = new ArrayList<String>();
+		List<String> lore = new ArrayList<>();
 		lore.add("");
 		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "This weapon holds the strength of ");
 		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "5 Cobblestone");
@@ -1161,7 +1162,7 @@ public class Tools {
 		meta.addEnchant(Enchantment.DAMAGE_ALL, 2, true);
 		meta.addEnchant(Enchantment.DURABILITY, 2, true);
 
-		List<String> lore = new ArrayList<String>();
+		List<String> lore = new ArrayList<>();
 		lore.add(ChatColor.GRAY + "Medusa I");
 		lore.add("");
 		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "This weapon holds the strength of ");
@@ -1183,7 +1184,7 @@ public class Tools {
 		meta.addEnchant(Enchantment.DURABILITY, 2, true);
 		meta.addEnchant(Enchantment.SWEEPING_EDGE, 1, true);
 
-		List<String> lore = new ArrayList<String>();
+		List<String> lore = new ArrayList<>();
 		lore.add(ChatColor.GRAY + "Sharpness III");
 		lore.add(ChatColor.GRAY + "Unbreaking II");
 		lore.add(ChatColor.GRAY + "Medusa I");
@@ -1210,7 +1211,7 @@ public class Tools {
 		meta.addEnchant(Enchantment.SWEEPING_EDGE, 2, true);
 		meta.addEnchant(Enchantment.LOOT_BONUS_MOBS, 1, true);
 
-		List<String> lore = new ArrayList<String>();
+		List<String> lore = new ArrayList<>();
 		lore.add(ChatColor.GRAY + "Sharpness IV");
 		lore.add(ChatColor.GRAY + "Unbreaking III");
 		lore.add(ChatColor.GRAY + "Medusa II");
@@ -1238,7 +1239,7 @@ public class Tools {
 		meta.addEnchant(Enchantment.SWEEPING_EDGE, 3, true);
 		meta.addEnchant(Enchantment.LOOT_BONUS_MOBS, 3, true);
 
-		List<String> lore = new ArrayList<String>();
+		List<String> lore = new ArrayList<>();
 		lore.add(ChatColor.GRAY + "Sharpness V");
 		lore.add(ChatColor.GRAY + "Unbreaking IV");
 		lore.add(ChatColor.GRAY + "Sweeping Edge III");
@@ -1267,7 +1268,7 @@ public class Tools {
 		meta.addEnchant(Enchantment.LOOT_BONUS_MOBS, 5, true);
 		meta.addEnchant(Enchantment.FIRE_ASPECT, 1, true);
 
-		List<String> lore = new ArrayList<String>();
+		List<String> lore = new ArrayList<>();
 		lore.add(ChatColor.GRAY + "Sharpness VII");
 		lore.add(ChatColor.GRAY + "Unbreaking V");
 		lore.add(ChatColor.GRAY + "Looting V");
@@ -1298,7 +1299,7 @@ public class Tools {
 		meta.addEnchant(Enchantment.FIRE_ASPECT, 2, true);
 		meta.addEnchant(Enchantment.MENDING, 1, true);
 
-		List<String> lore = new ArrayList<String>();
+		List<String> lore = new ArrayList<>();
 		lore.add(ChatColor.GRAY + "Sharpness X");
 		lore.add(ChatColor.GRAY + "Unbreaking VI");
 		lore.add(ChatColor.GRAY + "Looting VI");
@@ -1330,7 +1331,7 @@ public class Tools {
 		meta.addEnchant(Enchantment.FIRE_ASPECT, 3, true);
 		meta.addEnchant(Enchantment.MENDING, 1, true);
 
-		List<String> lore = new ArrayList<String>();
+		List<String> lore = new ArrayList<>();
 		lore.add(ChatColor.GRAY + "Sharpness XV");
 		lore.add(ChatColor.GRAY + "Unbreaking VIII");
 		lore.add(ChatColor.GRAY + "Looting VIII");
@@ -1362,7 +1363,7 @@ public class Tools {
 		meta.addEnchant(Enchantment.LOOT_BONUS_MOBS, 10, true);
 		meta.addEnchant(Enchantment.MENDING, 1, true);
 
-		List<String> lore = new ArrayList<String>();
+		List<String> lore = new ArrayList<>();
 		lore.add(ChatColor.GRAY + "Sharpness XX");
 		lore.add(ChatColor.GRAY + "Unbreaking X");
 		lore.add(ChatColor.GRAY + "Looting X");
@@ -1395,7 +1396,7 @@ public class Tools {
 		meta.addEnchant(Enchantment.LOOT_BONUS_MOBS, 15, true);
 		meta.setUnbreakable(true);
 
-		List<String> lore = new ArrayList<String>();
+		List<String> lore = new ArrayList<>();
 		lore.add(ChatColor.GRAY + "Sharpness XXV");
 		lore.add(ChatColor.GRAY + "Looting XV");
 		lore.add(ChatColor.GRAY + "Sweeping Edge XII");
@@ -1435,7 +1436,7 @@ public class Tools {
 		meta.setDisplayName(ChatColor.WHITE + "T1 Durable Stone Bow");
 		meta.addEnchant(Enchantment.ARROW_DAMAGE, 1, true);
 
-		List<String> lore = new ArrayList<String>();
+		List<String> lore = new ArrayList<>();
 		lore.add("");
 		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "This weapon holds the strength of ");
 		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "6 Cobblestone");
@@ -1455,7 +1456,7 @@ public class Tools {
 		meta.addEnchant(Enchantment.DURABILITY, 1, true);
 		meta.addEnchant(Enchantment.ARROW_KNOCKBACK, 1, true);
 
-		List<String> lore = new ArrayList<String>();
+		List<String> lore = new ArrayList<>();
 		lore.add("");
 		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "This weapon holds the strength of ");
 		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "24 Cobblestone");
@@ -1475,7 +1476,7 @@ public class Tools {
 		meta.addEnchant(Enchantment.DURABILITY, 1, true);
 		meta.addEnchant(Enchantment.ARROW_KNOCKBACK, 1, true);
 
-		List<String> lore = new ArrayList<String>();
+		List<String> lore = new ArrayList<>();
 		lore.add("");
 		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "This weapon holds the strength of ");
 		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "78 Cobblestone");
@@ -1495,7 +1496,7 @@ public class Tools {
 		meta.addEnchant(Enchantment.DURABILITY, 2, true);
 		meta.addEnchant(Enchantment.ARROW_KNOCKBACK, 1, true);
 
-		List<String> lore = new ArrayList<String>();
+		List<String> lore = new ArrayList<>();
 		lore.add("");
 		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "This weapon holds the strength of ");
 		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "240 Cobblestone");
@@ -1515,7 +1516,7 @@ public class Tools {
 		meta.addEnchant(Enchantment.DURABILITY, 2, true);
 		meta.addEnchant(Enchantment.ARROW_KNOCKBACK, 2, true);
 
-		List<String> lore = new ArrayList<String>();
+		List<String> lore = new ArrayList<>();
 		lore.add("");
 		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "This weapon holds the strength of ");
 		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "726 Cobblestone");
@@ -1537,7 +1538,7 @@ public class Tools {
 		meta.addEnchant(Enchantment.LOOT_BONUS_MOBS, 1, true);
 		meta.addEnchant(Enchantment.ARROW_FIRE, 1, true);
 
-		List<String> lore = new ArrayList<String>();
+		List<String> lore = new ArrayList<>();
 		lore.add("");
 		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "This weapon holds the strength of ");
 		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "2,184 Cobblestone");
@@ -1560,7 +1561,7 @@ public class Tools {
 		meta.addEnchant(Enchantment.MULTISHOT, 1, true);
 		meta.addEnchant(Enchantment.MENDING, 1, true);
 
-		List<String> lore = new ArrayList<String>();
+		List<String> lore = new ArrayList<>();
 		lore.add(ChatColor.GRAY + "Quick Charge IV");
 		lore.add(ChatColor.GRAY + "Unbreaking IV");
 		lore.add(ChatColor.GRAY + "Piercing IV");
@@ -1592,7 +1593,7 @@ public class Tools {
 		meta.addEnchant(Enchantment.MULTISHOT, 1, true);
 		meta.addEnchant(Enchantment.MENDING, 1, true);
 
-		List<String> lore = new ArrayList<String>();
+		List<String> lore = new ArrayList<>();
 		lore.add(ChatColor.GRAY + "Quick Charge V");
 		lore.add(ChatColor.GRAY + "Unbreaking V");
 		lore.add(ChatColor.GRAY + "Piercing V");
@@ -1622,7 +1623,7 @@ public class Tools {
 		meta.addEnchant(Enchantment.LOOT_BONUS_MOBS, 4, true);
 		meta.addEnchant(Enchantment.MENDING, 1, true);
 
-		List<String> lore = new ArrayList<String>();
+		List<String> lore = new ArrayList<>();
 		lore.add(ChatColor.GRAY + "Unbreaking V");
 		lore.add(ChatColor.GRAY + "Riptide IV");
 		lore.add(ChatColor.GRAY + "Looting IV");
@@ -1648,7 +1649,7 @@ public class Tools {
 		meta.addEnchant(Enchantment.LOOT_BONUS_MOBS, 5, true);
 		meta.setUnbreakable(true);
 
-		List<String> lore = new ArrayList<String>();
+		List<String> lore = new ArrayList<>();
 		lore.add(ChatColor.GRAY + "Projectile II");
 		lore.add(ChatColor.GRAY + "Rocket");
 		lore.add("");
@@ -1671,7 +1672,7 @@ public class Tools {
 		meta.setDisplayName(ChatColor.GOLD + "T5 Shiny Stone Shield");
 		meta.addEnchant(Enchantment.DURABILITY, 3, true);
 
-		List<String> lore = new ArrayList<String>();
+		List<String> lore = new ArrayList<>();
 		lore.add("");
 		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "This shield employs the rigidity of ");
 		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "1,215 Cobblestone");
@@ -1690,7 +1691,7 @@ public class Tools {
 		meta.addEnchant(Enchantment.DURABILITY, 5, true);
 		meta.addEnchant(Enchantment.MENDING, 1, true);
 
-		List<String> lore = new ArrayList<String>();
+		List<String> lore = new ArrayList<>();
 		lore.add(ChatColor.GRAY + "Unbreaking V");
 		lore.add(ChatColor.GRAY + "Immunity I");
 		lore.add(ChatColor.GRAY + "Mending");
@@ -1714,7 +1715,7 @@ public class Tools {
 		meta.addEnchant(Enchantment.MENDING, 1, true);
 		meta.setUnbreakable(true);
 
-		List<String> lore = new ArrayList<String>();
+		List<String> lore = new ArrayList<>();
 		lore.add(ChatColor.GRAY + "Immunity II");
 		lore.add("");
 		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "This shield employs the rigidity of ");

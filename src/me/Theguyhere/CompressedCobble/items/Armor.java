@@ -16,16 +16,17 @@ import org.bukkit.inventory.meta.LeatherArmorMeta;
 
 import me.Theguyhere.CompressedCobble.enchants.CustomEnchants;
 
+@SuppressWarnings("SpellCheckingInspection")
 public class Armor {
 //	Helmets
 	public ItemStack t1Helmet() {
 		ItemStack item = new ItemStack(Material.LEATHER_HELMET);
 		LeatherArmorMeta meta = (LeatherArmorMeta) item.getItemMeta();
-		
+
 		meta.setDisplayName(ChatColor.WHITE + "T1 Durable Stone Helmet");
 		meta.addEnchant(Enchantment.PROTECTION_ENVIRONMENTAL, 1, true);
 		
-		List<String> lore = new ArrayList<String>();
+		List<String> lore = new ArrayList<>();
 		lore.add("");
 		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "This armor harnesses the security of ");
 		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "12 Cobblestone");
@@ -41,12 +42,12 @@ public class Armor {
 	public ItemStack t2Helmet() {
 		ItemStack item = new ItemStack(Material.CHAINMAIL_HELMET);
 		ItemMeta meta = item.getItemMeta();
-		
+
 		meta.setDisplayName(ChatColor.YELLOW + "T2 Resilient Stone Helmet");
 		meta.addEnchant(Enchantment.PROTECTION_ENVIRONMENTAL, 1, true);
 		meta.addEnchant(Enchantment.DURABILITY, 1, true);
 
-		List<String> lore = new ArrayList<String>();
+		List<String> lore = new ArrayList<>();
 		lore.add("");
 		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "This armor harnesses the security of ");
 		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "48 Cobblestone");
@@ -66,7 +67,7 @@ public class Armor {
 		meta.addEnchant(Enchantment.PROTECTION_ENVIRONMENTAL, 2, true);
 		meta.addEnchant(Enchantment.DURABILITY, 2, true);
 
-		List<String> lore = new ArrayList<String>();
+		List<String> lore = new ArrayList<>();
 		lore.add("");
 		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "This armor harnesses the security of ");
 		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "156 Cobblestone");
@@ -88,7 +89,7 @@ public class Armor {
 		meta.addEnchant(Enchantment.THORNS, 1, true);
 		meta.addEnchant(Enchantment.OXYGEN, 1, true);
 
-		List<String> lore = new ArrayList<String>();
+		List<String> lore = new ArrayList<>();
 		lore.add("");
 		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "This armor harnesses the security of ");
 		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "480 Cobblestone");
@@ -115,7 +116,7 @@ public class Armor {
 		meta.addEnchant(Enchantment.OXYGEN, 1, true);
 		meta.addEnchant(Enchantment.WATER_WORKER, 1, true);
 
-		List<String> lore = new ArrayList<String>();
+		List<String> lore = new ArrayList<>();
 		lore.add("");
 		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "This armor harnesses the security of ");
 		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "1,452 Cobblestone");
@@ -144,7 +145,7 @@ public class Armor {
 		meta.addEnchant(Enchantment.OXYGEN, 2, true);
 		meta.addEnchant(Enchantment.WATER_WORKER, 1, true);
 
-		List<String> lore = new ArrayList<String>();
+		List<String> lore = new ArrayList<>();
 		lore.add("");
 		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "This armor harnesses the security of ");
 		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "4,368 Cobblestone");
@@ -176,7 +177,7 @@ public class Armor {
 		meta.addEnchant(Enchantment.WATER_WORKER, 1, true);
 		meta.addEnchant(Enchantment.MENDING, 1, true);
 
-		List<String> lore = new ArrayList<String>();
+		List<String> lore = new ArrayList<>();
 		lore.add(ChatColor.GRAY + "Radar");
 		lore.add("");
 		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "This armor harnesses the security of ");
@@ -212,7 +213,7 @@ public class Armor {
 		meta.addEnchant(Enchantment.WATER_WORKER, 1, true);
 		meta.addEnchant(Enchantment.MENDING, 1, true);
 
-		List<String> lore = new ArrayList<String>();
+		List<String> lore = new ArrayList<>();
 		lore.add(ChatColor.GRAY + "Radar");
 		lore.add("");
 		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "This armor harnesses the security of ");
@@ -249,7 +250,7 @@ public class Armor {
 		meta.addEnchant(Enchantment.WATER_WORKER, 1, true);
 		meta.addEnchant(Enchantment.MENDING, 1, true);
 
-		List<String> lore = new ArrayList<String>();
+		List<String> lore = new ArrayList<>();
 		lore.add(ChatColor.GRAY + "Unbreaking XV");
 		lore.add(ChatColor.GRAY + "Protection V");
 		lore.add(ChatColor.GRAY + "Thorns V");
@@ -295,7 +296,7 @@ public class Armor {
 		meta.addEnchant(Enchantment.WATER_WORKER, 1, true);
 		meta.setUnbreakable(true);
 
-		List<String> lore = new ArrayList<String>();
+		List<String> lore = new ArrayList<>();
 		lore.add(ChatColor.GRAY + "Radar");
 		lore.add(ChatColor.GRAY + "Water Breathing");
 		lore.add("");
@@ -333,7 +334,7 @@ public class Armor {
 		meta.setDisplayName(ChatColor.DARK_PURPLE + "" + ChatColor.BOLD + "Not Stone Crown");
 		meta.setUnbreakable(true);
 
-		List<String> lore = new ArrayList<String>();
+		List<String> lore = new ArrayList<>();
 		lore.add(ChatColor.GRAY + "Disarming I");
 		lore.add(ChatColor.GRAY + "Radar");
 		lore.add("");
@@ -362,7 +363,7 @@ public class Armor {
 		meta.addEnchant(Enchantment.WATER_WORKER, 1, true);
 		meta.setUnbreakable(true);
 
-		List<String> lore = new ArrayList<String>();
+		List<String> lore = new ArrayList<>();
 		lore.add(ChatColor.GRAY + "Disarming II");
 		lore.add(ChatColor.GRAY + "Aqua Affinity");
 		lore.add(ChatColor.GRAY + "Radar");
@@ -417,7 +418,7 @@ public class Armor {
 		meta.setDisplayName(ChatColor.WHITE + "T1 Durable Stone Chestplate");
 		meta.addEnchant(Enchantment.PROTECTION_ENVIRONMENTAL, 1, true);
 		
-		List<String> lore = new ArrayList<String>();
+		List<String> lore = new ArrayList<>();
 		lore.add("");
 		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "This armor harnesses the security of ");
 		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "21 Cobblestone");
@@ -438,7 +439,7 @@ public class Armor {
 		meta.addEnchant(Enchantment.PROTECTION_ENVIRONMENTAL, 1, true);
 		meta.addEnchant(Enchantment.DURABILITY, 1, true);
 
-		List<String> lore = new ArrayList<String>();
+		List<String> lore = new ArrayList<>();
 		lore.add("");
 		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "This armor harnesses the security of ");
 		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "84 Cobblestone");
@@ -458,7 +459,7 @@ public class Armor {
 		meta.addEnchant(Enchantment.PROTECTION_ENVIRONMENTAL, 2, true);
 		meta.addEnchant(Enchantment.DURABILITY, 2, true);
 
-		List<String> lore = new ArrayList<String>();
+		List<String> lore = new ArrayList<>();
 		lore.add("");
 		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "This armor harnesses the security of ");
 		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "273 Cobblestone");
@@ -479,7 +480,7 @@ public class Armor {
 		meta.addEnchant(Enchantment.DURABILITY, 2, true);
 		meta.addEnchant(Enchantment.THORNS, 1, true);
 
-		List<String> lore = new ArrayList<String>();
+		List<String> lore = new ArrayList<>();
 		lore.add("");
 		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "This armor harnesses the security of ");
 		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "840 Cobblestone");
@@ -504,7 +505,7 @@ public class Armor {
 		meta.addEnchant(Enchantment.DURABILITY, 3, true);
 		meta.addEnchant(Enchantment.THORNS, 1, true);
 
-		List<String> lore = new ArrayList<String>();
+		List<String> lore = new ArrayList<>();
 		lore.add("");
 		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "This armor harnesses the security of ");
 		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "2,541 Cobblestone");
@@ -531,7 +532,7 @@ public class Armor {
 		meta.addEnchant(Enchantment.PROTECTION_ENVIRONMENTAL, 3, true);
 		meta.addEnchant(Enchantment.THORNS, 2, true);
 
-		List<String> lore = new ArrayList<String>();
+		List<String> lore = new ArrayList<>();
 		lore.add(ChatColor.GRAY + "Haste I");
 		lore.add("");
 		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "This armor harnesses the security of ");
@@ -563,7 +564,7 @@ public class Armor {
 		meta.addEnchant(Enchantment.THORNS, 3, true);
 		meta.addEnchant(Enchantment.MENDING, 1, true);
 
-		List<String> lore = new ArrayList<String>();
+		List<String> lore = new ArrayList<>();
 		lore.add(ChatColor.GRAY + "Unbreaking VII");
 		lore.add(ChatColor.GRAY + "Protection IV");
 		lore.add(ChatColor.GRAY + "Thorns III");
@@ -602,7 +603,7 @@ public class Armor {
 		meta.addEnchant(Enchantment.THORNS, 4, true);
 		meta.addEnchant(Enchantment.MENDING, 1, true);
 
-		List<String> lore = new ArrayList<String>();
+		List<String> lore = new ArrayList<>();
 		lore.add(ChatColor.GRAY + "Unbreaking X");
 		lore.add(ChatColor.GRAY + "Protection IV");
 		lore.add(ChatColor.GRAY + "Thorns IV");
@@ -643,7 +644,7 @@ public class Armor {
 		meta.addEnchant(Enchantment.THORNS, 5, true);
 		meta.addEnchant(Enchantment.MENDING, 1, true);
 
-		List<String> lore = new ArrayList<String>();
+		List<String> lore = new ArrayList<>();
 		lore.add(ChatColor.GRAY + "Unbreaking XV");
 		lore.add(ChatColor.GRAY + "Protection V");
 		lore.add(ChatColor.GRAY + "Thorns V");
@@ -685,7 +686,7 @@ public class Armor {
 		meta.addEnchant(Enchantment.PROTECTION_ENVIRONMENTAL, 5, true);
 		meta.setUnbreakable(true);
 
-		List<String> lore = new ArrayList<String>();
+		List<String> lore = new ArrayList<>();
 		lore.add(ChatColor.GRAY + "Haste II");
 		lore.add("");
 		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "This armor harnesses the security of ");
@@ -734,7 +735,7 @@ public class Armor {
 		meta.setDisplayName(ChatColor.WHITE + "T1 Durable Stone Leggings");
 		meta.addEnchant(Enchantment.PROTECTION_ENVIRONMENTAL, 1, true);
 		
-		List<String> lore = new ArrayList<String>();
+		List<String> lore = new ArrayList<>();
 		lore.add("");
 		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "This armor harnesses the security of ");
 		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "18 Cobblestone");
@@ -755,7 +756,7 @@ public class Armor {
 		meta.addEnchant(Enchantment.PROTECTION_ENVIRONMENTAL, 1, true);
 		meta.addEnchant(Enchantment.DURABILITY, 1, true);
 
-		List<String> lore = new ArrayList<String>();
+		List<String> lore = new ArrayList<>();
 		lore.add("");
 		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "This armor harnesses the security of ");
 		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "72 Cobblestone");
@@ -775,7 +776,7 @@ public class Armor {
 		meta.addEnchant(Enchantment.PROTECTION_ENVIRONMENTAL, 2, true);
 		meta.addEnchant(Enchantment.DURABILITY, 2, true);
 
-		List<String> lore = new ArrayList<String>();
+		List<String> lore = new ArrayList<>();
 		lore.add("");
 		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "This armor harnesses the security of ");
 		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "234 Cobblestone");
@@ -796,7 +797,7 @@ public class Armor {
 		meta.addEnchant(Enchantment.DURABILITY, 2, true);
 		meta.addEnchant(Enchantment.THORNS, 1, true);
 
-		List<String> lore = new ArrayList<String>();
+		List<String> lore = new ArrayList<>();
 		lore.add("");
 		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "This armor harnesses the security of ");
 		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "720 Cobblestone");
@@ -821,7 +822,7 @@ public class Armor {
 		meta.addEnchant(Enchantment.DURABILITY, 3, true);
 		meta.addEnchant(Enchantment.THORNS, 1, true);
 
-		List<String> lore = new ArrayList<String>();
+		List<String> lore = new ArrayList<>();
 		lore.add("");
 		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "This armor harnesses the security of ");
 		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "2,178 Cobblestone");
@@ -848,7 +849,7 @@ public class Armor {
 		meta.addEnchant(Enchantment.PROTECTION_ENVIRONMENTAL, 3, true);
 		meta.addEnchant(Enchantment.THORNS, 2, true);
 
-		List<String> lore = new ArrayList<String>();
+		List<String> lore = new ArrayList<>();
 		lore.add("");
 		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "This armor harnesses the security of ");
 		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "6,552 Cobblestone");
@@ -878,7 +879,7 @@ public class Armor {
 		meta.addEnchant(Enchantment.THORNS, 3, true);
 		meta.addEnchant(Enchantment.MENDING, 1, true);
 
-		List<String> lore = new ArrayList<String>();
+		List<String> lore = new ArrayList<>();
 		lore.add("");
 		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "This armor harnesses the security of ");
 		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "19,674 Cobblestone");
@@ -910,7 +911,7 @@ public class Armor {
 		meta.addEnchant(Enchantment.THORNS, 4, true);
 		meta.addEnchant(Enchantment.MENDING, 1, true);
 
-		List<String> lore = new ArrayList<String>();
+		List<String> lore = new ArrayList<>();
 		lore.add(ChatColor.GRAY + "Unbreaking X");
 		lore.add(ChatColor.GRAY + "Protection IV");
 		lore.add(ChatColor.GRAY + "Thorns IV");
@@ -949,7 +950,7 @@ public class Armor {
 		meta.addEnchant(Enchantment.THORNS, 5, true);
 		meta.addEnchant(Enchantment.MENDING, 1, true);
 
-		List<String> lore = new ArrayList<String>();
+		List<String> lore = new ArrayList<>();
 		lore.add(ChatColor.GRAY + "Unbreaking XV");
 		lore.add(ChatColor.GRAY + "Protection V");
 		lore.add(ChatColor.GRAY + "Thorns V");
@@ -991,7 +992,7 @@ public class Armor {
 		meta.addEnchant(Enchantment.PROTECTION_ENVIRONMENTAL, 5, true);
 		meta.setUnbreakable(true);
 
-		List<String> lore = new ArrayList<String>();
+		List<String> lore = new ArrayList<>();
 		lore.add(ChatColor.GRAY + "Dolphin");
 		lore.add(ChatColor.GRAY + "Saturation");
 		lore.add("");
@@ -1042,7 +1043,7 @@ public class Armor {
 		meta.setDisplayName(ChatColor.WHITE + "T1 Durable Stone Boots");
 		meta.addEnchant(Enchantment.PROTECTION_ENVIRONMENTAL, 1, true);
 		
-		List<String> lore = new ArrayList<String>();
+		List<String> lore = new ArrayList<>();
 		lore.add("");
 		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "This armor harnesses the security of ");
 		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "9 Cobblestone");
@@ -1063,7 +1064,7 @@ public class Armor {
 		meta.addEnchant(Enchantment.PROTECTION_ENVIRONMENTAL, 1, true);
 		meta.addEnchant(Enchantment.DURABILITY, 1, true);
 
-		List<String> lore = new ArrayList<String>();
+		List<String> lore = new ArrayList<>();
 		lore.add("");
 		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "This armor harnesses the security of ");
 		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "36 Cobblestone");
@@ -1083,7 +1084,7 @@ public class Armor {
 		meta.addEnchant(Enchantment.PROTECTION_ENVIRONMENTAL, 2, true);
 		meta.addEnchant(Enchantment.DURABILITY, 2, true);
 
-		List<String> lore = new ArrayList<String>();
+		List<String> lore = new ArrayList<>();
 		lore.add(ChatColor.GRAY + "Speedy I");
 		lore.add("");
 		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "This armor harnesses the security of ");
@@ -1107,7 +1108,7 @@ public class Armor {
 		meta.addEnchant(Enchantment.THORNS, 1, true);
 		meta.addEnchant(Enchantment.PROTECTION_FALL, 1, true);
 
-		List<String> lore = new ArrayList<String>();
+		List<String> lore = new ArrayList<>();
 		lore.add(ChatColor.GRAY + "Protection II");
 		lore.add(ChatColor.GRAY + "Unbreaking II");
 		lore.add(ChatColor.GRAY + "Speedy I");
@@ -1140,7 +1141,7 @@ public class Armor {
 		meta.addEnchant(Enchantment.THORNS, 1, true);
 		meta.addEnchant(Enchantment.PROTECTION_FALL, 1, true);
 
-		List<String> lore = new ArrayList<String>();
+		List<String> lore = new ArrayList<>();
 		lore.add(ChatColor.GRAY + "Protection III");
 		lore.add(ChatColor.GRAY + "Unbreaking III");
 		lore.add(ChatColor.GRAY + "Speedy I");
@@ -1176,7 +1177,7 @@ public class Armor {
 		meta.addEnchant(Enchantment.PROTECTION_FALL, 2, true);
 		meta.addEnchant(Enchantment.SOUL_SPEED, 1, true);
 
-		List<String> lore = new ArrayList<String>();
+		List<String> lore = new ArrayList<>();
 		lore.add(ChatColor.GRAY + "Unbreaking V");
 		lore.add(ChatColor.GRAY + "Protection III");
 		lore.add(ChatColor.GRAY + "Thorns II");
@@ -1216,7 +1217,7 @@ public class Armor {
 		meta.addEnchant(Enchantment.SOUL_SPEED, 1, true);
 		meta.addEnchant(Enchantment.MENDING, 1, true);
 
-		List<String> lore = new ArrayList<String>();
+		List<String> lore = new ArrayList<>();
 		lore.add(ChatColor.GRAY + "Unbreaking VII");
 		lore.add(ChatColor.GRAY + "Protection IV");
 		lore.add(ChatColor.GRAY + "Thorns III");
@@ -1259,7 +1260,7 @@ public class Armor {
 		meta.addEnchant(Enchantment.SOUL_SPEED, 2, true);
 		meta.addEnchant(Enchantment.MENDING, 1, true);
 
-		List<String> lore = new ArrayList<String>();
+		List<String> lore = new ArrayList<>();
 		lore.add(ChatColor.GRAY + "Unbreaking X");
 		lore.add(ChatColor.GRAY + "Protection IV");
 		lore.add(ChatColor.GRAY + "Thorns IV");
@@ -1306,7 +1307,7 @@ public class Armor {
 		meta.addEnchant(Enchantment.SOUL_SPEED, 3, true);
 		meta.addEnchant(Enchantment.MENDING, 1, true);
 
-		List<String> lore = new ArrayList<String>();
+		List<String> lore = new ArrayList<>();
 		lore.add(ChatColor.GRAY + "Unbreaking XV");
 		lore.add(ChatColor.GRAY + "Protection V");
 		lore.add(ChatColor.GRAY + "Thorns V");
@@ -1353,7 +1354,7 @@ public class Armor {
 		meta.addEnchant(Enchantment.SOUL_SPEED, 3, true);
 		meta.setUnbreakable(true);
 
-		List<String> lore = new ArrayList<String>();
+		List<String> lore = new ArrayList<>();
 		lore.add(ChatColor.GRAY + "Speedy III");
 		lore.add(ChatColor.GRAY + "Jump II");
 		lore.add(ChatColor.GRAY + "Soft Landing");
@@ -1408,7 +1409,7 @@ public class Armor {
 		meta.addEnchant(Enchantment.THORNS, 5, true);
 		meta.addEnchant(Enchantment.MENDING, 1, true);
 
-		List<String> lore = new ArrayList<String>();
+		List<String> lore = new ArrayList<>();
 		lore.add(ChatColor.GRAY + "Unbreaking XV");
 		lore.add(ChatColor.GRAY + "Thorns V");
 		lore.add(ChatColor.GRAY + "Haste II");
@@ -1448,7 +1449,7 @@ public class Armor {
 		meta.addEnchant(Enchantment.THORNS, 7, true);
 		meta.setUnbreakable(true);
 
-		List<String> lore = new ArrayList<String>();
+		List<String> lore = new ArrayList<>();
 		lore.add(ChatColor.GRAY + "Haste II");
 		lore.add("");
 		lore.add(ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "These wings mobilize the power of ");

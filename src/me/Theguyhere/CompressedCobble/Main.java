@@ -11,6 +11,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import me.Theguyhere.CompressedCobble.enchants.CustomEnchants;
@@ -27,10 +28,10 @@ import me.Theguyhere.CompressedCobble.items.ToolRecipes;
 import me.Theguyhere.CompressedCobble.items.Tools;
 
 public class Main extends JavaPlugin implements Listener {
-	private Resources r = new Resources();
-	private Tools t = new Tools();
-	private Armor armor = new Armor();
-	private Commands commands = new Commands(r, t, armor);
+	private final Resources r = new Resources();
+	private final Tools t = new Tools();
+	private final Armor armor = new Armor();
+	private final Commands commands = new Commands(r, t, armor);
 	private DataManager data;
 	
 	@Override
@@ -375,6 +376,7 @@ public class Main extends JavaPlugin implements Listener {
 		this.getServer().getPluginManager().registerEvents(new LevelRestrictEvents(this, t, armor), this);
 		
 		this.getCommand("cc").setExecutor(commands);
+		this.getCommand("cc").setTabCompleter(new CommandTab());
 
 		if (this.getConfig().getDouble("version") < 2.0)
 			this.getServer().getConsoleSender().sendMessage(ChatColor.RED + "Your config.yml is outdated! "
@@ -394,18 +396,35 @@ public class Main extends JavaPlugin implements Listener {
 	}
 	
 	public static boolean equals(ItemStack a, ItemStack b) {
-	    if(a == null || b == null)
+		// Null items are always not equal
+	    if (a == null || b == null)
 	        return false;
-	    if(a.getType() != b.getType())
+
+	    // Materials need to match
+	    if (a.getType() != b.getType())
 	        return false;
-	    if(a.hasItemMeta() != b.hasItemMeta())
+
+	    // Both need to match having item meta
+	    if (a.hasItemMeta() != b.hasItemMeta())
 	        return false;
-	    if(a.getItemMeta().hasLore() != b.getItemMeta().hasLore())
+
+	    // Items without meta are equal from here
+		if (!a.hasItemMeta())
+			return true;
+
+		ItemMeta metaA = a.getItemMeta();
+		ItemMeta metaB = b.getItemMeta();
+
+	    // Both need to match having lore
+	    if (metaA.hasLore() != metaB.hasLore())
 	        return false;
-	    if (a.getItemMeta().hasLore() && b.getItemMeta().hasLore())
-		    if(!a.getItemMeta().getLore().equals(b.getItemMeta().getLore()))
-		        return false;
-	    return true;
+
+		// Items without lore are equal from here
+		if (!metaA.hasLore())
+			return true;
+
+		// Check lore equality
+		return metaA.getLore().equals(metaB.getLore());
 	}
 	
 	public static void giveItem(Player player, World world, Location loc, ItemStack i) {

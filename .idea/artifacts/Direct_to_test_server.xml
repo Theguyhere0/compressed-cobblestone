@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="Direct to test server">
+    <output-path>$PROJECT_DIR$/../../Minecraft Dev/Spigot 1.16.5 Server/plugins</output-path>
+    <root id="archive" name="CompressedCobble.jar">
+      <element id="module-output" name="CompressedCobble" />
+    </root>
+  </artifact>
+</component>
