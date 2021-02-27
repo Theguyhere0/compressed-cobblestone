@@ -644,7 +644,8 @@ public class ToolArmorRecipeEvents implements Listener {
 			clone.setItemMeta(meta);
 
 			// Check for illegal tools
-			if (!(t.t4s().contains(clone) || t.t5s().contains(clone) || a.t4s().contains(clone) || a.t5s().contains(clone))) {
+			if (!(t.t4s().contains(clone) || t.t5s().contains(clone) || a.t4s().contains(clone) || a.t5s().contains(clone)
+				|| Main.equals(clone, new ItemStack(Material.SHIELD)))) {
 				found = true;
 				break;
 			}
@@ -987,7 +988,8 @@ public class ToolArmorRecipeEvents implements Listener {
 			clone.setItemMeta(meta);
 
 			// Check for illegal tools
-			if (!(t.t7s().contains(clone) || t.t8s().contains(clone) || a.t7s().contains(clone) || a.t8s().contains(clone))) {
+			if (!(t.t7s().contains(clone) || t.t8s().contains(clone) || a.t7s().contains(clone) || a.t8s().contains(clone)
+				|| Main.equals(clone, t.t5Shield()))) {
 				found = true;
 				break;
 			}
@@ -1104,7 +1106,8 @@ public class ToolArmorRecipeEvents implements Listener {
 			clone.setItemMeta(meta);
 
 			// Check for illegal tools
-			if (!(t.t8s().contains(clone) || t.t9s().contains(clone) || a.t8s().contains(clone) || a.t9s().contains(clone))) {
+			if (!(t.t8s().contains(clone) || t.t9s().contains(clone) || a.t8s().contains(clone) || a.t9s().contains(clone)
+				|| Main.equals(clone, new ItemStack(Material.ELYTRA)))) {
 				found = true;
 				break;
 			}
@@ -1194,10 +1197,12 @@ public class ToolArmorRecipeEvents implements Listener {
 					found = true;
 					break;
 				}
+				continue;
 			}
 
 			// Ignore other vanilla elements
-			if (type.equals(Material.SPONGE) || type.equals(Material.END_CRYSTAL) || type.equals(Material.NETHERITE_BLOCK))
+			if (type.equals(Material.SPONGE) || type.equals(Material.END_CRYSTAL) || type.equals(Material.NETHERITE_BLOCK)
+				|| type.equals(Material.END_ROD))
 				continue;
 
 			// Create a copy without damage
@@ -1207,7 +1212,7 @@ public class ToolArmorRecipeEvents implements Listener {
 			clone.setItemMeta(meta);
 
 			// Check for right level of items
-			if (!(t.t9s().contains(clone) || a.t9s().contains(clone) || Main.equals(item, t.t8Shield()))) {
+			if (!(t.t9s().contains(clone) || a.t9s().contains(clone) || Main.equals(clone, t.t8Shield()))) {
 				found = true;
 				break;
 			}
