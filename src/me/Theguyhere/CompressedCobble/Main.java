@@ -378,7 +378,7 @@ public class Main extends JavaPlugin implements Listener {
 		this.getCommand("cc").setExecutor(commands);
 		this.getCommand("cc").setTabCompleter(new CommandTab());
 
-		if (this.getConfig().getDouble("version") < 2.0)
+		if (this.getConfig().getDouble("version") < 2.1)
 			this.getServer().getConsoleSender().sendMessage(ChatColor.RED + "Your config.yml is outdated! "
 					+ "Please update to the latest version to ensure compatibility.");
 		
