@@ -1,6 +1,7 @@
 package me.Theguyhere.CompressedCobble;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 
 import org.bukkit.ChatColor;
@@ -20,187 +21,142 @@ import net.md_5.bungee.api.chat.ClickEvent;
 import net.md_5.bungee.api.chat.TextComponent;
 
 public class Commands implements CommandExecutor {
-	private Resources r;
-	private Tools t;
-	private Armor a;
+	private final Resources r;
+	private final Tools t;
+	private final Armor a;
 	
 	public Commands(Resources r, Tools t, Armor a) {
 		this.r = r;
 		this.t = t;
 		this.a = a;
 	}
-	
-	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
-		ArrayList<ItemStack> items = new ArrayList<ItemStack>();
-		items.add(new ItemStack(Material.COBBLESTONE));
-		items.add(r.t1());
-		items.add(r.t2());
-		items.add(r.t3());
-		items.add(r.t4());
-		items.add(r.t5());
-		items.add(r.t6());
-		items.add(r.t7());
-		items.add(r.t8());
-		items.add(r.t9());
-		items.add(r.t10());
-		items.add(r.not());
-		items.add(r.a());
-		items.add(new ItemStack(Material.STICK));
-		items.add(new ItemStack(Material.BLAZE_POWDER));
-		items.add(new ItemStack(Material.BLAZE_ROD));
-		items.add(new ItemStack(Material.END_ROD));
-		items.add(new ItemStack(Material.END_CRYSTAL));
-		items.add(new ItemStack(Material.STRING));
-		items.add(new ItemStack(Material.SLIME_BALL));
-		items.add(new ItemStack(Material.SPONGE));
-		items.add(new ItemStack(Material.NETHER_STAR));
-		items.add(new ItemStack(Material.IRON_BLOCK));
-		items.add(new ItemStack(Material.GOLD_BLOCK));
-		items.add(new ItemStack(Material.DIAMOND_BLOCK));
-		items.add(new ItemStack(Material.NETHERITE_BLOCK));
-		items.add(new ItemStack(Material.CONDUIT));
-		items.add(new ItemStack(Material.LEATHER));
 
-		ArrayList<ItemStack> tools0 = new ArrayList<ItemStack>();
-		tools0.add(new ItemStack(Material.STONE_PICKAXE));
-		tools0.add(new ItemStack(Material.STONE_AXE));
-		tools0.add(new ItemStack(Material.STONE_SHOVEL));
-		tools0.add(new ItemStack(Material.STONE_HOE));
-		tools0.add(new ItemStack(Material.STONE_SWORD));
-		tools0.add(new ItemStack(Material.BOW));
-		tools0.add(new ItemStack(Material.SHIELD));
-		tools0.add(new ItemStack(Material.LEATHER_HELMET));
-		tools0.add(new ItemStack(Material.LEATHER_CHESTPLATE));
-		tools0.add(new ItemStack(Material.LEATHER_LEGGINGS));
-		tools0.add(new ItemStack(Material.LEATHER_BOOTS));
-		ArrayList<ItemStack> tools1 = new ArrayList<ItemStack>();
-		tools1.add(t.t1Pick());
-		tools1.add(t.t1Axe());
-		tools1.add(t.t1Spade());
-		tools1.add(t.t1Hoe());
-		tools1.add(t.t1Sword());
-		tools1.add(t.t1Range());
+	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
+		List<ItemStack> materials = new ArrayList<>();
+		materials.add(new ItemStack(Material.COBBLESTONE));
+		materials.add(r.t1());
+		materials.add(r.t2());
+		materials.add(r.t3());
+		materials.add(r.t4());
+		materials.add(r.t5());
+		materials.add(r.t6());
+		materials.add(r.t7());
+		materials.add(r.t8());
+		materials.add(r.t9());
+		materials.add(r.t10());
+		materials.add(r.not());
+		materials.add(r.a());
+		materials.add(new ItemStack(Material.STICK));
+		materials.add(new ItemStack(Material.BLAZE_POWDER));
+		materials.add(new ItemStack(Material.BLAZE_ROD));
+		materials.add(new ItemStack(Material.END_ROD));
+		materials.add(new ItemStack(Material.END_CRYSTAL));
+		materials.add(new ItemStack(Material.STRING));
+		materials.add(new ItemStack(Material.SLIME_BALL));
+		materials.add(new ItemStack(Material.SPONGE));
+		materials.add(new ItemStack(Material.NETHER_STAR));
+		materials.add(new ItemStack(Material.IRON_BLOCK));
+		materials.add(new ItemStack(Material.GOLD_BLOCK));
+		materials.add(new ItemStack(Material.DIAMOND_BLOCK));
+		materials.add(new ItemStack(Material.NETHERITE_BLOCK));
+		materials.add(new ItemStack(Material.CONDUIT));
+		materials.add(new ItemStack(Material.LEATHER));
+
+		List<ItemStack> cobble = new ArrayList<>();
+		cobble.add(new ItemStack(Material.COBBLESTONE));
+		cobble.add(r.t1());
+		cobble.add(r.t2());
+		cobble.add(r.t3());
+		cobble.add(r.t4());
+		cobble.add(r.t5());
+		cobble.add(r.t6());
+		cobble.add(r.t7());
+		cobble.add(r.t8());
+		cobble.add(r.t9());
+		cobble.add(r.t10());
+		cobble.add(r.not());
+		cobble.add(r.a());
+
+		List<ItemStack> tools0 = new ArrayList<>();
+		for (ItemStack item: t.t0s())
+			tools0.add(item);
+		for (ItemStack item: a.t0s())
+			tools0.add(item);
+
+		List<ItemStack> tools1 = new ArrayList<>();
+		for (ItemStack item: t.t1s())
+			tools1.add(item);
+		for (ItemStack item: a.t1s())
+			tools1.add(item);
 		tools1.add(new ItemStack(Material.SHIELD));
-		tools1.add(a.t1Helmet());
-		tools1.add(a.t1Chestplate());
-		tools1.add(a.t1Leggings());
-		tools1.add(a.t1Boots());
-		ArrayList<ItemStack> tools2 = new ArrayList<ItemStack>();
-		tools2.add(t.t2Pick());
-		tools2.add(t.t2Axe());
-		tools2.add(t.t2Spade());
-		tools2.add(t.t2Hoe());
-		tools2.add(t.t2Sword());
-		tools2.add(t.t2Range());
+
+		List<ItemStack> tools2 = new ArrayList<>();
+		for (ItemStack item: t.t2s())
+			tools2.add(item);
+		for (ItemStack item: a.t2s())
+			tools2.add(item);
 		tools2.add(new ItemStack(Material.SHIELD));
-		tools2.add(a.t2Helmet());
-		tools2.add(a.t2Chestplate());
-		tools2.add(a.t2Leggings());
-		tools2.add(a.t2Boots());
-		ArrayList<ItemStack> tools3 = new ArrayList<ItemStack>();
-		tools3.add(t.t3Pick());
-		tools3.add(t.t3Axe());
-		tools3.add(t.t3Spade());
-		tools3.add(t.t3Hoe());
-		tools3.add(t.t3Sword());
-		tools3.add(t.t3Range());
+
+		List<ItemStack> tools3 = new ArrayList<>();
+		for (ItemStack item: t.t3s())
+			tools3.add(item);
+		for (ItemStack item: a.t3s())
+			tools3.add(item);
 		tools3.add(new ItemStack(Material.SHIELD));
-		tools3.add(a.t3Helmet());
-		tools3.add(a.t3Chestplate());
-		tools3.add(a.t3Leggings());
-		tools3.add(a.t3Boots());
-		ArrayList<ItemStack> tools4 = new ArrayList<ItemStack>();
-		tools4.add(t.t4Pick());
-		tools4.add(t.t4Axe());
-		tools4.add(t.t4Spade());
-		tools4.add(t.t4Hoe());
-		tools4.add(t.t4Sword());
-		tools4.add(t.t4Range());
+
+		List<ItemStack> tools4 = new ArrayList<>();
+		for (ItemStack item: t.t4s())
+			tools4.add(item);
+		for (ItemStack item: a.t4s())
+			tools4.add(item);
 		tools4.add(new ItemStack(Material.SHIELD));
-		tools4.add(a.t4Helmet());
-		tools4.add(a.t4Chestplate());
-		tools4.add(a.t4Leggings());
-		tools4.add(a.t4Boots());
-		ArrayList<ItemStack> tools5 = new ArrayList<ItemStack>();
-		tools5.add(t.t5Pick());
-		tools5.add(t.t5Axe());
-		tools5.add(t.t5Spade());
-		tools5.add(t.t5Hoe());
-		tools5.add(t.t5Sword());
-		tools5.add(t.t5Range());
-		tools5.add(t.t5Shield());
-		tools5.add(a.t5Helmet());
-		tools5.add(a.t5Chestplate());
-		tools5.add(a.t5Leggings());
-		tools5.add(a.t5Boots());
-		ArrayList<ItemStack> tools6 = new ArrayList<ItemStack>();
-		tools6.add(t.t6Pick());
-		tools6.add(t.t6Axe());
-		tools6.add(t.t6Spade());
-		tools6.add(t.t6Hoe());
-		tools6.add(t.t6Sword());
-		tools6.add(t.t6Range());
+
+		List<ItemStack> tools5 = new ArrayList<>();
+		for (ItemStack item: t.t5s())
+			tools5.add(item);
+		for (ItemStack item: a.t5s())
+			tools5.add(item);
+
+		List<ItemStack> tools6 = new ArrayList<>();
+		for (ItemStack item: t.t6s())
+			tools6.add(item);
+		for (ItemStack item: a.t6s())
+			tools6.add(item);
 		tools6.add(t.t5Shield());
-		tools6.add(a.t6Helmet());
-		tools6.add(a.t6Chestplate());
-		tools6.add(a.t6Leggings());
-		tools6.add(a.t6Boots());
-		ArrayList<ItemStack> tools7 = new ArrayList<ItemStack>();
-		tools7.add(t.t7Pick());
-		tools7.add(t.t7Axe());
-		tools7.add(t.t7Spade());
-		tools7.add(t.t7Hoe());
-		tools7.add(t.t7Sword());
-		tools7.add(t.t7Range());
+
+		List<ItemStack> tools7 = new ArrayList<>();
+		for (ItemStack item: t.t7s())
+			tools7.add(item);
+		for (ItemStack item: a.t7s())
+			tools7.add(item);
 		tools7.add(t.t5Shield());
-		tools7.add(a.t7Helmet());
-		tools7.add(a.t7Chestplate());
-		tools7.add(a.t7Leggings());
-		tools7.add(a.t7Boots());
-		ArrayList<ItemStack> tools8 = new ArrayList<ItemStack>();
-		tools8.add(t.t8Pick());
-		tools8.add(t.t8Axe());
-		tools8.add(t.t8Spade());
-		tools8.add(t.t8Hoe());
-		tools8.add(t.t8Sword());
-		tools8.add(t.t8Range());
-		tools8.add(t.t8Shield());
-		tools8.add(a.t8Helmet());
-		tools8.add(a.t8Chestplate());
-		tools8.add(a.t8Leggings());
-		tools8.add(a.t8Boots());
-		ArrayList<ItemStack> tools9 = new ArrayList<ItemStack>();
-		tools9.add(t.t9Pick());
-		tools9.add(t.t9Axe());
-		tools9.add(t.t9Spade());
-		tools9.add(t.t9Hoe());
-		tools9.add(t.t9Sword());
-		tools9.add(t.t9Range());
+
+		List<ItemStack> tools8 = new ArrayList<>();
+		for (ItemStack item: t.t8s())
+			tools8.add(item);
+		for (ItemStack item: a.t8s())
+			tools8.add(item);
+
+		List<ItemStack> tools9 = new ArrayList<>();
+		for (ItemStack item: t.t9s())
+			tools9.add(item);
+		for (ItemStack item: a.t9s())
+			tools9.add(item);
 		tools9.add(t.t8Shield());
-		tools9.add(a.t9Helmet());
-		tools9.add(a.t9Chestplate());
-		tools9.add(a.t9Leggings());
-		tools9.add(a.t9Boots());
-		tools9.add(a.t9Elytra());
-		ArrayList<ItemStack> tools10 = new ArrayList<ItemStack>();
-		tools10.add(t.t10Pick());
-		tools10.add(t.t10Axe());
-		tools10.add(t.t10Spade());
-		tools10.add(t.t10Hoe());
-		tools10.add(t.t10Sword());
-		tools10.add(t.t10Range());
-		tools10.add(t.t10Shield());
-		tools10.add(a.t10Helmet());
-		tools10.add(a.t10Chestplate());
-		tools10.add(a.t10Leggings());
-		tools10.add(a.t10Boots());
-		tools10.add(a.t10Elytra());
+
+		List<ItemStack> tools10 = new ArrayList<>();
+		for (ItemStack item: t.t10s())
+			tools10.add(item);
+		for (ItemStack item: a.t10s())
+			tools10.add(item);
 
 		if (label.equalsIgnoreCase("cc")) {
+			// Check if player sent command
 			if (!(sender instanceof Player)) {
 				sender.sendMessage("Bad console!");
 				return true;
 			}
+
 			Player player = (Player) sender;
 			Location loc = player.getLocation();
 			World world = player.getWorld();
@@ -210,24 +166,37 @@ public class Commands implements CommandExecutor {
 				player.sendMessage(ChatColor.GOLD + "Please use /cc [argument]. Use /cc help for more info.");
 				return true;
 			}
-//			Give materials
 
+//			Give materials
 			if (args[0].equalsIgnoreCase("materials")) {
 				if (!player.hasPermission("cc.materials.use")) {
-					player.sendMessage(ChatColor.RED + "You do not have permision!");
+					player.sendMessage(ChatColor.RED + "You do not have permission!");
 					return true;
 				}
 	
-				for (ItemStack item : items)
+				for (ItemStack item : materials)
 					Main.giveItem(player, world, loc, item);
 				player.sendMessage(ChatColor.GOLD + "Materials given!");
 				return true;
 			}
-		
+
+			//	Give cobble
+			if (args[0].equalsIgnoreCase("cobble")) {
+				if (!player.hasPermission("cc.materials.use")) {
+					player.sendMessage(ChatColor.RED + "You do not have permission!");
+					return true;
+				}
+
+				for (ItemStack item : cobble)
+					Main.giveItem(player, world, loc, item);
+				player.sendMessage(ChatColor.GOLD + "Materials given!");
+				return true;
+			}
+
 //		Give tools of different levels
 			if (args[0].equalsIgnoreCase("tools")) {
 				if (!player.hasPermission("cc.tools.use")) {
-					player.sendMessage(ChatColor.RED + "You do not have permision!");
+					player.sendMessage(ChatColor.RED + "You do not have permission!");
 					return true;
 				}
 				if (args.length < 2) {
@@ -388,52 +357,40 @@ public class Commands implements CommandExecutor {
 					if (value >= 531441) {
 						value -= 531441;
 						Main.giveItem(player, world, loc, r.a());
-					}
-					if (value >= 177147 && value < 531441) {
+					} else if (value >= 177147) {
 						value -= 177147;
 						Main.giveItem(player, world, loc, r.not());
-					}
-					if (value >= 59049 && value < 177147) {
+					} else if (value >= 59049) {
 						value -= 59049;
 						Main.giveItem(player, world, loc, r.t10());
-					}
-					if (value >= 19683 && value < 59049) {
+					} else if (value >= 19683) {
 						value -= 19683;
 						Main.giveItem(player, world, loc, r.t9());
-					}
-					if (value >= 6561 && value < 19683) {
+					} else if (value >= 6561) {
 						value -= 6561;
 						Main.giveItem(player, world, loc, r.t8());
-					}
-					if (value >= 2187 && value < 6561) {
+					} else if (value >= 2187) {
 						value -= 2187;
 						Main.giveItem(player, world, loc, r.t7());
-					}
-					if (value >= 729 && value < 2187) {
+					} else if (value >= 729) {
 						value -= 729;
 						Main.giveItem(player, world, loc, r.t6());
-					}
-					if (value >= 243 && value < 729) {
+					} else if (value >= 243) {
 						value -= 243;
 						Main.giveItem(player, world, loc, r.t5());
-					}
-					if (value >= 81 && value < 243) {
+					} else if (value >= 81) {
 						value -= 81;
 						Main.giveItem(player, world, loc, r.t4());
-					}
-					if (value >= 27 && value < 81) {
+					} else if (value >= 27) {
 						value -= 27;
 						Main.giveItem(player, world, loc, r.t3());
-					}
-					if (value >= 9 && value < 27) {
+					} else if (value >= 9) {
 						value -= 9;
 						Main.giveItem(player, world, loc, r.t2());
-					}
-					if (value >= 3 && value < 9) {
+					} else if (value >= 3) {
 						value -= 3;
 						Main.giveItem(player, world, loc, r.t1());
-					}
-					if (value > 0 && value < 3) {
+					} else {
 						value -= 1;
 						Main.giveItem(player, world, loc, new ItemStack(Material.COBBLESTONE));
 					}

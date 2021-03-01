@@ -9,9 +9,10 @@ import org.bukkit.inventory.ShapelessRecipe;
 
 import me.Theguyhere.CompressedCobble.Main;
 
+@SuppressWarnings("SpellCheckingInspection")
 public class ResourceRecipes implements Listener {
-	private Main plugin;
-	private Resources r;
+	private final Main plugin;
+	private final Resources r;
 	
 	public ResourceRecipes(Main plugin, Resources r) {
 		this.plugin = plugin;

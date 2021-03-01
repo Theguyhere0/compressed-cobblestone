@@ -11,8 +11,8 @@ import org.bukkit.inventory.ShapelessRecipe;
 import me.Theguyhere.CompressedCobble.Main;
 
 public class ToolRecipes implements Listener {	
-	private Main plugin;
-	private Tools t;
+	private final Main plugin;
+	private final Tools t;
 	
 	public ToolRecipes(Main plugin, Tools t) {
 		this.plugin = plugin;

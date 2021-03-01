@@ -16,7 +16,7 @@ public class Resources {
 		ItemMeta meta = item.getItemMeta();
 		
 		meta.setDisplayName(ChatColor.WHITE + "T1 Durable Cobblestone");
-		List<String> lore = new ArrayList<String>();
+		List<String> lore = new ArrayList<>();
 		lore.add(ChatColor.GRAY + "Contains 3^1 (3) Cobblestone");
 		lore.add(ChatColor.DARK_RED + "" + ChatColor.ITALIC + "Warning! Item will lose value if placed.");
 		meta.setLore(lore);
@@ -34,7 +34,7 @@ public class Resources {
 		ItemMeta meta = item.getItemMeta();
 		
 		meta.setDisplayName(ChatColor.YELLOW + "T2 Resilient Cobblestone");
-		List<String> lore = new ArrayList<String>();
+		List<String> lore = new ArrayList<>();
 		lore.add(ChatColor.GRAY + "" + "Contains 3^2 (9) Cobblestone");
 		lore.add(ChatColor.DARK_RED + "" + ChatColor.ITALIC + "Warning! Item will lose value if placed.");
 		meta.setLore(lore);
@@ -51,7 +51,7 @@ public class Resources {
 		ItemMeta meta = item.getItemMeta();
 		
 		meta.setDisplayName(ChatColor.YELLOW + "T3 Metallic Cobblestone");
-		List<String> lore = new ArrayList<String>();
+		List<String> lore = new ArrayList<>();
 		lore.add(ChatColor.GRAY + "Contains 3^3 (27) Cobblestone");
 		lore.add(ChatColor.DARK_RED + "" + ChatColor.ITALIC + "Warning! Item will lose value if placed.");
 		meta.setLore(lore);
@@ -68,7 +68,7 @@ public class Resources {
 		ItemMeta meta = item.getItemMeta();
 		
 		meta.setDisplayName(ChatColor.GOLD + "T4 Gilded Cobblestone");
-		List<String> lore = new ArrayList<String>();
+		List<String> lore = new ArrayList<>();
 		lore.add(ChatColor.GRAY + "Contains 3^4 (81) Cobblestone");
 		lore.add(ChatColor.DARK_RED + "" + ChatColor.ITALIC + "Warning! Item will lose value if placed.");
 		meta.setLore(lore);
@@ -85,7 +85,7 @@ public class Resources {
 		ItemMeta meta = item.getItemMeta();
 		
 		meta.setDisplayName(ChatColor.GOLD + "T5 Shiny Cobblestone");
-		List<String> lore = new ArrayList<String>();
+		List<String> lore = new ArrayList<>();
 		lore.add(ChatColor.GRAY + "Contains 3^5 (243) Cobblestone");
 		lore.add(ChatColor.DARK_RED + "" + ChatColor.ITALIC + "Warning! Item will lose value if placed.");
 		meta.setLore(lore);
@@ -102,7 +102,7 @@ public class Resources {
 		ItemMeta meta = item.getItemMeta();
 		
 		meta.setDisplayName(ChatColor.DARK_RED + "T6 Blazing Cobblestone");
-		List<String> lore = new ArrayList<String>();
+		List<String> lore = new ArrayList<>();
 		lore.add(ChatColor.GRAY + "Contains 3^6 (729) Cobblestone");
 		lore.add(ChatColor.DARK_RED + "" + ChatColor.ITALIC + "Warning! Item will lose value if placed.");
 		meta.setLore(lore);
@@ -119,7 +119,7 @@ public class Resources {
 		ItemMeta meta = item.getItemMeta();
 		
 		meta.setDisplayName(ChatColor.DARK_RED + "T7 Mystical Cobblestone");
-		List<String> lore = new ArrayList<String>();
+		List<String> lore = new ArrayList<>();
 		lore.add(ChatColor.GRAY + "Contains 3^7 (2,187) Cobblestone");
 		lore.add(ChatColor.DARK_RED + "" + ChatColor.ITALIC + "Warning! Item will lose value if placed.");
 		meta.setLore(lore);
@@ -136,7 +136,7 @@ public class Resources {
 		ItemMeta meta = item.getItemMeta();
 		
 		meta.setDisplayName(ChatColor.RED + "T8 Draconian Cobblestone");
-		List<String> lore = new ArrayList<String>();
+		List<String> lore = new ArrayList<>();
 		lore.add(ChatColor.GRAY + "Contains 3^8 (6,561) Cobblestone");
 		lore.add(ChatColor.DARK_RED + "" + ChatColor.ITALIC + "Warning! Item will lose value if placed.");
 		meta.setLore(lore);
@@ -153,7 +153,7 @@ public class Resources {
 		ItemMeta meta = item.getItemMeta();
 		
 		meta.setDisplayName(ChatColor.RED + "" + ChatColor.BOLD + "T9 Impossible Cobblestone");
-		List<String> lore = new ArrayList<String>();
+		List<String> lore = new ArrayList<>();
 		lore.add(ChatColor.GRAY + "Contains 3^9 (19,683) Cobblestone");
 		lore.add(ChatColor.DARK_RED + "" + ChatColor.ITALIC + "Warning! Item will lose value if placed.");
 		meta.setLore(lore);
@@ -170,7 +170,7 @@ public class Resources {
 		ItemMeta meta = item.getItemMeta();
 		
 		meta.setDisplayName(ChatColor.LIGHT_PURPLE + "" + ChatColor.BOLD + "T10 Terminal Cobblestone");
-		List<String> lore = new ArrayList<String>();
+		List<String> lore = new ArrayList<>();
 		lore.add(ChatColor.GRAY + "Contains 3^10 (59,049) Cobblestone");
 		lore.add(ChatColor.DARK_RED + "" + ChatColor.ITALIC + "Warning! Item will lose value if placed.");
 		meta.setLore(lore);
@@ -187,7 +187,7 @@ public class Resources {
 		ItemMeta meta = item.getItemMeta();
 		
 		meta.setDisplayName(ChatColor.DARK_PURPLE + "" + ChatColor.BOLD + "Not Cobblestone");
-		List<String> lore = new ArrayList<String>();
+		List<String> lore = new ArrayList<>();
 		lore.add(ChatColor.GRAY + "Contains 3^11 (177,147) Cobblestone");
 		lore.add(ChatColor.DARK_RED + "" + ChatColor.ITALIC + "Warning! Item will lose value if placed.");
 		meta.setLore(lore);
@@ -204,7 +204,7 @@ public class Resources {
 		ItemMeta meta = item.getItemMeta();
 		
 		meta.setDisplayName(ChatColor.DARK_BLUE + "" + ChatColor.BOLD + "Anti-Cobblestone");
-		List<String> lore = new ArrayList<String>();
+		List<String> lore = new ArrayList<>();
 		lore.add(ChatColor.GRAY + "Contains 3^12 (531,441) Cobblestone");
 		lore.add(ChatColor.RED + "" + ChatColor.ITALIC + "Caution!! Item will destroy blocks it touches.");
 		meta.setLore(lore);

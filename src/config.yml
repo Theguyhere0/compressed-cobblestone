@@ -15,7 +15,7 @@ itemRecipes: true
 # If itemRecipes is FALSE, then the recipe will be reverted back anyways.
 shieldChange: true
 
-# This is the message that a player will recieve upon joining the server.
+# This is the message that a player will receive upon joining the server.
 playerWelcome: "This server has Compressed Cobblestone installed. Do /cc help to visit the wiki for help."
 
 # This determines whether mobs will spawn buffed and with gear depending on what players have in their inventory.
@@ -33,6 +33,7 @@ levelRestrict: true
 # This is the loot table for the Stony, Rocky, Pebbly, Petrifying, and Medusa.
 # The possible values are 0-12 inclusive, each representing the tier of cobblestone that will drop. 0 represents normal drops, 11 represents Not Cobblestone,
 # and 12 represents Anti-Cobblestone.
+# Each tick represents an equal chance out of all the ticks under that level to be selected as the loot drop.
 loot:
   lvl1:
     - 0
@@ -212,6 +213,7 @@ loot:
 
 # This is the spawn table for buffing mobs.
 # The possible values are 0-10 inclusive, each representing the level of cobblestone gear that the mobs will spawn with.
+# Each tick represents an equal chance out of all the ticks under that level to be selected as the spawn level.
 spawn:
   lvl1:
     - 0
@@ -335,4 +337,4 @@ spawn:
 
 # This is the config version for reference.
 # DO NOT EDIT VALUE.
-version: 2.0
+version: 2.1

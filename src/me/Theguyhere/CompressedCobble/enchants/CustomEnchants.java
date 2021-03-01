@@ -4,6 +4,7 @@ import java.lang.reflect.Field;
 import java.util.Arrays;
 import java.util.stream.Collectors;
 
+import org.bukkit.ChatColor;
 import org.bukkit.enchantments.Enchantment;
 
 public class CustomEnchants {
@@ -131,8 +132,8 @@ public class CustomEnchants {
 			registered = false;
 			e.printStackTrace();
 		}
-		if (registered) {
-			System.out.print("Enchantments registered");
+		if (!registered) {
+			System.out.println("ERROR: Enchant registration failed");
 		}
 	}
 }

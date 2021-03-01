@@ -11,13 +11,13 @@ import org.bukkit.configuration.file.YamlConfiguration;
 
 public class DataManager {
 	
-	private Main plugin;
+	private final Main plugin;
 	private FileConfiguration dataConfig = null;
 	private File configFile = null;
 	
 	public DataManager(Main plugin) {
 		this.plugin = plugin;
-//		saves/initializes the config
+//		Saves/initializes the config
 		saveDefaultConfig();
 	}
 	

@@ -47,10 +47,10 @@ import me.Theguyhere.CompressedCobble.items.Tools;
 import net.md_5.bungee.api.ChatColor;
 
 public class EnchantEvents implements Listener {
-	private Main plugin;
-	private Resources resources;
-	private Tools t;
-	private Armor a;
+	private final Main plugin;
+	private final Resources resources;
+	private final Tools t;
+	private final Armor a;
 	
 	public EnchantEvents(Main plugin, Resources r, Tools t, Armor a) {
 		this.plugin = plugin;
@@ -68,28 +68,36 @@ public class EnchantEvents implements Listener {
 	@EventHandler()
 	public void onBlockBreak(BlockBreakEvent event) {
 		Player player = event.getPlayer();
-		Block block = event.getBlock();
-		Material type = block.getType();
 
-		if (player.getInventory().getItemInMainHand() == null)
-			return;
+		// Only check custom items
 		if (!player.getInventory().getItemInMainHand().hasItemMeta())
 			return;
+
+		// Only apply to survival players
 		if (player.getGameMode() == GameMode.CREATIVE || player.getGameMode() == GameMode.SPECTATOR)
 			return;
-		if (player.getInventory().getItemInMainHand().getItemMeta().hasEnchant(CustomEnchants.STONY)) {
+
+		Block block = event.getBlock();
+		Material type = block.getType();
+		Location loc = player.getLocation();
+		World world = player.getWorld();
+		Collection<ItemStack> drops = block.getDrops(player.getInventory().getItemInMainHand());
+
+		// Ignore if nothing drops
+		if (drops.isEmpty())
+			return;
+
+		// Stony enchant
+		if ((type.equals(Material.STONE) || type.equals(Material.DIORITE) || type.equals(Material.GRANITE) ||
+				type.equals(Material.ANDESITE)) && player.getInventory().getItemInMainHand().getItemMeta().hasEnchant(CustomEnchants.STONY)) {
 			int lvl = player.getInventory().getItemInMainHand().getItemMeta().getEnchantLevel(CustomEnchants.STONY);
+
+			// Loot drop if level is high enough
 			if ((type.equals(Material.STONE) || type.equals(Material.DIORITE) && lvl > 2 || type.equals(Material.GRANITE) && lvl > 2 ||
 					type.equals(Material.ANDESITE) && lvl > 2)) {
-				Location loc = player.getLocation();
-				World world = player.getWorld();
-				Collection<ItemStack> drops = block.getDrops(player.getInventory().getItemInMainHand());
-				
-				if (drops.isEmpty())
-					return;
-				
+
 				ItemStack result = giveLoot(lvl, drops.iterator().next());
-				
+
 				event.setDropItems(false);
 				if (player.getInventory().getItemInMainHand().getItemMeta().hasEnchant(CustomEnchants.TELEPATHY)) {
 					Main.giveItem(player, world, loc, result);
@@ -100,24 +108,20 @@ public class EnchantEvents implements Listener {
 			}
 			return;
 		}
+
+		// Fiery enchant
 		if ((type.equals(Material.GOLD_ORE) || type.equals(Material.IRON_ORE) || type.equals(Material.NETHER_GOLD_ORE) ||
 				type.equals(Material.ANCIENT_DEBRIS)) && player.getInventory().getItemInMainHand().getItemMeta().hasEnchant(CustomEnchants.FIERY)) {
 			event.setDropItems(false);
 			
 			ItemStack result = null;
-			Location loc = player.getLocation();
-			World world = player.getWorld();
 			int luck = 0;
 			
 			if (player.getInventory().getItemInMainHand().getItemMeta().hasEnchant(Enchantment.LOOT_BONUS_BLOCKS))
 				luck = player.getInventory().getItemInMainHand().getItemMeta().getEnchantLevel(Enchantment.LOOT_BONUS_BLOCKS);
 			
 			int r = 1 + new Random().nextInt(luck);
-			
-			Collection<ItemStack> drops = block.getDrops(player.getInventory().getItemInMainHand());
-			
-			if (drops.isEmpty())
-				return;
+
 			if (type.equals(Material.GOLD_ORE))
 				result = new ItemStack(Material.GOLD_INGOT, r);
 			if (type.equals(Material.IRON_ORE))
@@ -134,38 +138,12 @@ public class EnchantEvents implements Listener {
 			}
 			return;
 		}
+
+		// Petrifying enchant
 		if ((type.equals(Material.ACACIA_LOG) || type.equals(Material.BIRCH_LOG) || type.equals(Material.DARK_OAK_LOG) || type.equals(Material.JUNGLE_LOG) ||
 				type.equals(Material.OAK_LOG) || type.equals(Material.SPRUCE_LOG) || type.equals(Material.CRIMSON_STEM) || type.equals(Material.WARPED_STEM)) &&
 				player.getInventory().getItemInMainHand().getItemMeta().hasEnchant(CustomEnchants.PETRIFYING)) {
 			int lvl = player.getInventory().getItemInMainHand().getItemMeta().getEnchantLevel(CustomEnchants.PETRIFYING);
-			Location loc = player.getLocation();
-			World world = player.getWorld();
-			Collection<ItemStack> drops = block.getDrops(player.getInventory().getItemInMainHand());
-			
-			if (drops.isEmpty())
-				return;
-			
-			ItemStack result = giveLoot(lvl, drops.iterator().next());
-			
-			event.setDropItems(false);
-			if (player.getInventory().getItemInMainHand().getItemMeta().hasEnchant(CustomEnchants.TELEPATHY)) {
-				Main.giveItem(player, world, loc, result);
-			}
-			else {
-				world.dropItemNaturally(block.getLocation(), result);
-			}
-			return;
-		}
-		if ((type.equals(Material.DIRT) || type.equals(Material.SAND) || type.equals(Material.GRAVEL) || type.equals(Material.GRASS_BLOCK) ||
-				type.equals(Material.COARSE_DIRT) || type.equals(Material.PODZOL) || type.equals(Material.SOUL_SAND) || type.equals(Material.SOUL_SOIL) ||
-				type.equals(Material.RED_SAND)) && player.getInventory().getItemInMainHand().getItemMeta().hasEnchant(CustomEnchants.ROCKY)) {
-			int lvl = player.getInventory().getItemInMainHand().getItemMeta().getEnchantLevel(CustomEnchants.ROCKY);
-			Location loc = player.getLocation();
-			World world = player.getWorld();
-			Collection<ItemStack> drops = block.getDrops(player.getInventory().getItemInMainHand());
-			
-			if (drops.isEmpty())
-				return;
 
 			ItemStack result = giveLoot(lvl, drops.iterator().next());
 			
@@ -178,13 +156,30 @@ public class EnchantEvents implements Listener {
 			}
 			return;
 		}
+
+		// Rocky enchant
+		if ((type.equals(Material.DIRT) || type.equals(Material.SAND) || type.equals(Material.GRAVEL) || type.equals(Material.GRASS_BLOCK) ||
+				type.equals(Material.COARSE_DIRT) || type.equals(Material.PODZOL) || type.equals(Material.SOUL_SAND) || type.equals(Material.SOUL_SOIL) ||
+				type.equals(Material.RED_SAND)) && player.getInventory().getItemInMainHand().getItemMeta().hasEnchant(CustomEnchants.ROCKY)) {
+			int lvl = player.getInventory().getItemInMainHand().getItemMeta().getEnchantLevel(CustomEnchants.ROCKY);
+
+			ItemStack result = giveLoot(lvl, drops.iterator().next());
+			
+			event.setDropItems(false);
+			if (player.getInventory().getItemInMainHand().getItemMeta().hasEnchant(CustomEnchants.TELEPATHY)) {
+				Main.giveItem(player, world, loc, result);
+			}
+			else {
+				world.dropItemNaturally(block.getLocation(), result);
+			}
+			return;
+		}
+
+		// Pebbly enchant
 		if ((type.equals(Material.WHEAT) || type.equals(Material.CARROTS) || type.equals(Material.POTATOES) || type.equals(Material.BEETROOT) ||
 				type.equals(Material.NETHER_WART)) && player.getInventory().getItemInMainHand().getItemMeta().hasEnchant(CustomEnchants.PEBBLY)) {
 			int lvl = player.getInventory().getItemInMainHand().getItemMeta().getEnchantLevel(CustomEnchants.PEBBLY);
-			Collection<ItemStack> drops = block.getDrops(player.getInventory().getItemInMainHand());
-			Location loc = player.getLocation();
-			World world = player.getWorld();
-			
+
 			if ((type.equals(Material.WHEAT)))
 				if (!block.getBlockData().getAsString().equals("minecraft:wheat[age=7]")) {
 					if (player.getInventory().getItemInMainHand().getItemMeta().hasEnchant(CustomEnchants.TELEPATHY)) {
@@ -268,16 +263,13 @@ public class EnchantEvents implements Listener {
 			else world.dropItemNaturally(block.getLocation(), result);
 			return;
 		}
+
+		// Solo telepathy enchant
 		if (player.getInventory().getItemInMainHand().getItemMeta().hasEnchant(CustomEnchants.TELEPATHY)) {
 			if (block.getState() instanceof Container)
 				return;	
 			event.setDropItems(false);
-			Location loc = player.getLocation();
-			World world = player.getWorld();
-			
-			Collection<ItemStack> drops = block.getDrops(player.getInventory().getItemInMainHand());
-			if (drops.isEmpty())
-				return;
+
 			Collection<ItemStack> loot = new HashSet<>();
 			for (ItemStack i : drops) {
 				if (drops.iterator().hasNext())
@@ -287,14 +279,11 @@ public class EnchantEvents implements Listener {
 				Main.giveItem(player, world, loc, i);
 			}
 		}
-		return;
 	}
 	
 	@EventHandler()
 	public void onMobKill(EntityDeathEvent event) {
 		if (event.getEntity().getKiller() == null)
-			return;
-		if (event.getEntity().getKiller().getInventory().getItemInMainHand() == null)
 			return;
 		if (!event.getEntity().getKiller().getInventory().getItemInMainHand().hasItemMeta())
 			return;
@@ -364,7 +353,6 @@ public class EnchantEvents implements Listener {
 				Main.giveItem(player, world, loc, i);
 			}
 		}
-		return;
 	}
 							
 	
@@ -382,7 +370,6 @@ public class EnchantEvents implements Listener {
 			player.addPotionEffect(new PotionEffect(PotionEffectType.NIGHT_VISION, 205, 0));
 		if (player.getInventory().getHelmet().getItemMeta().hasEnchant(CustomEnchants.WATER_BREATHING))
 			player.addPotionEffect(new PotionEffect(PotionEffectType.WATER_BREATHING, 205, 0));
-		return;
 	}
 		
 	@EventHandler()
@@ -398,10 +385,9 @@ public class EnchantEvents implements Listener {
 			int lvl = player.getInventory().getChestplate().getItemMeta().getEnchantLevel(CustomEnchants.HASTE) - 1;
 			player.addPotionEffect(new PotionEffect(PotionEffectType.FAST_DIGGING, 205, lvl));
 		}
-		return;
 	}
 			
-	public int satCounter = 200;
+	int satCounter = 200;
 	
 	@EventHandler()
 	public void leggings(PlayerStatisticIncrementEvent e) {
@@ -422,7 +408,6 @@ public class EnchantEvents implements Listener {
 		else player.removePotionEffect(PotionEffectType.SATURATION);
 		if (player.getInventory().getLeggings().getItemMeta().hasEnchant(CustomEnchants.DOLPHIN))
 			player.addPotionEffect(new PotionEffect(PotionEffectType.DOLPHINS_GRACE, 205, 0));
-		return;
 	}
 		
 	@EventHandler()
@@ -442,7 +427,6 @@ public class EnchantEvents implements Listener {
 			int lvl = player.getInventory().getBoots().getItemMeta().getEnchantLevel(CustomEnchants.JUMP) - 1;
 			player.addPotionEffect(new PotionEffect(PotionEffectType.JUMP, 205, lvl));
 		}
-		return;
 	}
 	
 	@EventHandler()
@@ -459,7 +443,6 @@ public class EnchantEvents implements Listener {
 				if (mob.getAttribute(Attribute.GENERIC_MOVEMENT_SPEED).getModifiers().isEmpty())
 					mob.getAttribute(Attribute.GENERIC_MOVEMENT_SPEED).addModifier(boost);
 			}
-			return;
 		}
 	}
 	
@@ -481,7 +464,6 @@ public class EnchantEvents implements Listener {
 					if (equip.getBoots().getItemMeta().hasEnchant(CustomEnchants.SOFT_LANDING))
 							event.setCancelled(true);
 		}
-		return;
 	}
 		
 	@EventHandler()
@@ -555,7 +537,6 @@ public class EnchantEvents implements Listener {
 					player.setFireTicks(0);
 			}
 		}
-		return;
 	}
 		
 	@EventHandler()
@@ -576,7 +557,6 @@ public class EnchantEvents implements Listener {
 						e.setDamage(e.getDamage() * (1 - .2 * lvl));
 				}
 			}
-			return;
 		}
 	}
 	
@@ -600,7 +580,6 @@ public class EnchantEvents implements Listener {
 						mob.getAttribute(Attribute.GENERIC_ATTACK_DAMAGE).addModifier(boost);
 				}
 			}
-			return;
 		}
 	}
 		
@@ -626,7 +605,6 @@ public class EnchantEvents implements Listener {
 					}
 				}
 			}
-			return;
 		}
 	}
 	
@@ -652,7 +630,6 @@ public class EnchantEvents implements Listener {
 					player.getInventory().getChestplate().getItemMeta().getDisplayName().substring(0, 4).equals(player.getInventory().getBoots().getItemMeta().getDisplayName().substring(0, 4)))
 				if (player.getAttribute(Attribute.GENERIC_MAX_HEALTH).getModifiers().isEmpty()) {
 					player.getAttribute(Attribute.GENERIC_MAX_HEALTH).addModifier(boost);
-					return;
 				}
 		}
 		else
@@ -682,7 +659,6 @@ public class EnchantEvents implements Listener {
 					}
 				}
 			}
-			return;
 		}
 	}
 			
@@ -740,7 +716,7 @@ public class EnchantEvents implements Listener {
 		Player player = e.getPlayer();
 		if (player.getGameMode() == GameMode.CREATIVE || player.getGameMode() == GameMode.SPECTATOR)
 			return;
-		if (player.getInventory().getItemInOffHand() == null || player.getInventory().getItemInOffHand().getType().equals(Material.AIR))
+		if (player.getInventory().getItemInOffHand().getType().equals(Material.AIR))
 			return;
 		if (player.getInventory().getItemInOffHand().getItemMeta().hasEnchant(CustomEnchants.IMMUNITY)) {
 			int lvl = player.getInventory().getItemInOffHand().getItemMeta().getEnchantLevel(CustomEnchants.IMMUNITY);
@@ -759,15 +735,15 @@ public class EnchantEvents implements Listener {
 	}
 	
 //	Weapons stuff
-	Map<String, Double> projectileCooldowns = new HashMap<String, Double>();
-	Map<String, Double> rocketCooldowns = new HashMap<String, Double>();
+	Map<String, Double> projectileCooldowns = new HashMap<>();
+	Map<String, Double> rocketCooldowns = new HashMap<>();
 
 	@EventHandler()
 	public void projectile(PlayerInteractEvent e) {
 		Player player = e.getPlayer();
 		ItemStack item = player.getInventory().getItemInMainHand();
 		int lvl = player.getLevel();
-		int req = 0;
+		int req;
 
 		if (Main.equals(item, t.t9Range())) {
 			req = 45;
@@ -796,7 +772,6 @@ public class EnchantEvents implements Listener {
 				player.launchProjectile(Arrow.class);
 				projectileCooldowns.put(player.getName(), System.currentTimeMillis() + (1.0 * level * 1000));
 			}
-		return;
 	}
 	
 	@EventHandler()
@@ -815,8 +790,7 @@ public class EnchantEvents implements Listener {
 			arrow.setDamage(arrow.getDamage() + 18 * lvl);
 			arrow.setPierceLevel(5 * lvl);
 			arrow.setKnockbackStrength(arrow.getKnockbackStrength() + 2 * lvl);
-		}	
-		return;
+		}
 	}
 	
 	@EventHandler()
@@ -833,8 +807,7 @@ public class EnchantEvents implements Listener {
 			int lvl = player.getInventory().getItemInMainHand().getItemMeta().getEnchantLevel(CustomEnchants.POWERED);
 			arrow.setDamage(arrow.getDamage() + 3 * lvl);
 			arrow.setKnockbackStrength(arrow.getKnockbackStrength() + 1 * lvl);
-		}	
-		return;
+		}
 	}
 	
 	@EventHandler()
@@ -844,15 +817,30 @@ public class EnchantEvents implements Listener {
 		int lvl = player.getLevel();
 		int req = 0;
 
+		// Ignore items without item meta
+		if (!item.hasItemMeta())
+			return;
+
+		// Ignore non-custom items
+		if (!item.getItemMeta().hasLore())
+			return;
+
+		// Ignore items without rocket enchant
+		if (!item.getItemMeta().getEnchants().containsKey(CustomEnchants.ROCKET))
+			return;
+
+		// Check for t10 trident
 		if (Main.equals(item, t.t10Range())) {
 			req = 50;
 		}
-		else return;
+
+		// Check level requirement
 		if (lvl < req) {
 			e.setCancelled(true);
 			player.sendMessage(ChatColor.RED + "Your level is not high enough to use this!");
 			return;
 		}
+
 		if (e.getAction() == Action.RIGHT_CLICK_AIR || e.getAction() == Action.RIGHT_CLICK_BLOCK) {
 //				add cooldown
 			if (rocketCooldowns.containsKey(player.getName())) {
@@ -876,41 +864,57 @@ public class EnchantEvents implements Listener {
 		ItemStack item = null;
 		Random r = new Random();
 		int position = 0;
-		
+
+		// Get loot table from config
 		for (String i : plugin.getConfig().getStringList("loot.lvl" + lvl)) {
-			if (i.equals("0"))
-				item = firstItem;
-			if (i.equals("1"))
-				item = resources.t1();
-			if (i.equals("2"))
-				item = resources.t2();
-			if (i.equals("3"))
-				item = resources.t3();
-			if (i.equals("4"))
-				item = resources.t4();
-			if (i.equals("5"))
-				item = resources.t5();
-			if (i.equals("6"))
-				item = resources.t6();
-			if (i.equals("7"))
-				item = resources.t7();
-			if (i.equals("8"))
-				item = resources.t8();
-			if (i.equals("9"))
-				item = resources.t9();
-			if (i.equals("10"))
-				item = resources.t10();
-			if (i.equals("11"))
-				item = resources.not();
-			if (i.equals("12"))
-				item = resources.a();
+			switch (i) {
+				case "0":
+					item = firstItem;
+					break;
+				case "1":
+					item = resources.t1();
+					break;
+				case "2":
+					item = resources.t2();
+					break;
+				case "3":
+					item = resources.t3();
+					break;
+				case "4":
+					item = resources.t4();
+					break;
+				case "5":
+					item = resources.t5();
+					break;
+				case "6":
+					item = resources.t6();
+					break;
+				case "7":
+					item = resources.t7();
+					break;
+				case "8":
+					item = resources.t8();
+					break;
+				case "9":
+					item = resources.t9();
+					break;
+				case "10":
+					item = resources.t10();
+					break;
+				case "11":
+					item = resources.not();
+					break;
+				case "12":
+					item = resources.a();
+					break;
+			}
 
 			items[position] = item;
 			position++;
 		}
-		
+
+		// Return random loot item
 		int num = r.nextInt(items.length);
-		ItemStack result = items[num];
-		return result;
+		return items[num];
 	}
 }

@@ -9,7 +9,7 @@ import org.bukkit.inventory.ItemStack;
 import me.Theguyhere.CompressedCobble.Main;
 
 public class ResourceRecipeEvents implements Listener {
-	private Resources r;
+	private final Resources r;
 	
 	public ResourceRecipeEvents (Resources r) {
 		this.r = r;
@@ -17,17 +17,32 @@ public class ResourceRecipeEvents implements Listener {
 	
 	@EventHandler
 	public void restrictCobbleConversion(PrepareItemCraftEvent e) {
-		if (e.getRecipe() != null)
-			if (e.getRecipe().getResult().getAmount() == 2 && e.getRecipe().getResult().getType().equals(Material.COBBLESTONE)) {
-				boolean found = false;
-				
-				for (ItemStack item: e.getInventory().getMatrix())
-					if (item != null)
-						if (Main.equals(item, r.t2()))
-							found = true;
-				if (found)
-					e.getInventory().setResult(null);
+		// Don't check null recipes
+		if (e.getRecipe() == null)
+			return;
+
+		// Ensure right recipe to check
+		if (!(e.getRecipe().getResult().getAmount() == 2 && e.getRecipe().getResult().getType().equals(Material.COBBLESTONE)))
+			return;
+
+		boolean found = false; // Flag for illegal recipe
+
+		// Search crafting inputs
+		for (ItemStack item: e.getInventory().getMatrix()) {
+			// Don't check null items
+			if (item == null)
+				continue;
+
+			// Prevent using t2 cobble to convert to cobble
+			if (Main.equals(item, r.t2())) {
+				found = true;
+				break;
+			}
 		}
+
+		// Nullify all unwanted recipes
+		if (found)
+			e.getInventory().setResult(null);
 	}
 	
 	@EventHandler
@@ -146,42 +161,70 @@ public class ResourceRecipeEvents implements Listener {
 	}
 	
 	private void restrictBackRecipe(PrepareItemCraftEvent e, int amount, ItemStack to, ItemStack from) {
-		if (e.getRecipe() != null) {
-			ItemStack result = e.getRecipe().getResult();
+		// Don't check null recipes
+		if (e.getRecipe() == null)
+			return;
 
-			if (result.getAmount() == amount && Main.equals(result, to)) {
-				boolean found = false;
-				
-				for (ItemStack item: e.getInventory().getMatrix())
-					if (item != null)
-						if (Main.equals(item, from))
-							found = true;
-				if (!found)
-					e.getInventory().setResult(null);
-			}
+		ItemStack result = e.getRecipe().getResult();
+
+		// Ensure right recipe to check
+		if (!(result.getAmount() == amount && Main.equals(result, to)))
+			return;
+
+		boolean found = false; // Flag for LEGAL recipe
+
+		// Search crafting inputs
+		for (ItemStack item: e.getInventory().getMatrix()) {
+			// Don't check null items
+			if (item == null)
+				continue;
+
+			// Check for counterfeit material
+			if (Main.equals(item, from))
+				found = true;
 		}
+
+		// Nullify all unwanted recipes
+		if (!found)
+			e.getInventory().setResult(null);
 	}
 	
 	private void restrictRecipe(PrepareItemCraftEvent e, ItemStack to, ItemStack from1, ItemStack from2) {
-		if (e.getRecipe() != null) {
-			ItemStack result = e.getRecipe().getResult();
-			
-			if (result.getAmount() == 1 && Main.equals(result, to)) {
-				boolean found = false;
-				
-				for (ItemStack item: e.getInventory().getMatrix())
-					if (item != null) {
-						Material type = item.getType();
-						if (type.equals(from1.getType()))
-							if (!Main.equals(item, from1))
-								found = true;
-						if (type.equals(from2.getType()))
-							if (!Main.equals(item, from2))
-								found = true;
-					}
-				if (found)
-					e.getInventory().setResult(null);
-			}
+		// Don't check null recipes
+		if (e.getRecipe() == null)
+			return;
+
+		ItemStack result = e.getRecipe().getResult();
+
+		// Ensure right recipe to check
+		if (!(result.getAmount() == 1 && Main.equals(result, to)))
+			return;
+
+		boolean found = false; // Flag for illegal recipe
+
+		// Search crafting inputs
+		for (ItemStack item: e.getInventory().getMatrix()) {
+			// Don't check null items
+			if (item == null)
+				continue;
+
+			Material type = item.getType();
+
+			// Check for counterfeit materials
+			if (type.equals(from1.getType()))
+				if (!Main.equals(item, from1)) {
+					found = true;
+					break;
+				}
+			if (type.equals(from2.getType()))
+				if (!Main.equals(item, from2)) {
+					found = true;
+					break;
+				}
 		}
+
+		// Nullify all unwanted recipes
+		if (found)
+			e.getInventory().setResult(null);
 	}
 }
