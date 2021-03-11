@@ -15,11 +15,12 @@ itemRecipes: true
 # If itemRecipes is FALSE, then the recipe will be reverted back anyways.
 shieldChange: true
 
-# This is the message that a player will receive upon joining the server.
+# This is the message that a player will receive upon joining the server. Set to empty string to disable welcome message.
 playerWelcome: "This server has Compressed Cobblestone installed. Do /cc help to visit the wiki for help."
 
 # This determines whether mobs will spawn buffed and with gear depending on what players have in their inventory.
-# Setting the value to FALSE will revert mob spawning to their normal spawn generation, not affected by Compressed Cobblestone items in a player's inventory.
+# Setting the value to FALSE will revert mob spawning to their normal spawn generation, not affected by Compressed
+# Cobblestone items in a player's inventory.
 mobBuff: true
 
 # This determines whether a player's level will affect their use of vanilla items.
@@ -337,4 +338,4 @@ spawn:
 
 # This is the config version for reference.
 # DO NOT EDIT VALUE.
-version: 2.1
+version: 2.2

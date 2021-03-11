@@ -378,7 +378,7 @@ public class Main extends JavaPlugin implements Listener {
 		this.getCommand("cc").setExecutor(commands);
 		this.getCommand("cc").setTabCompleter(new CommandTab());
 
-		if (this.getConfig().getDouble("version") < 2.1)
+		if (this.getConfig().getDouble("version") < 2.2)
 			this.getServer().getConsoleSender().sendMessage(ChatColor.RED + "Your config.yml is outdated! "
 					+ "Please update to the latest version to ensure compatibility.");
 		
@@ -392,7 +392,8 @@ public class Main extends JavaPlugin implements Listener {
 	
 	@EventHandler()
 	public void onJoin(PlayerJoinEvent e) {
-		e.getPlayer().sendMessage(ChatColor.GOLD + this.getConfig().getString("playerWelcome"));
+		if (!getConfig().getString("playerWelcome").isEmpty())
+			e.getPlayer().sendMessage(ChatColor.GOLD + this.getConfig().getString("playerWelcome"));
 	}
 	
 	public static boolean equals(ItemStack a, ItemStack b) {
