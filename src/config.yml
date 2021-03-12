@@ -1,3 +1,6 @@
+# This sets the language file.
+locale: "en_US"
+
 # This determines whether the resource conversion recipes NOT involving custom resources is enabled.
 # Setting the value to FALSE will remove recipes such as iron blocks to T6 Blazing Cobblestone and rotten flesh to leather.
 resourceConversion: true
@@ -14,9 +17,6 @@ itemRecipes: true
 # Setting the value to FALSE will revert the recipe back to using an iron ingot.
 # If itemRecipes is FALSE, then the recipe will be reverted back anyways.
 shieldChange: true
-
-# This is the message that a player will receive upon joining the server. Set to empty string to disable welcome message.
-playerWelcome: "This server has Compressed Cobblestone installed. Do /cc help to visit the wiki for help."
 
 # This determines whether mobs will spawn buffed and with gear depending on what players have in their inventory.
 # Setting the value to FALSE will revert mob spawning to their normal spawn generation, not affected by Compressed
@@ -339,3 +339,7 @@ spawn:
 # This is the config version for reference.
 # DO NOT EDIT VALUE.
 version: 2.2
+
+# This is the lang file version for reference.
+# DO NOT EDIT VALUE.
+lang: 1

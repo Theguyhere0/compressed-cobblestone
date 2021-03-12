@@ -21,11 +21,13 @@ import net.md_5.bungee.api.chat.ClickEvent;
 import net.md_5.bungee.api.chat.TextComponent;
 
 public class Commands implements CommandExecutor {
+	private final Main plugin;
 	private final Resources r;
 	private final Tools t;
 	private final Armor a;
 	
-	public Commands(Resources r, Tools t, Armor a) {
+	public Commands(Main plugin, Resources r, Tools t, Armor a) {
+		this.plugin = plugin;
 		this.r = r;
 		this.t = t;
 		this.a = a;
@@ -150,6 +152,15 @@ public class Commands implements CommandExecutor {
 		for (ItemStack item: a.t10s())
 			tools10.add(item);
 
+		// Text info
+		LanguageLoader langLoader = new LanguageLoader(plugin);
+		String perms = langLoader.get("permissionMsg");
+		String help = langLoader.get("helpMsg");
+		String visit = langLoader.get("visitMsg");
+		String noCobble = langLoader.get("noCobbleMsg");
+		String craft = langLoader.get("craftMsg");
+		String invalid = langLoader.get("invalidMsg");
+
 		if (label.equalsIgnoreCase("cc")) {
 			// Check if player sent command
 			if (!(sender instanceof Player)) {
@@ -170,7 +181,8 @@ public class Commands implements CommandExecutor {
 //			Give materials
 			if (args[0].equalsIgnoreCase("materials")) {
 				if (!player.hasPermission("cc.materials.use")) {
-					player.sendMessage(ChatColor.RED + "You do not have permission!");
+					if (perms != null && !perms.isEmpty())
+						player.sendMessage(ChatColor.RED + perms);
 					return true;
 				}
 	
@@ -183,7 +195,8 @@ public class Commands implements CommandExecutor {
 			//	Give cobble
 			if (args[0].equalsIgnoreCase("cobble")) {
 				if (!player.hasPermission("cc.materials.use")) {
-					player.sendMessage(ChatColor.RED + "You do not have permission!");
+					if (perms != null && !perms.isEmpty())
+						player.sendMessage(ChatColor.RED + perms);
 					return true;
 				}
 
@@ -196,7 +209,8 @@ public class Commands implements CommandExecutor {
 //		Give tools of different levels
 			if (args[0].equalsIgnoreCase("tools")) {
 				if (!player.hasPermission("cc.tools.use")) {
-					player.sendMessage(ChatColor.RED + "You do not have permission!");
+					if (perms != null && !perms.isEmpty())
+						player.sendMessage(ChatColor.RED + perms);
 					return true;
 				}
 				if (args.length < 2) {
@@ -298,8 +312,12 @@ public class Commands implements CommandExecutor {
 		
 //		Redirects to wiki
 			if (args[0].equalsIgnoreCase("help")) {
-				player.sendMessage(ChatColor.GOLD + "For more information, click below to visit the wiki!");
-				TextComponent message = new TextComponent("Visit the wiki!");
+				if (help != null && !help.isEmpty())
+					player.sendMessage(ChatColor.GOLD + help);
+				TextComponent message;
+				if (visit != null && !visit.isEmpty())
+					 message= new TextComponent(visit);
+				else message = new TextComponent();
 				message.setBold(true);
 				message.setClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, "https://github.com/Theguyhere0/compressed-cobblestone/wiki"));
 				player.spigot().sendMessage(message);
@@ -349,7 +367,8 @@ public class Commands implements CommandExecutor {
 	
 	//			Convert to higher tier and add back to inventory
 				if (value == 0) {
-					player.sendMessage(ChatColor.RED + "No cobblestone resources found.");
+					if (noCobble != null && !noCobble.isEmpty())
+						player.sendMessage(ChatColor.RED + noCobble);
 					return true;
 				}
 				
@@ -395,10 +414,12 @@ public class Commands implements CommandExecutor {
 						Main.giveItem(player, world, loc, new ItemStack(Material.COBBLESTONE));
 					}
 				}
-				player.sendMessage(ChatColor.GREEN + "Cobble crafted!");
+				if (craft != null && !craft.isEmpty())
+					player.sendMessage(ChatColor.GREEN + craft);
 				return true;
 			}
-			player.sendMessage(ChatColor.RED + "Command was invalid!");
+			if (invalid != null && !invalid.isEmpty())
+				player.sendMessage(ChatColor.RED + invalid);
 			return true;
 		}
 		return false;

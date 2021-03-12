@@ -1,0 +1,7 @@
+welcomeMsg: "This server has Compressed Cobblestone installed. Do /cc help to visit the wiki for help."
+permissionMsg: "You do not have permission!"
+helpMsg: "For more information, click below to visit the wiki!"
+visitMsg: "Visit the wiki!"
+noCobbleMsg: "No cobblestone resources found."
+craftMsg: "Cobble crafted!"
+invalidMsg: "Command was invalid!"
