@@ -31,7 +31,7 @@ public class Main extends JavaPlugin implements Listener {
 	private final Resources r = new Resources();
 	private final Tools t = new Tools();
 	private final Armor armor = new Armor();
-	private final Commands commands = new Commands(r, t, armor);
+	private final Commands commands = new Commands(this, r, t, armor);
 	private DataManager data;
 	
 	@Override
@@ -378,10 +378,14 @@ public class Main extends JavaPlugin implements Listener {
 		this.getCommand("cc").setExecutor(commands);
 		this.getCommand("cc").setTabCompleter(new CommandTab());
 
-		if (this.getConfig().getDouble("version") < 2.1)
-			this.getServer().getConsoleSender().sendMessage(ChatColor.RED + "Your config.yml is outdated! "
+		if (getConfig().getDouble("version") < 2.2)
+			getServer().getConsoleSender().sendMessage(ChatColor.RED + "Your config.yml is outdated! "
 					+ "Please update to the latest version to ensure compatibility.");
-		
+
+		if (getConfig().getInt("lang") < 1)
+			getServer().getConsoleSender().sendMessage(ChatColor.RED + "Your language files are outdated! "
+					+ "Please update to the latest version to ensure compatibility.");
+
 		this.getServer().getConsoleSender().sendMessage(ChatColor.GREEN + "Compressed Cobblestone has been loaded and enabled!");
 	}
 
@@ -392,7 +396,10 @@ public class Main extends JavaPlugin implements Listener {
 	
 	@EventHandler()
 	public void onJoin(PlayerJoinEvent e) {
-		e.getPlayer().sendMessage(ChatColor.GOLD + this.getConfig().getString("playerWelcome"));
+		LanguageLoader langLoader = new LanguageLoader(this);
+		String welcome = langLoader.get("welcomeMsg");
+		if (welcome != null && !welcome.isEmpty())
+			e.getPlayer().sendMessage(ChatColor.GOLD + welcome);
 	}
 	
 	public static boolean equals(ItemStack a, ItemStack b) {
