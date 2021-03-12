@@ -1,4 +1,4 @@
-# This sets the language file.
+# This sets the language file for which plugin texts will pull from. Set texts in language file to empty to disable.
 locale: "en_US"
 
 # This determines whether the resource conversion recipes NOT involving custom resources is enabled.
