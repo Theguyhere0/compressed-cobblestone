@@ -1,8 +1,8 @@
 ---
 name: Plugin feature request
 about: Suggest an idea or improvements for the plugin
-title: "[REQUEST]"
-labels: ''
+title: "[FEATURE]"
+labels: enhancement
 assignees: ''
 
 ---
