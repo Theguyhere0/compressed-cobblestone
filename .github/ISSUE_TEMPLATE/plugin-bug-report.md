@@ -24,6 +24,7 @@ A clear and concise description of what you expected to happen.
 If applicable, add screenshots to help explain your problem.
 
 **Server and plugin versions (please complete the following information):**
+ - OS: [e.g. Windows 10]
  - Server type (including the version): [ex. Spigot 1.16.2]
  - Compressed Cobblestone version: [ex. 1.4.1]
 
